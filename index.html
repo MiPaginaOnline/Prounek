@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prounek | Tu negocio en digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0D1B2A;
+            --text-white: #FFFFFF;
+            --card-bg: #E5E7EB;
+            --btn-blue: #1E3A5F;
+            --accent-blue: #4A90E2;
+            --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-fast: 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-weight: 600;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: 2rem;
+        }
+
+        section {
+            padding: 5rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Efectos de luz */
+        .light-effect {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.08;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .light-1 {
+            width: 400px;
+            height: 800px;
+            background: linear-gradient(to bottom, #4A90E2, #1E3A5F);
+            top: 10%;
+            right: -100px;
+        }
+
+        .light-2 {
+            width: 300px;
+            height: 600px;
+            background: linear-gradient(to bottom, #E5E7EB, #1E3A5F);
+            top: 40%;
+            right: 10%;
+        }
+
+        .light-3 {
+            width: 250px;
+            height: 500px;
+            background: linear-gradient(to bottom, #FFFFFF, #4A90E2);
+            top: 70%;
+            right: 0;
+        }
+
+        /* Header y Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 8rem 1.5rem 5rem;
+            position: relative;
+        }
+
+        .hero h1 span {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: var(--accent-blue);
+            z-index: -1;
+            opacity: 0.7;
+            border-radius: 4px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            color: #CCCCCC;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--btn-blue);
+            color: var(--text-white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all var(--transition-fast);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .features {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .feature i {
+            color: var(--accent-blue);
+        }
+
+        /* Sticky Navbar */
+        .navbar {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1000px;
+            background-color: rgba(13, 27, 42, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all var(--transition-fast);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .navbar.scrolled {
+            top: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            width: 95%;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .navbar-logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .navbar-logo span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.3rem;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .navbar-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+            position: relative;
+        }
+
+        .navbar-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-blue);
+            transition: width var(--transition-fast);
+        }
+
+        .navbar-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .navbar-links a:hover::after,
+        .navbar-links a.active::after {
+            width: 100%;
+        }
+
+        .navbar-links a.active {
+            color: var(--accent-blue);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-white);
+            border-radius: 2px;
+            transition: all var(--transition-fast);
+        }
+
+        /* Sección confianza */
+        .trust-section {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            position: relative;
+        }
+
+        .trust-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            opacity: 0.6;
+            margin-bottom: 2rem;
+        }
+
+        .trust-companies {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 3rem;
+            opacity: 0.5;
+        }
+
+        .trust-company {
+            font-size: 1.5rem;
+            color: #CCCCCC;
+            font-style: italic;
+        }
+
+        /* Sección servicios */
+        .services-section {
+            padding-top: 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            color: #333;
+            transition: all var(--transition-slow);
+            opacity: 0;
+            transform: translateY(20px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .card h3 {
+            color: var(--bg-primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--btn-blue);
+            margin-bottom: 1rem;
+        }
+
+        .services-link {
+            display: block;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .services-link .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all var(--transition-fast);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            background-color: rgba(30, 58, 95, 0.2);
+        }
+
+        .services-link .btn-link:hover {
+            color: var(--text-white);
+            background-color: rgba(30, 58, 95, 0.5);
+            transform: translateY(-3px);
+        }
+
+        /* Carrusel para móviles */
+        .carousel-container {
+            display: none;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform var(--transition-slow);
+        }
+
+        .carousel-card {
+            min-width: 100%;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .carousel-card h3 {
+            color: var(--bg-primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .carousel-card p {
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(0,0,0,0.3);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--btn-blue);
+            border-radius: 50%;
+            color: var(--text-white);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .social-link:hover {
+            background-color: var(--accent-blue);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            color: #AAAAAA;
+            font-size: 0.9rem;
+        }
+
+        /* Animaciones de entrada */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-left {
+            transform: translateX(-30px);
+        }
+
+        .animate-right {
+            transform: translateX(30px);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .navbar-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(13, 27, 42, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 1.5rem;
+                border-radius: 20px;
+                margin-top: 1rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 999;
+            }
+
+            .navbar-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+
+            .cards-container {
+                display: none;
+            }
+
+            .carousel-container {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 10rem;
+                text-align: center;
+                align-items: center;
+            }
+
+            .navbar {
+                padding: 0.7rem 1.5rem;
+            }
+
+            .navbar-logo span {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .features {
+                justify-content: center;
+            }
+
+            .trust-company {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Efectos de luz -->
+    <div class="light-effect light-1"></div>
+    <div class="light-effect light-2"></div>
+    <div class="light-effect light-3"></div>
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="Logo para poner en el sticky de la web Prounek.png" alt="Logo TeCreamos.Web">
+        </div>
+        
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <div class="navbar-links">
+            <a href="#inicio" class="active">Inicio</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="portafolio.html">Portafolio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h1 class="animate-on-scroll">Tu negocio está en <span>físico</span>, nosotros te lo ponemos en <span>digital</span>.</h1>
+            <p class="hero-subtitle animate-on-scroll">Creamos el logo del negocio, página web, agendamos citas, contenido publicitario y más que no te imaginas!</p>
+            <a href="#servicios" class="btn animate-on-scroll">Más información</a>
+            
+            <div class="features">
+                <div class="feature animate-on-scroll">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Entrega en 7 días</span>
+                </div>
+                <div class="feature animate-on-scroll">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Garantía de satisfacción</span>
+                </div>
+                <div class="feature animate-on-scroll">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Web 100% tuya</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Confianza -->
+    <section id="confianza" class="trust-section">
+        <div class="container">
+            <h2 class="trust-title animate-on-scroll">Han confiado en nosotros:</h2>
+            <div class="trust-companies animate-on-scroll">
+                <div class="trust-company">Les Guatlles</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Servicios -->
+    <section id="servicios" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="animate-on-scroll">¿Qué ofrecemos?</h2>
+            </div>
+            
+            <!-- Cards para desktop -->
+            <div class="cards-container">
+                <div class="card animate-on-scroll animate-left">
+                    <div class="card-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Diseño Página Web</h3>
+                    <p>Desarrollo de sitios web modernos, responsivos y optimizados para todos los dispositivos, con diseño personalizado para tu marca.</p>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Mantenimiento Web</h3>
+                    <p>Actualizaciones regulares, seguridad, backups y soporte técnico para mantener tu sitio funcionando perfectamente.</p>
+                </div>
+                
+                <div class="card animate-on-scroll animate-right">
+                    <div class="card-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Agendar Citas Automatizadas</h3>
+                    <p>Sistema de reservas online que se integra con tu calendario, reduce llamadas y mejora la experiencia del cliente.</p>
+                </div>
+                
+                <div class="card animate-on-scroll animate-left">
+                    <div class="card-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Diseño de Logo</h3>
+                    <p>Creación de identidad visual profesional que representa los valores de tu empresa y destaca en el mercado.</p>
+                </div>
+                
+                <div class="card animate-on-scroll">
+                    <div class="card-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Videos y Fotos Promocionales</h3>
+                    <p>Contenido visual de alta calidad para redes sociales que capta la atención y promueve tu negocio efectivamente.</p>
+                </div>
+                
+                <div class="card animate-on-scroll animate-right">
+                    <div class="card-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>Página Web con Pagos</h3>
+                    <p>E-commerce completo con pasarelas de pago seguras, carrito de compras y gestión de pedidos integrada.</p>
+                </div>
+            </div>
+            
+            <!-- Carrusel para móviles -->
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-card">
+                        <div class="card-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Diseño Página Web</h3>
+                        <p>Desarrollo de sitios web modernos, responsivos y optimizados para todos los dispositivos, con diseño personalizado para tu marca.</p>
+                    </div>
+                    
+                    <div class="carousel-card">
+                        <div class="card-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Mantenimiento Web</h3>
+                        <p>Actualizaciones regulares, seguridad, backups y soporte técnico para mantener tu sitio funcionando perfectamente.</p>
+                    </div>
+                    
+                    <div class="carousel-card">
+                        <div class="card-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Agendar Citas Automatizadas</h3>
+                        <p>Sistema de reservas online que se integra con tu calendario, reduce llamadas y mejora la experiencia del cliente.</p>
+                    </div>
+                    
+                    <div class="carousel-card">
+                        <div class="card-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3>Diseño de Logo</h3>
+                        <p>Creación de identidad visual profesional que representa los valores de tu empresa y destaca en el mercado.</p>
+                    </div>
+                    
+                    <div class="carousel-card">
+                        <div class="card-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>Videos y Fotos Promocionales</h3>
+                        <p>Contenido visual de alta calidad para redes sociales que capta la atención y promueve tu negocio efectivamente.</p>
+                    </div>
+                    
+                    <div class="carousel-card">
+                        <div class="card-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>Página Web con Pagos</h3>
+                        <p>E-commerce completo con pasarelas de pago seguras, carrito de compras y gestión de pedidos integrada.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="services-link">
+                <a href="servicios-detallados.html" class="btn-link animate-on-scroll">
+                    Más información sobre nuestros servicios
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.instagram.com/tecreamos.web/" class="social-link" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            <p class="copyright">© 2023 TeCreamos.Web. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Efectos de entrada y animaciones
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scroll suave para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Cerrar menú hamburguesa si está abierto
+                        if (window.innerWidth <= 992) {
+                            navbarLinks.classList.remove('active');
+                            hamburger.classList.remove('active');
+                        }
+                    }
+                });
+            });
+            
+            // Elementos del DOM
+            const navbar = document.querySelector('.navbar');
+            const hamburger = document.querySelector('.hamburger');
+            const navbarLinks = document.querySelector('.navbar-links');
+            
+            // Sticky navbar con efecto
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                
+                // Actualizar enlace activo según scroll
+                updateActiveLink();
+                
+                // Animar elementos al hacer scroll
+                animateOnScroll();
+            });
+            
+            // Menú hamburguesa
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navbarLinks.classList.toggle('active');
+            });
+            
+            // Cerrar menú al hacer clic fuera
+            document.addEventListener('click', function(event) {
+                const isClickInsideNavbar = navbar.contains(event.target);
+                if (!isClickInsideNavbar && window.innerWidth <= 992) {
+                    hamburger.classList.remove('active');
+                    navbarLinks.classList.remove('active');
+                }
+            });
+            
+            // Carrusel automático para móviles
+            const carouselTrack = document.querySelector('.carousel-track');
+            if (carouselTrack) {
+                let currentSlide = 0;
+                const cards = document.querySelectorAll('.carousel-card');
+                const totalSlides = cards.length;
+                let carouselInterval;
+                
+                function nextSlide() {
+                    currentSlide = (currentSlide + 1) % totalSlides;
+                    carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+                }
+                
+                // Iniciar carrusel solo en móviles
+                function startCarousel() {
+                    if (window.innerWidth <= 992) {
+                        if (!carouselInterval) {
+                            carouselInterval = setInterval(nextSlide, 3000);
+                        }
+                    } else {
+                        if (carouselInterval) {
+                            clearInterval(carouselInterval);
+                            carouselInterval = null;
+                        }
+                    }
+                }
+                
+                startCarousel();
+                
+                // Recalcular en resize
+                window.addEventListener('resize', startCarousel);
+            }
+            
+            // Actualizar enlace activo en navbar
+            function updateActiveLink() {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.navbar-links a');
+                
+                let currentSection = '';
+                const scrollPosition = window.scrollY + 150;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            // Animar elementos al hacer scroll
+            function animateOnScroll() {
+                const elements = document.querySelectorAll('.animate-on-scroll');
+                const triggerBottom = window.innerHeight * 0.85;
+                
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    
+                    if (elementTop < triggerBottom) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Animar elementos inicialmente
+            setTimeout(animateOnScroll, 100);
+            
+            // Efectos de microinteracciones
+            const buttons = document.querySelectorAll('.btn, .social-link, .btn-link');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    if (!this.classList.contains('active')) {
+                        this.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            
+            // Animación inicial para hero
+            const heroElements = document.querySelectorAll('.hero .animate-on-scroll');
+            heroElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, 300 + (index * 200));
+            });
+        });
+    </script>
+</body>
+</html>
