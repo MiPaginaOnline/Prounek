@@ -193,7 +193,7 @@
             color: var(--accent-blue);
         }
 
-        /* Sticky Navbar - LOGO ALARGADO */
+        /* Sticky Navbar - LOGO MÁS GRANDE */
         .navbar {
             position: fixed;
             top: 1rem;
@@ -223,23 +223,56 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            height: 100%;
         }
 
-        /* LOGO ALARGADO - Modificado para imagen horizontal */
+        /* LOGO MÁS GRANDE - Modificado para imagen alargada grande */
         .navbar-logo img {
             width: auto; /* Ancho automático según la proporción de la imagen */
-            height: 35px; /* Altura fija para mantener consistencia */
+            height: 50px; /* Altura aumentada para que sea más grande */
             object-fit: contain; /* Mantiene la proporción de la imagen */
-            border: none; /* Quitamos el borde redondo */
+            border: none; /* Quitamos el borde */
             border-radius: 0; /* Quitamos el borde redondeado */
-            max-width: 150px; /* Ancho máximo para controlar el tamaño */
+            max-width: 200px; /* Ancho máximo aumentado */
+            min-width: 120px; /* Ancho mínimo para asegurar visibilidad */
+        }
+
+        /* Aumentar el padding del navbar para que quepa el logo más grande */
+        .navbar {
+            padding: 0.8rem 2rem;
+            min-height: 65px; /* Altura mínima aumentada */
+        }
+
+        .navbar.scrolled {
+            padding: 0.8rem 1.8rem;
+            min-height: 60px;
         }
 
         /* Para pantallas pequeñas ajustamos un poco más */
         @media (max-width: 768px) {
             .navbar-logo img {
-                height: 30px;
-                max-width: 120px;
+                height: 40px; /* Un poco más pequeño en móviles pero aún legible */
+                max-width: 160px;
+                min-width: 100px;
+            }
+            
+            .navbar {
+                padding: 0.7rem 1.5rem;
+                min-height: 60px;
+            }
+            
+            .navbar.scrolled {
+                padding: 0.6rem 1.2rem;
+                min-height: 55px;
+            }
+        }
+
+        /* Para pantallas muy pequeñas */
+        @media (max-width: 480px) {
+            .navbar-logo img {
+                height: 35px;
+                max-width: 140px;
+                min-width: 90px;
             }
         }
 
@@ -252,6 +285,7 @@
         .navbar-links {
             display: flex;
             gap: 2rem;
+            align-items: center;
         }
 
         .navbar-links a {
@@ -260,36 +294,7 @@
             font-weight: 500;
             transition: color var(--transition-fast);
             position: relative;
-        }
-
-        .navbar-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-blue);
-            transition: width var(--transition-fast);
-        }
-
-        .navbar-logo span {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 1.3rem;
-        }
-
-        .navbar-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .navbar-links a {
-            color: var(--text-white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color var(--transition-fast);
-            position: relative;
+            white-space: nowrap; /* Evita que los enlaces se rompan en varias líneas */
         }
 
         .navbar-links a::after {
@@ -323,6 +328,7 @@
             gap: 5px;
             padding: 5px;
             z-index: 1001;
+            margin-left: 10px;
         }
 
         .hamburger span {
@@ -581,8 +587,8 @@
             }
             
             .navbar-logo img {
-                height: 28px;
-                max-width: 110px;
+                height: 42px; /* Mantenemos un tamaño legible en tablet */
+                max-width: 180px;
             }
         }
 
@@ -594,7 +600,7 @@
             }
 
             .navbar {
-                padding: 0.7rem 1.5rem;
+                padding: 0.8rem 1.5rem;
             }
 
             .navbar-logo span {
@@ -621,10 +627,10 @@
     <div class="light-effect light-2"></div>
     <div class="light-effect light-3"></div>
 
-    <!-- Sticky Navbar con LOGO ALARGADO -->
+    <!-- Sticky Navbar con LOGO MÁS GRANDE -->
     <nav class="navbar">
         <div class="navbar-logo">
-            <!-- Logo alargado (horizontal) -->
+            <!-- Logo alargado (horizontal) - AHORA MÁS GRANDE -->
             <img src="Logo para poner en el sticky de la web Prounek.png" alt="Logo Prounek">
         </div>
         
@@ -646,7 +652,7 @@
     <!-- Hero Section -->
     <section id="inicio" class="hero">
         <div class="container">
-            <h1 class="animate-on-scroll">Tu negocio está en <span>físico</span>, nosotros te lo ponemos en <span>digital</span></h1>
+            <h1 class="animate-on-scroll">Tu negocio está en <span>físico</span>, nosotros te lo ponemos en <span>digital.</span></h1>
             <p class="hero-subtitle animate-on-scroll">Creamos el logo del negocio, página web, agendamos citas, contenido publicitario y más que no te imaginas!</p>
             <a href="#servicios" class="btn animate-on-scroll">Más información</a>
             
@@ -814,7 +820,7 @@
                     <i class="fab fa-linkedin-in"></i>
                 </a>
             </div>
-            <p class="copyright">© 2025 Prounek. Todos los derechos reservados.</p>
+            <p class="copyright">© 2023 Prounek. Todos los derechos reservados.</p>
         </div>
     </footer>
 
