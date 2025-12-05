@@ -193,7 +193,7 @@
             color: var(--accent-blue);
         }
 
-        /* Sticky Navbar */
+        /* Sticky Navbar - LOGO ALARGADO */
         .navbar {
             position: fixed;
             top: 1rem;
@@ -225,12 +225,52 @@
             gap: 1rem;
         }
 
+        /* LOGO ALARGADO - Modificado para imagen horizontal */
         .navbar-logo img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid rgba(255,255,255,0.1);
+            width: auto; /* Ancho automático según la proporción de la imagen */
+            height: 35px; /* Altura fija para mantener consistencia */
+            object-fit: contain; /* Mantiene la proporción de la imagen */
+            border: none; /* Quitamos el borde redondo */
+            border-radius: 0; /* Quitamos el borde redondeado */
+            max-width: 150px; /* Ancho máximo para controlar el tamaño */
+        }
+
+        /* Para pantallas pequeñas ajustamos un poco más */
+        @media (max-width: 768px) {
+            .navbar-logo img {
+                height: 30px;
+                max-width: 120px;
+            }
+        }
+
+        .navbar-logo span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.3rem;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .navbar-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+            position: relative;
+        }
+
+        .navbar-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-blue);
+            transition: width var(--transition-fast);
         }
 
         .navbar-logo span {
@@ -539,6 +579,11 @@
             .carousel-container {
                 display: block;
             }
+            
+            .navbar-logo img {
+                height: 28px;
+                max-width: 110px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -576,10 +621,11 @@
     <div class="light-effect light-2"></div>
     <div class="light-effect light-3"></div>
 
-    <!-- Sticky Navbar -->
+    <!-- Sticky Navbar con LOGO ALARGADO -->
     <nav class="navbar">
         <div class="navbar-logo">
-            <img src="Logo para poner en el sticky de la web Prounek.png" alt="Logo TeCreamos.Web">
+            <!-- Logo alargado (horizontal) -->
+            <img src="Logo para poner en el sticky de la web Prounek.png" alt="Logo Prounek">
         </div>
         
         <div class="hamburger">
@@ -600,7 +646,7 @@
     <!-- Hero Section -->
     <section id="inicio" class="hero">
         <div class="container">
-            <h1 class="animate-on-scroll">Tu negocio está en <span>físico</span>, nosotros te lo ponemos en <span>digital.</span></h1>
+            <h1 class="animate-on-scroll">Tu negocio está en <span>físico</span>, nosotros te lo ponemos en <span>digital</span></h1>
             <p class="hero-subtitle animate-on-scroll">Creamos el logo del negocio, página web, agendamos citas, contenido publicitario y más que no te imaginas!</p>
             <a href="#servicios" class="btn animate-on-scroll">Más información</a>
             
@@ -768,7 +814,7 @@
                     <i class="fab fa-linkedin-in"></i>
                 </a>
             </div>
-            <p class="copyright">© 2023 TeCreamos.Web. Todos los derechos reservados.</p>
+            <p class="copyright">© 2025 Prounek. Todos los derechos reservados.</p>
         </div>
     </footer>
 
