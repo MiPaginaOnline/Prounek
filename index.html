@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #0D1B2A;
@@ -193,7 +193,7 @@
             color: var(--accent-blue);
         }
 
-        /* Sticky Navbar - LOGO MÁS GRANDE */
+        /* Sticky Navbar - LOGO CON TEXTO MEJORADO */
         .navbar {
             position: fixed;
             top: 1rem;
@@ -223,63 +223,44 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            height: 100%;
         }
 
-        /* LOGO MÁS GRANDE - Modificado para imagen alargada grande */
-        .navbar-logo img {
-            width: auto; /* Ancho automático según la proporción de la imagen */
-            height: 50px; /* Altura aumentada para que sea más grande */
-            object-fit: contain; /* Mantiene la proporción de la imagen */
-            border: none; /* Quitamos el borde */
-            border-radius: 0; /* Quitamos el borde redondeado */
-            max-width: 200px; /* Ancho máximo aumentado */
-            min-width: 120px; /* Ancho mínimo para asegurar visibilidad */
+        /* LOGO CON TEXTO MEJORADO - Poppins Regular y negro más claro */
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400; /* Regular */
+            font-size: 2rem; /* Un poco más grande */
+            background: linear-gradient(90deg, #333333, #c89116); /* Negro más claro (#333333) */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px; /* Más espaciado para mejor legibilidad */
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+            padding: 5px 0; /* Padding vertical para mejor espaciado */
         }
 
-        /* Aumentar el padding del navbar para que quepa el logo más grande */
-        .navbar {
-            padding: 0.8rem 2rem;
-            min-height: 65px; /* Altura mínima aumentada */
-        }
-
-        .navbar.scrolled {
-            padding: 0.8rem 1.8rem;
-            min-height: 60px;
-        }
-
-        /* Para pantallas pequeñas ajustamos un poco más */
+        /* Para pantallas pequeñas ajustamos el tamaño del logo */
         @media (max-width: 768px) {
-            .navbar-logo img {
-                height: 40px; /* Un poco más pequeño en móviles pero aún legible */
-                max-width: 160px;
-                min-width: 100px;
+            .logo-text {
+                font-size: 1.7rem;
+                letter-spacing: 0.8px;
             }
             
             .navbar {
                 padding: 0.7rem 1.5rem;
-                min-height: 60px;
             }
             
             .navbar.scrolled {
                 padding: 0.6rem 1.2rem;
-                min-height: 55px;
             }
         }
 
         /* Para pantallas muy pequeñas */
         @media (max-width: 480px) {
-            .navbar-logo img {
-                height: 35px;
-                max-width: 140px;
-                min-width: 90px;
+            .logo-text {
+                font-size: 1.5rem;
+                letter-spacing: 0.6px;
             }
-        }
-
-        .navbar-logo span {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 1.3rem;
         }
 
         .navbar-links {
@@ -294,7 +275,7 @@
             font-weight: 500;
             transition: color var(--transition-fast);
             position: relative;
-            white-space: nowrap; /* Evita que los enlaces se rompan en varias líneas */
+            white-space: nowrap;
         }
 
         .navbar-links a::after {
@@ -585,11 +566,6 @@
             .carousel-container {
                 display: block;
             }
-            
-            .navbar-logo img {
-                height: 42px; /* Mantenemos un tamaño legible en tablet */
-                max-width: 180px;
-            }
         }
 
         @media (max-width: 768px) {
@@ -597,14 +573,6 @@
                 padding-top: 10rem;
                 text-align: center;
                 align-items: center;
-            }
-
-            .navbar {
-                padding: 0.8rem 1.5rem;
-            }
-
-            .navbar-logo span {
-                font-size: 1.1rem;
             }
 
             section {
@@ -627,11 +595,11 @@
     <div class="light-effect light-2"></div>
     <div class="light-effect light-3"></div>
 
-    <!-- Sticky Navbar con LOGO MÁS GRANDE -->
+    <!-- Sticky Navbar con TEXTO "Prounek" mejorado -->
     <nav class="navbar">
         <div class="navbar-logo">
-            <!-- Logo alargado (horizontal) - AHORA MÁS GRANDE -->
-            <img src="Logo para poner en el sticky de la web Prounek.png" alt="Logo Prounek">
+            <!-- Logo con texto y degradado mejorado -->
+            <div class="logo-text">Prounek</div>
         </div>
         
         <div class="hamburger">
@@ -652,7 +620,7 @@
     <!-- Hero Section -->
     <section id="inicio" class="hero">
         <div class="container">
-            <h1 class="animate-on-scroll">Tu negocio está en <span>físico</span>, nosotros te lo ponemos en <span>digital.</span></h1>
+            <h1 class="animate-on-scroll">Tu negocio está en <span>físico</span>, nosotros te lo ponemos en <span>digital</span></h1>
             <p class="hero-subtitle animate-on-scroll">Creamos el logo del negocio, página web, agendamos citas, contenido publicitario y más que no te imaginas!</p>
             <a href="#servicios" class="btn animate-on-scroll">Más información</a>
             
