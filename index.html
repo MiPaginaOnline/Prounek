@@ -651,7 +651,7 @@
             <a href="#inicio" class="active">Inicio</a>
             <a href="servicios.html">Servicios</a>
             <a href="nosotros.html">Nosotros</a>
-            <a href="#contacto" class="btn-presupuesto">Solicitar Presupuesto</a>
+            <a href="solicitud-de-presupuesto.html" class="btn-presupuesto">Solicitar Presupuesto</a>
         </div>
     </nav>
 
@@ -987,26 +987,6 @@
                 setTimeout(() => {
                     el.classList.add('visible');
                 }, 300 + (index * 200));
-            });
-            
-            // Función para el botón de presupuesto
-            document.querySelector('.btn-presupuesto').addEventListener('click', function(e) {
-                if (this.getAttribute('href') === '#contacto') {
-                    e.preventDefault();
-                    const contactoSection = document.getElementById('contacto');
-                    if (contactoSection) {
-                        window.scrollTo({
-                            top: contactoSection.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Cerrar menú hamburguesa si está abierto
-                        if (window.innerWidth <= 992) {
-                            navbarLinks.classList.remove('active');
-                            hamburger.classList.remove('active');
-                        }
-                    }
-                }
             });
         });
     </script>
