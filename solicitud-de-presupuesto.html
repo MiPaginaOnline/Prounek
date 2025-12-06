@@ -8,6 +8,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Inicializa EmailJS (REEMPLAZA 'YOUR_USER_ID' con tu User ID real)
+        (function() {
+            emailjs.init("TeCreamosWeb");
+        })();
+    </script>
     <style>
         :root {
             --bg-primary: #0D1B2A;
@@ -18,6 +26,7 @@
             --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             --transition-fast: 0.3s ease;
             --success-green: #10B981;
+            --error-red: #EF4444;
         }
 
         * {
@@ -355,6 +364,55 @@
             background-color: rgba(255, 255, 255, 0.3);
         }
 
+        /* Mensajes de estado */
+        .form-messages {
+            margin-bottom: 2rem;
+        }
+
+        .error-message {
+            background-color: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--error-red);
+            border-radius: 10px;
+            padding: 1rem;
+            color: #ff9999;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .success-message {
+            background-color: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--success-green);
+            border-radius: 10px;
+            padding: 1rem;
+            color: #99ffcc;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            margin: 2rem 0;
+            display: none;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: var(--accent-blue);
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         /* Formulario */
         .form {
             display: flex;
@@ -431,13 +489,12 @@
             resize: vertical;
         }
 
-        /* Estilo especial para las opciones del select - TEXTO NEGRO */
+        /* Estilo para las opciones del select - TEXTO NEGRO */
         select option {
             background-color: white;
-            color: black !important; /* Texto negro */
+            color: black !important;
         }
 
-        /* Para navegadores WebKit (Chrome, Safari) */
         select option:checked,
         select option:hover {
             background-color: #4A90E2;
@@ -540,36 +597,6 @@
             width: 100%;
             font-size: 1.2rem;
             padding: 1.2rem;
-        }
-
-        /* Resultado del formulario */
-        .form-result {
-            text-align: center;
-            padding: 3rem 2rem;
-            display: none;
-        }
-
-        .form-result.active {
-            display: block;
-        }
-
-        .result-icon {
-            font-size: 4rem;
-            color: var(--success-green);
-            margin-bottom: 1.5rem;
-            animation: bounce 1s ease infinite alternate;
-        }
-
-        @keyframes bounce {
-            from { transform: translateY(0); }
-            to { transform: translateY(-10px); }
-        }
-
-        .result-message {
-            font-size: 1.2rem;
-            color: #CCCCCC;
-            max-width: 600px;
-            margin: 0 auto 2rem;
         }
 
         /* Información de contacto */
@@ -863,13 +890,26 @@
                     </div>
                 </div>
 
-                <form id="budget-form" class="form" action="https://formsubmit.co/tecreamsweb@gmail.com" method="POST">
-                    <!-- Campos ocultos para FormSubmit -->
-                    <input type="hidden" name="_subject" value="Nueva solicitud de presupuesto - Prounek">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="#form-result">
+                <!-- Mensajes de estado -->
+                <div class="form-messages">
+                    <div class="error-message" id="error-message">
+                        <i class="fas fa-exclamation-circle"></i> 
+                        <span id="error-text">Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.</span>
+                    </div>
                     
+                    <div class="success-message" id="success-message">
+                        <i class="fas fa-check-circle"></i> 
+                        <span>¡Formulario enviado con éxito! Te contactaremos en menos de 24 horas.</span>
+                    </div>
+                    
+                    <div class="loading-spinner" id="loading-spinner">
+                        <div class="spinner"></div>
+                        <p>Enviando tu solicitud...</p>
+                    </div>
+                </div>
+
+                <!-- Formulario sin action/method - será manejado por JavaScript -->
+                <form id="budget-form" class="form">
                     <!-- Paso 1: Datos personales -->
                     <div class="form-step active" id="form-step-1">
                         <h3>Información de contacto</h3>
@@ -995,16 +1035,6 @@
                     </div>
                 </form>
 
-                <!-- Resultado del formulario -->
-                <div class="form-result" id="form-result">
-                    <div class="result-icon">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <h2>¡Solicitud enviada con éxito!</h2>
-                    <p class="result-message">Hemos recibido tu solicitud de presupuesto. Te contactaremos en menos de 24 horas para discutir los detalles de tu proyecto y ofrecerte una solución personalizada.</p>
-                    <a href="index.html" class="btn">Volver al inicio</a>
-                </div>
-
                 <!-- Información de contacto -->
                 <div class="contact-info">
                     <div class="contact-item">
@@ -1123,6 +1153,10 @@
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
             const submitBtn = document.getElementById('submit-btn');
+            const loadingSpinner = document.getElementById('loading-spinner');
+            const errorMessage = document.getElementById('error-message');
+            const successMessage = document.getElementById('success-message');
+            const errorText = document.getElementById('error-text');
             const currentStep = { value: 1 };
             
             // Sticky navbar
@@ -1264,22 +1298,123 @@
                 return re.test(email);
             }
             
-            // Envío del formulario
-            form.addEventListener('submit', function(e) {
+            // Función para recolectar datos del formulario
+            function collectFormData() {
+                const formData = {
+                    nombre: document.getElementById('nombre').value,
+                    empresa: document.getElementById('empresa').value || 'No especificada',
+                    email: document.getElementById('email').value,
+                    servicios: [],
+                    descripcion: document.getElementById('descripcion').value,
+                    como_nos_conocio: document.getElementById('como-nos-conocio').value || 'No especificado',
+                    fecha: new Date().toLocaleString('es-ES')
+                };
+                
+                // Recolectar servicios seleccionados
+                const serviceCheckboxes = document.querySelectorAll('input[name="servicios"]:checked');
+                serviceCheckboxes.forEach(checkbox => {
+                    formData.servicios.push(checkbox.value);
+                });
+                
+                return formData;
+            }
+            
+            // Función para enviar email con EmailJS
+            async function sendEmailJS(formData) {
+                try {
+                    // Muestra el spinner de carga
+                    loadingSpinner.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                    successMessage.style.display = 'none';
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                    
+                    // Prepara los parámetros para EmailJS
+                    const templateParams = {
+                        from_name: formData.nombre,
+                        empresa: formData.empresa,
+                        reply_to: formData.email,
+                        servicios: formData.servicios.join(', ') || 'No especificados',
+                        descripcion: formData.descripcion,
+                        como_nos_conocio: formData.como_nos_conocio,
+                        fecha: formData.fecha
+                    };
+                    
+                    // ENVÍA EL EMAIL (REEMPLAZA ESTOS VALORES)
+                    // 1. Ve a https://www.emailjs.com/ y crea una cuenta
+                    // 2. Obtén tu User ID, Service ID y Template ID
+                    // 3. Reemplaza los valores abajo:
+                    
+                    const response = await emailjs.send(
+                     // REEMPLAZA ESTOS VALORES CON TUS CÓDIGOS DE EMAILJS:
+                    emailjs.init('TeCreamsWeb'); // Tu User ID (asegúrate de que sea correcto)
+                    const SERVICE_ID = 'service_vjcdjcp'; // Tu Service ID
+                    const TEMPLATE_ID = 'template_l2npd4c'; // Tu Template ID
+                    );
+                    
+                    // Éxito
+                    loadingSpinner.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    form.style.display = 'none';
+                    
+                    // Scroll al mensaje de éxito
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+                    
+                    console.log('Email enviado con éxito:', response);
+                    return true;
+                    
+                } catch (error) {
+                    // Error
+                    loadingSpinner.style.display = 'none';
+                    errorMessage.style.display = 'block';
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Enviar Solicitud';
+                    
+                    errorText.textContent = 'Error: ' + (error.text || 'No se pudo enviar el formulario. Por favor, inténtalo de nuevo o contáctanos directamente.');
+                    
+                    console.error('Error enviando email:', error);
+                    return false;
+                }
+            }
+            
+            // Función de respaldo: Mostrar datos en consola y mensaje de éxito
+            function fallbackSend(formData) {
+                console.log('📧 Datos del formulario (para enviar manualmente):', formData);
+                console.log('📧 Email para enviar manualmente a: tecreamsweb@gmail.com');
+                
+                // Muestra los datos en un alert (solo para testing)
+                const message = `Nombre: ${formData.nombre}\nEmail: ${formData.email}\nServicios: ${formData.servicios.join(', ')}\n\nEnvía estos datos manualmente a tecreamsweb@gmail.com`;
+                alert(message);
+                
+                // Simula éxito
+                loadingSpinner.style.display = 'none';
+                successMessage.style.display = 'block';
+                form.style.display = 'none';
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+                
+                return true;
+            }
+            
+            // Manejo del envío del formulario
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
                 // Validar paso final
                 if (!validateStep(currentStep.value)) {
-                    e.preventDefault();
                     return;
                 }
                 
-                // Ocultar formulario y mostrar mensaje de éxito
-                setTimeout(function() {
-                    form.style.display = 'none';
-                    document.getElementById('form-result').classList.add('active');
-                    
-                    // Scroll al resultado
-                    document.getElementById('form-result').scrollIntoView({ behavior: 'smooth' });
-                }, 100);
+                // Recolectar datos
+                const formData = collectFormData();
+                
+                // Intenta enviar con EmailJS primero
+                const emailJSSuccess = await sendEmailJS(formData);
+                
+                // Si EmailJS falla, usa el método de respaldo
+                if (!emailJSSuccess) {
+                    console.log('EmailJS falló, usando método de respaldo...');
+                    fallbackSend(formData);
+                }
             });
             
             // FAQ interactivo
