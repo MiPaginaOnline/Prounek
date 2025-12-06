@@ -10,12 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        // Inicializa EmailJS (REEMPLAZA 'YOUR_USER_ID' con tu User ID real)
-        (function() {
-            emailjs.init("TeCreamosWeb");
-        })();
-    </script>
     <style>
         :root {
             --bg-primary: #0D1B2A;
@@ -369,44 +363,42 @@
             margin-bottom: 2rem;
         }
 
-        .error-message {
-            background-color: rgba(239, 68, 68, 0.1);
-            border: 1px solid var(--error-red);
-            border-radius: 10px;
+        .alert {
             padding: 1rem;
-            color: #ff9999;
+            border-radius: 10px;
+            margin-bottom: 1rem;
             display: none;
             align-items: center;
             gap: 10px;
-            margin-bottom: 1rem;
         }
 
-        .success-message {
+        .alert-success {
             background-color: rgba(16, 185, 129, 0.1);
             border: 1px solid var(--success-green);
-            border-radius: 10px;
-            padding: 1rem;
             color: #99ffcc;
-            display: none;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 1rem;
         }
 
-        .loading-spinner {
+        .alert-error {
+            background-color: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--error-red);
+            color: #ff9999;
+        }
+
+        .alert-loading {
+            background-color: rgba(74, 144, 226, 0.1);
+            border: 1px solid var(--accent-blue);
+            color: #a3c8ff;
             text-align: center;
-            margin: 2rem 0;
-            display: none;
+            justify-content: center;
         }
 
         .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid rgba(255,255,255,0.3);
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
             border-radius: 50%;
             border-top-color: var(--accent-blue);
             animation: spin 1s ease-in-out infinite;
-            margin: 0 auto 1rem;
         }
 
         @keyframes spin {
@@ -599,6 +591,11 @@
             padding: 1.2rem;
         }
 
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
         /* Información de contacto */
         .contact-info {
             display: grid;
@@ -781,6 +778,15 @@
             .form-container {
                 padding: 2rem;
             }
+
+            .form-controls {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn-form {
+                width: 100%;
+            }
         }
 
         @media (max-width: 768px) {
@@ -800,15 +806,6 @@
             .step {
                 width: 100%;
                 max-width: 300px;
-            }
-
-            .form-controls {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .btn-form {
-                width: 100%;
             }
 
             .services-grid {
@@ -892,19 +889,19 @@
 
                 <!-- Mensajes de estado -->
                 <div class="form-messages">
-                    <div class="error-message" id="error-message">
-                        <i class="fas fa-exclamation-circle"></i> 
-                        <span id="error-text">Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.</span>
-                    </div>
-                    
-                    <div class="success-message" id="success-message">
+                    <div class="alert alert-success" id="success-message">
                         <i class="fas fa-check-circle"></i> 
                         <span>¡Formulario enviado con éxito! Te contactaremos en menos de 24 horas.</span>
                     </div>
                     
-                    <div class="loading-spinner" id="loading-spinner">
+                    <div class="alert alert-error" id="error-message">
+                        <i class="fas fa-exclamation-circle"></i> 
+                        <span id="error-text">Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.</span>
+                    </div>
+                    
+                    <div class="alert alert-loading" id="loading-message">
                         <div class="spinner"></div>
-                        <p>Enviando tu solicitud...</p>
+                        <span>Enviando tu solicitud...</span>
                     </div>
                 </div>
 
@@ -1142,6 +1139,18 @@
     </footer>
 
     <script>
+        // Configuración de EmailJS - REEMPLAZA ESTOS VALORES
+        const EMAILJS_CONFIG = {
+            USER_ID: 'TeCreamsWeb', // Tu User ID de EmailJS
+            SERVICE_ID: 'service_vjcdjcp', // Tu Service ID
+            TEMPLATE_ID: 'template_l2npd4c' // Tu Template ID
+        };
+
+        // Inicializa EmailJS
+        (function() {
+            emailjs.init(EMAILJS_CONFIG.USER_ID);
+        })();
+
         document.addEventListener('DOMContentLoaded', function() {
             // Elementos del DOM
             const navbar = document.querySelector('.navbar');
@@ -1153,9 +1162,9 @@
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
             const submitBtn = document.getElementById('submit-btn');
-            const loadingSpinner = document.getElementById('loading-spinner');
-            const errorMessage = document.getElementById('error-message');
             const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+            const loadingMessage = document.getElementById('loading-message');
             const errorText = document.getElementById('error-text');
             const currentStep = { value: 1 };
             
@@ -1319,17 +1328,30 @@
                 return formData;
             }
             
+            // Función para mostrar mensajes
+            function showMessage(type) {
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'none';
+                loadingMessage.style.display = 'none';
+                
+                if (type === 'success') {
+                    successMessage.style.display = 'flex';
+                } else if (type === 'error') {
+                    errorMessage.style.display = 'flex';
+                } else if (type === 'loading') {
+                    loadingMessage.style.display = 'flex';
+                }
+            }
+            
             // Función para enviar email con EmailJS
-            async function sendEmailJS(formData) {
+            async function sendEmailWithEmailJS(formData) {
                 try {
-                    // Muestra el spinner de carga
-                    loadingSpinner.style.display = 'block';
-                    errorMessage.style.display = 'none';
-                    successMessage.style.display = 'none';
+                    // Mostrar mensaje de carga
+                    showMessage('loading');
                     submitBtn.disabled = true;
                     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
                     
-                    // Prepara los parámetros para EmailJS
+                    // Preparar datos para EmailJS
                     const templateParams = {
                         from_name: formData.nombre,
                         empresa: formData.empresa,
@@ -1337,62 +1359,43 @@
                         servicios: formData.servicios.join(', ') || 'No especificados',
                         descripcion: formData.descripcion,
                         como_nos_conocio: formData.como_nos_conocio,
-                        fecha: formData.fecha
+                        fecha: formData.fecha,
+                        to_email: 'tecreamsweb@gmail.com'
                     };
                     
-                    // ENVÍA EL EMAIL (REEMPLAZA ESTOS VALORES)
-                    // 1. Ve a https://www.emailjs.com/ y crea una cuenta
-                    // 2. Obtén tu User ID, Service ID y Template ID
-                    // 3. Reemplaza los valores abajo:
-                    
+                    // Enviar email usando EmailJS
                     const response = await emailjs.send(
-                     // REEMPLAZA ESTOS VALORES CON TUS CÓDIGOS DE EMAILJS:
-                    emailjs.init('TeCreamsWeb'); // Tu User ID (asegúrate de que sea correcto)
-                    const SERVICE_ID = 'service_vjcdjcp'; // Tu Service ID
-                    const TEMPLATE_ID = 'template_l2npd4c'; // Tu Template ID
+                        EMAILJS_CONFIG.SERVICE_ID,
+                        EMAILJS_CONFIG.TEMPLATE_ID,
+                        templateParams,
+                        EMAILJS_CONFIG.USER_ID
                     );
                     
                     // Éxito
-                    loadingSpinner.style.display = 'none';
-                    successMessage.style.display = 'block';
+                    showMessage('success');
                     form.style.display = 'none';
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Enviar Solicitud';
                     
-                    // Scroll al mensaje de éxito
-                    successMessage.scrollIntoView({ behavior: 'smooth' });
-                    
-                    console.log('Email enviado con éxito:', response);
+                    console.log('✅ Email enviado con éxito:', response);
                     return true;
                     
                 } catch (error) {
                     // Error
-                    loadingSpinner.style.display = 'none';
-                    errorMessage.style.display = 'block';
+                    showMessage('error');
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = 'Enviar Solicitud';
                     
-                    errorText.textContent = 'Error: ' + (error.text || 'No se pudo enviar el formulario. Por favor, inténtalo de nuevo o contáctanos directamente.');
+                    errorText.textContent = 'Error: ' + (error.text || 'No se pudo enviar el formulario. Por favor, contáctanos directamente.');
                     
-                    console.error('Error enviando email:', error);
+                    console.error('❌ Error enviando email:', error);
+                    
+                    // Mostrar datos en consola para enviar manualmente
+                    console.log('📧 Datos para enviar manualmente:', formData);
+                    console.log('📧 Enviar a: tecreamsweb@gmail.com');
+                    
                     return false;
                 }
-            }
-            
-            // Función de respaldo: Mostrar datos en consola y mensaje de éxito
-            function fallbackSend(formData) {
-                console.log('📧 Datos del formulario (para enviar manualmente):', formData);
-                console.log('📧 Email para enviar manualmente a: tecreamsweb@gmail.com');
-                
-                // Muestra los datos en un alert (solo para testing)
-                const message = `Nombre: ${formData.nombre}\nEmail: ${formData.email}\nServicios: ${formData.servicios.join(', ')}\n\nEnvía estos datos manualmente a tecreamsweb@gmail.com`;
-                alert(message);
-                
-                // Simula éxito
-                loadingSpinner.style.display = 'none';
-                successMessage.style.display = 'block';
-                form.style.display = 'none';
-                successMessage.scrollIntoView({ behavior: 'smooth' });
-                
-                return true;
             }
             
             // Manejo del envío del formulario
@@ -1407,14 +1410,8 @@
                 // Recolectar datos
                 const formData = collectFormData();
                 
-                // Intenta enviar con EmailJS primero
-                const emailJSSuccess = await sendEmailJS(formData);
-                
-                // Si EmailJS falla, usa el método de respaldo
-                if (!emailJSSuccess) {
-                    console.log('EmailJS falló, usando método de respaldo...');
-                    fallbackSend(formData);
-                }
+                // Enviar email
+                await sendEmailWithEmailJS(formData);
             });
             
             // FAQ interactivo
@@ -1481,6 +1478,10 @@
             
             // Inicializar
             updateStep(1);
+            
+            // Verificar configuración de EmailJS
+            console.log('🔧 Configuración EmailJS:', EMAILJS_CONFIG);
+            console.log('✅ Formulario listo para enviar emails a: tecreamsweb@gmail.com');
         });
     </script>
 </body>
