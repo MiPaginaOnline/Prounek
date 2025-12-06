@@ -431,6 +431,19 @@
             resize: vertical;
         }
 
+        /* Estilo especial para las opciones del select - TEXTO NEGRO */
+        select option {
+            background-color: white;
+            color: black !important; /* Texto negro */
+        }
+
+        /* Para navegadores WebKit (Chrome, Safari) */
+        select option:checked,
+        select option:hover {
+            background-color: #4A90E2;
+            color: white !important;
+        }
+
         /* Servicios checkboxes */
         .services-grid {
             display: grid;
