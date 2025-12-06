@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitar Presupuesto | Prounek</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0D1B2A;
+            --text-white: #FFFFFF;
+            --card-bg: #E5E7EB;
+            --btn-blue: #1E3A5F;
+            --accent-blue: #4A90E2;
+            --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-fast: 0.3s ease;
+            --success-green: #10B981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-weight: 600;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        section {
+            padding: 5rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Efectos de luz */
+        .light-effect {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.08;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .light-1 {
+            width: 400px;
+            height: 800px;
+            background: linear-gradient(to bottom, #4A90E2, #1E3A5F);
+            top: 10%;
+            right: -100px;
+        }
+
+        .light-2 {
+            width: 300px;
+            height: 600px;
+            background: linear-gradient(to bottom, #E5E7EB, #1E3A5F);
+            top: 40%;
+            right: 10%;
+        }
+
+        .light-3 {
+            width: 250px;
+            height: 500px;
+            background: linear-gradient(to bottom, #FFFFFF, #4A90E2);
+            top: 70%;
+            right: 0;
+        }
+
+        /* Header y Hero */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 1.5rem 3rem;
+            position: relative;
+        }
+
+        .hero h1 span {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: var(--accent-blue);
+            z-index: -1;
+            opacity: 0.7;
+            border-radius: 4px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            color: #CCCCCC;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--btn-blue);
+            color: var(--text-white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all var(--transition-fast);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #4A90E2, #1E3A5F);
+            font-size: 1.2rem;
+            padding: 1.2rem 3rem;
+        }
+
+        /* Sticky Navbar */
+        .navbar {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1000px;
+            background-color: rgba(13, 27, 42, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all var(--transition-fast);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .navbar.scrolled {
+            top: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            width: 95%;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 2rem;
+            background: linear-gradient(90deg, #333333, #c89116);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            padding: 5px 0;
+            text-decoration: none;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .navbar-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .navbar-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-blue);
+            transition: width var(--transition-fast);
+        }
+
+        .navbar-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .navbar-links a:hover::after,
+        .navbar-links a.active::after {
+            width: 100%;
+        }
+
+        .navbar-links a.active {
+            color: var(--accent-blue);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 5px;
+            z-index: 1001;
+            margin-left: 10px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-white);
+            border-radius: 2px;
+            transition: all var(--transition-fast);
+        }
+
+        /* Formulario de presupuesto */
+        .form-section {
+            padding: 3rem 1.5rem 5rem;
+        }
+
+        .form-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-header p {
+            color: #CCCCCC;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .form-steps {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+        }
+
+        .step.active {
+            background-color: var(--accent-blue);
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            font-weight: 600;
+        }
+
+        .step.active .step-number {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Formulario */
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .form-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #CCCCCC;
+        }
+
+        label.required::after {
+            content: ' *';
+            color: #ff6b6b;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-white);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        input:hover, select:hover, textarea:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Servicios checkboxes */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .service-option {
+            position: relative;
+        }
+
+        .service-checkbox {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .service-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 1rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            text-align: center;
+            height: 100%;
+        }
+
+        .service-label:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-checkbox:checked + .service-label {
+            border-color: var(--accent-blue);
+            background-color: rgba(74, 144, 226, 0.1);
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.2);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.8rem;
+        }
+
+        .service-name {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .service-desc {
+            font-size: 0.85rem;
+            color: #AAAAAA;
+            line-height: 1.4;
+        }
+
+        /* Controles del formulario */
+        .form-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-form {
+            padding: 0.9rem 2rem;
+            min-width: 150px;
+        }
+
+        .btn-next {
+            background: linear-gradient(90deg, #4A90E2, #1E3A5F);
+            margin-left: auto;
+        }
+
+        .btn-prev {
+            background-color: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-prev:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-submit {
+            background: linear-gradient(90deg, var(--success-green), #0D9488);
+            width: 100%;
+            font-size: 1.2rem;
+            padding: 1.2rem;
+        }
+
+        /* Resultado del formulario */
+        .form-result {
+            text-align: center;
+            padding: 3rem 2rem;
+            display: none;
+        }
+
+        .form-result.active {
+            display: block;
+        }
+
+        .result-icon {
+            font-size: 4rem;
+            color: var(--success-green);
+            margin-bottom: 1.5rem;
+            animation: bounce 1s ease infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+
+        .result-message {
+            font-size: 1.2rem;
+            color: #CCCCCC;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Información de contacto */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+            margin-top: 0.3rem;
+        }
+
+        .contact-details h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-white);
+        }
+
+        .contact-details p {
+            color: #CCCCCC;
+            line-height: 1.5;
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 3rem 1.5rem;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background-color var(--transition-fast);
+        }
+
+        .faq-question:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .faq-question.active {
+            background-color: rgba(74, 144, 226, 0.1);
+        }
+
+        .faq-icon {
+            transition: transform var(--transition-fast);
+        }
+
+        .faq-question.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            color: #CCCCCC;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(0,0,0,0.3);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--btn-blue);
+            border-radius: 50%;
+            color: var(--text-white);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .social-link:hover {
+            background-color: var(--accent-blue);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            color: #AAAAAA;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .navbar-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(13, 27, 42, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 1.5rem;
+                border-radius: 20px;
+                margin-top: 1rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 999;
+            }
+
+            .navbar-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .form-container {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 10rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .form-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .step {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .form-controls {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn-form {
+                width: 100%;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .form-container {
+                padding: 1.5rem;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Efectos de luz -->
+    <div class="light-effect light-1"></div>
+    <div class="light-effect light-2"></div>
+    <div class="light-effect light-3"></div>
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="index.html" class="logo-text">Prounek</a>
+        </div>
+        
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <div class="navbar-links">
+            <a href="index.html">Inicio</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="#" class="active">Solicitar Presupuesto</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Solicita tu <span>presupuesto</span></h1>
+            <p class="hero-subtitle">Cuéntanos tu proyecto y te enviaremos un presupuesto personalizado en menos de 24 horas. Sin compromiso.</p>
+            <a href="#formulario" class="btn btn-primary">Completar Formulario</a>
+        </div>
+    </section>
+
+    <!-- Formulario de Presupuesto -->
+    <section id="formulario" class="form-section">
+        <div class="container">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Solicitud de Presupuesto</h2>
+                    <p>Completa el siguiente formulario paso a paso para que podamos entender tus necesidades y ofrecerte la mejor solución digital para tu negocio.</p>
+                    
+                    <div class="form-steps">
+                        <div class="step active" id="step-1">
+                            <div class="step-number">1</div>
+                            <span>Tus datos</span>
+                        </div>
+                        <div class="step" id="step-2">
+                            <div class="step-number">2</div>
+                            <span>Servicios</span>
+                        </div>
+                        <div class="step" id="step-3">
+                            <div class="step-number">3</div>
+                            <span>Detalles</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="budget-form" class="form" action="https://formsubmit.co/tecreamsweb@gmail.com" method="POST">
+                    <!-- Campos ocultos para FormSubmit -->
+                    <input type="hidden" name="_subject" value="Nueva solicitud de presupuesto - Prounek">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="#form-result">
+                    
+                    <!-- Paso 1: Datos personales -->
+                    <div class="form-step active" id="form-step-1">
+                        <h3>Información de contacto</h3>
+                        <p class="form-description">Necesitamos algunos datos básicos para contactarte.</p>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre" class="required">Nombre completo</label>
+                                <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre y apellido">
+                            </div>
+                            <div class="form-group">
+                                <label for="empresa">Nombre de la empresa</label>
+                                <input type="text" id="empresa" name="empresa" placeholder="Opcional">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="required">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com">
+                        </div>
+                    </div>
+
+                    <!-- Paso 2: Selección de servicios -->
+                    <div class="form-step" id="form-step-2">
+                        <h3>Selecciona los servicios que necesitas</h3>
+                        <p class="form-description">Puedes seleccionar uno o varios servicios.</p>
+                        
+                        <div class="services-grid">
+                            <div class="service-option">
+                                <input type="checkbox" id="servicio-web" name="servicios" value="Diseño Web" class="service-checkbox">
+                                <label for="servicio-web" class="service-label">
+                                    <div class="service-icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                    <div class="service-name">Diseño Web</div>
+                                    <div class="service-desc">Página web moderna y responsiva</div>
+                                </label>
+                            </div>
+                            
+                            <div class="service-option">
+                                <input type="checkbox" id="servicio-logo" name="servicios" value="Diseño de Logo" class="service-checkbox">
+                                <label for="servicio-logo" class="service-label">
+                                    <div class="service-icon">
+                                        <i class="fas fa-paint-brush"></i>
+                                    </div>
+                                    <div class="service-name">Diseño de Logo</div>
+                                    <div class="service-desc">Identidad visual profesional</div>
+                                </label>
+                            </div>
+                            
+                            <div class="service-option">
+                                <input type="checkbox" id="servicio-mantenimiento" name="servicios" value="Mantenimiento Web" class="service-checkbox">
+                                <label for="servicio-mantenimiento" class="service-label">
+                                    <div class="service-icon">
+                                        <i class="fas fa-tools"></i>
+                                    </div>
+                                    <div class="service-name">Mantenimiento</div>
+                                    <div class="service-desc">Soporte y actualizaciones</div>
+                                </label>
+                            </div>
+                            
+                            <div class="service-option">
+                                <input type="checkbox" id="servicio-citas" name="servicios" value="Sistema de Citas" class="service-checkbox">
+                                <label for="servicio-citas" class="service-label">
+                                    <div class="service-icon">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </div>
+                                    <div class="service-name">Citas Online</div>
+                                    <div class="service-desc">Reservas automatizadas</div>
+                                </label>
+                            </div>
+                            
+                            <div class="service-option">
+                                <input type="checkbox" id="servicio-ecommerce" name="servicios" value="E-commerce" class="service-checkbox">
+                                <label for="servicio-ecommerce" class="service-label">
+                                    <div class="service-icon">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </div>
+                                    <div class="service-name">Tienda Online</div>
+                                    <div class="service-desc">E-commerce con pagos</div>
+                                </label>
+                            </div>
+                            
+                            <div class="service-option">
+                                <input type="checkbox" id="servicio-contenido" name="servicios" value="Contenido Multimedia" class="service-checkbox">
+                                <label for="servicio-contenido" class="service-label">
+                                    <div class="service-icon">
+                                        <i class="fas fa-video"></i>
+                                    </div>
+                                    <div class="service-name">Contenido Multimedia</div>
+                                    <div class="service-desc">Fotos y videos promocionales</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paso 3: Detalles del proyecto -->
+                    <div class="form-step" id="form-step-3">
+                        <h3>Detalles de tu proyecto</h3>
+                        <p class="form-description">Cuéntanos más sobre lo que tienes en mente.</p>
+                        
+                        <div class="form-group">
+                            <label for="descripcion" class="required">Descripción del proyecto</label>
+                            <textarea id="descripcion" name="descripcion" required placeholder="Describe tu negocio, objetivos, público objetivo, y cualquier detalle que consideres importante..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="como-nos-conocio">¿Cómo nos conociste?</label>
+                            <select id="como-nos-conocio" name="como_nos_conocio">
+                                <option value="">Selecciona una opción</option>
+                                <option value="redes-sociales">Redes sociales</option>
+                                <option value="promociones">Promociones</option>
+                                <option value="me-recomendo-un-amigo">Me recomendó un amigo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Controles del formulario -->
+                    <div class="form-controls">
+                        <button type="button" class="btn btn-form btn-prev" id="prev-btn">Anterior</button>
+                        <button type="button" class="btn btn-form btn-next" id="next-btn">Siguiente</button>
+                        <button type="submit" class="btn btn-form btn-submit" id="submit-btn" style="display: none;">Enviar Solicitud</button>
+                    </div>
+                </form>
+
+                <!-- Resultado del formulario -->
+                <div class="form-result" id="form-result">
+                    <div class="result-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2>¡Solicitud enviada con éxito!</h2>
+                    <p class="result-message">Hemos recibido tu solicitud de presupuesto. Te contactaremos en menos de 24 horas para discutir los detalles de tu proyecto y ofrecerte una solución personalizada.</p>
+                    <a href="index.html" class="btn">Volver al inicio</a>
+                </div>
+
+                <!-- Información de contacto -->
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>tecreamsweb@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Tiempo de respuesta</h4>
+                            <p>Menos de 24 horas hábiles</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Presupuesto gratuito</h4>
+                            <p>Sin compromiso ni coste oculto</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-container">
+                <h2 style="text-align: center; margin-bottom: 3rem;">Preguntas frecuentes</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Cuánto tiempo tarda en llegar el presupuesto?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Normalmente enviamos presupuestos en menos de 24 horas hábiles. Para proyectos complejos puede tardar hasta 48 horas.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿El presupuesto es gratis y sin compromiso?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, todos nuestros presupuestos son completamente gratuitos y sin compromiso. No te cobraremos por evaluar tu proyecto.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Qué información necesito para solicitar un presupuesto?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Basta con completar el formulario con tus datos de contacto y una descripción básica de tu proyecto. Cuantos más detalles proporciones, más preciso será el presupuesto.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Ofrecen mantenimiento después del desarrollo?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, ofrecemos planes de mantenimiento mensual que incluyen actualizaciones, seguridad, backups y soporte técnico.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.instagram.com/tecreamos.web/" class="social-link" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            <p class="copyright">© 2023 Prounek. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos del DOM
+            const navbar = document.querySelector('.navbar');
+            const hamburger = document.querySelector('.hamburger');
+            const navbarLinks = document.querySelector('.navbar-links');
+            const form = document.getElementById('budget-form');
+            const formSteps = document.querySelectorAll('.form-step');
+            const stepIndicators = document.querySelectorAll('.step');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const submitBtn = document.getElementById('submit-btn');
+            const currentStep = { value: 1 };
+            
+            // Sticky navbar
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Menú hamburguesa
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navbarLinks.classList.toggle('active');
+            });
+            
+            // Cerrar menú al hacer clic fuera
+            document.addEventListener('click', function(event) {
+                const isClickInsideNavbar = navbar.contains(event.target);
+                if (!isClickInsideNavbar && window.innerWidth <= 992) {
+                    hamburger.classList.remove('active');
+                    navbarLinks.classList.remove('active');
+                }
+            });
+            
+            // Navegación del formulario paso a paso
+            function updateStep(step) {
+                // Ocultar todos los pasos
+                formSteps.forEach(formStep => {
+                    formStep.classList.remove('active');
+                });
+                
+                // Mostrar paso actual
+                document.getElementById(`form-step-${step}`).classList.add('active');
+                
+                // Actualizar indicadores de paso
+                stepIndicators.forEach((indicator, index) => {
+                    if (index < step) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+                
+                // Actualizar botones
+                if (step === 1) {
+                    prevBtn.style.display = 'none';
+                    nextBtn.style.display = 'block';
+                    submitBtn.style.display = 'none';
+                } else if (step === formSteps.length) {
+                    prevBtn.style.display = 'block';
+                    nextBtn.style.display = 'none';
+                    submitBtn.style.display = 'block';
+                } else {
+                    prevBtn.style.display = 'block';
+                    nextBtn.style.display = 'block';
+                    submitBtn.style.display = 'none';
+                }
+                
+                currentStep.value = step;
+                
+                // Scroll al formulario en móviles
+                if (window.innerWidth <= 768 && step > 1) {
+                    document.getElementById('formulario').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+            
+            // Botón siguiente
+            nextBtn.addEventListener('click', function() {
+                // Validar paso actual
+                if (validateStep(currentStep.value)) {
+                    if (currentStep.value < formSteps.length) {
+                        updateStep(currentStep.value + 1);
+                    }
+                }
+            });
+            
+            // Botón anterior
+            prevBtn.addEventListener('click', function() {
+                if (currentStep.value > 1) {
+                    updateStep(currentStep.value - 1);
+                }
+            });
+            
+            // Validación de pasos
+            function validateStep(step) {
+                const currentFormStep = document.getElementById(`form-step-${step}`);
+                const requiredInputs = currentFormStep.querySelectorAll('input[required], textarea[required], select[required]');
+                
+                let isValid = true;
+                
+                requiredInputs.forEach(input => {
+                    if (!input.value.trim()) {
+                        input.style.borderColor = '#ff6b6b';
+                        input.style.boxShadow = '0 0 0 2px rgba(255, 107, 107, 0.2)';
+                        isValid = false;
+                        
+                        // Remover estilos de error al escribir
+                        input.addEventListener('input', function() {
+                            this.style.borderColor = '';
+                            this.style.boxShadow = '';
+                        });
+                    }
+                });
+                
+                // Validar email
+                if (step === 1) {
+                    const emailInput = document.getElementById('email');
+                    if (emailInput.value && !isValidEmail(emailInput.value)) {
+                        emailInput.style.borderColor = '#ff6b6b';
+                        emailInput.style.boxShadow = '0 0 0 2px rgba(255, 107, 107, 0.2)';
+                        isValid = false;
+                        
+                        emailInput.addEventListener('input', function() {
+                            if (isValidEmail(this.value)) {
+                                this.style.borderColor = '';
+                                this.style.boxShadow = '';
+                            }
+                        });
+                    }
+                }
+                
+                // Validar al menos un servicio seleccionado
+                if (step === 2) {
+                    const serviceCheckboxes = document.querySelectorAll('input[name="servicios"]:checked');
+                    if (serviceCheckboxes.length === 0) {
+                        alert('Por favor, selecciona al menos un servicio.');
+                        isValid = false;
+                    }
+                }
+                
+                return isValid;
+            }
+            
+            // Validar email
+            function isValidEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+            
+            // Envío del formulario
+            form.addEventListener('submit', function(e) {
+                // Validar paso final
+                if (!validateStep(currentStep.value)) {
+                    e.preventDefault();
+                    return;
+                }
+                
+                // Ocultar formulario y mostrar mensaje de éxito
+                setTimeout(function() {
+                    form.style.display = 'none';
+                    document.getElementById('form-result').classList.add('active');
+                    
+                    // Scroll al resultado
+                    document.getElementById('form-result').scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            });
+            
+            // FAQ interactivo
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+                    
+                    // Cerrar todas las respuestas
+                    document.querySelectorAll('.faq-question').forEach(q => {
+                        q.classList.remove('active');
+                    });
+                    document.querySelectorAll('.faq-answer').forEach(a => {
+                        a.classList.remove('active');
+                    });
+                    
+                    // Abrir la respuesta actual si estaba cerrada
+                    if (!isActive) {
+                        this.classList.add('active');
+                        answer.classList.add('active');
+                    }
+                });
+            });
+            
+            // Efecto hover en servicios
+            const serviceLabels = document.querySelectorAll('.service-label');
+            serviceLabels.forEach(label => {
+                label.addEventListener('mouseenter', function() {
+                    if (!this.previousElementSibling.checked) {
+                        this.style.transform = 'translateY(-3px)';
+                    }
+                });
+                
+                label.addEventListener('mouseleave', function() {
+                    if (!this.previousElementSibling.checked) {
+                        this.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            
+            // Scroll suave para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Cerrar menú hamburguesa si está abierto
+                        if (window.innerWidth <= 992) {
+                            navbarLinks.classList.remove('active');
+                            hamburger.classList.remove('active');
+                        }
+                    }
+                });
+            });
+            
+            // Inicializar
+            updateStep(1);
+        });
+    </script>
+</body>
+</html>
