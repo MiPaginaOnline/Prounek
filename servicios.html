@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios | Prounek - Soluciones digitales para tu negocio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0D1B2A;
+            --text-white: #FFFFFF;
+            --card-bg: #E5E7EB;
+            --btn-blue: #1E3A5F;
+            --accent-blue: #4A90E2;
+            --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-fast: 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-weight: 600;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-blue);
+        }
+
+        section {
+            padding: 5rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Efectos de luz */
+        .light-effect {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.08;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .light-1 {
+            width: 400px;
+            height: 800px;
+            background: linear-gradient(to bottom, #4A90E2, #1E3A5F);
+            top: 10%;
+            right: -100px;
+        }
+
+        .light-2 {
+            width: 300px;
+            height: 600px;
+            background: linear-gradient(to bottom, #E5E7EB, #1E3A5F);
+            top: 40%;
+            right: 10%;
+        }
+
+        .light-3 {
+            width: 250px;
+            height: 500px;
+            background: linear-gradient(to bottom, #FFFFFF, #4A90E2);
+            top: 70%;
+            right: 0;
+        }
+
+        /* Sticky Navbar - LOGO CON TEXTO MEJORADO */
+        .navbar {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1000px;
+            background-color: rgba(13, 27, 42, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all var(--transition-fast);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .navbar.scrolled {
+            top: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            width: 95%;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* LOGO CON TEXTO MEJORADO - Poppins Regular y negro más claro */
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 2rem;
+            background: linear-gradient(90deg, #333333, #c89116);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            padding: 5px 0;
+            text-decoration: none;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .navbar-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .navbar-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-blue);
+            transition: width var(--transition-fast);
+        }
+
+        .navbar-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .navbar-links a:hover::after,
+        .navbar-links a.active::after {
+            width: 100%;
+        }
+
+        .navbar-links a.active {
+            color: var(--accent-blue);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 5px;
+            z-index: 1001;
+            margin-left: 10px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-white);
+            border-radius: 2px;
+            transition: all var(--transition-fast);
+        }
+
+        /* Hero Servicios */
+        .services-hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 8rem 1.5rem 5rem;
+            position: relative;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            color: #CCCCCC;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--btn-blue);
+            color: var(--text-white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all var(--transition-fast);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Sección Servicios Detallados */
+        .detailed-services {
+            padding-top: 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2.5rem;
+            color: #333;
+            transition: all var(--transition-slow);
+            opacity: 0;
+            transform: translateY(20px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .service-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--bg-primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            color: var(--btn-blue);
+        }
+
+        .service-card p {
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .features-list {
+            list-style-type: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .features-list i {
+            color: var(--accent-blue);
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .service-cta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .price-tag {
+            font-weight: 600;
+            color: var(--btn-blue);
+            font-size: 1.2rem;
+        }
+
+        /* Sección Proceso */
+        .process-section {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            padding: 4rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-blue);
+            color: var(--text-white);
+            border-radius: 50%;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Sección CTA */
+        .cta-section {
+            text-align: center;
+            padding: 5rem 1.5rem;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2.5rem;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-blue);
+            color: var(--text-white);
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(0,0,0,0.3);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--btn-blue);
+            border-radius: 50%;
+            color: var(--text-white);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .social-link:hover {
+            background-color: var(--accent-blue);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            color: #AAAAAA;
+            font-size: 0.9rem;
+        }
+
+        /* Animaciones de entrada */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-left {
+            transform: translateX(-30px);
+        }
+
+        .animate-right {
+            transform: translateX(30px);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .navbar-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(13, 27, 42, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 1.5rem;
+                border-radius: 20px;
+                margin-top: 1rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 999;
+            }
+
+            .navbar-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .process-step {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-hero {
+                padding-top: 10rem;
+                text-align: center;
+                align-items: center;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .logo-text {
+                font-size: 1.7rem;
+            }
+
+            .service-card {
+                padding: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-cta {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Efectos de luz -->
+    <div class="light-effect light-1"></div>
+    <div class="light-effect light-2"></div>
+    <div class="light-effect light-3"></div>
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="index.html" class="logo-text">Prounek</a>
+        </div>
+        
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <div class="navbar-links">
+            <a href="index.html">Inicio</a>
+            <a href="servicios.html" class="active">Servicios</a>
+            <a href="portafolio.html">Portafolio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section Servicios -->
+    <section class="services-hero">
+        <div class="container">
+            <h1 class="animate-on-scroll">Nuestros <span style="color: var(--accent-blue);">Servicios</span> Digitales</h1>
+            <p class="hero-subtitle animate-on-scroll">Soluciones integrales diseñadas para llevar tu negocio al siguiente nivel. Desde tu presencia online hasta sistemas automatizados que optimizan tus procesos.</p>
+            <a href="#servicios-detallados" class="btn animate-on-scroll">Ver servicios detallados</a>
+        </div>
+    </section>
+
+    <!-- Sección Servicios Detallados -->
+    <section id="servicios-detallados" class="detailed-services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="animate-on-scroll">Servicios <span style="color: var(--accent-blue);">Completos</span></h2>
+                <p class="hero-subtitle animate-on-scroll">Cada servicio está diseñado para ofrecerte máxima calidad y resultados tangibles.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Servicio 1 -->
+                <div class="service-card animate-on-scroll animate-left">
+                    <h3><i class="fas fa-laptop-code service-icon"></i> Diseño Web Profesional</h3>
+                    <p>Desarrollamos sitios web modernos, rápidos y completamente responsivos que se adaptan a cualquier dispositivo. Tu web será tu mejor vendedor 24/7.</p>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Diseño 100% personalizado</li>
+                        <li><i class="fas fa-check"></i> Optimización para móviles (Mobile First)</li>
+                        <li><i class="fas fa-check"></i> Optimización SEO básica</li>
+                        <li><i class="fas fa-check"></i> Integración con redes sociales</li>
+                        <li><i class="fas fa-check"></i> Panel de administración fácil de usar</li>
+                        <li><i class="fas fa-check"></i> Certificado SSL incluido</li>
+                    </ul>
+                    
+                    <div class="service-cta">
+                        <span class="price-tag">Desde $499</span>
+                        <a href="contacto.html" class="btn">Solicitar</a>
+                    </div>
+                </div>
+                
+                <!-- Servicio 2 -->
+                <div class="service-card animate-on-scroll">
+                    <h3><i class="fas fa-tools service-icon"></i> Mantenimiento Web</h3>
+                    <p>Mantenemos tu sitio web actualizado, seguro y funcionando perfectamente. Nos encargamos de todo para que tú puedas enfocarte en tu negocio.</p>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Actualizaciones de seguridad mensuales</li>
+                        <li><i class="fas fa-check"></i> Copias de seguridad automáticas</li>
+                        <li><i class="fas fa-check"></i> Monitoreo 24/7 del sitio</li>
+                        <li><i class="fas fa-check"></i> Soporte técnico prioritario</li>
+                        <li><i class="fas fa-check"></i> Optimización de velocidad</li>
+                        <li><i class="fas fa-check"></i> Reportes mensuales de rendimiento</li>
+                    </ul>
+                    
+                    <div class="service-cta">
+                        <span class="price-tag">Desde $99/mes</span>
+                        <a href="contacto.html" class="btn">Solicitar</a>
+                    </div>
+                </div>
+                
+                <!-- Servicio 3 -->
+                <div class="service-card animate-on-scroll animate-right">
+                    <h3><i class="fas fa-calendar-alt service-icon"></i> Sistema de Citas Online</h3>
+                    <p>Automatiza la gestión de citas de tu negocio. Reduce llamadas telefónicas y evita errores de agenda con nuestro sistema inteligente.</p>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Reservas 24/7 desde tu web</li>
+                        <li><i class="fas fa-check"></i> Sincronización con Google Calendar</li>
+                        <li><i class="fas fa-check"></i> Recordatorios automáticos por SMS/Email</li>
+                        <li><i class="fas fa-check"></i> Pagos online integrados</li>
+                        <li><i class="fas fa-check"></i> Panel de gestión de citas</li>
+                        <li><i class="fas fa-check"></i> Estadísticas y reportes</li>
+                    </ul>
+                    
+                    <div class="service-cta">
+                        <span class="price-tag">Desde $299</span>
+                        <a href="contacto.html" class="btn">Solicitar</a>
+                    </div>
+                </div>
+                
+                <!-- Servicio 4 -->
+                <div class="service-card animate-on-scroll animate-left">
+                    <h3><i class="fas fa-paint-brush service-icon"></i> Identidad Visual Completa</h3>
+                    <p>Creamos la identidad visual de tu marca que comunica profesionalismo y confianza. Tu logo será memorable y representará tus valores.</p>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Diseño de logo profesional</li>
+                        <li><i class="fas fa-check"></i> Paleta de colores corporativa</li>
+                        <li><i class="fas fa-check"></i> Tipografía personalizada</li>
+                        <li><i class="fas fa-check"></i> Manual de identidad básico</li>
+                        <li><i class="fas fa-check"></i> Variaciones del logo</li>
+                        <li><i class="fas fa-check"></i> Archivos en todos los formatos</li>
+                    </ul>
+                    
+                    <div class="service-cta">
+                        <span class="price-tag">Desde $349</span>
+                        <a href="contacto.html" class="btn">Solicitar</a>
+                    </div>
+                </div>
+                
+                <!-- Servicio 5 -->
+                <div class="service-card animate-on-scroll">
+                    <h3><i class="fas fa-video service-icon"></i> Contenido Multimedia</h3>
+                    <p>Producimos contenido visual de alta calidad para tus redes sociales y marketing digital. Atrae más clientes con contenido profesional.</p>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Sesión fotográfica profesional</li>
+                        <li><i class="fas fa-check"></i> Videos promocionales (hasta 60 seg)</li>
+                        <li><i class="fas fa-check"></i> Edición y postproducción</li>
+                        <li><i class="fas fa-check"></i> Contenido para Instagram/Facebook</li>
+                        <li><i class="fas fa-check"></i> Creación de reels/TikToks</li>
+                        <li><i class="fas fa-check"></i> Guión y dirección creativa</li>
+                    </ul>
+                    
+                    <div class="service-cta">
+                        <span class="price-tag">Desde $199/sesión</span>
+                        <a href="contacto.html" class="btn">Solicitar</a>
+                    </div>
+                </div>
+                
+                <!-- Servicio 6 -->
+                <div class="service-card animate-on-scroll animate-right">
+                    <h3><i class="fas fa-shopping-cart service-icon"></i> E-commerce Completo</h3>
+                    <p>Lleva tu negocio físico al mundo online con una tienda virtual profesional. Vende tus productos las 24 horas del día, los 7 días de la semana.</p>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Catálogo de productos ilimitado</li>
+                        <li><i class="fas fa-check"></i> Carrito de compras avanzado</li>
+                        <li><i class="fas fa-check"></i> Pasarelas de pago integradas</li>
+                        <li><i class="fas fa-check"></i> Sistema de gestión de inventario</li>
+                        <li><i class="fas fa-check"></i> Seguimiento de pedidos</li>
+                        <li><i class="fas fa-check"></i> Integración con envíos</li>
+                    </ul>
+                    
+                    <div class="service-cta">
+                        <span class="price-tag">Desde $899</span>
+                        <a href="contacto.html" class="btn">Solicitar</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sección Proceso de Trabajo -->
+            <div class="process-section">
+                <h2 class="animate-on-scroll">Nuestro <span style="color: var(--accent-blue);">Proceso</span> de Trabajo</h2>
+                <p class="hero-subtitle animate-on-scroll">Un camino claro y estructurado para garantizar resultados excepcionales en cada proyecto.</p>
+                
+                <div class="process-steps">
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-number">1</div>
+                        <h3>Consultoría</h3>
+                        <p>Analizamos tus necesidades y objetivos para crear la estrategia perfecta para tu negocio.</p>
+                    </div>
+                    
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-number">2</div>
+                        <h3>Diseño</h3>
+                        <p>Desarrollamos propuestas creativas y funcionales alineadas con tu marca y objetivos.</p>
+                    </div>
+                    
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-number">3</div>
+                        <h3>Desarrollo</h3>
+                        <p>Implementamos las soluciones con las mejores tecnologías y estándares de calidad.</p>
+                    </div>
+                    
+                    <div class="process-step animate-on-scroll">
+                        <div class="step-number">4</div>
+                        <h3>Entrega</h3>
+                        <p>Te entregamos el proyecto completo con capacitación y soporte post-venta.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="animate-on-scroll">¿Listo para transformar tu negocio?</h2>
+                <p class="hero-subtitle animate-on-scroll">Contáctanos hoy mismo para una consultoría gratuita. Te ayudaremos a identificar las mejores soluciones digitales para tu empresa.</p>
+                
+                <div class="cta-buttons">
+                    <a href="contacto.html" class="btn animate-on-scroll">Solicitar Presupuesto</a>
+                    <a href="tel:+1234567890" class="btn btn-secondary animate-on-scroll"><i class="fas fa-phone"></i> Llamar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.instagram.com/tecreamos.web/" class="social-link" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            <p class="copyright">© 2023 Prounek. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scroll suave para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Cerrar menú hamburguesa si está abierto
+                        if (window.innerWidth <= 992) {
+                            navbarLinks.classList.remove('active');
+                            hamburger.classList.remove('active');
+                        }
+                    }
+                });
+            });
+            
+            // Elementos del DOM
+            const navbar = document.querySelector('.navbar');
+            const hamburger = document.querySelector('.hamburger');
+            const navbarLinks = document.querySelector('.navbar-links');
+            
+            // Sticky navbar con efecto
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                
+                // Animar elementos al hacer scroll
+                animateOnScroll();
+            });
+            
+            // Menú hamburguesa
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navbarLinks.classList.toggle('active');
+            });
+            
+            // Cerrar menú al hacer clic fuera
+            document.addEventListener('click', function(event) {
+                const isClickInsideNavbar = navbar.contains(event.target);
+                if (!isClickInsideNavbar && window.innerWidth <= 992) {
+                    hamburger.classList.remove('active');
+                    navbarLinks.classList.remove('active');
+                }
+            });
+            
+            // Animar elementos al hacer scroll
+            function animateOnScroll() {
+                const elements = document.querySelectorAll('.animate-on-scroll');
+                const triggerBottom = window.innerHeight * 0.85;
+                
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    
+                    if (elementTop < triggerBottom) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Animar elementos inicialmente
+            setTimeout(animateOnScroll, 100);
+            
+            // Animación inicial para hero
+            const heroElements = document.querySelectorAll('.services-hero .animate-on-scroll');
+            heroElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, 300 + (index * 200));
+            });
+            
+            // Efectos de microinteracciones
+            const buttons = document.querySelectorAll('.btn, .social-link');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    if (!this.classList.contains('active')) {
+                        this.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
