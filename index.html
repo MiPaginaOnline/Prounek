@@ -107,7 +107,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            padding: 8rem 1.5rem 2rem; /* Reducido de 3rem a 2rem */
+            padding: 8rem 1.5rem 5rem;
             position: relative;
         }
 
@@ -261,6 +261,40 @@
             background: linear-gradient(90deg, #1E3A5F, #4A90E2);
         }
 
+        /* Para pantallas pequeñas ajustamos el tamaño del logo */
+        @media (max-width: 992px) {
+            .logo-text {
+                font-size: 1.7rem;
+                letter-spacing: 0.8px;
+            }
+            
+            .navbar {
+                padding: 0.7rem 1.5rem;
+            }
+            
+            .navbar.scrolled {
+                padding: 0.6rem 1.2rem;
+            }
+            
+            .btn-presupuesto {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Para pantallas muy pequeñas */
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.5rem;
+                letter-spacing: 0.6px;
+            }
+            
+            .btn-presupuesto {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+
         .navbar-links {
             display: flex;
             gap: 2rem;
@@ -318,16 +352,16 @@
             transition: all var(--transition-fast);
         }
 
-        /* Sección confianza - MODIFICADA: Menos espacio y más transparencia */
+        /* Sección confianza */
         .trust-section {
             text-align: center;
-            padding: 1rem 1.5rem; /* Reducido de 2rem a 1rem */
+            padding: 3rem 1.5rem;
             position: relative;
         }
 
         .trust-title {
             font-size: clamp(1.5rem, 3vw, 2rem);
-            opacity: 0.4; /* Aumentada transparencia de 0.6 a 0.4 */
+            opacity: 0.6;
             margin-bottom: 2rem;
         }
 
@@ -343,18 +377,11 @@
             font-size: 1.5rem;
             color: #CCCCCC;
             font-style: italic;
-            text-decoration: none;
-            transition: all var(--transition-fast);
         }
 
-        .trust-company:hover {
-            color: var(--accent-blue);
-            transform: translateY(-3px);
-        }
-
-        /* Sección servicios - MODIFICADA: Más espacio arriba */
+        /* Sección servicios */
         .services-section {
-            padding-top: 4rem; /* Aumentado de 2rem a 4rem */
+            padding-top: 2rem;
         }
 
         .section-header {
@@ -407,14 +434,13 @@
             margin-bottom: 1rem;
         }
 
-        /* Botón "Más información" para desktop */
-        .more-info-desktop {
+        .services-link {
             display: block;
             text-align: center;
             margin-top: 3rem;
         }
 
-        .more-info-desktop .btn-link {
+        .services-link .btn-link {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
@@ -428,13 +454,13 @@
             background-color: rgba(30, 58, 95, 0.2);
         }
 
-        .more-info-desktop .btn-link:hover {
+        .services-link .btn-link:hover {
             color: var(--text-white);
             background-color: rgba(30, 58, 95, 0.5);
             transform: translateY(-3px);
         }
 
-        /* Carrusel automático para móviles - MODIFICADO */
+        /* Carrusel para móviles */
         .carousel-container {
             display: none;
             position: relative;
@@ -455,7 +481,6 @@
             padding: 2rem;
             color: #333;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center;
         }
 
         .carousel-card h3 {
@@ -469,442 +494,12 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Botón "Más información" para móviles (dentro del carrusel) */
-        .more-info-mobile {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .more-info-mobile .btn-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent-blue);
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: all var(--transition-fast);
-            padding: 0.7rem 1.3rem;
-            border-radius: 30px;
-            background-color: rgba(30, 58, 95, 0.2);
-        }
-
-        .more-info-mobile .btn-link:hover {
-            color: var(--text-white);
-            background-color: rgba(30, 58, 95, 0.5);
-            transform: translateY(-3px);
-        }
-
-        /* NUEVAS SECCIONES - Sobre Nosotros, Precios, Proceso, Objetivos */
-        .about-section, .pricing-section, .process-section, .objectives-section, .why-choose-section {
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: #CCCCCC;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            text-align: center;
-        }
-
-        .highlight-box {
-            background: rgba(30, 58, 95, 0.2);
-            border-left: 4px solid var(--accent-blue);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-        }
-
-        .highlight-box p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-
-        /* PRECIOS INDIVIDUALES - Nuevo carrusel para móviles */
-        .price-carousel-container {
-            display: none;
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            margin: 3rem 0;
-        }
-
-        .price-carousel-track {
-            display: flex;
-            transition: transform var(--transition-slow);
-        }
-
-        .price-carousel-card {
-            min-width: 100%;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            margin: 0 0.5rem;
-            border: 1px solid rgba(74, 144, 226, 0.2);
-        }
-
-        .price-carousel-card h4 {
-            color: var(--accent-blue);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .price-carousel-amount {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #FFFFFF;
-            margin: 1rem 0;
-        }
-
-        .price-carousel-note {
-            font-size: 0.9rem;
-            color: #AAAAAA;
-            font-style: italic;
-            margin-top: 0.5rem;
-        }
-
-        /* PACKS 1-3 - Nuevo carrusel para móviles */
-        .packs-carousel-container {
-            display: none;
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            margin: 3rem 0;
-        }
-
-        .packs-carousel-track {
-            display: flex;
-            transition: transform var(--transition-slow);
-        }
-
-        .packs-carousel-card {
-            min-width: 100%;
-            background: rgba(30, 58, 95, 0.3);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            border: 1px solid rgba(74, 144, 226, 0.2);
-            margin: 0 0.5rem;
-        }
-
-        .packs-carousel-card h4 {
-            color: var(--accent-blue);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .packs-carousel-price {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #FFFFFF;
-            margin: 1rem 0;
-        }
-
-        .packs-discount-badge {
-            background: rgba(200, 145, 22, 0.2);
-            color: #c89116;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            display: inline-block;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        /* PACK 4 PERSONALIZABLE - NUEVO ESTILO */
-        .custom-pack-container {
-            background: rgba(30, 58, 95, 0.3);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            border: 1px solid rgba(74, 144, 226, 0.2);
-            margin-top: 3rem;
-        }
-
-        .custom-pack-title {
-            color: var(--accent-blue);
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-
-        .services-selector {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .service-option {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            border: 2px solid transparent;
-        }
-
-        .service-option:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .service-option.selected {
-            border-color: var(--accent-blue);
-            background: rgba(74, 144, 226, 0.1);
-        }
-
-        .service-info {
-            text-align: left;
-            flex-grow: 1;
-        }
-
-        .service-name {
-            font-weight: 600;
-            margin-bottom: 0.2rem;
-        }
-
-        .service-price {
-            color: #AAAAAA;
-            font-size: 0.9rem;
-        }
-
-        .checkbox-container {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            border: 2px solid var(--accent-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: 1rem;
-            flex-shrink: 0;
-        }
-
-        .checkbox-container.selected {
-            background-color: var(--accent-blue);
-        }
-
-        .checkbox-container.selected::after {
-            content: '✓';
-            color: white;
-            font-weight: bold;
-        }
-
-        .custom-pack-summary {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-top: 2rem;
-            text-align: center;
-        }
-
-        .summary-title {
-            color: var(--accent-blue);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .selected-services-list {
-            list-style: none;
-            margin-bottom: 1.5rem;
-            text-align: left;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .selected-service-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .price-calculator {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .price-breakdown {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .price-line {
-            display: flex;
-            justify-content: space-between;
-            min-width: 250px;
-            padding: 0.3rem 0;
-        }
-
-        .total-price {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #FFFFFF;
-            margin: 1rem 0;
-        }
-
-        .btn-custom-pack {
-            background: linear-gradient(90deg, #4A90E2, #1E3A5F);
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all var(--transition-fast);
-            border: none;
-            cursor: pointer;
-            margin-top: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-custom-pack:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
-            background: linear-gradient(90deg, #1E3A5F, #4A90E2);
-        }
-
-        /* Proceso de entrega - MODIFICADO con carrusel en móviles */
-        .process-steps {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-            margin: 3rem 0;
-        }
-
-        .process-step {
-            flex: 1;
-            min-width: 250px;
-            max-width: 300px;
-            text-align: center;
-            padding: 2rem 1rem;
-        }
-
-        .step-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background-color: var(--accent-blue);
-            color: white;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        /* Carrusel para proceso en móviles */
-        .process-carousel-container {
-            display: none;
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            margin: 3rem 0;
-        }
-
-        .process-carousel-track {
-            display: flex;
-            transition: transform var(--transition-slow);
-        }
-
-        .process-carousel-card {
-            min-width: 100%;
-            text-align: center;
-            padding: 2rem 1rem;
-            margin: 0 0.5rem;
-        }
-
-        /* Objetivos - MODIFICADO SIN TARJETAS */
-        .objectives-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 3rem 0;
-        }
-
-        .objective-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .objective-item i {
-            font-size: 2rem;
-            color: var(--accent-blue);
-            margin-bottom: 1rem;
-        }
-
-        /* Footer MODIFICADO con logo de Instagram específico */
+        /* Footer */
         footer {
             background-color: rgba(0,0,0,0.3);
             padding: 3rem 1.5rem;
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .instagram-footer {
-            margin-bottom: 2rem;
-        }
-
-        .instagram-logo {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
-            transition: all var(--transition-fast);
-        }
-
-        .instagram-logo:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(225, 48, 108, 0.3);
-        }
-
-        .instagram-logo i {
-            font-size: 1.5rem;
-        }
-
-        .contact-info {
-            margin-bottom: 2rem;
-        }
-
-        .contact-info p {
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .contact-email {
-            color: var(--accent-blue);
-            font-weight: 600;
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color var(--transition-fast);
-        }
-
-        .contact-email:hover {
-            border-bottom-color: var(--accent-blue);
         }
 
         .social-links {
@@ -996,7 +591,6 @@
                 transform: rotate(-45deg) translate(6px, -6px);
             }
 
-            /* Mostrar carruseles en móviles y ocultar grids */
             .cards-container {
                 display: none;
             }
@@ -1004,58 +598,12 @@
             .carousel-container {
                 display: block;
             }
-
-            .price-carousel-container {
-                display: block;
-            }
-
-            .packs-carousel-container {
-                display: block;
-            }
-
-            .process-steps {
-                display: none;
-            }
-
-            .process-carousel-container {
-                display: block;
-            }
-
-            .objectives-list {
-                display: none;
-            }
             
             .btn-presupuesto {
                 margin-top: 1rem;
                 display: inline-block;
                 text-align: center;
                 width: 100%;
-            }
-
-            .more-info-desktop {
-                display: none;
-            }
-
-            .services-selector {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (min-width: 993px) {
-            .more-info-mobile {
-                display: none;
-            }
-            
-            .price-carousel-container {
-                display: none;
-            }
-            
-            .packs-carousel-container {
-                display: none;
-            }
-            
-            .process-carousel-container {
-                display: none;
             }
         }
 
@@ -1076,62 +624,6 @@
 
             .trust-company {
                 font-size: 1.2rem;
-            }
-            
-            .trust-section {
-                padding: 1rem 1rem; /* Más reducido en móviles */
-            }
-
-            .custom-pack-container {
-                padding: 1.5rem;
-            }
-
-            .price-breakdown {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .price-line {
-                min-width: 100%;
-            }
-        }
-        
-        /* Para pantallas pequeñas ajustamos el tamaño del logo */
-        @media (max-width: 992px) {
-            .logo-text {
-                font-size: 1.7rem;
-                letter-spacing: 0.8px;
-            }
-            
-            .navbar {
-                padding: 0.7rem 1.5rem;
-            }
-            
-            .navbar.scrolled {
-                padding: 0.6rem 1.2rem;
-            }
-            
-            .btn-presupuesto {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.85rem;
-            }
-        }
-
-        /* Para pantallas muy pequeñas */
-        @media (max-width: 480px) {
-            .logo-text {
-                font-size: 1.5rem;
-                letter-spacing: 0.6px;
-            }
-            
-            .btn-presupuesto {
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
-            }
-            
-            .instagram-logo {
-                font-size: 1rem;
-                padding: 0.6rem 1.2rem;
             }
         }
     </style>
@@ -1157,11 +649,8 @@
         
         <div class="navbar-links">
             <a href="#inicio" class="active">Inicio</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#nosotros">Nosotros</a>
-            <a href="#porque-elegirnos">¿Por qué elegirnos?</a>
-            <a href="#precios">Precios</a>
-            <a href="#proceso">Proceso</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="nosotros.html">Nosotros</a>
             <a href="solicitud-de-presupuesto.html" class="btn-presupuesto">Solicitar Presupuesto</a>
         </div>
     </nav>
@@ -1190,17 +679,17 @@
         </div>
     </section>
 
-    <!-- Sección Confianza MODIFICADA: Menos espacio y más transparencia -->
+    <!-- Sección Confianza -->
     <section id="confianza" class="trust-section">
         <div class="container">
             <h2 class="trust-title animate-on-scroll">Han confiado en nosotros:</h2>
             <div class="trust-companies animate-on-scroll">
-                <a href="https://mipaginaonline.github.io/RestaurantLesGuatlles/" class="trust-company" target="_blank">Les Guatlles</a>
+                <div class="trust-company">Les Guatlles</div>
             </div>
         </div>
     </section>
 
-    <!-- Sección Servicios - MODIFICADA: Más espacio arriba -->
+    <!-- Sección Servicios -->
     <section id="servicios" class="services-section">
         <div class="container">
             <div class="section-header">
@@ -1311,371 +800,39 @@
                 </div>
             </div>
             
-            <!-- Botón "Más información" para desktop - Redirige a página secundaria -->
-            <div class="more-info-desktop">
+            <div class="services-link">
                 <a href="servicios-detallados.html" class="btn-link animate-on-scroll">
                     Más información sobre nuestros servicios
                     <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
-            
-            <!-- Botón "Más información" para móviles - Redirige a página secundaria -->
-            <div class="more-info-mobile">
-                <a href="servicios-detallados.html" class="btn-link animate-on-scroll">
-                    Más información
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
         </div>
     </section>
 
-    <!-- Sección Sobre Nosotros -->
-    <section id="nosotros" class="about-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="animate-on-scroll">Sobre Nosotros</h2>
-            </div>
-            
-            <div class="highlight-box animate-on-scroll">
-                <p>Prounek es una empresa nueva, hemos abierto esta empresa el 2 de enero de 2026. Tenemos muchas ganas de comenzar este proyecto ya que llevamos mucho tiempo pensando en cómo llevar a cabo toda esta idea.</p>
-            </div>
-            
-            <div class="section-subtitle animate-on-scroll">
-                <p>Queremos tener la máxima cercanía con el cliente, que el cliente se sienta cómodo. Somos profesionales en este sector, confiamos en este equipo y sabemos que lo vamos a lograr.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Por qué Elegirnos -->
-    <section id="porque-elegirnos" class="why-choose-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="animate-on-scroll">¿Por qué Elegirnos?</h2>
-            </div>
-            
-            <div class="highlight-box animate-on-scroll">
-                <p>Acabamos de abrir la empresa entonces nuestros precios están realmente bajos para el trabajo que ofrecemos, es una manera de aprovecharte de nosotros, que no puedes perder.</p>
-            </div>
-            
-            <div class="section-subtitle animate-on-scroll">
-                <p>Nosotros contamos con una seguridad máxima con el cliente, porque entregamos todo el trabajo antes de recibir el pago y si no les gusta no hace falta que nos paguen, borramos todo sin ningún compromiso.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Precios y Packs -->
-    <section id="precios" class="pricing-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="animate-on-scroll">Precios y Packs</h2>
-            </div>
-            
-            <div class="section-subtitle animate-on-scroll">
-                <p>Servicios individuales y packs combinados con descuentos especiales.</p>
-            </div>
-            
-            <!-- Sección de Servicios Individuales -->
-            <h3 class="animate-on-scroll" style="text-align: center; margin-top: 3rem; color: var(--accent-blue);">Servicios Individuales</h3>
-            
-            <!-- Carrusel de precios individuales para móviles -->
-            <div class="price-carousel-container">
-                <div class="price-carousel-track">
-                    <div class="price-carousel-card">
-                        <h4>Diseño Página Web</h4>
-                        <div class="price-carousel-amount">150€</div>
-                        <p>Sitio web moderno y responsivo</p>
-                    </div>
-                    
-                    <div class="price-carousel-card">
-                        <h4>Mantenimiento Web</h4>
-                        <div class="price-carousel-amount">30€</div>
-                        <p>Por mes, depende de la constancia del mantenimiento</p>
-                        <p class="price-carousel-note">*Precio mensual variable según necesidades</p>
-                    </div>
-                    
-                    <div class="price-carousel-card">
-                        <h4>Agendar Citas Automatizadas</h4>
-                        <div class="price-carousel-amount">50€</div>
-                        <p>Sistema de reservas online integrado</p>
-                    </div>
-                    
-                    <div class="price-carousel-card">
-                        <h4>Diseño de Logo</h4>
-                        <div class="price-carousel-amount">5€</div>
-                        <p>Logo profesional para redes sociales</p>
-                    </div>
-                    
-                    <div class="price-carousel-card">
-                        <h4>Videos y Fotos Promocionales</h4>
-                        <div class="price-carousel-amount">50€</div>
-                        <p>Pack de 10 videos o fotos</p>
-                    </div>
-                    
-                    <div class="price-carousel-card">
-                        <h4>Página Web con Pagos</h4>
-                        <div class="price-carousel-amount">300€</div>
-                        <p>Tienda online completa con pasarela de pagos</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Botón "Más información" para servicios individuales -->
-            <div class="more-info-desktop">
-                <a href="servicios-individuales-detallados.html" class="btn-link animate-on-scroll">
-                    Más información sobre servicios individuales
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-            
-            <!-- Botón "Más información" para móviles -->
-            <div class="more-info-mobile">
-                <a href="servicios-individuales-detallados.html" class="btn-link animate-on-scroll">
-                    Más información
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-            
-            <!-- Sección de Packs Combinados -->
-            <h3 class="animate-on-scroll" style="text-align: center; margin-top: 4rem; color: var(--accent-blue);">Packs Combinados</h3>
-            
-            <!-- Carrusel de packs para móviles (solo packs 1-3) -->
-            <div class="packs-carousel-container">
-                <div class="packs-carousel-track">
-                    <div class="packs-carousel-card">
-                        <div class="packs-discount-badge">-10%</div>
-                        <h4>Pack 1</h4>
-                        <p>Diseño página web + Agendar citas automatizadas</p>
-                        <div class="packs-carousel-price">180€</div>
-                        <p>Original: 200€</p>
-                    </div>
-                    
-                    <div class="packs-carousel-card">
-                        <div class="packs-discount-badge">-10%</div>
-                        <h4>Pack 2</h4>
-                        <p>Diseño página web + Logo + Videos/Fotos promocionales</p>
-                        <div class="packs-carousel-price">185€</div>
-                        <p>Original: 205€</p>
-                    </div>
-                    
-                    <div class="packs-carousel-card">
-                        <div class="packs-discount-badge">-6%</div>
-                        <h4>Pack 3</h4>
-                        <p>E-commerce + Logo + Videos/Fotos promocionales</p>
-                        <div class="packs-carousel-price">330€</div>
-                        <p>Original: 355€</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Botón "Más información" para packs (móviles y desktop) -->
-            <div class="more-info-desktop">
-                <a href="servicios-individuales-detallados.html" class="btn-link animate-on-scroll">
-                    Más información sobre packs combinados
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-            
-            <!-- Botón "Más información" para móviles -->
-            <div class="more-info-mobile">
-                <a href="servicios-individuales-detallados.html" class="btn-link animate-on-scroll">
-                    Más información
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-            
-            <!-- PACK 4 PERSONALIZABLE - Debajo del botón de más información -->
-            <div class="custom-pack-container animate-on-scroll">
-                <div class="packs-discount-badge">-5%</div>
-                <h4 class="custom-pack-title">Pack 4 - Personalizable</h4>
-                <p>¡Crea tu propio pack! Selecciona los servicios que necesitas y obtén un 5% de descuento sobre el total.</p>
-                
-                <div class="services-selector">
-                    <!-- Los servicios se añadirán dinámicamente con JavaScript -->
-                </div>
-                
-                <div class="custom-pack-summary">
-                    <h4 class="summary-title">Resumen de tu Pack Personalizado</h4>
-                    <ul class="selected-services-list" id="selected-services-list">
-                        <!-- Los servicios seleccionados aparecerán aquí -->
-                        <li class="selected-service-item">
-                            <span>Selecciona al menos un servicio</span>
-                        </li>
-                    </ul>
-                    
-                    <div class="price-calculator">
-                        <div class="price-breakdown">
-                            <div class="price-line">
-                                <span>Subtotal:</span>
-                                <span id="subtotal-price">0€</span>
-                            </div>
-                            <div class="price-line">
-                                <span>Descuento (5%):</span>
-                                <span id="discount-amount">-0€</span>
-                            </div>
-                            <div class="price-line">
-                                <span style="font-weight: 600;">Total:</span>
-                                <span style="font-weight: 600; color: var(--accent-blue);" id="total-price">0€</span>
-                            </div>
-                        </div>
-                        
-                        <div class="total-price" id="final-total-price">0€</div>
-                        
-                        <button class="btn-custom-pack" id="btn-solicitar-pack">
-                            <i class="fas fa-shopping-cart"></i>
-                            Solicitar este Pack Personalizado
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Proceso de Entrega -->
-    <section id="proceso" class="process-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="animate-on-scroll">Proceso de Entrega</h2>
-            </div>
-            
-            <!-- Cards para desktop -->
-            <div class="process-steps">
-                <div class="process-step animate-on-scroll animate-left">
-                    <div class="step-number">1</div>
-                    <h4>Entrega para Revisión</h4>
-                    <p>Te enviamos el trabajo completo para que lo evalúes en un entorno de prueba.</p>
-                </div>
-                
-                <div class="process-step animate-on-scroll">
-                    <div class="step-number">2</div>
-                    <h4>Satisfacción Garantizada</h4>
-                    <p>Si el trabajo cumple con tus expectativas, realizas el pago y todo se activa definitivamente.</p>
-                </div>
-                
-                <div class="process-step animate-on-scroll animate-right">
-                    <div class="step-number">3</div>
-                    <h4>No Aprobada</h4>
-                    <p>Si no estás satisfecho, no realizas ningún pago y eliminaremos el trabajo sin compromiso.</p>
-                </div>
-            </div>
-            
-            <!-- Carrusel para móviles -->
-            <div class="process-carousel-container">
-                <div class="process-carousel-track">
-                    <div class="process-carousel-card">
-                        <div class="step-number">1</div>
-                        <h4>Entrega para Revisión</h4>
-                        <p>Te enviamos el trabajo completo para que lo evalúes en un entorno de prueba.</p>
-                    </div>
-                    
-                    <div class="process-carousel-card">
-                        <div class="step-number">2</div>
-                        <h4>Satisfacción Garantizada</h4>
-                        <p>Si el trabajo cumple con tus expectativas, realizas el pago y todo se activa definitivamente.</p>
-                    </div>
-                    
-                    <div class="process-carousel-card">
-                        <div class="step-number">3</div>
-                        <h4>No Aprobada</h4>
-                        <p>Si no estás satisfecho, no realizas ningún pago y eliminaremos el trabajo sin compromiso.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Botón "Más información" para proceso (móviles y desktop) -->
-            <div class="more-info-desktop">
-                <a href="proceso-detallado.html" class="btn-link animate-on-scroll">
-                    Más información sobre el proceso
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-            
-            <!-- Botón "Más información" para móviles -->
-            <div class="more-info-mobile">
-                <a href="proceso-detallado.html" class="btn-link animate-on-scroll">
-                    Más información sobre el proceso
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Nuestros Objetivos - SIN TARJETAS Y SIN BOTÓN -->
-    <section id="objetivos" class="objectives-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="animate-on-scroll">Nuestros Objetivos</h2>
-            </div>
-            
-            <div class="section-subtitle animate-on-scroll">
-                <p>Los objetivos de Prounek son simples, digitalizar negocios físicos, ayudar a nuestros clientes a llevar sus negocios a lo más alto, posicionarnos como una opción confiable y accesible, construir una marca sólida basada en transparencia, claridad y buenos resultados y CRECER.</p>
-            </div>
-            
-            <!-- NO HAY BOTÓN DE MÁS INFORMACIÓN -->
-        </div>
-    </section>
-
-    <!-- Footer MODIFICADO con logo de Instagram específico -->
+    <!-- Footer -->
     <footer id="contacto">
         <div class="container">
-            <!-- Logo de Instagram específico para Prounek -->
-            <div class="instagram-footer animate-on-scroll">
-                <a href="https://www.instagram.com/prounek/" class="instagram-logo" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                    <span>@prounek</span>
-                </a>
-            </div>
-            
-            <div class="contact-info">
-                <h3 class="animate-on-scroll" style="margin-bottom: 1.5rem;">Contacto</h3>
-                <p class="animate-on-scroll">¿Tienes preguntas? ¡Contáctanos!</p>
-                <p class="animate-on-scroll">
-                    <a href="mailto:tecreamosweb@gmail.com" class="contact-email">tecreamosweb@gmail.com</a>
-                </p>
-            </div>
-            
             <div class="social-links">
-                <a href="https://www.instagram.com/prounek/" class="social-link animate-on-scroll" target="_blank">
+                <a href="https://www.instagram.com/tecreamos.web/" class="social-link" target="_blank">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="#" class="social-link animate-on-scroll">
+                <a href="#" class="social-link">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="#" class="social-link animate-on-scroll">
+                <a href="#" class="social-link">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a href="#" class="social-link animate-on-scroll">
+                <a href="#" class="social-link">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
             </div>
-            <p class="copyright animate-on-scroll">© 2023 Prounek. Todos los derechos reservados.</p>
+            <p class="copyright">© 2023 Prounek. Todos los derechos reservados.</p>
         </div>
     </footer>
 
     <script>
-        // Datos de los servicios
-        const servicios = [
-            { id: 1, nombre: "Diseño Página Web", precio: 150 },
-            { id: 2, nombre: "Mantenimiento Web", precio: 30, nota: "Por mes" },
-            { id: 3, nombre: "Agendar Citas Automatizadas", precio: 50 },
-            { id: 4, nombre: "Diseño de Logo", precio: 5 },
-            { id: 5, nombre: "Videos y Fotos Promocionales", precio: 50, nota: "Pack 10 videos o fotos" },
-            { id: 6, nombre: "Página Web con Pagos", precio: 300 }
-        ];
-
-        // Servicios seleccionados por el usuario
-        let serviciosSeleccionados = [];
-
-        // Variables para controlar los carruseles
-        let serviciosInterval, preciosInterval, packsInterval, procesoInterval;
-
         // Efectos de entrada y animaciones
         document.addEventListener('DOMContentLoaded', function() {
-            // Inicializar el selector de servicios
-            initCustomPack();
-            
-            // Inicializar carruseles
-            initCarousels();
-            
             // Scroll suave para enlaces internos
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
@@ -1735,10 +892,38 @@
                 }
             });
             
-            // Recalcular carruseles en resize
-            window.addEventListener('resize', function() {
-                initCarousels();
-            });
+            // Carrusel automático para móviles
+            const carouselTrack = document.querySelector('.carousel-track');
+            if (carouselTrack) {
+                let currentSlide = 0;
+                const cards = document.querySelectorAll('.carousel-card');
+                const totalSlides = cards.length;
+                let carouselInterval;
+                
+                function nextSlide() {
+                    currentSlide = (currentSlide + 1) % totalSlides;
+                    carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+                }
+                
+                // Iniciar carrusel solo en móviles
+                function startCarousel() {
+                    if (window.innerWidth <= 992) {
+                        if (!carouselInterval) {
+                            carouselInterval = setInterval(nextSlide, 3000);
+                        }
+                    } else {
+                        if (carouselInterval) {
+                            clearInterval(carouselInterval);
+                            carouselInterval = null;
+                        }
+                    }
+                }
+                
+                startCarousel();
+                
+                // Recalcular en resize
+                window.addEventListener('resize', startCarousel);
+            }
             
             // Actualizar enlace activo en navbar
             function updateActiveLink() {
@@ -1783,7 +968,7 @@
             setTimeout(animateOnScroll, 100);
             
             // Efectos de microinteracciones
-            const buttons = document.querySelectorAll('.btn, .social-link, .btn-link, .btn-presupuesto, .btn-custom-pack, .instagram-logo, .trust-company');
+            const buttons = document.querySelectorAll('.btn, .social-link, .btn-link, .btn-presupuesto');
             buttons.forEach(button => {
                 button.addEventListener('mouseenter', function() {
                     this.style.transform = 'translateY(-3px)';
@@ -1804,253 +989,6 @@
                 }, 300 + (index * 200));
             });
         });
-
-        // Función para inicializar todos los carruseles
-        function initCarousels() {
-            // Limpiar intervalos previos
-            clearInterval(serviciosInterval);
-            clearInterval(preciosInterval);
-            clearInterval(packsInterval);
-            clearInterval(procesoInterval);
-            
-            // Iniciar carruseles solo en móviles
-            if (window.innerWidth <= 992) {
-                initServicesCarousel();
-                initPricesCarousel();
-                initPacksCarousel();
-                initProcessCarousel();
-            }
-        }
-
-        // Carrusel de servicios
-        function initServicesCarousel() {
-            const track = document.querySelector('.carousel-track');
-            if (!track) return;
-            
-            const cards = document.querySelectorAll('.carousel-card');
-            const totalSlides = cards.length;
-            let currentSlide = 0;
-            
-            function nextServicesSlide() {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                track.style.transform = `translateX(-${currentSlide * 100}%)`;
-            }
-            
-            serviciosInterval = setInterval(nextServicesSlide, 4000);
-        }
-
-        // Carrusel de precios individuales
-        function initPricesCarousel() {
-            const track = document.querySelector('.price-carousel-track');
-            if (!track) return;
-            
-            const cards = document.querySelectorAll('.price-carousel-card');
-            const totalSlides = cards.length;
-            let currentSlide = 0;
-            
-            function nextPricesSlide() {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                track.style.transform = `translateX(-${currentSlide * 100}%)`;
-            }
-            
-            preciosInterval = setInterval(nextPricesSlide, 3500);
-        }
-
-        // Carrusel de packs (solo packs 1-3)
-        function initPacksCarousel() {
-            const track = document.querySelector('.packs-carousel-track');
-            if (!track) return;
-            
-            const cards = document.querySelectorAll('.packs-carousel-card');
-            const totalSlides = cards.length;
-            let currentSlide = 0;
-            
-            function nextPacksSlide() {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                track.style.transform = `translateX(-${currentSlide * 100}%)`;
-            }
-            
-            packsInterval = setInterval(nextPacksSlide, 3800);
-        }
-
-        // Carrusel de proceso
-        function initProcessCarousel() {
-            const track = document.querySelector('.process-carousel-track');
-            if (!track) return;
-            
-            const cards = document.querySelectorAll('.process-carousel-card');
-            const totalSlides = cards.length;
-            let currentSlide = 0;
-            
-            function nextProcessSlide() {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                track.style.transform = `translateX(-${currentSlide * 100}%)`;
-            }
-            
-            procesoInterval = setInterval(nextProcessSlide, 4200);
-        }
-
-        // Función para inicializar el pack personalizable
-        function initCustomPack() {
-            const servicesSelector = document.querySelector('.services-selector');
-            if (!servicesSelector) return;
-            
-            // Limpiar selector
-            servicesSelector.innerHTML = '';
-            
-            // Crear opciones para cada servicio
-            servicios.forEach(servicio => {
-                const option = document.createElement('div');
-                option.className = 'service-option';
-                option.dataset.id = servicio.id;
-                
-                option.innerHTML = `
-                    <div class="service-info">
-                        <div class="service-name">${servicio.nombre}</div>
-                        <div class="service-price">${servicio.precio}€ ${servicio.nota ? ' - ' + servicio.nota : ''}</div>
-                    </div>
-                    <div class="checkbox-container"></div>
-                `;
-                
-                // Agregar evento click
-                option.addEventListener('click', () => {
-                    toggleServiceSelection(servicio.id);
-                    option.classList.toggle('selected');
-                    option.querySelector('.checkbox-container').classList.toggle('selected');
-                });
-                
-                servicesSelector.appendChild(option);
-            });
-            
-            // Inicializar el botón de solicitud
-            const btnSolicitar = document.getElementById('btn-solicitar-pack');
-            if (btnSolicitar) {
-                btnSolicitar.addEventListener('click', solicitarPackPersonalizado);
-            }
-            
-            // Actualizar precios iniciales
-            updatePriceSummary();
-        }
-
-        // Alternar selección de servicio
-        function toggleServiceSelection(serviceId) {
-            const index = serviciosSeleccionados.indexOf(serviceId);
-            
-            if (index === -1) {
-                // Agregar servicio
-                serviciosSeleccionados.push(serviceId);
-            } else {
-                // Remover servicio
-                serviciosSeleccionados.splice(index, 1);
-            }
-            
-            // Actualizar resumen y precios
-            updateSelectedServicesList();
-            updatePriceSummary();
-        }
-
-        // Actualizar la lista de servicios seleccionados
-        function updateSelectedServicesList() {
-            const listContainer = document.getElementById('selected-services-list');
-            if (!listContainer) return;
-            
-            if (serviciosSeleccionados.length === 0) {
-                listContainer.innerHTML = '<li class="selected-service-item"><span>Selecciona al menos un servicio</span></li>';
-                return;
-            }
-            
-            listContainer.innerHTML = '';
-            
-            serviciosSeleccionados.forEach(serviceId => {
-                const servicio = servicios.find(s => s.id === serviceId);
-                if (servicio) {
-                    const li = document.createElement('li');
-                    li.className = 'selected-service-item';
-                    li.innerHTML = `
-                        <span>${servicio.nombre}</span>
-                        <span>${servicio.precio}€</span>
-                    `;
-                    listContainer.appendChild(li);
-                }
-            });
-        }
-
-        // Actualizar resumen de precios
-        function updatePriceSummary() {
-            // Calcular subtotal
-            let subtotal = 0;
-            serviciosSeleccionados.forEach(serviceId => {
-                const servicio = servicios.find(s => s.id === serviceId);
-                if (servicio) {
-                    subtotal += servicio.precio;
-                }
-            });
-            
-            // Calcular descuento (5%)
-            const descuento = subtotal * 0.05;
-            
-            // Calcular total con descuento
-            const total = subtotal - descuento;
-            
-            // Actualizar elementos del DOM
-            const subtotalEl = document.getElementById('subtotal-price');
-            const discountEl = document.getElementById('discount-amount');
-            const totalEl = document.getElementById('total-price');
-            const finalTotalEl = document.getElementById('final-total-price');
-            
-            if (subtotalEl) subtotalEl.textContent = `${subtotal.toFixed(2)}€`;
-            if (discountEl) discountEl.textContent = `-${descuento.toFixed(2)}€`;
-            if (totalEl) totalEl.textContent = `${total.toFixed(2)}€`;
-            if (finalTotalEl) finalTotalEl.textContent = `${total.toFixed(2)}€`;
-            
-            // Habilitar/deshabilitar botón según si hay servicios seleccionados
-            const btnSolicitar = document.getElementById('btn-solicitar-pack');
-            if (btnSolicitar) {
-                if (serviciosSeleccionados.length === 0) {
-                    btnSolicitar.disabled = true;
-                    btnSolicitar.style.opacity = '0.6';
-                    btnSolicitar.style.cursor = 'not-allowed';
-                } else {
-                    btnSolicitar.disabled = false;
-                    btnSolicitar.style.opacity = '1';
-                    btnSolicitar.style.cursor = 'pointer';
-                }
-            }
-        }
-
-        // Solicitar pack personalizado
-        function solicitarPackPersonalizado() {
-            if (serviciosSeleccionados.length === 0) {
-                alert('Por favor, selecciona al menos un servicio para tu pack personalizado.');
-                return;
-            }
-            
-            // Construir mensaje con los servicios seleccionados
-            let mensaje = "¡Hola! Me gustaría solicitar un pack personalizado con los siguientes servicios:\n\n";
-            
-            let subtotal = 0;
-            serviciosSeleccionados.forEach(serviceId => {
-                const servicio = servicios.find(s => s.id === serviceId);
-                if (servicio) {
-                    mensaje += `• ${servicio.nombre}: ${servicio.precio}€\n`;
-                    subtotal += servicio.precio;
-                }
-            });
-            
-            const descuento = subtotal * 0.05;
-            const total = subtotal - descuento;
-            
-            mensaje += `\nSubtotal: ${subtotal.toFixed(2)}€\n`;
-            mensaje += `Descuento (5%): -${descuento.toFixed(2)}€\n`;
-            mensaje += `TOTAL: ${total.toFixed(2)}€\n\n`;
-            mensaje += `Por favor, contáctenme para confirmar este pack personalizado.`;
-            
-            // Codificar el mensaje para URL
-            const mensajeCodificado = encodeURIComponent(mensaje);
-            
-            // Redirigir a la página de contacto con el mensaje prellenado
-            window.location.href = `mailto:tecreamosweb@gmail.com?subject=Solicitud de Pack Personalizado Prounek&body=${mensajeCodificado}`;
-        }
     </script>
 </body>
 </html>
