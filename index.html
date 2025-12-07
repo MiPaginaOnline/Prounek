@@ -379,6 +379,26 @@
             font-style: italic;
         }
 
+        /* Sección sobre nosotros */
+        .about-section {
+            background-color: rgba(30, 58, 95, 0.1);
+            padding: 5rem 1.5rem;
+            position: relative;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #CCCCCC;
+        }
+
+        .about-content p {
+            margin-bottom: 2rem;
+        }
+
         /* Sección servicios */
         .services-section {
             padding-top: 2rem;
@@ -605,6 +625,11 @@
                 text-align: center;
                 width: 100%;
             }
+
+            .about-content {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -624,6 +649,10 @@
 
             .trust-company {
                 font-size: 1.2rem;
+            }
+
+            .about-section {
+                padding: 3rem 1rem;
             }
         }
     </style>
@@ -685,6 +714,19 @@
             <h2 class="trust-title animate-on-scroll">Han confiado en nosotros:</h2>
             <div class="trust-companies animate-on-scroll">
                 <div class="trust-company">Les Guatlles</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Sobre Nosotros -->
+    <section id="nosotros" class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="animate-on-scroll">Sobre Nosotros</h2>
+            </div>
+            <div class="about-content animate-on-scroll">
+                <p>Prounek es una empresa nueva, hemos abierto esta empresa el 2 de enero de 2026. Tenemos muchas ganas de comenzar este proyecto ya que llevamos mucho tiempo pensando en como llevar a cabo toda esta idea.</p>
+                <p>Queremos tener la máxima cercanía con el cliente, que el cliente se sienta cómodo. Somos profesionales en este sector, confiamos en este equipo y sabemos que lo vamos a lograr.</p>
             </div>
         </div>
     </section>
