@@ -662,6 +662,121 @@
     }
 }
 
+/* Carrusel para Servicios Individuales en móviles */
+.services-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    border-radius: 15px;
+    display: none; /* Oculto por defecto, se muestra en móviles */
+}
+
+.services-carousel-track {
+    display: flex;
+    transition: transform var(--transition-slow);
+    width: 100%;
+}
+
+.services-carousel-card {
+    min-width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all var(--transition-fast);
+    text-align: center;
+}
+
+/* Carrusel para Packs 1-3 en móviles */
+.packs-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    border-radius: 15px;
+    display: none; /* Oculto por defecto, se muestra en móviles */
+}
+
+.packs-carousel-track {
+    display: flex;
+    transition: transform var(--transition-slow);
+    width: 100%;
+}
+
+.packs-carousel-card {
+    min-width: 100%;
+    background: rgba(13, 27, 42, 0.7);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 2px solid rgba(74, 144, 226, 0.3);
+    transition: all var(--transition-fast);
+    position: relative;
+}
+
+/* Indicadores del carrusel */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.indicator.active {
+    background-color: var(--accent-blue);
+    transform: scale(1.2);
+}
+
+/* RESPONSIVE - Mostrar carrusel en móviles y ocultar grid */
+@media (max-width: 992px) {
+    .single-services-grid {
+        display: none; /* Oculta el grid en móviles */
+    }
+    
+    .services-carousel-container {
+        display: block; /* Muestra el carrusel en móviles */
+    }
+    
+    .packs-container {
+        display: none; /* Oculta el grid de packs en móviles */
+    }
+    
+    .packs-carousel-container {
+        display: block; /* Muestra el carrusel de packs en móviles */
+    }
+}
+
+@media (max-width: 768px) {
+    .services-carousel-card {
+        padding: 1.2rem;
+    }
+    
+    .packs-carousel-card {
+        padding: 1.2rem;
+    }
+    
+    .pack-services li {
+        font-size: 0.9rem;
+    }
+    
+    .pack-final {
+        font-size: 1.8rem;
+    }
+}
+        
         /* Footer */
         footer {
             background-color: rgba(0,0,0,0.3);
@@ -1088,6 +1203,333 @@
     </div>
 </section>
 
+    <!-- Sección Precios y Packs -->
+<section id="precios-y-packs" class="pricing-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="animate-on-scroll">Precios y Packs</h2>
+            <p class="section-subtitle animate-on-scroll">Ofrecemos servicios individuales y packs combinados con descuentos exclusivos</p>
+        </div>
+        
+        <!-- Servicios Individuales -->
+        <div class="pricing-single-services">
+            <h3 class="pricing-subtitle animate-on-scroll">Servicios Individuales</h3>
+            
+            <!-- Grid para desktop -->
+            <div class="single-services-grid">
+                <div class="service-item animate-on-scroll animate-left">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="service-details">
+                        <h4>Diseño Página Web</h4>
+                        <p class="service-description">Sitio web personalizado, responsivo y optimizado para SEO</p>
+                        <div class="service-price">150€</div>
+                    </div>
+                </div>
+                
+                <div class="service-item animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="service-details">
+                        <h4>Mantenimiento Web</h4>
+                        <p class="service-description">Actualizaciones, seguridad y soporte técnico continuo</p>
+                        <div class="service-price">30€<span class="price-note">/mes*</span></div>
+                        <p class="service-note">*Depende de la constancia del mantenimiento</p>
+                    </div>
+                </div>
+                
+                <div class="service-item animate-on-scroll animate-right">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="service-details">
+                        <h4>Agendar Citas Automatizadas</h4>
+                        <p class="service-description">Sistema de reservas online integrado con calendario</p>
+                        <div class="service-price">50€</div>
+                    </div>
+                </div>
+                
+                <div class="service-item animate-on-scroll animate-left">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="service-details">
+                        <h4>Diseño de Logo</h4>
+                        <p class="service-description">Identidad visual profesional para redes sociales</p>
+                        <div class="service-price">5€</div>
+                    </div>
+                </div>
+                
+                <div class="service-item animate-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="service-details">
+                        <h4>Videos y Fotos Promocionales</h4>
+                        <p class="service-description">Contenido visual de alta calidad para redes sociales</p>
+                        <div class="service-price">50€</div>
+                        <p class="service-note">Pack de 10 videos o fotos</p>
+                    </div>
+                </div>
+                
+                <div class="service-item animate-on-scroll animate-right">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="service-details">
+                        <h4>Página Web con Pagos</h4>
+                        <p class="service-description">Tienda online completa con pasarelas de pago</p>
+                        <div class="service-price">300€</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Carrusel para móviles - Servicios Individuales -->
+            <div class="services-carousel-container">
+                <div class="services-carousel-track">
+                    <div class="services-carousel-card">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="service-details">
+                            <h4>Diseño Página Web</h4>
+                            <p class="service-description">Sitio web personalizado, responsivo y optimizado para SEO</p>
+                            <div class="service-price">150€</div>
+                        </div>
+                    </div>
+                    
+                    <div class="services-carousel-card">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="service-details">
+                            <h4>Mantenimiento Web</h4>
+                            <p class="service-description">Actualizaciones, seguridad y soporte técnico continuo</p>
+                            <div class="service-price">30€<span class="price-note">/mes*</span></div>
+                            <p class="service-note">*Depende de la constancia del mantenimiento</p>
+                        </div>
+                    </div>
+                    
+                    <div class="services-carousel-card">
+                        <div class="service-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="service-details">
+                            <h4>Agendar Citas Automatizadas</h4>
+                            <p class="service-description">Sistema de reservas online integrado con calendario</p>
+                            <div class="service-price">50€</div>
+                        </div>
+                    </div>
+                    
+                    <div class="services-carousel-card">
+                        <div class="service-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="service-details">
+                            <h4>Diseño de Logo</h4>
+                            <p class="service-description">Identidad visual profesional para redes sociales</p>
+                            <div class="service-price">5€</div>
+                        </div>
+                    </div>
+                    
+                    <div class="services-carousel-card">
+                        <div class="service-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="service-details">
+                            <h4>Videos y Fotos Promocionales</h4>
+                            <p class="service-description">Contenido visual de alta calidad para redes sociales</p>
+                            <div class="service-price">50€</div>
+                            <p class="service-note">Pack de 10 videos o fotos</p>
+                        </div>
+                    </div>
+                    
+                    <div class="services-carousel-card">
+                        <div class="service-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="service-details">
+                            <h4>Página Web con Pagos</h4>
+                            <p class="service-description">Tienda online completa con pasarelas de pago</p>
+                            <div class="service-price">300€</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Indicadores del carrusel -->
+                <div class="carousel-indicators">
+                    <div class="indicator active" data-index="0"></div>
+                    <div class="indicator" data-index="1"></div>
+                    <div class="indicator" data-index="2"></div>
+                    <div class="indicator" data-index="3"></div>
+                    <div class="indicator" data-index="4"></div>
+                    <div class="indicator" data-index="5"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Packs Combinados -->
+        <div class="pricing-packs">
+            <h3 class="pricing-subtitle animate-on-scroll">Packs Combinados</h3>
+            <p class="packs-intro animate-on-scroll">Combina servicios y ahorra con nuestros packs exclusivos</p>
+            
+            <!-- Grid para desktop - Packs 1-3 -->
+            <div class="packs-container">
+                <div class="pack-card animate-on-scroll animate-left">
+                    <div class="pack-header">
+                        <h4>Pack 1</h4>
+                        <div class="pack-discount">-10%</div>
+                    </div>
+                    <ul class="pack-services">
+                        <li><i class="fas fa-check-circle"></i> Diseño página web</li>
+                        <li><i class="fas fa-check-circle"></i> Agendar citas automatizadas</li>
+                    </ul>
+                    <div class="pack-price-container">
+                        <div class="pack-original">200€</div>
+                        <div class="pack-final">180€</div>
+                    </div>
+                    <div class="pack-saving">Ahorras 20€</div>
+                </div>
+                
+                <div class="pack-card animate-on-scroll">
+                    <div class="pack-header pack-popular">
+                        <h4>Pack 2</h4>
+                        <div class="pack-discount">-10%</div>
+                        <div class="popular-badge">MÁS POPULAR</div>
+                    </div>
+                    <ul class="pack-services">
+                        <li><i class="fas fa-check-circle"></i> Diseño página web</li>
+                        <li><i class="fas fa-check-circle"></i> Diseño de logo de empresa</li>
+                        <li><i class="fas fa-check-circle"></i> Videos y fotos promocionales</li>
+                    </ul>
+                    <div class="pack-price-container">
+                        <div class="pack-original">205€</div>
+                        <div class="pack-final">185€</div>
+                    </div>
+                    <div class="pack-saving">Ahorras 20€</div>
+                </div>
+                
+                <div class="pack-card animate-on-scroll animate-right">
+                    <div class="pack-header">
+                        <h4>Pack 3</h4>
+                        <div class="pack-discount">-6%</div>
+                    </div>
+                    <ul class="pack-services">
+                        <li><i class="fas fa-check-circle"></i> Página web con pagos (tienda)</li>
+                        <li><i class="fas fa-check-circle"></i> Diseño de logo de empresa</li>
+                        <li><i class="fas fa-check-circle"></i> Videos y fotos promocionales</li>
+                    </ul>
+                    <div class="pack-price-container">
+                        <div class="pack-original">355€</div>
+                        <div class="pack-final">330€</div>
+                    </div>
+                    <div class="pack-saving">Ahorras 25€</div>
+                </div>
+            </div>
+            
+            <!-- Carrusel para móviles - Packs 1-3 -->
+            <div class="packs-carousel-container">
+                <div class="packs-carousel-track">
+                    <div class="packs-carousel-card">
+                        <div class="pack-header">
+                            <h4>Pack 1</h4>
+                            <div class="pack-discount">-10%</div>
+                        </div>
+                        <ul class="pack-services">
+                            <li><i class="fas fa-check-circle"></i> Diseño página web</li>
+                            <li><i class="fas fa-check-circle"></i> Agendar citas automatizadas</li>
+                        </ul>
+                        <div class="pack-price-container">
+                            <div class="pack-original">200€</div>
+                            <div class="pack-final">180€</div>
+                        </div>
+                        <div class="pack-saving">Ahorras 20€</div>
+                    </div>
+                    
+                    <div class="packs-carousel-card">
+                        <div class="pack-header pack-popular">
+                            <h4>Pack 2</h4>
+                            <div class="pack-discount">-10%</div>
+                            <div class="popular-badge">MÁS POPULAR</div>
+                        </div>
+                        <ul class="pack-services">
+                            <li><i class="fas fa-check-circle"></i> Diseño página web</li>
+                            <li><i class="fas fa-check-circle"></i> Diseño de logo de empresa</li>
+                            <li><i class="fas fa-check-circle"></i> Videos y fotos promocionales</li>
+                        </ul>
+                        <div class="pack-price-container">
+                            <div class="pack-original">205€</div>
+                            <div class="pack-final">185€</div>
+                        </div>
+                        <div class="pack-saving">Ahorras 20€</div>
+                    </div>
+                    
+                    <div class="packs-carousel-card">
+                        <div class="pack-header">
+                            <h4>Pack 3</h4>
+                            <div class="pack-discount">-6%</div>
+                        </div>
+                        <ul class="pack-services">
+                            <li><i class="fas fa-check-circle"></i> Página web con pagos (tienda)</li>
+                            <li><i class="fas fa-check-circle"></i> Diseño de logo de empresa</li>
+                            <li><i class="fas fa-check-circle"></i> Videos y fotos promocionales</li>
+                        </ul>
+                        <div class="pack-price-container">
+                            <div class="pack-original">355€</div>
+                            <div class="pack-final">330€</div>
+                        </div>
+                        <div class="pack-saving">Ahorras 25€</div>
+                    </div>
+                </div>
+                
+                <!-- Indicadores del carrusel de packs -->
+                <div class="carousel-indicators">
+                    <div class="indicator active" data-index="0"></div>
+                    <div class="indicator" data-index="1"></div>
+                    <div class="indicator" data-index="2"></div>
+                </div>
+            </div>
+            
+            <!-- Pack 4 - Permanentemente visible en todas las pantallas -->
+            <div class="custom-pack animate-on-scroll">
+                <div class="custom-pack-header">
+                    <div class="custom-pack-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="custom-pack-info">
+                        <h4>Pack 4 - Personalizable</h4>
+                        <p class="custom-pack-description">Crea tu propio pack eligiendo los servicios que necesitas</p>
+                    </div>
+                    <div class="custom-pack-discount">-5%</div>
+                </div>
+                <div class="custom-pack-details">
+                    <p><strong>Pack a elección del cliente</strong> - Combina cualquier servicio de nuestra lista</p>
+                    <p class="custom-pack-note">Descuento del 5% aplicado al total de servicios seleccionados</p>
+                </div>
+                <div class="custom-pack-cta">
+                    <a href="solicitud-de-presupuesto.html" class="btn-presupuesto">
+                        <i class="fas fa-pencil-alt"></i> Solicitar Pack Personalizado
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Nota final -->
+        <div class="pricing-note animate-on-scroll">
+            <p><i class="fas fa-info-circle"></i> <strong>Recordatorio:</strong> Todo el trabajo se entrega antes del pago. Si no estás satisfecho, simplemente no pagas y eliminamos todo sin compromiso.</p>
+        </div>
+        
+        <!-- CTA final -->
+        <div class="pricing-cta animate-on-scroll">
+            <a href="solicitud-de-presupuesto.html" class="btn">
+                <i class="fas fa-file-invoice-dollar"></i> Solicitar Presupuesto Personalizado
+            </a>
+        </div>
+    </div>
+</section>
+
     <!-- Footer -->
     <footer id="contacto">
         <div class="container">
@@ -1301,6 +1743,105 @@ if (whyCarouselTrack) {
     
     // Recalcular en resize
     window.addEventListener('resize', startWhyCarousel);
+}
+
+        // Carrusel para Servicios Individuales en móviles
+const servicesCarouselTrack = document.querySelector('.services-carousel-track');
+const packsCarouselTrack = document.querySelector('.packs-carousel-track');
+
+if (servicesCarouselTrack) {
+    let servicesCurrentSlide = 0;
+    const servicesCards = document.querySelectorAll('.services-carousel-card');
+    const totalServicesSlides = servicesCards.length;
+    let servicesCarouselInterval;
+    const servicesIndicators = document.querySelectorAll('.services-carousel-container .indicator');
+    
+    function goToServicesSlide(index) {
+        servicesCurrentSlide = index;
+        servicesCarouselTrack.style.transform = `translateX(-${servicesCurrentSlide * 100}%)`;
+        
+        // Actualizar indicadores
+        servicesIndicators.forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === index);
+        });
+    }
+    
+    function nextServicesSlide() {
+        const nextIndex = (servicesCurrentSlide + 1) % totalServicesSlides;
+        goToServicesSlide(nextIndex);
+    }
+    
+    // Event listeners para indicadores
+    servicesIndicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            goToServicesSlide(index);
+        });
+    });
+    
+    // Iniciar carrusel solo en móviles
+    function startServicesCarousel() {
+        if (window.innerWidth <= 992) {
+            if (!servicesCarouselInterval) {
+                servicesCarouselInterval = setInterval(nextServicesSlide, 3500); // 3.5 segundos
+            }
+        } else {
+            if (servicesCarouselInterval) {
+                clearInterval(servicesCarouselInterval);
+                servicesCarouselInterval = null;
+            }
+        }
+    }
+    
+    startServicesCarousel();
+    window.addEventListener('resize', startServicesCarousel);
+}
+
+// Carrusel para Packs 1-3 en móviles
+if (packsCarouselTrack) {
+    let packsCurrentSlide = 0;
+    const packsCards = document.querySelectorAll('.packs-carousel-card');
+    const totalPacksSlides = packsCards.length;
+    let packsCarouselInterval;
+    const packsIndicators = document.querySelectorAll('.packs-carousel-container .indicator');
+    
+    function goToPacksSlide(index) {
+        packsCurrentSlide = index;
+        packsCarouselTrack.style.transform = `translateX(-${packsCurrentSlide * 100}%)`;
+        
+        // Actualizar indicadores
+        packsIndicators.forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === index);
+        });
+    }
+    
+    function nextPacksSlide() {
+        const nextIndex = (packsCurrentSlide + 1) % totalPacksSlides;
+        goToPacksSlide(nextIndex);
+    }
+    
+    // Event listeners para indicadores
+    packsIndicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            goToPacksSlide(index);
+        });
+    });
+    
+    // Iniciar carrusel solo en móviles
+    function startPacksCarousel() {
+        if (window.innerWidth <= 992) {
+            if (!packsCarouselInterval) {
+                packsCarouselInterval = setInterval(nextPacksSlide, 4000); // 4 segundos
+            }
+        } else {
+            if (packsCarouselInterval) {
+                clearInterval(packsCarouselInterval);
+                packsCarouselInterval = null;
+            }
+        }
+    }
+    
+    startPacksCarousel();
+    window.addEventListener('resize', startPacksCarousel);
 }
     </script>
 </body>
