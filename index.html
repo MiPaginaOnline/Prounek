@@ -946,6 +946,161 @@
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 15px 40px rgba(74, 144, 226, 0.6);
         }
+        /* Sección Proceso de Entrega */
+        .delivery-process-section {
+            background: linear-gradient(135deg, rgba(13, 27, 42, 0.9) 0%, rgba(30, 58, 95, 0.8) 100%);
+            padding: 5rem 1.5rem;
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #CCCCCC;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+        .process-steps {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all var(--transition-fast);
+        }
+        .process-step:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-blue);
+            transform: translateX(10px);
+        }
+        .step-number {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+        }
+        .step-content {
+            flex: 1;
+        }
+        .step-content h3 {
+            color: var(--text-white);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .step-content p {
+            color: #CCCCCC;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* Sección Contacto */
+        .contact-section {
+            background-color: rgba(13, 27, 42, 0.95);
+            padding: 5rem 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .contact-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        .contact-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-blue);
+            transform: translateY(-5px);
+        }
+        .contact-icon {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+        }
+        .contact-details h3 {
+            color: var(--text-white);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .contact-link {
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color var(--transition-fast);
+        }
+        .contact-link:hover {
+            color: var(--accent-green);
+            text-decoration: underline;
+        }
+        .contact-details p {
+            color: #CCCCCC;
+            font-size: 0.95rem;
+            margin: 0.2rem 0;
+        }
+        .contact-cta {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(30, 58, 95, 0.2) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(74, 144, 226, 0.2);
+        }
+        .contact-cta h3 {
+            color: var(--text-white);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .contact-cta p {
+            color: #CCCCCC;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        .contact-cta .btn {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            font-size: 1.2rem;
+            padding: 1rem 2.5rem;
+        }
         /* Footer */
         footer {
             background-color: rgba(0,0,0,0.3);
@@ -1084,6 +1239,24 @@
             .pricing-cta h3 {
                 font-size: 1.8rem;
             }
+            /* Responsive para nuevas secciones */
+            .process-step {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 1.5rem;
+            }
+            .step-number {
+                margin-bottom: 1rem;
+            }
+            .contact-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .contact-icon {
+                margin-bottom: 1rem;
+            }
         }
         @media (max-width: 768px) {
             .hero {
@@ -1149,6 +1322,25 @@
                 right: -40px;
             }
             .pricing-cta h3 {
+                font-size: 1.6rem;
+            }
+            /* Responsive para nuevas secciones */
+            .process-step {
+                padding: 1.5rem 1rem;
+            }
+            .step-content h3 {
+                font-size: 1.3rem;
+            }
+            .step-content p {
+                font-size: 1rem;
+            }
+            .contact-item {
+                padding: 1.5rem;
+            }
+            .contact-cta {
+                padding: 2rem 1.5rem;
+            }
+            .contact-cta h3 {
                 font-size: 1.6rem;
             }
         }
@@ -1546,8 +1738,65 @@
             </div>
         </div>
     </section>
+
+    <!-- Sección Proceso de Entrega -->
+    <section id="proceso" class="delivery-process-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="animate-on-scroll">Proceso de Entrega</h2>
+                <p class="section-subtitle animate-on-scroll">Trabajamos con total transparencia para tu completa tranquilidad</p>
+            </div>
+            <div class="process-steps animate-on-scroll">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Entrega para Revisión</h3>
+                        <p>Te enviamos el trabajo completo para que lo evalúes en un entorno de prueba.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Satisfacción Garantizada</h3>
+                        <p>Si el trabajo cumple con tus expectativas, realizas el pago y todo se activa definitivamente.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>No Aprobada</h3>
+                        <p>Si no estás satisfecho, no realizas ningún pago y eliminaremos el trabajo sin compromiso.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="animate-on-scroll">Contacto</h2>
+            </div>
+            <div class="contact-content animate-on-scroll">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Correo Electrónico</h3>
+                            <a href="mailto:tecreamosweb@gmail.com" class="contact-link">tecreamosweb@gmail.com</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer id="contacto">
+    <footer>
         <div class="container">
             <div class="social-links">
                 <a href="https://www.instagram.com/tecreamos.web/" class="social-link" target="_blank">
@@ -1563,9 +1812,10 @@
                     <i class="fab fa-linkedin-in"></i>
                 </a>
             </div>
-            <p class="copyright">© 2023 Prounek. Todos los derechos reservados.</p>
+            <p class="copyright">© 2025 Prounek. Todos los derechos reservados.</p>
         </div>
     </footer>
+
     <script>
         // Efectos de entrada y animaciones
         document.addEventListener('DOMContentLoaded', function() {
@@ -1703,7 +1953,6 @@
                 // Recalcular en resize
                 window.addEventListener('resize', startIndividualServicesCarousel);
             }
-
 
             // Actualizar enlace activo en navbar
             function updateActiveLink() {
