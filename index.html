@@ -377,6 +377,30 @@
             font-size: 1.5rem;
             color: #CCCCCC;
             font-style: italic;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            position: relative;
+        }
+
+        .trust-company:hover {
+            color: var(--accent-blue);
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+        .trust-company::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-blue);
+            transition: width var(--transition-fast);
+        }
+
+        .trust-company:hover::after {
+            width: 100%;
         }
 
         /* Sección sobre nosotros */
@@ -713,7 +737,7 @@
         <div class="container">
             <h2 class="trust-title animate-on-scroll">Han confiado en nosotros:</h2>
             <div class="trust-companies animate-on-scroll">
-                <div class="trust-company">Les Guatlles</div>
+                <a href="https://mipaginaonline.github.io/RestaurantLesGuatlles/" class="trust-company" target="_blank">Les Guatlles</a>
             </div>
         </div>
     </section>
