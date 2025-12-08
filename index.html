@@ -538,7 +538,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Sección ¿Por qué Elegirnos? */
+/* Sección ¿Por qué Elegirnos? */
 .why-choose-section {
     background: linear-gradient(135deg, rgba(30, 58, 95, 0.2) 0%, rgba(13, 27, 42, 0.1) 100%);
     padding: 5rem 1.5rem;
@@ -547,9 +547,10 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Grid para desktop (2x2) */
 .why-choose-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
     margin-bottom: 3rem;
 }
@@ -561,6 +562,7 @@
     transition: all var(--transition-slow);
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
+    text-align: center;
 }
 
 .why-card:hover {
@@ -570,26 +572,54 @@
     box-shadow: 0 15px 30px rgba(74, 144, 226, 0.2);
 }
 
+/* Carrusel para móviles - ¿Por qué Elegirnos? */
+.why-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 3rem 0;
+    border-radius: 20px;
+    display: none; /* Oculto por defecto, se muestra en móviles */
+}
+
+.why-carousel-track {
+    display: flex;
+    transition: transform var(--transition-slow);
+    width: 100%;
+}
+
+.why-carousel-card {
+    min-width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 3rem 2.5rem;
+    transition: all var(--transition-fast);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
 .why-icon {
     font-size: 3rem;
     color: var(--accent-blue);
     margin-bottom: 1.5rem;
-    text-align: center;
 }
 
+.why-carousel-card h3,
 .why-card h3 {
     color: var(--text-white);
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
 }
 
+.why-carousel-card p,
 .why-card p {
     color: #CCCCCC;
-    text-align: center;
     line-height: 1.6;
+    font-size: 1.1rem;
 }
 
+.why-carousel-card strong,
 .why-card strong {
     color: var(--accent-blue);
     font-weight: 600;
@@ -597,64 +627,60 @@
 
 .why-cta {
     text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 3rem;
-    background: rgba(30, 58, 95, 0.3);
-    border-radius: 20px;
-    border: 2px dashed var(--accent-blue);
-}
-
-.highlight-text {
-    font-size: 1.3rem;
-    color: var(--text-white);
-    margin-bottom: 2rem;
-    font-weight: 500;
-    line-height: 1.5;
+    margin-top: 2rem;
 }
 
 .why-cta .btn {
     background: linear-gradient(90deg, #4A90E2, #2A5C9A);
     font-size: 1.2rem;
-    padding: 1.2rem 3rem;
-}
-
-.why-cta .btn i {
-    margin-right: 10px;
+    padding: 1rem 3rem;
 }
 
 .why-cta .btn:hover {
     background: linear-gradient(90deg, #2A5C9A, #4A90E2);
-    transform: translateY(-5px) scale(1.05);
+    transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(74, 144, 226, 0.4);
 }
 
 /* Responsive para ¿Por qué Elegirnos? */
+@media (max-width: 992px) {
+    .why-choose-content {
+        display: none; /* Oculta el grid en móviles */
+    }
+    
+    .why-carousel-container {
+        display: block; /* Muestra el carrusel en móviles */
+    }
+    
+    .why-carousel-card {
+        padding: 2.5rem 2rem;
+    }
+    
+    .why-carousel-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .why-carousel-card p {
+        font-size: 1rem;
+    }
+}
+
 @media (max-width: 768px) {
     .why-choose-section {
         padding: 3rem 1rem;
     }
     
-    .why-choose-content {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .why-card {
+    .why-carousel-card {
         padding: 2rem 1.5rem;
     }
     
-    .why-cta {
-        padding: 2rem 1rem;
-    }
-    
-    .highlight-text {
-        font-size: 1.1rem;
+    .why-icon {
+        font-size: 2.5rem;
     }
     
     .why-cta .btn {
         font-size: 1rem;
-        padding: 1rem 2rem;
+        padding: 0.8rem 2rem;
     }
 }
 
@@ -1002,7 +1028,45 @@
             <h2 class="animate-on-scroll">¿Por qué Elegirnos?</h2>
         </div>
         
-        <div class="why-choose-content animate-on-scroll">
+        <!-- Carrusel para ¿Por qué Elegirnos? -->
+        <div class="why-carousel-container">
+            <div class="why-carousel-track">
+                <div class="why-carousel-card">
+                    <div class="why-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <h3>Precios Inigualables</h3>
+                    <p>Acabamos de abrir la empresa y nuestros precios están realmente bajos para la calidad del trabajo que ofrecemos. Es una oportunidad única para obtener servicios profesionales a un coste excepcional.</p>
+                </div>
+                
+                <div class="why-carousel-card">
+                    <div class="why-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Seguridad Garantizada</h3>
+                    <p>Entregamos <strong>TODO el trabajo antes de recibir el pago</strong>. Si no estás completamente satisfecho con el resultado, simplemente no nos pagas y borramos todo sin ningún compromiso ni preguntas.</p>
+                </div>
+                
+                <div class="why-carousel-card">
+                    <div class="why-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Confianza Total</h3>
+                    <p>Tu satisfacción es nuestra prioridad. Trabajamos con transparencia absoluta y ponemos todo nuestro empeño en superar tus expectativas. No tienes nada que perder y todo que ganar.</p>
+                </div>
+                
+                <div class="why-carousel-card">
+                    <div class="why-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Rapidez y Eficiencia</h3>
+                    <p>Entregamos proyectos completos en solo 7 días. Combina esto con nuestros precios especiales de lanzamiento y obtendrás la mejor relación calidad-precio-tiempo del mercado.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Grid para desktop (se mantiene igual) -->
+        <div class="why-choose-content">
             <div class="why-card">
                 <div class="why-icon">
                     <i class="fas fa-tag"></i>
@@ -1037,10 +1101,8 @@
         </div>
         
         <div class="why-cta animate-on-scroll">
-            <p class="highlight-text">Es el momento perfecto para aprovechar esta oportunidad única. ¡No dejes que se te escape!</p>
-            <a href="solicitud-de-presupuesto.html" class="btn">
-                <i class="fas fa-gift"></i>
-                Aprovechar Oferta de Lanzamiento
+            <a href="por-que-elegirnos.html" class="btn">
+                Más Información
             </a>
         </div>
     </div>
@@ -1226,6 +1288,40 @@
                 }, 300 + (index * 200));
             });
         });
+        // Añade esto al final del script existente, dentro del DOMContentLoaded:
+
+// Carrusel automático para ¿Por qué Elegirnos? (solo en móviles)
+const whyCarouselTrack = document.querySelector('.why-carousel-track');
+if (whyCarouselTrack) {
+    let whyCurrentSlide = 0;
+    const whyCards = document.querySelectorAll('.why-carousel-card');
+    const totalWhySlides = whyCards.length;
+    let whyCarouselInterval;
+    
+    function nextWhySlide() {
+        whyCurrentSlide = (whyCurrentSlide + 1) % totalWhySlides;
+        whyCarouselTrack.style.transform = `translateX(-${whyCurrentSlide * 100}%)`;
+    }
+    
+    // Iniciar carrusel solo en móviles
+    function startWhyCarousel() {
+        if (window.innerWidth <= 992) {
+            if (!whyCarouselInterval) {
+                whyCarouselInterval = setInterval(nextWhySlide, 3000); // 3 segundos
+            }
+        } else {
+            if (whyCarouselInterval) {
+                clearInterval(whyCarouselInterval);
+                whyCarouselInterval = null;
+            }
+        }
+    }
+    
+    startWhyCarousel();
+    
+    // Recalcular en resize
+    window.addEventListener('resize', startWhyCarousel);
+}
     </script>
 </body>
 </html>
