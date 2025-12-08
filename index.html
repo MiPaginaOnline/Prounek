@@ -440,7 +440,7 @@
             background-color: rgba(30, 58, 95, 0.5);
             transform: translateY(-3px);
         }
-        /* Carrusel para móviles */
+        /* Carrusel para móviles servicios */
         .carousel-container {
             display: none;
             position: relative;
@@ -545,7 +545,7 @@
             color: var(--accent-blue);
             font-weight: 600;
         }
-        /* NUEVA SECCIÓN MEJORADA: Precios y Packs */
+        /* SECCIÓN MEJORADA: Precios y Packs Profesional */
         .pricing-section {
             background: linear-gradient(135deg, rgba(13, 27, 42, 0.95) 0%, rgba(30, 58, 95, 0.85) 100%);
             padding: 5rem 1.5rem;
@@ -622,47 +622,31 @@
         .pricing-subtitle h3::after {
             right: -70px;
         }
-        /* Contenedores de carruseles */
-        .pricing-carousel-container,
-        .recommended-packs-carousel-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            margin-bottom: 3rem;
-            border-radius: 20px;
+        /* Contenedor de servicios individuales - Grid */
+        .individual-services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
         }
-        .pricing-carousel-track,
-        .recommended-packs-carousel-track {
-            display: flex;
-            transition: transform var(--transition-slow);
-            width: 100%;
-        }
-        .pricing-carousel-slide,
-        .recommended-packs-carousel-slide {
-            min-width: 100%;
-            padding: 2.5rem; /* Ajustado para coincidir con el padding de las tarjetas */
-            box-sizing: border-box;
-        }
-
-        /* ESTILOS GENERALES PARA TARJETAS DE PRECIO Y PACKS */
-        .pricing-card,
-        .pack-card {
+        /* Tarjetas de precio profesionales - SIN LÍNEA DE COLORES */
+        .pricing-card {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
             border-radius: 20px;
-            padding: 2.5rem;
+            padding: 2.5rem 2rem;
             text-align: center;
             transition: all var(--transition-slow);
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
-            min-height: 220px;
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
-        .pricing-card::before,
-        .pack-card::before {
+        /* QUITADA LA LÍNEA DE COLORES DE ARRIBA */
+        /* .pricing-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -670,28 +654,17 @@
             width: 100%;
             height: 5px;
             background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
-        }
-        .pricing-card:hover,
-        .pack-card:hover {
-            transform: translateY(-15px) scale(1.03);
+        } */
+        .pricing-card:hover {
+            transform: translateY(-10px);
             border-color: var(--accent-blue);
-            box-shadow: 0 25px 50px rgba(74, 144, 226, 0.25);
+            box-shadow: 0 20px 40px rgba(74, 144, 226, 0.2);
         }
-        .pricing-card:nth-child(1)::before { background: linear-gradient(90deg, #667eea, #764ba2); }
-        .pricing-card:nth-child(2)::before { background: linear-gradient(90deg, #f093fb, #f5576c); }
-        .pricing-card:nth-child(3)::before { background: linear-gradient(90deg, #4facfe, #00f2fe); }
-        .pricing-card:nth-child(4)::before { background: linear-gradient(90deg, #43e97b, #38f9d7); }
-        .pricing-card:nth-child(5)::before { background: linear-gradient(90deg, #fa709a, #fee140); }
-        .pricing-card:nth-child(6)::before { background: linear-gradient(90deg, #30cfd0, #330867); }
         .pricing-card h3 {
             color: var(--text-white);
             font-size: 1.5rem;
             margin-bottom: 1rem;
             font-weight: 600;
-            min-height: 3.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         .price-tag {
             position: relative;
@@ -700,7 +673,7 @@
         }
         .price-tag .price {
             font-family: 'Montserrat', sans-serif;
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
             color: var(--accent-gold);
             line-height: 1;
@@ -719,7 +692,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 4.5rem;
+            font-size: 4rem;
             font-weight: 900;
             color: rgba(255, 255, 255, 0.05);
             z-index: 1;
@@ -735,42 +708,125 @@
             border-radius: 10px;
             display: inline-block;
         }
-        /* Estilos específicos para packs */
-        .pack-card {
-            background: linear-gradient(135deg, rgba(30, 58, 95, 0.4) 0%, rgba(13, 27, 42, 0.6) 100%);
+
+        /* Nuevos estilos para el carrusel de servicios individuales */
+        .individual-services-carousel {
+            display: none; /* Oculto por defecto */
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 4rem;
+            border-radius: 20px; /* Opcional: para coincidir con el pack */
+        }
+        .individual-carousel-track {
+            display: flex;
+            transition: transform var(--transition-slow);
+            width: 100%;
+        }
+        .individual-carousel-card {
+            min-width: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .individual-carousel-card h3 {
+            color: var(--text-white);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .individual-carousel-card .price-tag {
+            position: relative;
+            display: inline-block;
+            margin: 1rem auto; /* Centrado */
+        }
+        .individual-carousel-card .price-tag .price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            line-height: 1;
+            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+        .individual-carousel-card .price-tag .price::after {
+            content: '€';
+            font-size: 1.5rem;
+            vertical-align: super;
+            margin-left: 2px;
+        }
+        .individual-carousel-card .price-tag .price-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.05);
+            z-index: 1;
+            user-select: none;
+        }
+        .individual-carousel-card .note-text {
+            color: #AAAAAA;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            font-style: italic;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+
+        /* Pack Personalizado Mejorado */
+        .custom-pack-container {
+            max-width: 800px;
+            margin: 4rem auto;
+        }
+        .custom-pack-card {
+            background: linear-gradient(135deg, rgba(13, 27, 42, 0.95) 0%, rgba(30, 58, 95, 0.85) 100%);
             border-radius: 25px;
-            padding: 3rem 2.5rem;
+            padding: 4rem 3rem;
             text-align: center;
             transition: all var(--transition-slow);
             border: 2px solid rgba(255, 255, 255, 0.15);
-            min-height: 380px; /* Ajustado para consistencia */
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
-        .pack-card::before { /* Ya definido arriba para ambos */
-            height: 8px; /* Línea superior más gruesa para packs */
-        }
-        .pack-card:hover {
-            transform: translateY(-20px) scale(1.05);
-            border-color: var(--accent-blue);
-            box-shadow: 0 30px 60px rgba(74, 144, 226, 0.35);
-        }
-        .pack-card:nth-child(1)::before { background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); }
-        .pack-card:nth-child(2)::before { background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%); }
-        .pack-card:nth-child(3)::before { background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); }
-        .pack-card:nth-child(4)::before { 
-            background: linear-gradient(90deg, #43e97b, #38f9d7, #fa709a, #fee140);
+        /* QUITADA LA LÍNEA DE COLORES DEL PACK PERSONALIZADO */
+        /* .custom-pack-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #00f2fe, #43e97b, #38f9d7);
             background-size: 400% 400%;
             animation: gradientShift 3s ease infinite;
-        }
+        } */
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        .pack-card .pack-badge {
+        .custom-pack-card .pack-badge {
             position: absolute;
-            top: 15px;
+            top: 20px;
             right: -35px;
-            background: var(--accent-gold);
+            background: linear-gradient(135deg, var(--accent-gold), #FFA500);
             color: #333;
             padding: 0.5rem 2.5rem;
             font-weight: 800;
@@ -779,38 +835,38 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             z-index: 10;
         }
-        .pack-card h3 {
+        .custom-pack-card h3 {
             color: var(--text-white);
-            font-size: 2.2rem;
-            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
             font-weight: 700;
             position: relative;
             padding-bottom: 1rem;
         }
-        .pack-card h3::after {
+        .custom-pack-card h3::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
+            width: 100px;
+            height: 4px;
             background: var(--accent-blue);
             border-radius: 2px;
         }
         .pack-features {
             list-style: none;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             text-align: left;
-            padding-left: 1rem;
+            padding-left: 2rem;
         }
         .pack-features li {
             color: #CCCCCC;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             position: relative;
-            padding-left: 2rem;
-            font-size: 1.1rem;
-            line-height: 1.5;
+            padding-left: 3rem;
+            font-size: 1.15rem;
+            line-height: 1.6;
         }
         .pack-features li::before {
             content: '✓';
@@ -820,74 +876,43 @@
             font-weight: bold;
             font-size: 1.2rem;
             background: rgba(76, 175, 80, 0.1);
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        .pack-price {
-            font-family: 'Montserrat', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: auto;
-        }
-        .original-price {
-            color: #AAAAAA;
-            text-decoration: line-through;
-            font-size: 1.8rem;
-            font-weight: 600;
-        }
-        .discounted-price {
-            color: var(--accent-gold);
-            font-size: 3.5rem;
-            font-weight: 800;
-            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
-            line-height: 1;
-        }
-        .discounted-price::after {
-            content: '€';
-            font-size: 1.8rem;
-            vertical-align: super;
-            margin-left: 2px;
-        }
-        .discount-badge {
-            background: linear-gradient(135deg, #FF416C, #FF4B2B);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
-            font-size: 1rem;
-            font-weight: 700;
-            display: inline-block;
-            margin-top: 0.5rem;
-            box-shadow: 0 5px 15px rgba(255, 65, 108, 0.3);
-        }
-        /* Para Pack 4 (personalizable) - Fuera del carrusel */
-        .pack-card:last-child {
-            background: linear-gradient(135deg, rgba(13, 27, 42, 0.95) 0%, rgba(30, 58, 95, 0.85) 100%); /* Fondo consistente con la sección */
-            border: 2px solid var(--accent-gold); /* Borde dorado */
-            margin-top: 2rem;
-            margin-bottom: 3rem;
-        }
-        .pack-card:last-child .pack-badge {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-        }
-        .pack-card:last-child .discounted-price {
-            font-size: 2.5rem;
-            color: #4A90E2;
-        }
-        .pack-card:last-child .custom-pack-text {
-            color: var(--accent-blue);
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-top: 1rem;
-            padding: 0.8rem 1.5rem;
+        .custom-pack-info {
             background: rgba(74, 144, 226, 0.1);
             border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
             border: 1px solid rgba(74, 144, 226, 0.3);
+        }
+        .custom-pack-info h4 {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .custom-pack-info p {
+            color: #CCCCCC;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .custom-pack-cta {
+            margin-top: 2.5rem;
+        }
+        .custom-pack-cta .btn {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            font-size: 1.2rem;
+            padding: 1.2rem 3rem;
+            box-shadow: 0 10px 30px rgba(74, 144, 226, 0.4);
+        }
+        .custom-pack-cta .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(74, 144, 226, 0.6);
         }
         /* CTA después de precios */
         .pricing-cta {
@@ -971,26 +996,7 @@
         .animate-right {
             transform: translateX(30px);
         }
-        /* RESPONSIVE: Mostrar carruseles y ocultar grids */
-        /* Mostrar carruseles */
-        .pricing-carousel-container,
-        .recommended-packs-carousel-container {
-            display: block;
-        }
-        /* Ocultar contenedores originales */
-        .pricing-cards-container,
-        .packs-cards-container {
-            display: none !important; /* !important para asegurar que prevalezca */
-        }
-        /* Estilo para el pack personalizado (último pack) */
-        .pack-card.personalizado-permanente {
-            display: block !important;
-            background: linear-gradient(135deg, rgba(13, 27, 42, 0.95) 0%, rgba(30, 58, 95, 0.85) 100%);
-            border: 2px solid var(--accent-gold);
-            margin-top: 2rem;
-            margin-bottom: 3rem;
-        }
-
+        /* RESPONSIVE */
         @media (max-width: 992px) {
             .navbar-links {
                 display: none;
@@ -1054,33 +1060,66 @@
             .pricing-subtitle h3::after {
                 right: -50px;
             }
-            .pricing-card,
-            .pack-card {
-                min-height: auto;
-                padding: 2rem 1.5rem;
+            /* Mostrar carrusel de servicios individuales y ocultar grid */
+            .individual-services-container {
+                display: none;
             }
-            .pricing-card h3 {
-                font-size: 1.3rem;
-                min-height: auto;
+            .individual-services-carousel {
+                display: block;
             }
-            .price-tag .price {
-                font-size: 2.8rem;
+            .custom-pack-card {
+                padding: 3rem 2rem;
             }
-            .price-tag .price-bg {
-                font-size: 3.5rem;
+            .custom-pack-card h3 {
+                font-size: 2rem;
             }
-            .pack-card {
-                min-height: auto;
-                padding: 2.5rem 2rem;
+            .pack-features li {
+                font-size: 1.1rem;
+                padding-left: 2.5rem;
             }
-            .pack-card h3 {
+            .pack-features li::before {
+                width: 24px;
+                height: 24px;
+            }
+            .pricing-cta h3 {
                 font-size: 1.8rem;
             }
-            .discounted-price {
-                font-size: 2.8rem;
+        }
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 10rem;
+                text-align: center;
+                align-items: center;
             }
-            .original-price {
-                font-size: 1.5rem;
+            section {
+                padding: 3rem 1rem;
+            }
+            .features {
+                justify-content: center;
+            }
+            .trust-company {
+                font-size: 1.2rem;
+            }
+            .about-section {
+                padding: 3rem 1rem;
+            }
+            .pricing-section {
+                padding: 3rem 1rem;
+            }
+            .pricing-card {
+                padding: 2rem 1.5rem;
+            }
+            .price-tag .price {
+                font-size: 2.5rem;
+            }
+            .price-tag .price-bg {
+                font-size: 3.2rem;
+            }
+            .custom-pack-card {
+                padding: 2.5rem 1.5rem;
+            }
+            .custom-pack-card h3 {
+                font-size: 1.8rem;
             }
             .why-carousel-card {
                 padding: 2rem 1.5rem;
@@ -1110,51 +1149,7 @@
                 right: -40px;
             }
             .pricing-cta h3 {
-                font-size: 1.8rem;
-            }
-        }
-        @media (max-width: 768px) {
-            .hero {
-                padding-top: 10rem;
-                text-align: center;
-                align-items: center;
-            }
-            section {
-                padding: 3rem 1rem;
-            }
-            .features {
-                justify-content: center;
-            }
-            .trust-company {
-                font-size: 1.2rem;
-            }
-            .about-section {
-                padding: 3rem 1rem;
-            }
-            .pricing-section {
-                padding: 3rem 1rem;
-            }
-            .pricing-card,
-            .pack-card {
-                padding: 1.8rem 1.2rem;
-            }
-            .pack-card h3 {
                 font-size: 1.6rem;
-            }
-            .discounted-price {
-                font-size: 2.5rem;
-            }
-            .original-price {
-                font-size: 1.4rem;
-            }
-            .pack-card.personalizado-permanente {
-                 padding: 2rem 1.5rem;
-            }
-            .pack-card.personalizado-permanente h3 {
-                font-size: 1.8rem;
-            }
-            .pack-card.personalizado-permanente .discounted-price {
-                font-size: 2.2rem;
             }
         }
         @media (max-width: 480px) {
@@ -1164,6 +1159,9 @@
             }
             .pricing-subtitle h3 {
                 padding: 0;
+            }
+            .individual-services-container {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1419,158 +1417,133 @@
             </div>
         </div>
     </section>
-    <!-- Sección Precios y Packs MEJORADA -->
+    <!-- Sección Precios y Packs - VERSIÓN MEJORADA Y PROFESIONAL -->
     <section id="precios-packs" class="pricing-section">
         <div class="container">
             <div class="pricing-header">
-                <div class="pricing-badge animate-on-scroll">🔥 OFERTAS DE LANZAMIENTO 🔥</div>
-                <h2 class="animate-on-scroll">Precios y Packs</h2>
-                <p class="hero-subtitle animate-on-scroll" style="max-width: 800px; margin: 1rem auto 0;">Aprovecha nuestros precios especiales de apertura. ¡Calidad profesional a precios inigualables!</p>
+                <h2 class="animate-on-scroll">Precios</h2>
             </div>
-            <!-- Servicios Individuales - Carrusel -->
             <div class="pricing-subtitle animate-on-scroll">
-                <h3>Servicios Individuales</h3>
             </div>
-            <div class="pricing-carousel-container">
-                <div class="pricing-carousel-track">
-                    <div class="pricing-carousel-slide">
-                        <div class="pricing-card animate-on-scroll">
-                            <h3>Diseño Página Web</h3>
-                            <div class="price-tag">
-                                <div class="price-bg">150</div>
-                                <div class="price">150</div>
-                            </div>
-                            <p class="note-text">Diseño personalizado y responsivo</p>
+            <!-- Carrusel de servicios individuales para móviles -->
+            <div class="individual-services-carousel">
+                <div class="individual-carousel-track">
+                    <div class="individual-carousel-card">
+                        <h3>Diseño Página Web</h3>
+                        <div class="price-tag">
+                            <div class="price-bg">150</div>
+                            <div class="price">150</div>
                         </div>
+                        <p class="note-text">Diseño personalizado y responsivo • Dominio y hosting incluido</p>
                     </div>
-                    <div class="pricing-carousel-slide">
-                        <div class="pricing-card animate-on-scroll">
-                            <h3>Mantenimiento Web</h3>
-                            <div class="price-tag">
-                                <div class="price-bg">30</div>
-                                <div class="price">30</div>
-                            </div>
-                            <p class="note-text">* por mes, según frecuencia</p>
+                    <div class="individual-carousel-card">
+                        <h3>Mantenimiento Web</h3>
+                        <div class="price-tag">
+                            <div class="price-bg">30</div>
+                            <div class="price">30</div>
                         </div>
+                        <p class="note-text">* por mes • Actualizaciones, seguridad y backups</p>
                     </div>
-                    <div class="pricing-carousel-slide">
-                        <div class="pricing-card animate-on-scroll">
-                            <h3>Agendar Citas Automatizadas</h3>
-                            <div class="price-tag">
-                                <div class="price-bg">50</div>
-                                <div class="price">50</div>
-                            </div>
-                            <p class="note-text">Sistema completo de reservas online</p>
+                    <div class="individual-carousel-card">
+                        <h3>Agendar Citas Automatizadas</h3>
+                        <div class="price-tag">
+                            <div class="price-bg">50</div>
+                            <div class="price">50</div>
                         </div>
+                        <p class="note-text">Sistema completo de reservas online • Integración con calendario</p>
                     </div>
-                     <div class="pricing-carousel-slide">
-                        <div class="pricing-card animate-on-scroll">
-                            <h3>Diseño de Logo Profesional</h3>
-                            <div class="price-tag">
-                                <div class="price-bg">5</div>
-                                <div class="price">5</div>
-                            </div>
-                            <p class="note-text">Perfecto para redes sociales</p>
+                    <div class="individual-carousel-card">
+                        <h3>Diseño de Logo Profesional</h3>
+                        <div class="price-tag">
+                            <div class="price-bg">5</div>
+                            <div class="price">5</div>
                         </div>
+                        <p class="note-text">Logo personalizado • Variantes para redes sociales • Archivos vectoriales</p>
                     </div>
-                     <div class="pricing-carousel-slide">
-                        <div class="pricing-card animate-on-scroll">
-                            <h3>Videos y Fotos Promocionales</h3>
-                            <div class="price-tag">
-                                <div class="price-bg">50</div>
-                                <div class="price">50</div>
-                            </div>
-                            <p class="note-text">Pack de 10 videos o fotos</p>
+                    <div class="individual-carousel-card">
+                        <h3>Videos y Fotos Promocionales</h3>
+                        <div class="price-tag">
+                            <div class="price-bg">50</div>
+                            <div class="price">50</div>
                         </div>
+                        <p class="note-text">Pack de 10 videos o fotos • Edición profesional • Optimizado para redes</p>
                     </div>
-                     <div class="pricing-carousel-slide">
-                        <div class="pricing-card animate-on-scroll">
-                            <h3>Tienda Online con Pagos</h3>
-                            <div class="price-tag">
-                                <div class="price-bg">300</div>
-                                <div class="price">300</div>
-                            </div>
-                            <p class="note-text">E-commerce completo</p>
+                    <div class="individual-carousel-card">
+                        <h3>Tienda Online con Pagos</h3>
+                        <div class="price-tag">
+                            <div class="price-bg">300</div>
+                            <div class="price">300</div>
                         </div>
+                        <p class="note-text">E-commerce completo • Pasarela de pagos segura • Gestión de inventario</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Packs Recomendados - Carrusel -->
-            <div class="pricing-subtitle animate-on-scroll">
-                <h3>Packs Recomendados</h3>
-            </div>
-             <div class="recommended-packs-carousel-container">
-                <div class="recommended-packs-carousel-track">
-                    <div class="recommended-packs-carousel-slide">
-                        <div class="pack-card animate-on-scroll">
-                            <div class="pack-badge">-10%</div>
-                            <h3>Pack Básico</h3>
-                            <ul class="pack-features">
-                                <li>Diseño página web profesional</li>
-                                <li>Sistema de citas automatizadas</li>
-                                <li>Soporte técnico 1 mes</li>
-                            </ul>
-                            <div class="pack-price">
-                                <div class="original-price">200€</div>
-                                <div class="discounted-price">180</div>
-                                <div class="discount-badge">AHORRA 20€</div>
-                            </div>
-                        </div>
+            <!-- Contenedor Grid de servicios individuales para escritorio -->
+            <div class="individual-services-container">
+                <div class="pricing-card animate-on-scroll">
+                    <h3>Diseño Página Web</h3>
+                    <div class="price-tag">
+                        <div class="price-bg">150</div>
+                        <div class="price">150</div>
                     </div>
-                    <div class="recommended-packs-carousel-slide">
-                         <div class="pack-card animate-on-scroll">
-                            <div class="pack-badge">-10%</div>
-                            <h3>Pack Profesional</h3>
-                            <ul class="pack-features">
-                                <li>Diseño página web premium</li>
-                                <li>Logo profesional de empresa</li>
-                                <li>Pack de 10 videos/fotos</li>
-                                <li>Soporte técnico 2 meses</li>
-                            </ul>
-                            <div class="pack-price">
-                                <div class="original-price">205€</div>
-                                <div class="discounted-price">185</div>
-                                <div class="discount-badge">AHORRA 20€</div>
-                            </div>
-                        </div>
+                    <p class="note-text">Diseño personalizado y responsivo • Dominio y hosting incluido</p>
+                </div>
+                <div class="pricing-card animate-on-scroll">
+                    <h3>Mantenimiento Web</h3>
+                    <div class="price-tag">
+                        <div class="price-bg">30</div>
+                        <div class="price">30</div>
                     </div>
-                    <div class="recommended-packs-carousel-slide">
-                         <div class="pack-card animate-on-scroll">
-                            <div class="pack-badge">-6%</div>
-                            <h3>Pack E-commerce</h3>
-                            <ul class="pack-features">
-                                <li>Tienda online con pagos</li>
-                                <li>Logo profesional de empresa</li>
-                                <li>Pack de 10 videos/fotos</li>
-                                <li>Soporte técnico 3 meses</li>
-                            </ul>
-                            <div class="pack-price">
-                                <div class="original-price">355€</div>
-                                <div class="discounted-price">330</div>
-                                <div class="discount-badge">AHORRA 25€</div>
-                            </div>
-                        </div>
+                    <p class="note-text">* por mes • Actualizaciones, seguridad y backups</p>
+                </div>
+                <div class="pricing-card animate-on-scroll">
+                    <h3>Agendar Citas Automatizadas</h3>
+                    <div class="price-tag">
+                        <div class="price-bg">50</div>
+                        <div class="price">50</div>
                     </div>
+                    <p class="note-text">Sistema completo de reservas online • Integración con calendario</p>
+                </div>
+                <div class="pricing-card animate-on-scroll">
+                    <h3>Diseño de Logo Profesional</h3>
+                    <div class="price-tag">
+                        <div class="price-bg">5</div>
+                        <div class="price">5</div>
+                    </div>
+                    <p class="note-text">Logo personalizado • Variantes para redes sociales • Archivos vectoriales</p>
+                </div>
+                <div class="pricing-card animate-on-scroll">
+                    <h3>Videos y Fotos Promocionales</h3>
+                    <div class="price-tag">
+                        <div class="price-bg">50</div>
+                        <div class="price">50</div>
+                    </div>
+                    <p class="note-text">Pack de 10 videos o fotos • Edición profesional • Optimizado para redes</p>
+                </div>
+                <div class="pricing-card animate-on-scroll">
+                    <h3>Tienda Online con Pagos</h3>
+                    <div class="price-tag">
+                        <div class="price-bg">300</div>
+                        <div class="price">300</div>
+                    </div>
+                    <p class="note-text">E-commerce completo • Pasarela de pagos segura • Gestión de inventario</p>
                 </div>
             </div>
-
-            <!-- Pack Personalizado - Permanente -->
-            <div class="pack-card personalizado-permanente animate-on-scroll">
-                <div class="pack-badge">-5%</div>
-                <h3>Pack Personalizado</h3>
-                <ul class="pack-features">
-                    <li>Combinación a tu elección</li>
-                    <li>Servicios personalizados</li>
-                    <li>Flexibilidad total</li>
-                    <li>Adaptado a tus necesidades</li>
-                </ul>
-                <div class="pack-price">
-                    <div class="custom-pack-text">Descuento del 5%</div>
-                    <div class="discount-badge">TU ELIGES</div>
+            <!-- Pack Personalizado - Diseño Premium -->
+            <div class="custom-pack-container">
+                <div class="custom-pack-card animate-on-scroll">
+                    <div class="pack-badge">...PERSONALIZADO</div>
+                    <h3>Pack Personalizado Premium</h3>
+                    <ul class="pack-features">
+                        <li><strong>Combinación de servicios a tu elección</strong> - Elige solo lo que necesitas</li>
+                        <li><strong>Descuento especial del 5%</strong> en la combinación seleccionada</li>
+                        <li><strong>Asesoramiento profesional gratuito</strong> para optimizar tu inversión</li>
+                        <li><strong>Soporte prioritario</strong> durante todo el proceso</li>
+                        <li><strong>Plan de implementación personalizado</strong> adaptado a tus objetivos</li>
+                        <li><strong>Garantía extendida</strong> de 3 meses en todos los servicios incluidos</li>
+                    </ul>
                 </div>
             </div>
-
         </div>
     </section>
     <!-- Footer -->
@@ -1688,7 +1661,7 @@
                 function startWhyCarousel() {
                     if (window.innerWidth <= 992) {
                         if (!whyCarouselInterval) {
-                            whyCarouselInterval = setInterval(nextWhySlide, 3000); // 3 segundos
+                            whyCarouselInterval = setInterval(nextWhySlide, 3000);
                         }
                     } else {
                         if (whyCarouselInterval) {
@@ -1702,84 +1675,33 @@
                 window.addEventListener('resize', startWhyCarousel);
             }
 
-            // Carrusel automático para Precios Individuales (siempre)
-            const pricingCarouselTrack = document.querySelector('.pricing-carousel-track');
-            if (pricingCarouselTrack) {
-                let pricingCurrentSlide = 0;
-                const pricingSlides = document.querySelectorAll('.pricing-carousel-slide');
-                const totalPricingSlides = pricingSlides.length;
-                let pricingCarouselInterval;
-
-                function nextPricingSlide() {
-                    pricingCurrentSlide = (pricingCurrentSlide + 1) % totalPricingSlides;
-                    pricingCarouselTrack.style.transform = `translateX(-${pricingCurrentSlide * 100}%)`;
+            // Carrusel automático para Servicios Individuales (solo en móviles)
+            const individualCarouselTrack = document.querySelector('.individual-carousel-track');
+            if (individualCarouselTrack) {
+                let individualCurrentSlide = 0;
+                const individualCards = document.querySelectorAll('.individual-carousel-card');
+                const totalIndividualSlides = individualCards.length;
+                let individualCarouselInterval;
+                function nextIndividualSlide() {
+                    individualCurrentSlide = (individualCurrentSlide + 1) % totalIndividualSlides;
+                    individualCarouselTrack.style.transform = `translateX(-${individualCurrentSlide * 100}%)`;
                 }
-
-                function startPricingCarousel() {
-                    if (!pricingCarouselInterval) {
-                        pricingCarouselInterval = setInterval(nextPricingSlide, 3000);
+                // Iniciar carrusel solo en móviles
+                function startIndividualServicesCarousel() {
+                    if (window.innerWidth <= 992) {
+                        if (!individualCarouselInterval) {
+                            individualCarouselInterval = setInterval(nextIndividualSlide, 3000);
+                        }
+                    } else {
+                        if (individualCarouselInterval) {
+                            clearInterval(individualCarouselInterval);
+                            individualCarouselInterval = null;
+                        }
                     }
                 }
-
-                startPricingCarousel();
-
+                startIndividualServicesCarousel();
                 // Recalcular en resize
-                window.addEventListener('resize', startPricingCarousel);
-
-                 // Detener carrusel al pasar el mouse encima
-                pricingCarouselTrack.parentElement.addEventListener('mouseenter', function() {
-                    if (pricingCarouselInterval) {
-                        clearInterval(pricingCarouselInterval);
-                        pricingCarouselInterval = null;
-                    }
-                });
-
-                // Reanudar carrusel al salir del mouse
-                pricingCarouselTrack.parentElement.addEventListener('mouseleave', function() {
-                    if (!pricingCarouselInterval) {
-                        startPricingCarousel();
-                    }
-                });
-            }
-
-            // Carrusel automático para Packs Recomendados (siempre)
-            const recommendedPacksCarouselTrack = document.querySelector('.recommended-packs-carousel-track');
-            if (recommendedPacksCarouselTrack) {
-                let recommendedPacksCurrentSlide = 0;
-                const recommendedPacksSlides = document.querySelectorAll('.recommended-packs-carousel-slide');
-                const totalRecommendedPacksSlides = recommendedPacksSlides.length;
-                let recommendedPacksCarouselInterval;
-
-                function nextRecommendedPacksSlide() {
-                    recommendedPacksCurrentSlide = (recommendedPacksCurrentSlide + 1) % totalRecommendedPacksSlides;
-                    recommendedPacksCarouselTrack.style.transform = `translateX(-${recommendedPacksCurrentSlide * 100}%)`;
-                }
-
-                function startRecommendedPacksCarousel() {
-                    if (!recommendedPacksCarouselInterval) {
-                        recommendedPacksCarouselInterval = setInterval(nextRecommendedPacksSlide, 3000);
-                    }
-                }
-
-                startRecommendedPacksCarousel();
-
-                // Recalcular en resize
-                window.addEventListener('resize', startRecommendedPacksCarousel);
-
-                 // Detener carrusel al pasar el mouse encima
-                recommendedPacksCarouselTrack.parentElement.addEventListener('mouseenter', function() {
-                    if (recommendedPacksCarouselInterval) {
-                        clearInterval(recommendedPacksCarouselInterval);
-                        recommendedPacksCarouselInterval = null;
-                    }
-                });
-
-                // Reanudar carrusel al salir del mouse
-                recommendedPacksCarouselTrack.parentElement.addEventListener('mouseleave', function() {
-                    if (!recommendedPacksCarouselInterval) {
-                        startRecommendedPacksCarousel();
-                    }
-                });
+                window.addEventListener('resize', startIndividualServicesCarousel);
             }
 
 
@@ -1836,7 +1758,7 @@
                 }, 300 + (index * 200));
             });
             // Efecto especial para las tarjetas de precios
-            const pricingCards = document.querySelectorAll('.pricing-card, .pack-card');
+            const pricingCards = document.querySelectorAll('.pricing-card, .custom-pack-card, .individual-carousel-card');
             pricingCards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
                     this.style.zIndex = '10';
