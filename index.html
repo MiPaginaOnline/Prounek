@@ -625,24 +625,7 @@
     font-weight: 600;
 }
 
-.why-cta {
-    text-align: center;
-    margin-top: 2rem;
-}
-
-.why-cta .btn {
-    background: linear-gradient(90deg, #4A90E2, #2A5C9A);
-    font-size: 1.2rem;
-    padding: 1rem 3rem;
-}
-
-.why-cta .btn:hover {
-    background: linear-gradient(90deg, #2A5C9A, #4A90E2);
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(74, 144, 226, 0.4);
-}
-
-/* Responsive para ¿Por qué Elegirnos? */
+/* RESPONSIVE */
 @media (max-width: 992px) {
     .why-choose-content {
         display: none; /* Oculta el grid en móviles */
@@ -676,11 +659,6 @@
     
     .why-icon {
         font-size: 2.5rem;
-    }
-    
-    .why-cta .btn {
-        font-size: 1rem;
-        padding: 0.8rem 2rem;
     }
 }
 
@@ -1021,7 +999,7 @@
         </div>
     </section>
 
-    <!-- Sección ¿Por qué Elegirnos? -->
+<!-- Sección ¿Por qué Elegirnos? -->
 <section id="por-que-elegirnos" class="why-choose-section">
     <div class="container">
         <div class="section-header">
@@ -1100,9 +1078,11 @@
             </div>
         </div>
         
-        <div class="why-cta animate-on-scroll">
-            <a href="por-que-elegirnos.html" class="btn">
-                Más Información
+        <!-- Botón con el mismo diseño que "¿Qué ofrecemos?" -->
+        <div class="services-link">
+            <a href="por-que-elegirnos.html" class="btn-link animate-on-scroll">
+                Más información sobre nuestras ventajas
+                <i class="fas fa-arrow-right"></i>
             </a>
         </div>
     </div>
