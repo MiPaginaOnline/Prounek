@@ -440,6 +440,11 @@
             background-color: rgba(30, 58, 95, 0.5);
             transform: translateY(-3px);
         }
+        /* Para el nuevo botón en la sección de precios */
+        .pricing-section .services-link {
+            text-align: center;
+            margin: 3rem 0;
+        }
         /* Carrusel para móviles servicios */
         .carousel-container {
             display: none;
@@ -1709,70 +1714,18 @@
             </div>
         </div>
     </section>
-    <!-- Sección Precios y Packs - VERSIÓN MEJORADA Y PROFESIONAL -->
-    <section id="precios-packs" class="pricing-section">
-        <div class="container">
-            <div class="pricing-header">
-                <h2 class="animate-on-scroll">Precios</h2>
-            </div>
-            <div class="pricing-subtitle animate-on-scroll">
-            </div>
-            <!-- Carrusel de servicios individuales para móviles -->
-            <div class="individual-services-carousel">
-                <div class="individual-carousel-track">
-                    <div class="individual-carousel-card">
-                        <h3>Diseño Página Web</h3>
-                        <div class="price-tag">
-                            <div class="price-bg">150</div>
-                            <div class="price">150</div>
-                        </div>
-                        <p class="note-text">Diseño personalizado y responsivo • Dominio y hosting incluido</p>
-                    </div>
-                    <div class="individual-carousel-card">
-                        <h3>Mantenimiento Web</h3>
-                        <div class="price-tag">
-                            <div class="price-bg">30</div>
-                            <div class="price">30</div>
-                        </div>
-                        <p class="note-text">* por mes • Actualizaciones, seguridad y backups</p>
-                    </div>
-                    <div class="individual-carousel-card">
-                        <h3>Agendar Citas Automatizadas</h3>
-                        <div class="price-tag">
-                            <div class="price-bg">50</div>
-                            <div class="price">50</div>
-                        </div>
-                        <p class="note-text">Sistema completo de reservas online • Integración con calendario</p>
-                    </div>
-                    <div class="individual-carousel-card">
-                        <h3>Diseño de Logo Profesional</h3>
-                        <div class="price-tag">
-                            <div class="price-bg">5</div>
-                            <div class="price">5</div>
-                        </div>
-                        <p class="note-text">Logo personalizado • Variantes para redes sociales • Archivos vectoriales</p>
-                    </div>
-                    <div class="individual-carousel-card">
-                        <h3>Videos y Fotos Promocionales</h3>
-                        <div class="price-tag">
-                            <div class="price-bg">50</div>
-                            <div class="price">50</div>
-                        </div>
-                        <p class="note-text">Pack de 10 videos o fotos • Edición profesional • Optimizado para redes</p>
-                    </div>
-                    <div class="individual-carousel-card">
-                        <h3>Tienda Online con Pagos</h3>
-                        <div class="price-tag">
-                            <div class="price-bg">300</div>
-                            <div class="price">300</div>
-                        </div>
-                        <p class="note-text">E-commerce completo • Pasarela de pagos segura • Gestión de inventario</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Contenedor Grid de servicios individuales para escritorio -->
-            <div class="individual-services-container">
-                <div class="pricing-card animate-on-scroll">
+<!-- Sección Precios y Packs - VERSIÓN MEJORADA Y PROFESIONAL -->
+<section id="precios-packs" class="pricing-section">
+    <div class="container">
+        <div class="pricing-header">
+            <h2 class="animate-on-scroll">Precios</h2>
+        </div>
+        <div class="pricing-subtitle animate-on-scroll">
+        </div>
+        <!-- Carrusel de servicios individuales para móviles -->
+        <div class="individual-services-carousel">
+            <div class="individual-carousel-track">
+                <div class="individual-carousel-card">
                     <h3>Diseño Página Web</h3>
                     <div class="price-tag">
                         <div class="price-bg">150</div>
@@ -1780,7 +1733,7 @@
                     </div>
                     <p class="note-text">Diseño personalizado y responsivo • Dominio y hosting incluido</p>
                 </div>
-                <div class="pricing-card animate-on-scroll">
+                <div class="individual-carousel-card">
                     <h3>Mantenimiento Web</h3>
                     <div class="price-tag">
                         <div class="price-bg">30</div>
@@ -1788,7 +1741,7 @@
                     </div>
                     <p class="note-text">* por mes • Actualizaciones, seguridad y backups</p>
                 </div>
-                <div class="pricing-card animate-on-scroll">
+                <div class="individual-carousel-card">
                     <h3>Agendar Citas Automatizadas</h3>
                     <div class="price-tag">
                         <div class="price-bg">50</div>
@@ -1796,7 +1749,7 @@
                     </div>
                     <p class="note-text">Sistema completo de reservas online • Integración con calendario</p>
                 </div>
-                <div class="pricing-card animate-on-scroll">
+                <div class="individual-carousel-card">
                     <h3>Diseño de Logo Profesional</h3>
                     <div class="price-tag">
                         <div class="price-bg">5</div>
@@ -1804,7 +1757,7 @@
                     </div>
                     <p class="note-text">Logo personalizado • Variantes para redes sociales • Archivos vectoriales</p>
                 </div>
-                <div class="pricing-card animate-on-scroll">
+                <div class="individual-carousel-card">
                     <h3>Videos y Fotos Promocionales</h3>
                     <div class="price-tag">
                         <div class="price-bg">50</div>
@@ -1812,7 +1765,7 @@
                     </div>
                     <p class="note-text">Pack de 10 videos o fotos • Edición profesional • Optimizado para redes</p>
                 </div>
-                <div class="pricing-card animate-on-scroll">
+                <div class="individual-carousel-card">
                     <h3>Tienda Online con Pagos</h3>
                     <div class="price-tag">
                         <div class="price-bg">300</div>
@@ -1821,23 +1774,84 @@
                     <p class="note-text">E-commerce completo • Pasarela de pagos segura • Gestión de inventario</p>
                 </div>
             </div>
-            <!-- Pack Personalizado - Diseño Premium -->
-            <div class="custom-pack-container">
-                <div class="custom-pack-card animate-on-scroll">
-                    <div class="pack-badge">ㅤㅤPERSONALIZADO</div>
-                    <h3>Pack Personalizado Premium</h3>
-                    <ul class="pack-features">
-                        <li><strong>Combinación de servicios a tu elección</strong> - Elige solo lo que necesitas</li>
-                        <li><strong>Descuento especial del 5%</strong> en la combinación seleccionada</li>
-                        <li><strong>Asesoramiento profesional gratuito</strong> para optimizar tu inversión</li>
-                        <li><strong>Soporte prioritario</strong> durante todo el proceso</li>
-                        <li><strong>Plan de implementación personalizado</strong> adaptado a tus objetivos</li>
-                        <li><strong>Garantía extendida</strong> de 3 meses en todos los servicios incluidos</li>
-                    </ul>
+        </div>
+        <!-- Contenedor Grid de servicios individuales para escritorio -->
+        <div class="individual-services-container">
+            <div class="pricing-card animate-on-scroll">
+                <h3>Diseño Página Web</h3>
+                <div class="price-tag">
+                    <div class="price-bg">150</div>
+                    <div class="price">150</div>
                 </div>
+                <p class="note-text">Diseño personalizado y responsivo • Dominio y hosting incluido</p>
+            </div>
+            <div class="pricing-card animate-on-scroll">
+                <h3>Mantenimiento Web</h3>
+                <div class="price-tag">
+                    <div class="price-bg">30</div>
+                    <div class="price">30</div>
+                </div>
+                <p class="note-text">* por mes • Actualizaciones, seguridad y backups</p>
+            </div>
+            <div class="pricing-card animate-on-scroll">
+                <h3>Agendar Citas Automatizadas</h3>
+                <div class="price-tag">
+                    <div class="price-bg">50</div>
+                    <div class="price">50</div>
+                </div>
+                <p class="note-text">Sistema completo de reservas online • Integración con calendario</p>
+            </div>
+            <div class="pricing-card animate-on-scroll">
+                <h3>Diseño de Logo Profesional</h3>
+                <div class="price-tag">
+                    <div class="price-bg">5</div>
+                    <div class="price">5</div>
+                </div>
+                <p class="note-text">Logo personalizado • Variantes para redes sociales • Archivos vectoriales</p>
+            </div>
+            <div class="pricing-card animate-on-scroll">
+                <h3>Videos y Fotos Promocionales</h3>
+                <div class="price-tag">
+                    <div class="price-bg">50</div>
+                    <div class="price">50</div>
+                </div>
+                <p class="note-text">Pack de 10 videos o fotos • Edición profesional • Optimizado para redes</p>
+            </div>
+            <div class="pricing-card animate-on-scroll">
+                <h3>Tienda Online con Pagos</h3>
+                <div class="price-tag">
+                    <div class="price-bg">300</div>
+                    <div class="price">300</div>
+                </div>
+                <p class="note-text">E-commerce completo • Pasarela de pagos segura • Gestión de inventario</p>
             </div>
         </div>
-    </section>
+        
+        <!-- BOTÓN NUEVO: Más información sobre los Precios -->
+        <div class="services-link" style="margin: 3rem 0;">
+            <a href="precios-detallados.html" class="btn-link animate-on-scroll">
+                Más información sobre los Precios
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <!-- Pack Personalizado - Diseño Premium -->
+        <div class="custom-pack-container">
+            <div class="custom-pack-card animate-on-scroll">
+                <div class="pack-badge">ㅤㅤPERSONALIZADO</div>
+                <h3>Pack Personalizado Premium</h3>
+                <ul class="pack-features">
+                    <li><strong>Combinación de servicios a tu elección</strong> - Elige solo lo que necesitas</li>
+                    <li><strong>Descuento especial del 5%</strong> en la combinación seleccionada</li>
+                    <li><strong>Asesoramiento profesional gratuito</strong> para optimizar tu inversión</li>
+                    <li><strong>Soporte prioritario</strong> durante todo el proceso</li>
+                    <li><strong>Plan de implementación personalizado</strong> adaptado a tus objetivos</li>
+                    <li><strong>Garantía extendida</strong> de 3 meses en todos los servicios incluidos</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Sección Proceso de Entrega -->
     <section id="proceso" class="delivery-process-section">
