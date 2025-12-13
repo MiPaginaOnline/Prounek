@@ -645,16 +645,6 @@
             flex-direction: column;
             justify-content: space-between;
         }
-        /* QUITADA LA LÍNEA DE COLORES DE ARRIBA */
-        /* .pricing-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
-        } */
         .pricing-card:hover {
             transform: translateY(-10px);
             border-color: var(--accent-blue);
@@ -787,7 +777,6 @@
             display: inline-block;
         }
 
-
         /* Pack Personalizado Mejorado */
         .custom-pack-container {
             max-width: 800px;
@@ -804,23 +793,6 @@
             overflow: hidden;
             backdrop-filter: blur(10px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-        /* QUITADA LA LÍNEA DE COLORES DEL PACK PERSONALIZADO */
-        /* .custom-pack-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #00f2fe, #43e97b, #38f9d7);
-            background-size: 400% 400%;
-            animation: gradientShift 3s ease infinite;
-        } */
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
         .custom-pack-card .pack-badge {
             position: absolute;
@@ -1008,6 +980,81 @@
             color: #CCCCCC;
             line-height: 1.7;
             font-size: 1.1rem;
+        }
+
+        /* Sección Nuestros Objetivos - LISTA COMPACTA */
+        .objectives-section {
+            background: linear-gradient(135deg, rgba(13, 27, 42, 0.9) 0%, rgba(30, 58, 95, 0.8) 100%);
+            padding: 3rem 1.5rem; /* Menos padding para que ocupe menos */
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .objectives-list {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .objectives-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .objectives-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.2rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all var(--transition-fast);
+            position: relative;
+        }
+        .objectives-list li:last-child {
+            border-bottom: none;
+        }
+        .objectives-list li:hover {
+            background: rgba(255, 255, 255, 0.05);
+            padding-left: 1.5rem;
+        }
+        .objectives-list li:hover::before {
+            background: var(--accent-blue);
+        }
+        .objectives-list li::before {
+            content: '';
+            display: block;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-green);
+            border-radius: 3px;
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+            transition: all var(--transition-fast);
+        }
+        .objective-content {
+            flex: 1;
+        }
+        .objective-content h3 {
+            color: var(--text-white);
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+        .objective-content p {
+            color: #CCCCCC;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        .objectives-intro {
+            text-align: center;
+            color: #CCCCCC;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
         }
 
         /* Sección Contacto */
@@ -1249,6 +1296,26 @@
             .step-number {
                 margin-bottom: 1rem;
             }
+            /* Responsive para objetivos en lista */
+            .objectives-section {
+                padding: 2.5rem 1rem;
+            }
+            .objectives-list {
+                padding: 1.5rem;
+            }
+            .objectives-list li {
+                padding: 1rem 0.5rem;
+            }
+            .objective-content h3 {
+                font-size: 1.2rem;
+            }
+            .objective-content p {
+                font-size: 0.95rem;
+            }
+            .objectives-intro {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
             .contact-item {
                 flex-direction: column;
                 align-items: center;
@@ -1334,6 +1401,31 @@
             .step-content p {
                 font-size: 1rem;
             }
+            /* Responsive para objetivos en lista */
+            .objectives-section {
+                padding: 2rem 1rem;
+            }
+            .objectives-list {
+                padding: 1rem;
+            }
+            .objectives-list li {
+                padding: 0.8rem 0;
+            }
+            .objectives-list li::before {
+                width: 10px;
+                height: 10px;
+                margin-top: 0.4rem;
+            }
+            .objective-content h3 {
+                font-size: 1.1rem;
+            }
+            .objective-content p {
+                font-size: 0.9rem;
+            }
+            .objectives-intro {
+                font-size: 0.95rem;
+                margin-bottom: 1rem;
+            }
             .contact-item {
                 padding: 1.5rem;
             }
@@ -1354,6 +1446,14 @@
             }
             .individual-services-container {
                 grid-template-columns: 1fr;
+            }
+            .objectives-list li {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            .objectives-list li::before {
+                margin-top: 0.3rem;
             }
         }
     </style>
@@ -1772,6 +1872,46 @@
         </div>
     </section>
 
+    <!-- Sección Nuestros Objetivos - LISTA COMPACTA -->
+    <section id="objetivos" class="objectives-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="animate-on-scroll">Nuestros Objetivos</h2>
+            </div>
+            <p class="objectives-intro animate-on-scroll">Los objetivos de Prounek son simples y claros:</p>
+            
+            <div class="objectives-list animate-on-scroll">
+                <ul>
+                    <li>
+                        <div class="objective-content">
+                            <h3>Digitalizar negocios físicos</h3>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="objective-content">
+                            <h3>Ayudar a nuestros clientes a llevar sus negocios a lo más alto</h3>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="objective-content">
+                            <h3>Posicionarnos como una opción confiable y accesible</h3>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="objective-content">
+                            <h3>Construir una marca sólida basada en transparencia, claridad y buenos resultados</h3>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="objective-content">
+                            <h3>Y CRECER</h3>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <!-- Sección Contacto -->
     <section id="contacto" class="contact-section">
         <div class="container">
@@ -1787,7 +1927,6 @@
                         <div class="contact-details">
                             <h3>Correo Electrónico</h3>
                             <a href="mailto:tecreamosweb@gmail.com" class="contact-link">tecreamosweb@gmail.com</a>
-
                         </div>
                     </div>
                 </div>
