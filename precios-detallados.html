@@ -168,7 +168,7 @@
             color: #333;
             font-weight: 800;
         }
-        /* Navbar */
+        /* Sticky Navbar - EXACTAMENTE IGUAL QUE LA PÁGINA PRINCIPAL */
         .navbar {
             position: fixed;
             top: 1rem;
@@ -197,17 +197,18 @@
             align-items: center;
             gap: 1rem;
         }
+        /* LOGO CON TEXTO MEJORADO - IGUAL QUE LA PÁGINA PRINCIPAL */
         .logo-text {
             font-family: 'Poppins', sans-serif;
-            font-weight: 400;
-            font-size: 2rem;
-            background: linear-gradient(90deg, #333333, #c89116);
+            font-weight: 400; /* Regular */
+            font-size: 2rem; /* Un poco más grande */
+            background: linear-gradient(90deg, #333333, #c89116); /* Negro más claro (#333333) */
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            padding: 5px 0;
+            letter-spacing: 1px; /* Más espaciado para mejor legibilidad */
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+            padding: 5px 0; /* Padding vertical para mejor espaciado */
         }
         .navbar-links {
             display: flex;
@@ -532,8 +533,18 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* RESPONSIVE */
+        /* RESPONSIVE - AÑADIDO RESPONSIVE DEL LOGO IGUAL QUE LA PÁGINA PRINCIPAL */
         @media (max-width: 992px) {
+            .logo-text {
+                font-size: 1.7rem;
+                letter-spacing: 0.8px;
+            }
+            .navbar {
+                padding: 0.7rem 1.5rem;
+            }
+            .navbar.scrolled {
+                padding: 0.6rem 1.2rem;
+            }
             .navbar-links {
                 display: none;
                 position: absolute;
@@ -609,6 +620,7 @@
         @media (max-width: 480px) {
             .logo-text {
                 font-size: 1.5rem;
+                letter-spacing: 0.6px;
             }
             table {
                 font-size: 0.9rem;
@@ -625,9 +637,10 @@
     <div class="light-effect light-2"></div>
     <div class="light-effect light-3"></div>
     
-    <!-- Sticky Navbar -->
+    <!-- Sticky Navbar - EXACTAMENTE IGUAL QUE LA PÁGINA PRINCIPAL -->
     <nav class="navbar">
         <div class="navbar-logo">
+            <!-- Logo con texto y degradado igual que la página principal -->
             <a href="index.html" class="logo-text">Prounek</a>
         </div>
         <div class="hamburger">
@@ -1118,7 +1131,7 @@
     </footer>
 
     <script>
-        // Toggle FAQ
+        // Toggle FAQ - Función individual
         function toggleFAQ(index) {
             const faq = document.querySelectorAll('.faq-item')[index - 1];
             const question = faq.querySelector('.faq-question');
@@ -1128,78 +1141,131 @@
             answer.classList.toggle('active');
         }
 
-        // Navbar effects
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-            // Animar elementos al hacer scroll
-            animateOnScroll();
-        });
-
-        // Hamburger menu
-        const hamburger = document.querySelector('.hamburger');
-        const navbarLinks = document.querySelector('.navbar-links');
-        
-        hamburger.addEventListener('click', function() {
-            this.classList.toggle('active');
-            navbarLinks.classList.toggle('active');
-        });
-
-        // Cerrar menú al hacer clic fuera
-        document.addEventListener('click', function(event) {
-            if (!document.querySelector('.navbar').contains(event.target) && window.innerWidth <= 992) {
-                hamburger.classList.remove('active');
-                navbarLinks.classList.remove('active');
-            }
-        });
-
-        // Scroll suave
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                    // Cerrar menú hamburguesa si está abierto
-                    if (window.innerWidth <= 992) {
-                        hamburger.classList.remove('active');
-                        navbarLinks.classList.remove('active');
+        // Efectos de entrada y animaciones - COPIADO EXACTAMENTE DE LA PÁGINA PRINCIPAL
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scroll suave para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                        // Cerrar menú hamburguesa si está abierto
+                        if (window.innerWidth <= 992) {
+                            navbarLinks.classList.remove('active');
+                            hamburger.classList.remove('active');
+                        }
                     }
+                });
+            });
+            
+            // Elementos del DOM
+            const navbar = document.querySelector('.navbar');
+            const hamburger = document.querySelector('.hamburger');
+            const navbarLinks = document.querySelector('.navbar-links');
+            
+            // Sticky navbar con efecto - EXACTAMENTE IGUAL QUE EN LA PÁGINA PRINCIPAL
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                // Actualizar enlace activo según scroll
+                updateActiveLink();
+                // Animar elementos al hacer scroll
+                animateOnScroll();
+            });
+            
+            // Menú hamburguesa
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navbarLinks.classList.toggle('active');
+            });
+            
+            // Cerrar menú al hacer clic fuera
+            document.addEventListener('click', function(event) {
+                const isClickInsideNavbar = navbar.contains(event.target);
+                if (!isClickInsideNavbar && window.innerWidth <= 992) {
+                    hamburger.classList.remove('active');
+                    navbarLinks.classList.remove('active');
                 }
             });
-        });
-
-        // Animar elementos al scroll
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                if (elementTop < window.innerHeight * 0.85) {
-                    element.classList.add('visible');
-                }
+            
+            // Actualizar enlace activo en navbar
+            function updateActiveLink() {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.navbar-links a');
+                let currentSection = '';
+                const scrollPosition = window.scrollY + 150;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            // Animar elementos al hacer scroll
+            function animateOnScroll() {
+                const elements = document.querySelectorAll('.animate-on-scroll');
+                const triggerBottom = window.innerHeight * 0.85;
+                
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    if (elementTop < triggerBottom) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Animar elementos inicialmente
+            setTimeout(animateOnScroll, 100);
+            
+            // Efectos de microinteracciones
+            const buttons = document.querySelectorAll('.btn, .social-link, .btn-link');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    if (!this.classList.contains('active')) {
+                        this.style.transform = 'translateY(0)';
+                    }
+                });
             });
-        }
-
-        // Inicializar animaciones
-        setTimeout(animateOnScroll, 100);
-
-        // Efectos hover para botones
-        const buttons = document.querySelectorAll('.btn, .social-link');
-        buttons.forEach(button => {
-            button.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-3px)';
+            
+            // Animación inicial para hero
+            const heroElements = document.querySelectorAll('.hero .animate-on-scroll');
+            heroElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, 300 + (index * 200));
             });
-            button.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
+            
+            // Efecto especial para las tarjetas de servicios
+            const serviceCards = document.querySelectorAll('.service-detail');
+            serviceCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.zIndex = '10';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.zIndex = '1';
+                });
             });
         });
     </script>
