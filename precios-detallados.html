@@ -168,6 +168,7 @@
             color: #333;
             font-weight: 800;
         }
+        
         /* Sticky Navbar - EXACTAMENTE IGUAL QUE LA PÁGINA PRINCIPAL */
         .navbar {
             position: fixed;
@@ -259,6 +260,28 @@
             border-radius: 2px;
             transition: all var(--transition-fast);
         }
+        
+        /* RESPONSIVE DEL LOGO - IGUAL QUE LA PÁGINA PRINCIPAL */
+        @media (max-width: 992px) {
+            .logo-text {
+                font-size: 1.7rem;
+                letter-spacing: 0.8px;
+            }
+            .navbar {
+                padding: 0.7rem 1.5rem;
+            }
+            .navbar.scrolled {
+                padding: 0.6rem 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.5rem;
+                letter-spacing: 0.6px;
+            }
+        }
+        
         /* Sección de Precios Detallados */
         .pricing-detail-section {
             padding: 5rem 1.5rem;
@@ -533,18 +556,8 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* RESPONSIVE - AÑADIDO RESPONSIVE DEL LOGO IGUAL QUE LA PÁGINA PRINCIPAL */
+        /* RESPONSIVE */
         @media (max-width: 992px) {
-            .logo-text {
-                font-size: 1.7rem;
-                letter-spacing: 0.8px;
-            }
-            .navbar {
-                padding: 0.7rem 1.5rem;
-            }
-            .navbar.scrolled {
-                padding: 0.6rem 1.2rem;
-            }
             .navbar-links {
                 display: none;
                 position: absolute;
@@ -618,10 +631,6 @@
             }
         }
         @media (max-width: 480px) {
-            .logo-text {
-                font-size: 1.5rem;
-                letter-spacing: 0.6px;
-            }
             table {
                 font-size: 0.9rem;
             }
