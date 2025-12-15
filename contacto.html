@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Prounek</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="Logo Prounek.png">
+    <style>
+        :root {
+            --bg-primary: #0D1B2A;
+            --text-white: #FFFFFF;
+            --card-bg: #E5E7EB;
+            --btn-blue: #1E3A5F;
+            --accent-blue: #4A90E2;
+            --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-fast: 0.3s ease;
+            --success-green: #4CAF50;
+            --error-red: #F44336;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-weight: 600;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-blue);
+        }
+
+        section {
+            padding: 5rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Efectos de luz */
+        .light-effect {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.08;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .light-1 {
+            width: 400px;
+            height: 800px;
+            background: linear-gradient(to bottom, #4A90E2, #1E3A5F);
+            top: 10%;
+            right: -100px;
+        }
+
+        .light-2 {
+            width: 300px;
+            height: 600px;
+            background: linear-gradient(to bottom, #E5E7EB, #1E3A5F);
+            top: 40%;
+            right: 10%;
+        }
+
+        .light-3 {
+            width: 250px;
+            height: 500px;
+            background: linear-gradient(to bottom, #FFFFFF, #4A90E2);
+            top: 70%;
+            right: 0;
+        }
+
+        /* Sticky Navbar - IDÉNTICO A LAS OTRAS PÁGINAS */
+        .navbar {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1000px;
+            background-color: rgba(13, 27, 42, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all var(--transition-fast);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .navbar.scrolled {
+            top: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            width: 95%;
+        }
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        /* LOGO CON TEXTO MEJORADO - Poppins Regular y negro más claro */
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400; /* Regular */
+            font-size: 2rem; /* Un poco más grande */
+            background: linear-gradient(90deg, #333333, #c89116); /* Negro más claro (#333333) */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px; /* Más espaciado para mejor legibilidad */
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+            padding: 5px 0; /* Padding vertical para mejor espaciado */
+        }
+        /* Botón de presupuesto en navbar */
+        .btn-presupuesto {
+            background: linear-gradient(90deg, #4A90E2, #1E3A5F);
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all var(--transition-fast);
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+        .btn-presupuesto:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+            background: linear-gradient(90deg, #1E3A5F, #4A90E2);
+        }
+        /* Para pantallas pequeñas ajustamos el tamaño del logo */
+        @media (max-width: 992px) {
+            .logo-text {
+                font-size: 1.7rem;
+                letter-spacing: 0.8px;
+            }
+            .navbar {
+                padding: 0.7rem 1.5rem;
+            }
+            .navbar.scrolled {
+                padding: 0.6rem 1.2rem;
+            }
+            .btn-presupuesto {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+        }
+        /* Para pantallas muy pequeñas */
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.5rem;
+                letter-spacing: 0.6px;
+            }
+            .btn-presupuesto {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+        .navbar-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .navbar-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+            position: relative;
+            white-space: nowrap;
+        }
+        .navbar-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-blue);
+            transition: width var(--transition-fast);
+        }
+        .navbar-links a:hover {
+            color: var(--accent-blue);
+        }
+        .navbar-links a:hover::after,
+        .navbar-links a.active::after {
+            width: 100%;
+        }
+        .navbar-links a.active {
+            color: var(--accent-blue);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 5px;
+            z-index: 1001;
+            margin-left: 10px;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-white);
+            border-radius: 2px;
+            transition: all var(--transition-fast);
+        }
+
+        /* Hero Contacto */
+        .contact-hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 8rem 1.5rem 5rem;
+            position: relative;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            color: #CCCCCC;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--btn-blue);
+            color: var(--text-white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all var(--transition-fast);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Sección de Formulario de Contacto */
+        .contact-section {
+            padding-top: 2rem;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            padding-right: 2rem;
+        }
+
+        .contact-info h2 {
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .info-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: var(--btn-blue);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            color: var(--text-white);
+            flex-shrink: 0;
+        }
+
+        .info-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-blue);
+        }
+
+        .info-content p {
+            color: #CCCCCC;
+            line-height: 1.7;
+        }
+
+        .contact-form-container {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-header h3 {
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: #AAAAAA;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        label {
+            font-weight: 500;
+            color: #DDDDDD;
+        }
+
+        .required::after {
+            content: '*';
+            color: var(--error-red);
+            margin-left: 3px;
+        }
+
+        input, select, textarea {
+            padding: 1rem 1.2rem;
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-white);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            background-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .form-note {
+            color: #AAAAAA;
+            font-size: 0.9rem;
+        }
+
+        .form-note a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        .form-note a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-submit {
+            background: linear-gradient(90deg, #4A90E2, #1E3A5F);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(74, 144, 226, 0.4);
+            background: linear-gradient(90deg, #1E3A5F, #4A90E2);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-submit i {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-submit:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Estado de carga y mensajes */
+        .loading {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            color: var(--accent-blue);
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--accent-blue);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .message {
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            text-align: center;
+            display: none;
+        }
+
+        .message.success {
+            background-color: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: #A5D6A7;
+        }
+
+        .message.error {
+            background-color: rgba(244, 67, 54, 0.1);
+            border: 1px solid rgba(244, 67, 54, 0.3);
+            color: #EF9A9A;
+        }
+
+        /* Sección FAQ */
+        .faq-section {
+            margin-top: 5rem;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            padding: 4rem;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 0.5rem 0;
+        }
+
+        .faq-question h4 {
+            font-size: 1.1rem;
+            color: var(--text-white);
+        }
+
+        .faq-toggle {
+            font-size: 1.2rem;
+            color: var(--accent-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            color: #CCCCCC;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(0,0,0,0.3);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--btn-blue);
+            border-radius: 50%;
+            color: var(--text-white);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .social-link:hover {
+            background-color: var(--accent-blue);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            color: #AAAAAA;
+            font-size: 0.9rem;
+        }
+
+        /* Animaciones de entrada */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-left {
+            transform: translateX(-30px);
+        }
+
+        .animate-right {
+            transform: translateX(30px);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .navbar-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(13, 27, 42, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 1.5rem;
+                border-radius: 20px;
+                margin-top: 1rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 999;
+            }
+
+            .navbar-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .contact-info {
+                padding-right: 0;
+            }
+
+            .faq-section {
+                padding: 3rem 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-hero {
+                padding-top: 10rem;
+                text-align: center;
+                align-items: center;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .contact-form-container {
+                padding: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .form-actions {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: stretch;
+            }
+
+            .btn-submit {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .info-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .info-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .faq-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Efectos de luz -->
+    <div class="light-effect light-1"></div>
+    <div class="light-effect light-2"></div>
+    <div class="light-effect light-3"></div>
+
+    <!-- Sticky Navbar -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <!-- Logo con texto y degradado mejorado -->
+            <div class="logo-text">Prounek</div>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="navbar-links">
+            <a href="index.html">Inicio</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="solicitud-de-presupuesto.html" class="btn-presupuesto">Solicitar Presupuesto</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section Contacto -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1 class="animate-on-scroll">Contáctanos</h1>
+            <p class="hero-subtitle animate-on-scroll">¿Tienes un proyecto en mente? Escríbenos y te responderemos en menos de 24 horas. Estamos aquí para ayudarte a hacer realidad tus ideas digitales.</p>
+            <a href="#formulario-contacto" class="btn animate-on-scroll">Enviar Mensaje</a>
+        </div>
+    </section>
+
+    <!-- Sección de Formulario de Contacto -->
+    <section id="formulario-contacto" class="contact-section">
+        <div class="container">
+            <div class="contact-container">
+                <!-- Información de Contacto -->
+                <div class="contact-info animate-on-scroll animate-left">
+                    <h2>Hablemos sobre tu <span style="color: var(--accent-blue);">proyecto</span></h2>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Email</h4>
+                            <p>tecreamosweb@gmail.com</p>
+                            <p>Te responderemos en menos de 24 horas</p>
+                        </div>
+                    </div>
+                
+                <!-- Formulario de Contacto -->
+                <div class="contact-form-container animate-on-scroll animate-right">
+                    <div class="form-header">
+                        <h3>Envíanos tu mensaje</h3>
+                        <p>Completa el formulario y nos pondremos en contacto contigo</p>
+                    </div>
+                    
+                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/your-form-id-here" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre" class="required">Nombre</label>
+                                <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="required">Email</label>
+                                <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                            </div>
+                        </div>
+                            
+                            <div class="form-group">
+                                <label for="servicio" class="required">Servicio de interés</label>
+                                <select id="servicio" name="servicio" required>
+                                    <option value="" disabled selected>Selecciona un servicio</option>
+                                    <option value="diseño-web">Diseño Web Profesional</option>
+                                    <option value="mantenimiento">Mantenimiento Web</option>
+                                    <option value="citas">Agendar Citas Automatizadas</option>
+                                    <option value="logo">Diseño de Logo</option>
+                                    <option value="videos">Videos y Fotos Promocionales</option>
+                                    <option value="tienda">Tienda Online con Pagos</option>
+                                    <option value="otro">Otro servicio</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="asunto" class="required">Asunto</label>
+                            <input type="text" id="asunto" name="asunto" required placeholder="Ej: Presupuesto para página web">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mensaje" class="required">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" required placeholder="Describe tu proyecto, necesidades, presupuesto aproximado y cualquier detalle que consideres importante..."></textarea>
+                        </div>
+                        
+                        <!-- Campo oculto para evitar spam -->
+                        <input type="text" name="_gotcha" style="display:none">
+                        
+                        <!-- Mensajes de estado -->
+                        <div id="loading" class="loading">
+                            <div class="spinner"></div>
+                            <span>Enviando tu mensaje...</span>
+                        </div>
+                        
+                        <div id="successMessage" class="message success">
+                            <i class="fas fa-check-circle"></i> ¡Mensaje enviado con éxito! Te responderemos en menos de 24 horas.
+                        </div>
+                        
+                        <div id="errorMessage" class="message error">
+                            <i class="fas fa-exclamation-circle"></i> Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo o escríbenos directamente a tecreamosweb@gmail.com
+                        </div>
+                        
+                        <div class="form-actions">
+                            <div class="form-note">
+                                <p>Todos los campos marcados con <span style="color: var(--error-red);">*</span> son obligatorios</p>
+                            </div>
+                            
+                            <button type="submit" class="btn-submit" id="submitBtn">
+                                <span>Enviar Mensaje</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.instagram.com/tecreamos.web/" class="social-link" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <p class="copyright">© 2025 Prounek. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scroll suave para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Cerrar menú hamburguesa si está abierto
+                        if (window.innerWidth <= 992) {
+                            navbarLinks.classList.remove('active');
+                            hamburger.classList.remove('active');
+                        }
+                    }
+                });
+            });
+            
+            // Elementos del DOM
+            const navbar = document.querySelector('.navbar');
+            const hamburger = document.querySelector('.hamburger');
+            const navbarLinks = document.querySelector('.navbar-links');
+            
+            // Sticky navbar con efecto
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                
+                // Animar elementos al hacer scroll
+                animateOnScroll();
+            });
+            
+            // Menú hamburguesa
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navbarLinks.classList.toggle('active');
+            });
+            
+            // Cerrar menú al hacer clic fuera
+            document.addEventListener('click', function(event) {
+                const isClickInsideNavbar = navbar.contains(event.target);
+                if (!isClickInsideNavbar && window.innerWidth <= 992) {
+                    hamburger.classList.remove('active');
+                    navbarLinks.classList.remove('active');
+                }
+            });
+            
+            // Animar elementos al hacer scroll
+            function animateOnScroll() {
+                const elements = document.querySelectorAll('.animate-on-scroll');
+                const triggerBottom = window.innerHeight * 0.85;
+                
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    
+                    if (elementTop < triggerBottom) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Animar elementos inicialmente
+            setTimeout(animateOnScroll, 100);
+            
+            // Animación inicial para hero
+            const heroElements = document.querySelectorAll('.contact-hero .animate-on-scroll');
+            heroElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, 300 + (index * 200));
+            });
+            
+            // FAQ interactivo
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentElement;
+                    faqItem.classList.toggle('active');
+                });
+            });
+            
+            // Formulario de contacto
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const loadingElement = document.getElementById('loading');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    // Validación básica
+                    const nombre = document.getElementById('nombre').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const servicio = document.getElementById('servicio').value;
+                    const asunto = document.getElementById('asunto').value.trim();
+                    const mensaje = document.getElementById('mensaje').value.trim();
+                    
+                    if (!nombre || !email || !servicio || !asunto || !mensaje) {
+                        alert('Por favor, completa todos los campos obligatorios.');
+                        return;
+                    }
+                    
+                    // Mostrar estado de carga
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<span>Enviando...</span>';
+                    loadingElement.style.display = 'flex';
+                    successMessage.style.display = 'none';
+                    errorMessage.style.display = 'none';
+                    
+                    try {
+                        // Envío real del formulario a Formspree
+                        const formData = new FormData(contactForm);
+                        
+                        // IMPORTANTE: Reemplaza 'your-email@example.com' con tu email real
+                        // Ve a https://formspree.io/ y crea una cuenta gratuita
+                        // Obtendrás un endpoint como: https://formspree.io/f/xxxxxxxxxx
+                        // Reemplaza la acción del formulario con tu endpoint
+                        const response = await fetch(contactForm.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
+                        if (response.ok) {
+                            // Éxito
+                            successMessage.style.display = 'block';
+                            contactForm.reset();
+                            
+                            // Desplazar suavemente al mensaje de éxito
+                            setTimeout(() => {
+                                successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            }, 300);
+                        } else {
+                            // Error
+                            throw new Error('Error en el envío');
+                        }
+                    } catch (error) {
+                        // Mostrar mensaje de error
+                        errorMessage.style.display = 'block';
+                        
+                        // Desplazar suavemente al mensaje de error
+                        setTimeout(() => {
+                            errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }, 300);
+                    } finally {
+                        // Restaurar botón
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<span>Enviar Mensaje</span><i class="fas fa-paper-plane"></i>';
+                        loadingElement.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Efectos de microinteracciones
+            const buttons = document.querySelectorAll('.btn, .social-link, .btn-presupuesto, .btn-submit');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    if (!this.disabled) {
+                        this.style.transform = 'translateY(-3px)';
+                    }
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    if (!this.disabled && !this.classList.contains('active')) {
+                        this.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
