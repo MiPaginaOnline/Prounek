@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Por Qué Elegirnos? | Prounek | Tu negocio en digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="Logo Prounek.png">
+    <style>
+        :root {
+            --bg-primary: #0D1B2A;
+            --text-white: #FFFFFF;
+            --card-bg: #E5E7EB;
+            --btn-blue: #1E3A5F;
+            --accent-blue: #4A90E2;
+            --accent-gold: #FFD700;
+            --accent-green: #4CAF50;
+            --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-fast: 0.3s ease;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        h1 {
+            font-weight: 800;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        h2 {
+            font-weight: 600;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: 2rem;
+        }
+        section {
+            padding: 5rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        /* Efectos de luz */
+        .light-effect {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.08;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .light-1 {
+            width: 400px;
+            height: 800px;
+            background: linear-gradient(to bottom, #4A90E2, #1E3A5F);
+            top: 10%;
+            right: -100px;
+        }
+        .light-2 {
+            width: 300px;
+            height: 600px;
+            background: linear-gradient(to bottom, #E5E7EB, #1E3A5F);
+            top: 40%;
+            right: 10%;
+        }
+        .light-3 {
+            width: 250px;
+            height: 500px;
+            background: linear-gradient(to bottom, #FFFFFF, #4A90E2);
+            top: 70%;
+            right: 0;
+        }
+        /* Sticky Navbar - LOGO CON TEXTO MEJORADO */
+        .navbar {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1000px;
+            background-color: rgba(13, 27, 42, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all var(--transition-fast);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .navbar.scrolled {
+            top: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            width: 95%;
+        }
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        /* LOGO CON TEXTO MEJORADO - Poppins Regular y negro más claro */
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400; /* Regular */
+            font-size: 2rem; /* Un poco más grande */
+            background: linear-gradient(90deg, #333333, #c89116); /* Negro más claro (#333333) */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px; /* Más espaciado para mejor legibilidad */
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+            padding: 5px 0; /* Padding vertical para mejor espaciado */
+        }
+        /* Botón de presupuesto en navbar */
+        .btn-presupuesto {
+            background: linear-gradient(90deg, #4A90E2, #1E3A5F);
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all var(--transition-fast);
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+        .btn-presupuesto:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+            background: linear-gradient(90deg, #1E3A5F, #4A90E2);
+        }
+        /* Para pantallas pequeñas ajustamos el tamaño del logo */
+        @media (max-width: 992px) {
+            .logo-text {
+                font-size: 1.7rem;
+                letter-spacing: 0.8px;
+            }
+            .navbar {
+                padding: 0.7rem 1.5rem;
+            }
+            .navbar.scrolled {
+                padding: 0.6rem 1.2rem;
+            }
+            .btn-presupuesto {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+        }
+        /* Para pantallas muy pequeñas */
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.5rem;
+                letter-spacing: 0.6px;
+            }
+            .btn-presupuesto {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+        .navbar-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .navbar-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+            position: relative;
+            white-space: nowrap;
+        }
+        .navbar-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-blue);
+            transition: width var(--transition-fast);
+        }
+        .navbar-links a:hover {
+            color: var(--accent-blue);
+        }
+        .navbar-links a:hover::after,
+        .navbar-links a.active::after {
+            width: 100%;
+        }
+        .navbar-links a.active {
+            color: var(--accent-blue);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 5px;
+            z-index: 1001;
+            margin-left: 10px;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-white);
+            border-radius: 2px;
+            transition: all var(--transition-fast);
+        }
+        
+        /* Botón general */
+        .btn {
+            display: inline-block;
+            background-color: var(--btn-blue);
+            color: var(--text-white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all var(--transition-fast);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Hero Section para Por Qué Elegirnos */
+        .hero-porque {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 10rem 1.5rem 5rem;
+            position: relative;
+            text-align: center;
+            align-items: center;
+        }
+        .hero-porque h1 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        .hero-porque h1::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: var(--accent-blue);
+            z-index: -1;
+            opacity: 0.7;
+            border-radius: 4px;
+        }
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            color: #CCCCCC;
+        }
+        
+        /* Sección Diferenciadores Principales */
+        .diferenciadores-section {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.1) 0%, rgba(13, 27, 42, 0.05) 100%);
+            padding: 5rem 1.5rem;
+            position: relative;
+        }
+        .diferenciadores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .diferenciador-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all var(--transition-slow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        .diferenciador-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 20px 40px rgba(74, 144, 226, 0.2);
+        }
+        .diferenciador-icon {
+            font-size: 3rem;
+            color: var(--accent-blue);
+            margin-bottom: 1.5rem;
+            transition: all var(--transition-fast);
+        }
+        .diferenciador-card:hover .diferenciador-icon {
+            transform: scale(1.1);
+            color: var(--accent-green);
+        }
+        .diferenciador-card h3 {
+            color: var(--text-white);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .diferenciador-card p {
+            color: #CCCCCC;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        .destacado {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            display: inline-block;
+        }
+        
+        /* Sección Modelo de Trabajo */
+        .modelo-section {
+            padding: 5rem 1.5rem;
+            position: relative;
+        }
+        .modelo-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .modelo-intro {
+            color: #CCCCCC;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+        .modelo-detalle {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 3rem;
+        }
+        .modelo-detalle h3 {
+            color: var(--accent-gold);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        .modelo-pasos {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .modelo-paso {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            text-align: left;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 15px;
+            transition: all var(--transition-fast);
+        }
+        .modelo-paso:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(10px);
+        }
+        .paso-numero {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+        }
+        .paso-contenido h4 {
+            color: var(--text-white);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .paso-contenido p {
+            color: #CCCCCC;
+            line-height: 1.6;
+        }
+        
+        /* Sección Ventajas Competitivas */
+        .ventajas-section {
+            background: linear-gradient(135deg, rgba(13, 27, 42, 0.9) 0%, rgba(30, 58, 95, 0.8) 100%);
+            padding: 5rem 1.5rem;
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .ventajas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .ventaja-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all var(--transition-slow);
+        }
+        .ventaja-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-blue);
+            box-shadow: 0 15px 30px rgba(74, 144, 226, 0.2);
+        }
+        .ventaja-icon {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 1.5rem;
+        }
+        .ventaja-card h3 {
+            color: var(--text-white);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .ventaja-card p {
+            color: #CCCCCC;
+            line-height: 1.6;
+        }
+        
+        /* Sección Testimonios */
+        .testimonios-section {
+            padding: 5rem 1.5rem;
+            position: relative;
+        }
+        .testimonios-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .testimonio-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        .testimonio-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 6rem;
+            color: var(--accent-blue);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+        .testimonio-texto {
+            color: #CCCCCC;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        .testimonio-autor {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .testimonio-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .testimonio-info h4 {
+            color: var(--text-white);
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+        .testimonio-info p {
+            color: #AAAAAA;
+            font-size: 0.9rem;
+        }
+        
+        /* Sección Preguntas Frecuentes */
+        .faq-section {
+            background: linear-gradient(135deg, rgba(13, 27, 42, 0.9) 0%, rgba(30, 58, 95, 0.8) 100%);
+            padding: 5rem 1.5rem;
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all var(--transition-fast);
+        }
+        .faq-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent-blue);
+        }
+        .faq-pregunta {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        .faq-pregunta h3 {
+            color: var(--text-white);
+            font-size: 1.3rem;
+            margin: 0;
+        }
+        .faq-icon {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+            transition: transform var(--transition-fast);
+        }
+        .faq-respuesta {
+            padding: 0 2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all var(--transition-fast);
+        }
+        .faq-respuesta p {
+            color: #CCCCCC;
+            line-height: 1.6;
+            padding-bottom: 1.5rem;
+        }
+        .faq-item.active .faq-respuesta {
+            max-height: 500px;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        /* Sección Garantía Total */
+        .garantia-section {
+            padding: 5rem 1.5rem;
+            position: relative;
+            text-align: center;
+        }
+        .garantia-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(30, 58, 95, 0.2) 100%);
+            border-radius: 25px;
+            padding: 4rem 3rem;
+            border: 2px solid rgba(74, 144, 226, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .garantia-content::before {
+            content: '✓';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            font-size: 10rem;
+            color: rgba(76, 175, 80, 0.1);
+            z-index: 0;
+        }
+        .garantia-content h2 {
+            color: var(--accent-green);
+            position: relative;
+            z-index: 1;
+        }
+        .garantia-texto {
+            color: #CCCCCC;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin: 2rem 0;
+            position: relative;
+            z-index: 1;
+        }
+        .garantia-destacado {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            font-size: 1.5rem;
+            display: block;
+            margin: 2rem 0;
+            padding: 1rem;
+            border-radius: 15px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 1.5rem;
+            text-align: center;
+        }
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(30, 58, 95, 0.2) 100%);
+            border-radius: 25px;
+            border: 1px solid rgba(74, 144, 226, 0.2);
+        }
+        .cta-content h3 {
+            color: var(--text-white);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .cta-content p {
+            color: #CCCCCC;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-content .btn {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+            font-size: 1.2rem;
+            padding: 1.2rem 3rem;
+            box-shadow: 0 10px 30px rgba(74, 144, 226, 0.4);
+        }
+        .cta-content .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(74, 144, 226, 0.6);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: rgba(0,0,0,0.3);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--btn-blue);
+            border-radius: 50%;
+            color: var(--text-white);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+        .social-link:hover {
+            background-color: var(--accent-blue);
+            transform: translateY(-5px);
+        }
+        .copyright {
+            color: #AAAAAA;
+            font-size: 0.9rem;
+        }
+        
+        /* Animaciones de entrada */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .navbar-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(13, 27, 42, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 1.5rem;
+                border-radius: 20px;
+                margin-top: 1rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 999;
+            }
+            .navbar-links.active {
+                display: flex;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+            .hero-porque {
+                padding: 8rem 1.5rem 3rem;
+                min-height: 60vh;
+            }
+            section {
+                padding: 3rem 1rem;
+            }
+            .diferenciador-card, .ventaja-card, .testimonio-card {
+                padding: 2rem 1.5rem;
+            }
+            .diferenciador-card h3, .ventaja-card h3 {
+                font-size: 1.5rem;
+            }
+            .modelo-detalle {
+                padding: 2rem;
+            }
+            .garantia-content {
+                padding: 3rem 2rem;
+            }
+            .cta-content {
+                padding: 2rem 1.5rem;
+            }
+            .cta-content h3 {
+                font-size: 1.8rem;
+            }
+            .modelo-paso {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .paso-contenido h4 {
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-porque h1 {
+                font-size: 2.5rem;
+            }
+            .modelo-intro, .garantia-texto {
+                font-size: 1.1rem;
+            }
+            .diferenciador-icon, .ventaja-icon {
+                font-size: 2.5rem;
+            }
+            .testimonio-card {
+                padding: 2rem;
+            }
+            .testimonio-card::before {
+                font-size: 4rem;
+                top: 10px;
+                left: 20px;
+            }
+            .testimonio-texto {
+                font-size: 1.1rem;
+            }
+            .faq-pregunta {
+                padding: 1.2rem;
+            }
+            .faq-pregunta h3 {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .diferenciadores-grid, .ventajas-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-porque {
+                padding: 7rem 1rem 2rem;
+            }
+            .hero-porque h1 {
+                font-size: 2rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            .garantia-content {
+                padding: 2rem 1.5rem;
+            }
+            .garantia-content::before {
+                font-size: 6rem;
+                top: -15px;
+                right: -15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Efectos de luz -->
+    <div class="light-effect light-1"></div>
+    <div class="light-effect light-2"></div>
+    <div class="light-effect light-3"></div>
+    
+    <!-- Sticky Navbar con TEXTO "Prounek" mejorado -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <!-- Logo con texto y degradado mejorado -->
+            <div class="logo-text">Prounek</div>
+        </div>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="navbar-links">
+            <a href="index.html">Inicio</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="solicitud-de-presupuesto.html" class="btn-presupuesto">Solicitar Presupuesto</a>
+        </div>
+    </nav>
+    
+    <!-- Hero Section Por Qué Elegirnos -->
+    <section class="hero-porque">
+        <div class="container">
+            <h1 class="animate-on-scroll">¿Por Qué Elegirnos?</h1>
+            <p class="hero-subtitle animate-on-scroll">Descubre qué nos hace diferentes y por qué somos la mejor opción para digitalizar tu negocio</p>
+        </div>
+    </section>
+    
+    <!-- Sección Diferenciadores Principales -->
+    <section id="diferenciadores" class="diferenciadores-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="animate-on-scroll">Lo Que Nos Hace Únicos</h2>
+            </div>
+            <div class="diferenciadores-grid animate-on-scroll">
+                <div class="diferenciador-card">
+                    <div class="diferenciador-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Precios Irrepetibles</h3>
+                    <p>Somos una empresa nueva con <span class="destacado">precios de lanzamiento</span> que no volverán a verse. Obtén calidad profesional a una fracción del costo habitual del mercado.</p>
+                </div>
+                <div class="diferenciador-card">
+                    <div class="diferenciador-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Riesgo CERO para Ti</h3>
+                    <p>Nuestro modelo <span class="destacado">"Primero el trabajo, luego el pago"</span> elimina todo riesgo. Si no estás satisfecho, no pagas. Simple y transparente.</p>
+                </div>
+                <div class="diferenciador-card">
+                    <div class="diferenciador-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Velocidad de Entrega</h3>
+                    <p>Entregamos proyectos completos en <span class="destacado">solo 7 días</span>. No encontrarás otra empresa que combine esta rapidez con nuestra calidad y precios.</p>
+                </div>
+                <div class="diferenciador-card">
+                    <div class="diferenciador-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Cercanía Absoluta</h3>
+                    <p>No somos una agencia distante. Te acompañamos <span class="destacado">personalmente</span> en cada paso, con comunicación directa y atención humana.</p>
+                </div>
+                <div class="diferenciador-card">
+                    <div class="diferenciador-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3>Sin Costes Ocultos</h3>
+                    <p><span class="destacado">Todo incluido</span> en el precio. Sin sorpresas, sin "extras" adicionales. Lo que ves es lo que pagas, y lo que prometemos es lo que entregamos.</p>
+                </div>
+                <div class="diferenciador-card">
+                    <div class="diferenciador-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Pasión por los Detalles</h3>
+                    <p>No entregamos "trabajos", entregamos <span class="destacado">soluciones cuidadosas</span> donde cada detalle cuenta. Tu proyecto recibe nuestra máxima dedicación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sección Modelo de Trabajo -->
+    <section id="modelo" class="modelo-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="animate-on-scroll">Nuestro Modelo de Confianza</h2>
+            </div>
+            <div class="modelo-content animate-on-scroll">
+                <p class="modelo-intro">Operamos bajo un modelo revolucionario que pone tu tranquilidad en primer lugar. Así es como funciona:</p>
+                
+                <div class="modelo-detalle">
+                    <h3>Garantía de Satisfacción 100%</h3>
+                    <div class="modelo-pasos">
+                        <div class="modelo-paso">
+                            <div class="paso-numero">1</div>
+                            <div class="paso-contenido">
+                                <h4>Trabajamos sin anticipo</h4>
+                                <p>No pedimos dinero por adelantado. Comenzamos el proyecto con tu confianza como único requisito.</p>
+                            </div>
+                        </div>
+                        <div class="modelo-paso">
+                            <div class="paso-numero">2</div>
+                            <div class="paso-contenido">
+                                <h4>Desarrollo completo</h4>
+                                <p>Creamos tu solución digital de principio a fin, invirtiendo nuestro tiempo y recursos en tu éxito.</p>
+                            </div>
+                        </div>
+                        <div class="modelo-paso">
+                            <div class="paso-numero">3</div>
+                            <div class="paso-contenido">
+                                <h4>Entrega para revisión</h4>
+                                <p>Te entregamos el trabajo terminado en un entorno de prueba para que lo evalúes detenidamente.</p>
+                            </div>
+                        </div>
+                        <div class="modelo-paso">
+                            <div class="paso-numero">4</div>
+                            <div class="paso-contenido">
+                                <h4>Tú decides</h4>
+                                <p>Si estás 100% satisfecho, realizas el pago. Si no es lo que esperabas, no pagas y eliminamos todo sin compromiso.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p>Este modelo nos obliga a dar lo mejor de nosotros en cada proyecto, porque nuestro pago depende de tu satisfacción. <span class="destacado">Nuestros intereses están alineados con los tuyos.</span></p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sección Ventajas Competitivas -->
+    <section id="ventajas" class="ventajas-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="animate-on-scroll">Ventajas Competitivas</h2>
+            </div>
+            <div class="ventajas-grid animate-on-scroll">
+                <div class="ventaja-card">
+                    <div class="ventaja-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Lanzamiento Rápido</h3>
+                    <p>Tu negocio estará online en tiempo récord, aprovechando oportunidades inmediatas.</p>
+                </div>
+                <div class="ventaja-card">
+                    <div class="ventaja-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>100% Responsivo</h3>
+                    <p>Diseños que funcionan perfectamente en todos los dispositivos, desde móviles hasta escritorios.</p>
+                </div>
+                <div class="ventaja-card">
+                    <div class="ventaja-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO Integrado</h3>
+                    <p>Optimizamos tu sitio para motores de búsqueda desde el primer día.</p>
+                </div>
+                <div class="ventaja-card">
+                    <div class="ventaja-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Seguridad Máxima</h3>
+                    <p>Implementamos las mejores prácticas de seguridad para proteger tu sitio y datos.</p>
+                </div>
+                <div class="ventaja-card">
+                    <div class="ventaja-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Actualizaciones Constantes</h3>
+                    <p>Mantenemos tu sitio actualizado con las últimas tecnologías y tendencias.</p>
+                </div>
+                <div class="ventaja-card">
+                    <div class="ventaja-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Soporte Personalizado</h3>
+                    <p>No estarás solo. Te ofrecemos soporte continuo y asesoramiento post-entrega.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sección Garantía Total -->
+    <section id="garantia" class="garantia-section">
+        <div class="container">
+            <div class="garantia-content animate-on-scroll">
+                <h2>Garantía Total de Satisfacción</h2>
+                <p class="garantia-texto">Nuestra política es simple pero poderosa:</p>
+                <p class="garantia-destacado">NO PAGAS HASTA QUE ESTÉS 100% SATISFECHO</p>
+                <p class="garantia-texto">Esta no es una garantía vacía. Es nuestra forma de demostrar la confianza que tenemos en nuestro trabajo y de asegurar que tomas la decisión correcta sin ningún riesgo.</p>
+                <p class="garantia-texto">Si después de ver el trabajo terminado no cumple con tus expectativas, simplemente nos lo dices. No habrá preguntas incómodas, no habrá cargos ocultos, no habrá compromiso. Eliminamos todo y listo.</p>
+                <p class="garantia-texto"><strong>¿Qué tienes que perder? Absolutamente nada. ¿Qué puedes ganar? Todo un negocio digitalizado y preparado para crecer.</strong></p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sección Preguntas Frecuentes -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="animate-on-scroll">Preguntas Frecuentes</h2>
+            </div>
+            <div class="faq-container animate-on-scroll">
+                <div class="faq-item">
+                    <div class="faq-pregunta">
+                        <h3>¿Realmente no pago nada hasta ver el trabajo terminado?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-respuesta">
+                        <p>Exactamente. No pedimos anticipo, no pedimos pagos parciales. Solo trabajamos y te entregamos el resultado. Si te gusta, pagas. Si no, no pagas. Así de simple.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-pregunta">
+                        <h3>¿Cómo puedo estar seguro de que eliminarán el trabajo si no lo apruebo?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-respuesta">
+                        <p>Lo hacemos en tiempo real contigo presente. Puedes ver cómo eliminamos archivos, bases de datos y configuraciones. Además, todo el trabajo se entrega en un entorno de prueba separado, no en tu dominio final, hasta que apruebes.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-pregunta">
+                        <h3>¿Los precios tan bajos significan menor calidad?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-respuesta">
+                        <p>Absolutamente no. Somos una empresa nueva que quiere darse a conocer rápidamente, por eso ofrecemos precios de lanzamiento excepcionales. La calidad es profesional y competitiva. Nuestra garantía "paga solo si estás satisfecho" es la prueba definitiva de que confiamos en nuestra calidad.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-pregunta">
+                        <h3>¿Qué pasa si necesito cambios después de aprobar el trabajo?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-respuesta">
+                        <p>Incluimos una ronda de revisiones menores gratuitas después de la aprobación. Para cambios más significativos, ofrecemos precios muy accesibles. Pero siempre seremos transparentes sobre los costes antes de hacer cualquier trabajo adicional.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-pregunta">
+                        <h3>¿Trabajan con negocios de cualquier tamaño?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-respuesta">
+                        <p>Sí, desde emprendedores individuales hasta pequeñas y medianas empresas. Nuestra especialidad es ayudar a negocios que están comenzando su viaje digital o que necesitan modernizar su presencia online.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.instagram.com/tecreamos.web/" class="social-link" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            <p class="copyright">© 2025 Prounek. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scroll suave para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                        // Cerrar menú hamburguesa si está abierto
+                        if (window.innerWidth <= 992) {
+                            navbarLinks.classList.remove('active');
+                            hamburger.classList.remove('active');
+                        }
+                    }
+                });
+            });
+            
+            // Elementos del DOM
+            const navbar = document.querySelector('.navbar');
+            const hamburger = document.querySelector('.hamburger');
+            const navbarLinks = document.querySelector('.navbar-links');
+            
+            // Sticky navbar con efecto
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                
+                // Animar elementos al hacer scroll
+                animateOnScroll();
+            });
+            
+            // Menú hamburguesa
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navbarLinks.classList.toggle('active');
+            });
+            
+            // Cerrar menú al hacer clic fuera
+            document.addEventListener('click', function(event) {
+                const isClickInsideNavbar = navbar.contains(event.target);
+                if (!isClickInsideNavbar && window.innerWidth <= 992) {
+                    hamburger.classList.remove('active');
+                    navbarLinks.classList.remove('active');
+                }
+            });
+            
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const pregunta = item.querySelector('.faq-pregunta');
+                pregunta.addEventListener('click', () => {
+                    // Cerrar otros items abiertos
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Alternar el item actual
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Animar elementos al hacer scroll
+            function animateOnScroll() {
+                const elements = document.querySelectorAll('.animate-on-scroll');
+                const triggerBottom = window.innerHeight * 0.85;
+                
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    if (elementTop < triggerBottom) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Animar elementos inicialmente
+            setTimeout(animateOnScroll, 100);
+            
+            // Animación inicial para hero
+            const heroElements = document.querySelectorAll('.hero-porque .animate-on-scroll');
+            heroElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, 300 + (index * 200));
+            });
+            
+            // Efectos de microinteracciones
+            const buttons = document.querySelectorAll('.btn, .social-link, .btn-presupuesto');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    if (!this.classList.contains('active')) {
+                        this.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            
+            // Efectos para las cards
+            const cards = document.querySelectorAll('.diferenciador-card, .ventaja-card, .testimonio-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.zIndex = '10';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.zIndex = '1';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
