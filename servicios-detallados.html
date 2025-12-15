@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Qué Ofrecemos? | Prounek</title>
+    <title>Precios Detallados | Prounek</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,21 +16,19 @@
             --card-bg: #E5E7EB;
             --btn-blue: #1E3A5F;
             --accent-blue: #4A90E2;
-            --accent-gold: #c89116;
+            --accent-gold: #FFD700;
+            --accent-green: #4CAF50;
             --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             --transition-fast: 0.3s ease;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         html {
             scroll-behavior: smooth;
         }
-
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-primary);
@@ -38,41 +36,35 @@
             overflow-x: hidden;
             line-height: 1.6;
         }
-
         h1, h2, h3 {
             font-family: 'Montserrat', sans-serif;
         }
-
         h1 {
             font-weight: 800;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            margin-bottom: 1.5rem;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
             line-height: 1.2;
         }
-
         h2 {
             font-weight: 600;
             font-size: clamp(2rem, 4vw, 2.5rem);
             margin-bottom: 2rem;
         }
-
         h3 {
+            font-weight: 600;
             font-size: 1.5rem;
             margin-bottom: 1rem;
         }
-
         section {
             padding: 5rem 1.5rem;
             position: relative;
             overflow: hidden;
         }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
-
         /* Efectos de luz */
         .light-effect {
             position: absolute;
@@ -82,7 +74,6 @@
             z-index: 0;
             pointer-events: none;
         }
-
         .light-1 {
             width: 400px;
             height: 800px;
@@ -90,7 +81,6 @@
             top: 10%;
             right: -100px;
         }
-
         .light-2 {
             width: 300px;
             height: 600px;
@@ -98,7 +88,6 @@
             top: 40%;
             right: 10%;
         }
-
         .light-3 {
             width: 250px;
             height: 500px;
@@ -106,8 +95,80 @@
             top: 70%;
             right: 0;
         }
-
-        /* Sticky Navbar */
+        /* Header y Hero - MODIFICADO para más espacio arriba */
+        .hero {
+            min-height: 70vh; /* Aumentado de 60vh */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 10rem 1.5rem 5rem; /* Aumentado padding-top de 8rem a 10rem */
+            position: relative;
+            background: linear-gradient(135deg, rgba(13, 27, 42, 0.95) 0%, rgba(30, 58, 95, 0.85) 100%);
+        }
+        .hero h1 span {
+            position: relative;
+            display: inline-block;
+        }
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: var(--accent-gold);
+            z-index: -1;
+            opacity: 0.7;
+            border-radius: 4px;
+        }
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            color: #CCCCCC;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--btn-blue);
+            color: var(--text-white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all var(--transition-fast);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+            z-index: -1;
+        }
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .btn:hover::before {
+            left: 100%;
+        }
+        .btn-gold {
+            background: linear-gradient(135deg, var(--accent-gold), #FFA500);
+            color: #333;
+            font-weight: 800;
+        }
+        /* Sticky Navbar - EXACTAMENTE IGUAL QUE LA PÁGINA PRINCIPAL */
         .navbar {
             position: fixed;
             top: 1rem;
@@ -126,39 +187,34 @@
             transition: all var(--transition-fast);
             border: 1px solid rgba(255,255,255,0.1);
         }
-
         .navbar.scrolled {
             top: 0.5rem;
             padding: 0.7rem 1.5rem;
             width: 95%;
         }
-
         .navbar-logo {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
-
+        /* LOGO CON TEXTO MEJORADO - IGUAL QUE LA PÁGINA PRINCIPAL */
         .logo-text {
             font-family: 'Poppins', sans-serif;
-            font-weight: 400;
-            font-size: 2rem;
-            background: linear-gradient(90deg, #333333, #c89116);
+            font-weight: 400; /* Regular */
+            font-size: 2rem; /* Un poco más grande */
+            background: linear-gradient(90deg, #333333, #c89116); /* Negro más claro (#333333) */
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            padding: 5px 0;
-            text-decoration: none;
+            letter-spacing: 1px; /* Más espaciado para mejor legibilidad */
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+            padding: 5px 0; /* Padding vertical para mejor espaciado */
         }
-
         .navbar-links {
             display: flex;
             gap: 2rem;
             align-items: center;
         }
-
         .navbar-links a {
             color: var(--text-white);
             text-decoration: none;
@@ -167,7 +223,6 @@
             position: relative;
             white-space: nowrap;
         }
-
         .navbar-links a::after {
             content: '';
             position: absolute;
@@ -178,20 +233,16 @@
             background-color: var(--accent-blue);
             transition: width var(--transition-fast);
         }
-
         .navbar-links a:hover {
             color: var(--accent-blue);
         }
-
         .navbar-links a:hover::after,
         .navbar-links a.active::after {
             width: 100%;
         }
-
         .navbar-links a.active {
             color: var(--accent-blue);
         }
-
         .hamburger {
             display: none;
             flex-direction: column;
@@ -201,7 +252,6 @@
             z-index: 1001;
             margin-left: 10px;
         }
-
         .hamburger span {
             width: 25px;
             height: 3px;
@@ -209,333 +259,236 @@
             border-radius: 2px;
             transition: all var(--transition-fast);
         }
-
-        /* Hero Section */
-        .hero-what-we-offer {
-            min-height: 70vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 8rem 1.5rem 5rem;
-            position: relative;
-            text-align: center;
-            align-items: center;
+        /* Sección de Precios Detallados */
+        .pricing-detail-section {
+            padding: 5rem 1.5rem;
+            background: linear-gradient(135deg, rgba(13, 27, 42, 0.95) 0%, rgba(30, 58, 95, 0.85) 100%);
         }
-
-        .hero-what-we-offer h1 span {
-            color: var(--accent-gold);
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-            max-width: 800px;
+        .service-detail {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
             margin-bottom: 2.5rem;
-            color: #CCCCCC;
-        }
-
-        .highlight-text {
-            color: var(--accent-gold);
-            font-weight: 600;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--btn-blue);
-            color: var(--text-white);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all var(--transition-fast);
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-            z-index: -1;
-        }
-
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        /* Sección Servicios Principales */
-        .main-services {
-            padding-top: 2rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 4rem;
-        }
-
-        .service-card {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            padding: 2.5rem;
-            color: #333;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all var(--transition-slow);
-            opacity: 0;
-            transform: translateY(20px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-
-        .service-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .service-card:hover {
+        .service-detail:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            border-color: var(--accent-blue);
+            box-shadow: 0 20px 40px rgba(74, 144, 226, 0.2);
         }
-
+        .service-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .service-title {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
         .service-icon {
-            font-size: 3rem;
-            color: var(--btn-blue);
-            margin-bottom: 1.5rem;
-        }
-
-        .service-card h3 {
-            color: var(--bg-primary);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .service-card p {
-            color: #555;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .service-features {
-            list-style-type: none;
-            margin-bottom: 2rem;
-        }
-
-        .service-features li {
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.8rem;
-        }
-
-        .service-features i {
+            font-size: 2.5rem;
             color: var(--accent-blue);
-            margin-top: 0.2rem;
-            flex-shrink: 0;
-        }
-
-        /* Sección Transformación Digital */
-        .digital-transformation {
-            background-color: rgba(0, 0, 0, 0.2);
-            border-radius: 20px;
-            padding: 4rem 2rem;
-            margin-top: 3rem;
-        }
-
-        .transformation-content {
+            width: 70px;
+            height: 70px;
             display: flex;
             align-items: center;
-            gap: 4rem;
-            flex-wrap: wrap;
-        }
-
-        .transformation-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .transformation-visual {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
-        }
-
-        .visual-item {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background-color: rgba(255,255,255,0.05);
-            border-radius: 10px;
-            transition: all var(--transition-fast);
-        }
-
-        .visual-item:hover {
-            transform: translateY(-5px);
-            background-color: rgba(255,255,255,0.1);
-        }
-
-        .visual-icon {
-            font-size: 2.5rem;
-            color: var(--accent-gold);
-            margin-bottom: 1rem;
-        }
-
-        /* Sección Paquetes */
-        .packages-section {
-            text-align: center;
-        }
-
-        .packages-container {
-            display: flex;
             justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-        }
-
-        .package-card {
-            background-color: var(--card-bg);
+            background: rgba(74, 144, 226, 0.1);
             border-radius: 15px;
-            padding: 2.5rem;
-            color: #333;
-            width: 100%;
-            max-width: 350px;
-            transition: all var(--transition-slow);
-            position: relative;
-            overflow: hidden;
         }
-
-        .package-card.popular {
-            transform: scale(1.05);
-            border: 2px solid var(--accent-gold);
+        .service-price-tag {
+            text-align: right;
         }
-
-        .package-badge {
-            position: absolute;
-            top: 20px;
-            right: -30px;
-            background-color: var(--accent-gold);
-            color: var(--bg-primary);
-            padding: 0.5rem 3rem;
-            transform: rotate(45deg);
-            font-weight: 600;
-            font-size: 0.8rem;
-        }
-
-        .package-title {
-            color: var(--bg-primary);
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-
-        .package-price {
-            font-size: 2.5rem;
+        .price-main {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
             font-weight: 800;
+            color: var(--accent-gold);
+            line-height: 1;
+        }
+        .price-main span {
+            font-size: 1.5rem;
+            color: #AAAAAA;
+        }
+        .price-note {
+            color: #CCCCCC;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        .service-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .service-features, .service-process {
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+        }
+        .service-subtitle {
             color: var(--accent-blue);
-            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(74, 144, 226, 0.3);
         }
-
-        .package-price span {
-            font-size: 1rem;
-            color: #666;
+        .feature-list {
+            list-style: none;
         }
-
-        .package-features {
-            list-style-type: none;
-            margin-bottom: 2rem;
-            text-align: left;
-        }
-
-        .package-features li {
-            margin-bottom: 0.8rem;
+        .feature-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             align-items: center;
             gap: 0.8rem;
         }
-
-        .package-features i {
-            color: var(--accent-blue);
+        .feature-list li:last-child {
+            border-bottom: none;
         }
-
-        /* Sección Ventajas */
-        .advantages-section {
-            background-color: rgba(30, 58, 95, 0.1);
-            border-radius: 20px;
-            padding: 4rem 2rem;
+        .feature-list li i {
+            color: var(--accent-green);
+            font-size: 0.9rem;
         }
-
-        .advantages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+        .process-list {
+            list-style: none;
+            counter-reset: process-counter;
         }
-
-        .advantage-item {
-            text-align: center;
-            padding: 2rem;
-            background-color: rgba(255,255,255,0.05);
-            border-radius: 10px;
-            transition: all var(--transition-fast);
+        .process-list li {
+            padding: 1rem 0 1rem 2.5rem;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-
-        .advantage-item:hover {
-            transform: translateY(-5px);
-            background-color: rgba(255,255,255,0.1);
+        .process-list li:last-child {
+            border-bottom: none;
         }
-
-        .advantage-icon {
-            font-size: 2.5rem;
-            color: var(--accent-gold);
-            margin-bottom: 1rem;
+        .process-list li::before {
+            counter-increment: process-counter;
+            content: counter(process-counter);
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
         }
-
-        /* Sección CTA */
-        .cta-section {
-            text-align: center;
+        /* Sección Comparativa */
+        .comparison-section {
+            background: linear-gradient(135deg, rgba(13, 27, 42, 0.9) 0%, rgba(30, 58, 95, 0.8) 100%);
             padding: 5rem 1.5rem;
         }
-
-        .cta-content {
+        .comparison-table {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            text-align: left;
+            padding: 1.2rem;
+            background: rgba(74, 144, 226, 0.1);
+            color: var(--accent-blue);
+            font-weight: 600;
+            border-bottom: 2px solid rgba(74, 144, 226, 0.3);
+        }
+        td {
+            padding: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            vertical-align: top;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        .service-check {
+            color: var(--accent-green);
+            font-size: 1.2rem;
+        }
+        .service-cross {
+            color: #FF6B6B;
+            font-size: 1.2rem;
+        }
+        /* Sección Preguntas Frecuentes */
+        .faq-section {
+            background: linear-gradient(135deg, rgba(13, 27, 42, 0.95) 0%, rgba(30, 58, 95, 0.85) 100%);
+            padding: 5rem 1.5rem;
+        }
+        .faq-container {
             max-width: 800px;
             margin: 0 auto;
         }
-
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all var(--transition-fast);
+        }
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .faq-question.active {
+            color: var(--accent-blue);
+        }
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all var(--transition-slow);
+        }
+        .faq-answer.active {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+        .faq-toggle {
+            color: var(--accent-blue);
+            transition: transform var(--transition-fast);
+        }
+        .faq-question.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 1.5rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(30, 58, 95, 0.2) 100%);
+        }
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
         .cta-buttons {
             display: flex;
             gap: 1.5rem;
             justify-content: center;
+            margin-top: 2rem;
             flex-wrap: wrap;
-            margin-top: 2.5rem;
         }
-
-        .btn-secondary {
-            background-color: transparent;
-            border: 2px solid var(--accent-blue);
-            color: var(--accent-blue);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--accent-blue);
-            color: var(--text-white);
-        }
-
         /* Footer */
         footer {
             background-color: rgba(0,0,0,0.3);
@@ -543,14 +496,12 @@
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
-
         .social-links {
             display: flex;
             justify-content: center;
             gap: 2rem;
             margin-bottom: 2rem;
         }
-
         .social-link {
             display: flex;
             align-items: center;
@@ -564,31 +515,36 @@
             text-decoration: none;
             transition: all var(--transition-fast);
         }
-
         .social-link:hover {
             background-color: var(--accent-blue);
             transform: translateY(-5px);
         }
-
         .copyright {
             color: #AAAAAA;
             font-size: 0.9rem;
         }
-
         /* Animaciones */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
-
         .animate-on-scroll.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Responsive */
+        /* RESPONSIVE - AÑADIDO RESPONSIVE DEL LOGO IGUAL QUE LA PÁGINA PRINCIPAL */
         @media (max-width: 992px) {
+            .logo-text {
+                font-size: 1.7rem;
+                letter-spacing: 0.8px;
+            }
+            .navbar {
+                padding: 0.7rem 1.5rem;
+            }
+            .navbar.scrolled {
+                padding: 0.6rem 1.2rem;
+            }
             .navbar-links {
                 display: none;
                 position: absolute;
@@ -604,81 +560,73 @@
                 box-shadow: 0 10px 30px rgba(0,0,0,0.3);
                 z-index: 999;
             }
-
             .navbar-links.active {
                 display: flex;
             }
-
             .hamburger {
                 display: flex;
             }
-
             .hamburger.active span:nth-child(1) {
                 transform: rotate(45deg) translate(6px, 6px);
             }
-
             .hamburger.active span:nth-child(2) {
                 opacity: 0;
             }
-
             .hamburger.active span:nth-child(3) {
                 transform: rotate(-45deg) translate(6px, -6px);
             }
-
-            .services-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            .service-content {
+                grid-template-columns: 1fr;
             }
-
-            .package-card.popular {
-                transform: none;
-                order: -1;
-            }
-
-            .packages-container {
+            .service-header {
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
+                gap: 1.5rem;
             }
-
-            .transformation-content {
-                flex-direction: column;
+            .service-price-tag {
+                text-align: left;
+                width: 100%;
+            }
+            .comparison-table {
+                padding: 1.5rem;
             }
         }
-
         @media (max-width: 768px) {
-            .hero-what-we-offer {
-                padding-top: 10rem;
+            .hero {
+                padding: 8rem 1rem 3rem; /* Ajustado para móviles */
+                min-height: 60vh;
             }
-
             section {
                 padding: 3rem 1rem;
             }
-
-            .logo-text {
-                font-size: 1.7rem;
+            .service-detail {
+                padding: 1.5rem;
             }
-
-            .service-card {
-                padding: 2rem;
+            .service-title {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
             }
-
+            .price-main {
+                font-size: 2.5rem;
+            }
             .cta-buttons {
                 flex-direction: column;
-                align-items: center;
             }
-
             .cta-buttons .btn {
                 width: 100%;
-                max-width: 300px;
             }
         }
-
         @media (max-width: 480px) {
             .logo-text {
                 font-size: 1.5rem;
+                letter-spacing: 0.6px;
             }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
+            table {
+                font-size: 0.9rem;
+            }
+            th, td {
+                padding: 0.8rem;
             }
         }
     </style>
@@ -688,346 +636,476 @@
     <div class="light-effect light-1"></div>
     <div class="light-effect light-2"></div>
     <div class="light-effect light-3"></div>
-
-    <!-- Sticky Navbar -->
+    
+    <!-- Sticky Navbar - EXACTAMENTE IGUAL QUE LA PÁGINA PRINCIPAL -->
     <nav class="navbar">
         <div class="navbar-logo">
+            <!-- Logo con texto y degradado igual que la página principal -->
             <a href="index.html" class="logo-text">Prounek</a>
         </div>
-        
         <div class="hamburger">
             <span></span>
             <span></span>
             <span></span>
         </div>
-        
         <div class="navbar-links">
             <a href="index.html">Inicio</a>
-            <a href="servicios.html">Servicios</a>
-            <a href="que-ofrecemos.html" class="active">¿Qué Ofrecemos?</a>
-            <a href="portafolio.html">Portafolio</a>
-            <a href="contacto.html">Contacto</a>
+            <a href="index.html#servicios">Servicios</a>
+            <a href="index.html#precios-packs">Precios</a>
+            <a href="pack-personalizado.html">Pack Personalizado</a>
+            <a href="index.html#contacto">Contacto</a>
         </div>
     </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-what-we-offer">
+    
+    <!-- Hero Section - AHORA CON MÁS ESPACIO ARRIBA -->
+    <section class="hero">
         <div class="container">
-            <h1 class="animate-on-scroll">¿Qué <span>Ofrecemos</span> en Prounek?</h1>
-            <p class="hero-subtitle animate-on-scroll">Soluciones digitales <span class="highlight-text">completas y personalizadas</span> que transforman negocios físicos en experiencias digitales exitosas. No solo creamos páginas web, construimos <span class="highlight-text">ecosistemas digitales</span> que generan resultados.</p>
-            <a href="#soluciones" class="btn animate-on-scroll">Ver Nuestras Soluciones</a>
+            <h1 class="animate-on-scroll">Precios <span>Detallados</span></h1>
+            <p class="hero-subtitle animate-on-scroll">Descripción completa de todos nuestros servicios y lo que incluye cada uno</p>
+            <a href="#servicios" class="btn btn-gold animate-on-scroll">
+                <i class="fas fa-arrow-down"></i> Ver Todos los Servicios
+            </a>
         </div>
     </section>
-
-    <!-- Sección Servicios Principales -->
-    <section id="soluciones" class="main-services">
+    
+    <!-- Sección Precios Detallados -->
+    <section id="servicios" class="pricing-detail-section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="animate-on-scroll">Nuestras <span style="color: var(--accent-gold);">Soluciones</span> Integrales</h2>
-                <p class="hero-subtitle animate-on-scroll">Cada servicio está diseñado para trabajar en conjunto y ofrecerte una transformación digital completa.</p>
-            </div>
+            <h2 style="text-align: center; margin-bottom: 3rem;" class="animate-on-scroll">Servicios Individuales</h2>
             
-            <div class="services-grid">
-                <!-- Solución 1 -->
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <i class="fas fa-globe-americas"></i>
+            <!-- Servicio 1: Diseño Página Web -->
+            <div class="service-detail animate-on-scroll">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div>
+                            <h3>Diseño Página Web</h3>
+                            <p style="color: #CCCCCC;">Tu presencia online profesional</p>
+                        </div>
                     </div>
-                    <h3>Presencia Digital Completa</h3>
-                    <p>No solo una página web, sino un ecosistema digital que incluye todo lo que tu negocio necesita para destacar online.</p>
-                    
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Página web responsive y moderna</li>
-                        <li><i class="fas fa-check"></i> Optimización para buscadores (SEO)</li>
-                        <li><i class="fas fa-check"></i> Integración con redes sociales</li>
-                        <li><i class="fas fa-check"></i> Blog corporativo integrado</li>
-                        <li><i class="fas fa-check"></i> Certificado SSL de seguridad</li>
-                        <li><i class="fas fa-check"></i> Hosting premium incluido</li>
-                    </ul>
+                    <div class="service-price-tag">
+                        <div class="price-main">150<span>€</span></div>
+                        <div class="price-note">Pago único • Todo incluido</div>
+                    </div>
                 </div>
-                
-                <!-- Solución 2 -->
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <i class="fas fa-sync-alt"></i>
+                <div class="service-content">
+                    <div class="service-features">
+                        <h4 class="service-subtitle">¿Qué incluye?</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Diseño web personalizado y único</li>
+                            <li><i class="fas fa-check"></i> Dominio .com, .es o .net (1 año)</li>
+                            <li><i class="fas fa-check"></i> Hosting premium (1 año)</li>
+                            <li><i class="fas fa-check"></i> Diseño 100% responsive (móvil y tablet)</li>
+                            <li><i class="fas fa-check"></i> Certificado SSL (https:// seguro)</li>
+                            <li><i class="fas fa-check"></i> Hasta 5 páginas principales</li>
+                            <li><i class="fas fa-check"></i> Formulario de contacto</li>
+                            <li><i class="fas fa-check"></i> Integración redes sociales</li>
+                        </ul>
                     </div>
-                    <h3>Automatización de Procesos</h3>
-                    <p>Transformamos procesos manuales en sistemas automáticos que ahorran tiempo y reducen errores.</p>
-                    
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Sistema de citas online</li>
-                        <li><i class="fas fa-check"></i> Reservas y pagos integrados</li>
-                        <li><i class="fas fa-check"></i> Recordatorios automáticos</li>
-                        <li><i class="fas fa-check"></i> Confirmaciones por WhatsApp/Email</li>
-                        <li><i class="fas fa-check"></i> Integración con Google Calendar</li>
-                        <li><i class="fas fa-check"></i> Panel de control administrativo</li>
-                    </ul>
-                </div>
-                
-                <!-- Solución 3 -->
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <i class="fas fa-palette"></i>
+                    <div class="service-process">
+                        <h4 class="service-subtitle">Proceso de trabajo</h4>
+                        <ul class="process-list">
+                            <li>Reunión para entender tu negocio</li>
+                            <li>Diseño de 2 propuestas diferentes</li>
+                            <li>Desarrollo del sitio web</li>
+                            <li>Revisión y ajustes finales</li>
+                            <li>Entrega y activación</li>
+                            <li>Capacitación básica</li>
+                        </ul>
                     </div>
-                    <h3>Identidad Visual Profesional</h3>
-                    <p>Creamos una imagen de marca coherente y memorable que genera confianza y reconocimiento.</p>
-                    
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Diseño de logo único</li>
-                        <li><i class="fas fa-check"></i> Manual de identidad visual</li>
-                        <li><i class="fas fa-check"></i> Paleta de colores corporativa</li>
-                        <li><i class="fas fa-check"></i> Tipografía personalizada</li>
-                        <li><i class="fas fa-check"></i> Elementos gráficos exclusivos</li>
-                        <li><i class="fas fa-check"></i> Plantillas para redes sociales</li>
-                    </ul>
-                </div>
-                
-                <!-- Solución 4 -->
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <h3>Comercio Electrónico</h3>
-                    <p>Convierte tu negocio físico en una tienda online 24/7 con todas las funcionalidades necesarias.</p>
-                    
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Catálogo de productos ilimitado</li>
-                        <li><i class="fas fa-check"></i> Carrito de compras avanzado</li>
-                        <li><i class="fas fa-check"></i> Múltiples métodos de pago</li>
-                        <li><i class="fas fa-check"></i> Sistema de envíos integrado</li>
-                        <li><i class="fas fa-check"></i> Gestión de inventario</li>
-                        <li><i class="fas fa-check"></i> Panel de control de pedidos</li>
-                    </ul>
-                </div>
-                
-                <!-- Solución 5 -->
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3>Contenido Multimedia</h3>
-                    <p>Producimos contenido visual de alta calidad que atrae, engage y convierte a tus clientes.</p>
-                    
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Fotografía profesional</li>
-                        <li><i class="fas fa-check"></i> Videos promocionales</li>
-                        <li><i class="fas fa-check"></i> Reels y TikTok optimizados</li>
-                        <li><i class="fas fa-check"></i> Animaciones explicativas</li>
-                        <li><i class="fas fa-check"></i> Contenido para Instagram/Facebook</li>
-                        <li><i class="fas fa-check"></i> Edición y postproducción</li>
-                    </ul>
-                </div>
-                
-                <!-- Solución 6 -->
-                <div class="service-card animate-on-scroll">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Marketing y Analítica</h3>
-                    <p>No solo creamos, también medimos y optimizamos para garantizar el éxito de tu inversión.</p>
-                    
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Estrategia de marketing digital</li>
-                        <li><i class="fas fa-check"></i> Configuración de Google Analytics</li>
-                        <li><i class="fas fa-check"></i> Reportes mensuales de rendimiento</li>
-                        <li><i class="fas fa-check"></i> Optimización continua (CRO)</li>
-                        <li><i class="fas fa-check"></i> Campañas en redes sociales</li>
-                        <li><i class="fas fa-check"></i> Email marketing automatizado</li>
-                    </ul>
                 </div>
             </div>
             
-            <!-- Sección Transformación Digital -->
-            <div class="digital-transformation animate-on-scroll">
-                <h2 style="text-align: center; margin-bottom: 3rem;">Transformación Digital <span style="color: var(--accent-gold);">Paso a Paso</span></h2>
-                
-                <div class="transformation-content">
-                    <div class="transformation-text">
-                        <h3>De Negocio Físico a Digital</h3>
-                        <p>Entendemos que cada negocio es único. Por eso nuestro enfoque no es simplemente "hacer una página web", sino entender tu modelo de negocio y transformarlo digitalmente de manera integral.</p>
-                        
-                        <p style="margin-top: 1.5rem;">Trabajamos <span class="highlight-text">contigo</span> en cada paso del proceso, desde el análisis inicial hasta la implementación y mantenimiento. No eres solo un cliente, eres nuestro <span class="highlight-text">socio</span> en este viaje de transformación digital.</p>
-                        
-                        <a href="contacto.html" class="btn" style="margin-top: 2rem;">Iniciar Mi Transformación</a>
+            <!-- Servicio 2: Mantenimiento Web -->
+            <div class="service-detail animate-on-scroll">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div>
+                            <h3>Mantenimiento Web</h3>
+                            <p style="color: #CCCCCC;">Tu sitio siempre actualizado y seguro</p>
+                        </div>
                     </div>
-                    
-                    <div class="transformation-visual">
-                        <div class="visual-item">
-                            <div class="visual-icon">
-                                <i class="fas fa-search"></i>
-                            </div>
-                            <h4>1. Análisis</h4>
-                            <p>Estudiamos tu negocio y objetivos</p>
-                        </div>
-                        
-                        <div class="visual-item">
-                            <div class="visual-icon">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
-                            <h4>2. Estrategia</h4>
-                            <p>Creamos un plan personalizado</p>
-                        </div>
-                        
-                        <div class="visual-item">
-                            <div class="visual-icon">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <h4>3. Implementación</h4>
-                            <p>Desarrollamos las soluciones</p>
-                        </div>
-                        
-                        <div class="visual-item">
-                            <div class="visual-icon">
-                                <i class="fas fa-rocket"></i>
-                            </div>
-                            <h4>4. Lanzamiento</h4>
-                            <p>Activamos y optimizamos</p>
-                        </div>
+                    <div class="service-price-tag">
+                        <div class="price-main">30<span>€/mes</span></div>
+                        <div class="price-note">Facturación mensual • Sin permanencia</div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Paquetes -->
-    <section class="packages-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="animate-on-scroll">Paquetes <span style="color: var(--accent-gold);">Todo en Uno</span></h2>
-                <p class="hero-subtitle animate-on-scroll">Soluciones empaquetadas diseñadas para diferentes necesidades y presupuestos.</p>
+                <div class="service-content">
+                    <div class="service-features">
+                        <h4 class="service-subtitle">¿Qué incluye?</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Actualizaciones de seguridad semanales</li>
+                            <li><i class="fas fa-check"></i> Copias de seguridad diarias</li>
+                            <li><i class="fas fa-check"></i> Monitoreo 24/7 del sitio</li>
+                            <li><i class="fas fa-check"></i> Soporte técnico prioritario</li>
+                            <li><i class="fas fa-check"></i> Actualización de contenido (hasta 5 cambios/mes)</li>
+                            <li><i class="fas fa-check"></i> Optimización de velocidad</li>
+                            <li><i class="fas fa-check"></i> Renovación automática de dominio y hosting</li>
+                            <li><i class="fas fa-check"></i> Reporte mensual de rendimiento</li>
+                        </ul>
+                    </div>
+                    <div class="service-process">
+                        <h4 class="service-subtitle">Cómo funciona</h4>
+                        <ul class="process-list">
+                            <li>Análisis inicial de tu sitio</li>
+                            <li>Configuración de seguridad</li>
+                            <li>Implementación de backups</li>
+                            <li>Monitoreo continuo</li>
+                            <li>Soporte cuando lo necesites</li>
+                            <li>Reportes mensuales detallados</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             
-            <div class="packages-container">
-                <!-- Paquete Básico -->
-                <div class="package-card animate-on-scroll">
-                    <h3 class="package-title">Presencia Digital Básica</h3>
-                    <div class="package-price">$499<span>/único</span></div>
-                    
-                    <ul class="package-features">
-                        <li><i class="fas fa-check"></i> Página web de 5 secciones</li>
-                        <li><i class="fas fa-check"></i> Diseño responsive</li>
-                        <li><i class="fas fa-check"></i> Logo básico</li>
-                        <li><i class="fas fa-check"></i> Formulario de contacto</li>
-                        <li><i class="fas fa-check"></i> Hosting por 1 año</li>
-                        <li><i class="fas fa-check"></i> SSL incluido</li>
-                    </ul>
-                    
-                    <a href="contacto.html" class="btn">Elegir Este Paquete</a>
+            <!-- Servicio 3: Agendar Citas -->
+            <div class="service-detail animate-on-scroll">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Agendar Citas Automatizadas</h3>
+                            <p style="color: #CCCCCC;">Reduce llamadas, aumenta eficiencia</p>
+                        </div>
+                    </div>
+                    <div class="service-price-tag">
+                        <div class="price-main">50<span>€</span></div>
+                        <div class="price-note">Pago único • Configuración incluida</div>
+                    </div>
                 </div>
-                
-                <!-- Paquete Profesional -->
-                <div class="package-card animate-on-scroll popular">
-                    <div class="package-badge">MÁS POPULAR</div>
-                    <h3 class="package-title">Negocio Digital Pro</h3>
-                    <div class="package-price">$899<span>/único</span></div>
-                    
-                    <ul class="package-features">
-                        <li><i class="fas fa-check"></i> Todo del paquete básico</li>
-                        <li><i class="fas fa-check"></i> Sistema de citas online</li>
-                        <li><i class="fas fa-check"></i> Logo profesional</li>
-                        <li><i class="fas fa-check"></i> Fotos profesionales (10)</li>
-                        <li><i class="fas fa-check"></i> Video promocional (30 seg)</li>
-                        <li><i class="fas fa-check"></i> Mantenimiento 3 meses</li>
-                    </ul>
-                    
-                    <a href="contacto.html" class="btn" style="background-color: var(--accent-gold);">Elegir Este Paquete</a>
+                <div class="service-content">
+                    <div class="service-features">
+                        <h4 class="service-subtitle">¿Qué incluye?</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Sistema de reservas online</li>
+                            <li><i class="fas fa-check"></i> Integración con Google Calendar</li>
+                            <li><i class="fas fa-check"></i> Confirmación automática por email/SMS</li>
+                            <li><i class="fas fa-check"></i> Recordatorios automáticos</li>
+                            <li><i class="fas fa-check"></i> Panel de administración simple</li>
+                            <li><i class="fas fa-check"></i> Personalización de horarios disponibles</li>
+                            <li><i class="fas fa-check"></i> Configuración de servicios y precios</li>
+                            <li><i class="fas fa-check"></i> Soporte por 1 mes incluido</li>
+                        </ul>
+                    </div>
+                    <div class="service-process">
+                        <h4 class="service-subtitle">Proceso de instalación</h4>
+                        <ul class="process-list">
+                            <li>Definición de horarios y servicios</li>
+                            <li>Configuración del calendario</li>
+                            <li>Integración con tu web</li>
+                            <li>Pruebas del sistema</li>
+                            <li>Capacitación para usarlo</li>
+                            <li>Soporte durante el primer mes</li>
+                        </ul>
+                    </div>
                 </div>
-                
-                <!-- Paquete Premium -->
-                <div class="package-card animate-on-scroll">
-                    <h3 class="package-title">E-commerce Premium</h3>
-                    <div class="package-price">$1,499<span>/único</span></div>
-                    
-                    <ul class="package-features">
-                        <li><i class="fas fa-check"></i> Todo del paquete Pro</li>
-                        <li><i class="fas fa-check"></i> Tienda online completa</li>
-                        <li><i class="fas fa-check"></i> Hasta 50 productos</li>
-                        <li><i class="fas fa-check"></i> Pagos online integrados</li>
-                        <li><i class="fas fa-check"></i> Sistema de envíos</li>
-                        <li><i class="fas fa-check"></i> Mantenimiento 6 meses</li>
-                    </ul>
-                    
-                    <a href="contacto.html" class="btn">Elegir Este Paquete</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Ventajas -->
-    <section class="advantages-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="animate-on-scroll">¿Por qué elegir <span style="color: var(--accent-gold);">Prounek</span>?</h2>
-                <p class="hero-subtitle animate-on-scroll">Lo que nos diferencia y nos convierte en tu mejor aliado digital.</p>
             </div>
             
-            <div class="advantages-grid">
-                <div class="advantage-item animate-on-scroll">
-                    <div class="advantage-icon">
-                        <i class="fas fa-bolt"></i>
+            <!-- Servicio 4: Logo Profesional -->
+            <div class="service-detail animate-on-scroll">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div>
+                            <h3>Diseño de Logo Profesional</h3>
+                            <p style="color: #CCCCCC;">Tu identidad visual única</p>
+                        </div>
                     </div>
-                    <h4>Entrega en 7 Días</h4>
-                    <p>Tu proyecto listo en una semana, sin comprometer la calidad.</p>
+                    <div class="service-price-tag">
+                        <div class="price-main">5<span>€</span></div>
+                        <div class="price-note">Precio especial de lanzamiento</div>
+                    </div>
                 </div>
-                
-                <div class="advantage-item animate-on-scroll">
-                    <div class="advantage-icon">
-                        <i class="fas fa-shield-alt"></i>
+                <div class="service-content">
+                    <div class="service-features">
+                        <h4 class="service-subtitle">¿Qué incluye?</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> 3 propuestas de logo diferentes</li>
+                            <li><i class="fas fa-check"></i> Revisión y ajustes ilimitados</li>
+                            <li><i class="fas fa-check"></i> Logo en formatos vectoriales (AI, EPS, SVG)</li>
+                            <li><i class="fas fa-check"></i> Logo en formatos raster (PNG, JPG)</li>
+                            <li><i class="fas fa-check"></i> Versiones para redes sociales</li>
+                            <li><i class="fas fa-check"></i> Versión blanco y negro</li>
+                            <li><i class="fas fa-check"></i> Guía básica de uso del logo</li>
+                            <li><i class="fas fa-check"></i> Derechos de autor 100% tuyos</li>
+                        </ul>
                     </div>
-                    <h4>Garantía de Satisfacción</h4>
-                    <p>Trabajamos hasta que estés 100% satisfecho con el resultado.</p>
+                    <div class="service-process">
+                        <h4 class="service-subtitle">Proceso creativo</h4>
+                        <ul class="process-list">
+                            <li>Briefing sobre tu negocio</li>
+                            <li>Investigación de mercado</li>
+                            <li>Creación de 3 conceptos</li>
+                            <li>Presentación de propuestas</li>
+                            <li>Revisión y ajustes</li>
+                            <li>Entrega de archivos finales</li>
+                        </ul>
+                    </div>
                 </div>
-                
-                <div class="advantage-item animate-on-scroll">
-                    <div class="advantage-icon">
-                        <i class="fas fa-user-check"></i>
+            </div>
+            
+            <!-- Servicio 5: Videos y Fotos -->
+            <div class="service-detail animate-on-scroll">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div>
+                            <h3>Videos y Fotos Promocionales</h3>
+                            <p style="color: #CCCCCC;">Contenido visual profesional</p>
+                        </div>
                     </div>
-                    <h4>Soporte Personalizado</h4>
-                    <p>Atención directa con el equipo, sin intermediarios.</p>
+                    <div class="service-price-tag">
+                        <div class="price-main">50<span>€</span></div>
+                        <div class="price-note">Pack completo • Edición incluida</div>
+                    </div>
                 </div>
-                
-                <div class="advantage-item animate-on-scroll">
-                    <div class="advantage-icon">
-                        <i class="fas fa-lock"></i>
+                <div class="service-content">
+                    <div class="service-features">
+                        <h4 class="service-subtitle">¿Qué incluye?</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Pack de 10 fotos profesionales</li>
+                            <li><i class="fas fa-check"></i> O 2 videos promocionales (30-60 segundos)</li>
+                            <li><i class="fas fa-check"></i> Edición profesional (color, luz, sonido)</li>
+                            <li><i class="fas fa-check"></i> Formatos optimizados para redes sociales</li>
+                            <li><i class="fas fa-check"></i> Música y efectos de sonido</li>
+                            <li><i class="fas fa-check"></i> Textos y llamadas a la acción</li>
+                            <li><i class="fas fa-check"></i> Logo y marca de agua</li>
+                            <li><i class="fas fa-check"></i> Guía de publicación en redes</li>
+                        </ul>
                     </div>
-                    <h4>Propiedad Total</h4>
-                    <p>Tu web es 100% tuya, sin royalties ni comisiones.</p>
+                    <div class="service-process">
+                        <h4 class="service-subtitle">Proceso de producción</h4>
+                        <ul class="process-list">
+                            <li>Planificación del contenido</li>
+                            <li>Guion o storyboard</li>
+                            <li>Sesión de fotos/grabación</li>
+                            <li>Edición profesional</li>
+                            <li>Revisión y ajustes</li>
+                            <li>Entrega de archivos finales</li>
+                        </ul>
+                    </div>
                 </div>
-                
-                <div class="advantage-item animate-on-scroll">
-                    <div class="advantage-icon">
-                        <i class="fas fa-sync"></i>
+            </div>
+            
+            <!-- Servicio 6: Tienda Online -->
+            <div class="service-detail animate-on-scroll">
+                <div class="service-header">
+                    <div class="service-title">
+                        <div class="service-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div>
+                            <h3>Tienda Online con Pagos</h3>
+                            <p style="color: #CCCCCC;">Vende online las 24 horas</p>
+                        </div>
                     </div>
-                    <h4>Actualizaciones Gratuitas</h4>
-                    <p>Mantenemos tu sitio actualizado sin costos adicionales.</p>
+                    <div class="service-price-tag">
+                        <div class="price-main">300<span>€</span></div>
+                        <div class="price-note">Pago único • Todo configurado</div>
+                    </div>
                 </div>
-                
-                <div class="advantage-item animate-on-scroll">
-                    <div class="advantage-icon">
-                        <i class="fas fa-graduation-cap"></i>
+                <div class="service-content">
+                    <div class="service-features">
+                        <h4 class="service-subtitle">¿Qué incluye?</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Tienda online completa</li>
+                            <li><i class="fas fa-check"></i> Hasta 50 productos iniciales</li>
+                            <li><i class="fas fa-check"></i> Pasarela de pagos (Stripe/PayPal)</li>
+                            <li><i class="fas fa-check"></i> Carrito de compras</li>
+                            <li><i class="fas fa-check"></i> Sistema de gestión de pedidos</li>
+                            <li><i class="fas fa-check"></i> Control de inventario</li>
+                            <li><i class="fas fa-check"></i> Envíos y logística</li>
+                            <li><i class="fas fa-check"></i> Certificado SSL premium</li>
+                            <li><i class="fas fa-check"></i> Dominio y hosting e-commerce</li>
+                        </ul>
                     </div>
-                    <h4>Capacitación Incluida</h4>
-                    <p>Te enseñamos a gestionar tu sitio web fácilmente.</p>
+                    <div class="service-process">
+                        <h4 class="service-subtitle">Proceso de creación</h4>
+                        <ul class="process-list">
+                            <li>Análisis de productos y categorías</li>
+                            <li>Diseño de la tienda</li>
+                            <li>Configuración de pagos</li>
+                            <li>Configuración de envíos</li>
+                            <li>Carga de productos</li>
+                            <li>Pruebas y capacitación</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Sección CTA -->
+    
+    <!-- Sección Comparativa -->
+    <section class="comparison-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 3rem;" class="animate-on-scroll">Comparativa de Servicios</h2>
+            <div class="comparison-table animate-on-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>Página Web</th>
+                            <th>Tienda Online</th>
+                            <th>Pack Personalizado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Diseño personalizado</td>
+                            <td><i class="fas fa-check service-check"></i></td>
+                            <td><i class="fas fa-check service-check"></i></td>
+                            <td><i class="fas fa-check service-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Dominio y hosting</td>
+                            <td><i class="fas fa-check service-check"></i></td>
+                            <td><i class="fas fa-check service-check"></i></td>
+                            <td><i class="fas fa-check service-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Certificado SSL</td>
+                            <td><i class="fas fa-check service-check"></i></td>
+                            <td><i class="fas fa-check service-check"></i></td>
+                            <td><i class="fas fa-check service-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Sistema de pagos</td>
+                            <td><i class="fas fa-times service-cross"></i></td>
+                            <td><i class="fas fa-check service-check"></i></td>
+                            <td><i class="fas fa-check service-check"></i>*</td>
+                        </tr>
+                        <tr>
+                            <td>Carrito de compras</td>
+                            <td><i class="fas fa-times service-cross"></i></td>
+                            <td><i class="fas fa-check service-check"></i></td>
+                            <td><i class="fas fa-check service-check"></i>*</td>
+                        </tr>
+                        <tr>
+                            <td>Reservas online</td>
+                            <td><i class="fas fa-times service-cross"></i></td>
+                            <td><i class="fas fa-times service-cross"></i></td>
+                            <td><i class="fas fa-check service-check"></i>*</td>
+                        </tr>
+                        <tr>
+                            <td>Logo profesional</td>
+                            <td><i class="fas fa-times service-cross"></i></td>
+                            <td><i class="fas fa-times service-cross"></i></td>
+                            <td><i class="fas fa-check service-check"></i>*</td>
+                        </tr>
+                        <tr>
+                            <td>Descuento especial</td>
+                            <td><i class="fas fa-times service-cross"></i></td>
+                            <td><i class="fas fa-times service-cross"></i></td>
+                            <td><i class="fas fa-check service-check"></i> 5%</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600; color: var(--accent-gold);">Precio</td>
+                            <td style="font-weight: 600; color: var(--accent-gold);">150€</td>
+                            <td style="font-weight: 600; color: var(--accent-gold);">300€</td>
+                            <td style="font-weight: 600; color: var(--accent-gold);">Variable</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 1.5rem; color: #CCCCCC; font-size: 0.9rem;">
+                    * Disponible según selección en el Pack Personalizado
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sección Preguntas Frecuentes -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 3rem;" class="animate-on-scroll">Preguntas Frecuentes</h2>
+            <div class="faq-container">
+                <!-- FAQ 1 -->
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question" onclick="toggleFAQ(1)">
+                        <span>¿Hay que pagar por adelantado?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>NO. Trabajamos con total transparencia. Primero hacemos todo el trabajo, luego lo revisas y si estás 100% satisfecho, pagas. Si no te gusta, no pagas nada y eliminamos todo.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 2 -->
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question" onclick="toggleFAQ(2)">
+                        <span>¿Cuánto tiempo tarda cada servicio?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Entregamos en solo 7 días hábiles. Desde que nos das la información necesaria, en una semana tendrás tu proyecto listo para revisar.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 3 -->
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question" onclick="toggleFAQ(3)">
+                        <span>¿Qué pasa después de la entrega?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Después de aprobar el trabajo, te entregamos todos los archivos y acceso completo. Además, incluimos 30 días de soporte gratuito por si tienes alguna duda.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question" onclick="toggleFAQ(4)">
+                        <span>¿Puedo hacer cambios después?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, durante el proceso de desarrollo incluimos revisiones ilimitadas. Después de la entrega, los cambios menores son gratuitos por 30 días.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 5 -->
+                <div class="faq-item animate-on-scroll">
+                    <div class="faq-question" onclick="toggleFAQ(5)">
+                        <span>¿Y si necesito más páginas o funciones?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Podemos adaptar cualquier servicio a tus necesidades. Cada página adicional tiene un coste de 25€, y las funciones extra se presupuestan según complejidad.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <div class="cta-content">
-                <h2 class="animate-on-scroll">¿Listo para llevar tu negocio al <span style="color: var(--accent-gold);">siguiente nivel</span>?</h2>
-                <p class="hero-subtitle animate-on-scroll">No importa si recién comienzas o ya tienes un negocio establecido. Tenemos la solución perfecta para ti.</p>
-                
+            <div class="cta-container animate-on-scroll">
+                <h2>¿Listo para comenzar?</h2>
+                <p style="color: #CCCCCC; margin-bottom: 2rem; font-size: 1.2rem;">
+                </p>
                 <div class="cta-buttons">
-                    <a href="contacto.html" class="btn animate-on-scroll">Solicitar Consulta Gratuita</a>
-                    <a href="tel:+1234567890" class="btn btn-secondary animate-on-scroll"><i class="fas fa-phone"></i> Hablar con un Asesor</a>
+                    <a href="index.html#contacto" class="btn">
+                        <i class="fas fa-envelope"></i> Contactar Ahora
+                    </a>
+                    <a href="index.html" class="btn">
+                        <i class="fas fa-home"></i> Volver al Inicio
+                    </a>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1045,27 +1123,38 @@
                     <i class="fab fa-linkedin-in"></i>
                 </a>
             </div>
-            <p class="copyright">© 2023 Prounek. Todos los derechos reservados.</p>
+            <p class="copyright">© 2025 Prounek. Todos los derechos reservados.</p>
+            <p style="margin-top: 1rem; color: #CCCCCC;">
+                <i class="fas fa-envelope"></i> tecreamosweb@gmail.com
+            </p>
         </div>
     </footer>
 
     <script>
+        // Toggle FAQ - Función individual
+        function toggleFAQ(index) {
+            const faq = document.querySelectorAll('.faq-item')[index - 1];
+            const question = faq.querySelector('.faq-question');
+            const answer = faq.querySelector('.faq-answer');
+            
+            question.classList.toggle('active');
+            answer.classList.toggle('active');
+        }
+
+        // Efectos de entrada y animaciones - COPIADO EXACTAMENTE DE LA PÁGINA PRINCIPAL
         document.addEventListener('DOMContentLoaded', function() {
             // Scroll suave para enlaces internos
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
-                    
                     const targetId = this.getAttribute('href');
                     if (targetId === '#') return;
-                    
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         window.scrollTo({
                             top: targetElement.offsetTop - 100,
                             behavior: 'smooth'
                         });
-                        
                         // Cerrar menú hamburguesa si está abierto
                         if (window.innerWidth <= 992) {
                             navbarLinks.classList.remove('active');
@@ -1080,14 +1169,15 @@
             const hamburger = document.querySelector('.hamburger');
             const navbarLinks = document.querySelector('.navbar-links');
             
-            // Sticky navbar con efecto
+            // Sticky navbar con efecto - EXACTAMENTE IGUAL QUE EN LA PÁGINA PRINCIPAL
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 100) {
                     navbar.classList.add('scrolled');
                 } else {
                     navbar.classList.remove('scrolled');
                 }
-                
+                // Actualizar enlace activo según scroll
+                updateActiveLink();
                 // Animar elementos al hacer scroll
                 animateOnScroll();
             });
@@ -1107,6 +1197,29 @@
                 }
             });
             
+            // Actualizar enlace activo en navbar
+            function updateActiveLink() {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.navbar-links a');
+                let currentSection = '';
+                const scrollPosition = window.scrollY + 150;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
             // Animar elementos al hacer scroll
             function animateOnScroll() {
                 const elements = document.querySelectorAll('.animate-on-scroll');
@@ -1114,7 +1227,6 @@
                 
                 elements.forEach(element => {
                     const elementTop = element.getBoundingClientRect().top;
-                    
                     if (elementTop < triggerBottom) {
                         element.classList.add('visible');
                     }
@@ -1124,25 +1236,35 @@
             // Animar elementos inicialmente
             setTimeout(animateOnScroll, 100);
             
+            // Efectos de microinteracciones
+            const buttons = document.querySelectorAll('.btn, .social-link, .btn-link');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    if (!this.classList.contains('active')) {
+                        this.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            
             // Animación inicial para hero
-            const heroElements = document.querySelectorAll('.hero-what-we-offer .animate-on-scroll');
+            const heroElements = document.querySelectorAll('.hero .animate-on-scroll');
             heroElements.forEach((el, index) => {
                 setTimeout(() => {
                     el.classList.add('visible');
                 }, 300 + (index * 200));
             });
             
-            // Efectos de microinteracciones
-            const buttons = document.querySelectorAll('.btn, .social-link');
-            buttons.forEach(button => {
-                button.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-3px)';
+            // Efecto especial para las tarjetas de servicios
+            const serviceCards = document.querySelectorAll('.service-detail');
+            serviceCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.zIndex = '10';
                 });
-                
-                button.addEventListener('mouseleave', function() {
-                    if (!this.classList.contains('active')) {
-                        this.style.transform = 'translateY(0)';
-                    }
+                card.addEventListener('mouseleave', function() {
+                    this.style.zIndex = '1';
                 });
             });
         });
