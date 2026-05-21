@@ -1,2236 +1,944 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1579648661446718"
-     crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prounek | Tu negocio en digital</title>
-      <!-- Verificación Google -->
-    <meta name="google-site-verification" content="_Wc_nLZK7dB35Z6XiPw4xS3zFdnBQJzY8_g5SSzVLIM" />
-      <!-- SEO -->
-    <meta name="description" content="Prounek - Tu creador de páginas web. Diseñamos páginas web profesionales, e-commerce y mucho más para que tu negocio crezca online.">
-    <meta name="keywords" content="Páginas web, e-commerce, asesoramiento digital, marketing online">
-    <meta name="author" content="Prounek">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="Logo Prounek.png">
-    <style>
-        :root {
-            --bg-primary: #0D1B2A;
-            --text-white: #FFFFFF;
-            --card-bg: #E5E7EB;
-            --btn-blue: #1E3A5F;
-            --accent-blue: #4A90E2;
-            --accent-gold: #FFD700;
-            --accent-green: #4CAF50;
-            --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            --transition-fast: 0.3s ease;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-white);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-        h1, h2, h3 {
-            font-family: 'Montserrat', sans-serif;
-        }
-        h1 {
-            font-weight: 800;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-        h2 {
-            font-weight: 600;
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            margin-bottom: 2rem;
-        }
-        section {
-            padding: 5rem 1.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-        /* Efectos de luz */
-        .light-effect {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.08;
-            z-index: 0;
-            pointer-events: none;
-        }
-        .light-1 {
-            width: 400px;
-            height: 800px;
-            background: linear-gradient(to bottom, #4A90E2, #1E3A5F);
-            top: 10%;
-            right: -100px;
-        }
-        .light-2 {
-            width: 300px;
-            height: 600px;
-            background: linear-gradient(to bottom, #E5E7EB, #1E3A5F);
-            top: 40%;
-            right: 10%;
-        }
-        .light-3 {
-            width: 250px;
-            height: 500px;
-            background: linear-gradient(to bottom, #FFFFFF, #4A90E2);
-            top: 70%;
-            right: 0;
-        }
-        /* Header y Hero */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 8rem 1.5rem 5rem;
-            position: relative;
-        }
-        .hero h1 span {
-            position: relative;
-            display: inline-block;
-        }
-        .hero h1 span::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background-color: var(--accent-blue);
-            z-index: -1;
-            opacity: 0.7;
-            border-radius: 4px;
-        }
-        .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-            max-width: 700px;
-            margin-bottom: 2.5rem;
-            color: #CCCCCC;
-        }
-        .btn {
-            display: inline-block;
-            background-color: var(--btn-blue);
-            color: var(--text-white);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all var(--transition-fast);
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-            z-index: -1;
-        }
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        .btn:hover::before {
-            left: 100%;
-        }
-        
-        /* Botón especial para el pack */
-        .btn-pack {
-            background: linear-gradient(135deg, var(--accent-gold), #FFA500, #FFD700);
-            color: #333;
-            font-weight: 800;
-            font-size: 1.2rem;
-            padding: 1.2rem 2.5rem;
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
-            border: none;
-            position: relative;
-            overflow: hidden;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prounek — Diseño Web & Marketing Digital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .btn-pack::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.7s ease;
-        }
+    :root {
+      --bg: #f4f4f4;
+      --accent: #2563eb;
+      --accent-dark: #091652;
+      --text: #111;
+      --card-bg: rgba(255,255,255,0.6);
+      --radius: 18px;
+      --nav-h: 70px;
+    }
 
-        .btn-pack:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.6);
-            color: #222;
-        }
+    html { scroll-behavior: smooth; }
 
-        .btn-pack:hover::before {
-            left: 100%;
-        }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
 
-        .btn-pack i {
-            transition: transform var(--transition-fast);
-        }
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      background: rgba(244,244,244,0.68);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
 
-        .btn-pack:hover i:last-child {
-            transform: translateX(5px);
-        }
-        
-        .features {
-            display: flex;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-        .feature i {
-            color: var(--accent-blue);
-        }
-        /* Sticky Navbar - LOGO CON TEXTO MEJORADO */
-        .navbar {
-            position: fixed;
-            top: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 1000px;
-            background-color: rgba(13, 27, 42, 0.85);
-            backdrop-filter: blur(10px);
-            border-radius: 50px;
-            padding: 0.8rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            transition: all var(--transition-fast);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .navbar.scrolled {
-            top: 0.5rem;
-            padding: 0.7rem 1.5rem;
-            width: 95%;
-        }
-        .navbar-logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        /* LOGO CON TEXTO MEJORADO - Poppins Regular y negro más claro */
-        .logo-text {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 400; /* Regular */
-            font-size: 2rem; /* Un poco más grande */
-            background: linear-gradient(90deg, #333333, #c89116); /* Negro más claro (#333333) */
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: 1px; /* Más espaciado para mejor legibilidad */
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
-            padding: 5px 0; /* Padding vertical para mejor espaciado */
-        }
-        /* Botón de presupuesto en navbar */
-        .btn-presupuesto {
-            background: linear-gradient(90deg, #4A90E2, #1E3A5F);
-            padding: 0.7rem 1.5rem;
-            border-radius: 30px;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all var(--transition-fast);
-            border: none;
-            cursor: pointer;
-            white-space: nowrap;
-            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
-        }
-        .btn-presupuesto:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
-            background: linear-gradient(90deg, #1E3A5F, #4A90E2);
-        }
-        /* Para pantallas pequeñas ajustamos el tamaño del logo */
-        @media (max-width: 992px) {
-            .logo-text {
-                font-size: 1.7rem;
-                letter-spacing: 0.8px;
-            }
-            .navbar {
-                padding: 0.7rem 1.5rem;
-            }
-            .navbar.scrolled {
-                padding: 0.6rem 1.2rem;
-            }
-            .btn-presupuesto {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.85rem;
-            }
-        }
-        /* Para pantallas muy pequeñas */
-        @media (max-width: 480px) {
-            .logo-text {
-                font-size: 1.5rem;
-                letter-spacing: 0.6px;
-            }
-            .btn-presupuesto {
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
-            }
-        }
-        .navbar-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        .navbar-links a {
-            color: var(--text-white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color var(--transition-fast);
-            position: relative;
-            white-space: nowrap;
-        }
-        .navbar-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-blue);
-            transition: width var(--transition-fast);
-        }
-        .navbar-links a:hover {
-            color: var(--accent-blue);
-        }
-        .navbar-links a:hover::after,
-        .navbar-links a.active::after {
-            width: 100%;
-        }
-        .navbar-links a.active {
-            color: var(--accent-blue);
-        }
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-            padding: 5px;
-            z-index: 1001;
-            margin-left: 10px;
-        }
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background-color: var(--text-white);
-            border-radius: 2px;
-            transition: all var(--transition-fast);
-        }
-        /* Sección confianza */
-        .trust-section {
-            text-align: center;
-            padding: 3rem 1.5rem;
-            position: relative;
-        }
-        .trust-title {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            opacity: 0.6;
-            margin-bottom: 2rem;
-        }
-        .trust-companies {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 3rem;
-            opacity: 0.5;
-        }
-        .trust-company {
-            font-size: 1.5rem;
-            color: #CCCCCC;
-            font-style: italic;
-            text-decoration: none;
-            transition: all var(--transition-fast);
-            position: relative;
-        }
-        .trust-company:hover {
-            color: var(--accent-blue);
-            opacity: 1;
-            transform: translateY(-3px);
-        }
-        .trust-company::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-blue);
-            transition: width var(--transition-fast);
-        }
-        .trust-company:hover::after {
-            width: 100%;
-        }
-        /* Sección sobre nosotros */
-        .about-section {
-            background-color: rgba(30, 58, 95, 0.1);
-            padding: 5rem 1.5rem;
-            position: relative;
-        }
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #CCCCCC;
-        }
-        .about-content p {
-            margin-bottom: 2rem;
-        }
-        /* Sección servicios */
-        .services-section {
-            padding-top: 2rem;
-        }
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        .card {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            padding: 2rem;
-            color: #333;
-            transition: all var(--transition-slow);
-            opacity: 0;
-            transform: translateY(20px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-        .card h3 {
-            color: var(--bg-primary);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        .card p {
-            color: #555;
-            margin-bottom: 1.5rem;
-        }
-        .card-icon {
-            font-size: 2.5rem;
-            color: var(--btn-blue);
-            margin-bottom: 1rem;
-        }
-        .services-link {
-            display: block;
-            text-align: center;
-            margin-top: 3rem;
-        }
-        .services-link .btn-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent-blue);
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: all var(--transition-fast);
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            background-color: rgba(30, 58, 95, 0.2);
-        }
-        .services-link .btn-link:hover {
-            color: var(--text-white);
-            background-color: rgba(30, 58, 95, 0.5);
-            transform: translateY(-3px);
-        }
-        /* Para el nuevo botón en la sección de precios */
-        .pricing-section .services-link {
-            text-align: center;
-            margin: 3rem 0;
-        }
+    .logo {
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #111;
+      text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
 
-        /* Contenedor del botón del pack */
-        .pack-button-container {
-            text-align: center;
-            margin: 2.5rem 0;
-        }
-        
-        /* Carrusel para móviles servicios */
-        .carousel-container {
-            display: none;
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            margin-bottom: 3rem;
-        }
-        .carousel-track {
-            display: flex;
-            transition: transform var(--transition-slow);
-        }
-        .carousel-card {
-            min-width: 100%;
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            padding: 2rem;
-            color: #333;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .carousel-card h3 {
-            color: var(--bg-primary);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        .carousel-card p {
-            color: #555;
-            margin-bottom: 1.5rem;
-        }
-        /* Sección ¿Por qué Elegirnos? */
-        .why-choose-section {
-            background: linear-gradient(135deg, rgba(30, 58, 95, 0.2) 0%, rgba(13, 27, 42, 0.1) 100%);
-            padding: 5rem 1.5rem;
-            position: relative;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        /* Grid para desktop (2x2) */
-        .why-choose-content {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
-            margin-bottom: 3rem;
-        }
-        .why-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 2.5rem 2rem;
-            transition: all var(--transition-slow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            text-align: center;
-        }
-        .why-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--accent-blue);
-            box-shadow: 0 15px 30px rgba(74, 144, 226, 0.2);
-        }
-        /* Carrusel para móviles - ¿Por qué Elegirnos? */
-        .why-carousel-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            margin: 3rem 0;
-            border-radius: 20px;
-            display: none; /* Oculto por defecto, se muestra en móviles */
-        }
-        .why-carousel-track {
-            display: flex;
-            transition: transform var(--transition-slow);
-            width: 100%;
-        }
-        .why-carousel-card {
-            min-width: 100%;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 3rem 2.5rem;
-            transition: all var(--transition-fast);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            text-align: center;
-        }
-        .why-icon {
-            font-size: 3rem;
-            color: var(--accent-blue);
-            margin-bottom: 1.5rem;
-        }
-        .why-carousel-card h3,
-        .why-card h3 {
-            color: var(--text-white);
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
-        .why-carousel-card p,
-        .why-card p {
-            color: #CCCCCC;
-            line-height: 1.6;
-            font-size: 1.1rem;
-        }
-        .why-carousel-card strong,
-        .why-card strong {
-            color: var(--accent-blue);
-            font-weight: 600;
-        }
-        /* SECCIÓN MEJORADA: Precios y Packs Profesional */
-        .pricing-section {
-            background: linear-gradient(135deg, rgba(13, 27, 42, 0.95) 0%, rgba(30, 58, 95, 0.85) 100%);
-            padding: 5rem 1.5rem;
-            position: relative;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            overflow: hidden;
-        }
-        .pricing-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
-        }
-        .pricing-section::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
-        }
-        .pricing-header {
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
-        }
-        .pricing-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
-            color: white;
-            padding: 0.5rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        .pricing-subtitle {
-            text-align: center;
-            margin: 4rem 0 2rem;
-            position: relative;
-            padding-top: 1rem;
-        }
-        .pricing-subtitle h3 {
-            color: var(--accent-gold);
-            font-size: 2rem;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-            padding: 0 2rem;
-        }
-        .pricing-subtitle h3::before,
-        .pricing-subtitle h3::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-        }
-        .pricing-subtitle h3::before {
-            left: -70px;
-        }
-        .pricing-subtitle h3::after {
-            right: -70px;
-        }
-        /* Contenedor de servicios individuales - Grid */
-        .individual-services-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-        /* Tarjetas de precio profesionales - SIN LÍNEA DE COLORES */
-        .pricing-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            transition: all var(--transition-slow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 20px 40px rgba(74, 144, 226, 0.2);
-        }
-        .pricing-card h3 {
-            color: var(--text-white);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        .price-tag {
-            position: relative;
-            display: inline-block;
-            margin: 1rem 0;
-        }
-        .price-tag .price {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--accent-gold);
-            line-height: 1;
-            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
-            position: relative;
-            z-index: 2;
-        }
-        .price-tag .price::after {
-            content: '€';
-            font-size: 1.5rem;
-            vertical-align: super;
-            margin-left: 2px;
-        }
-        .price-tag .price-bg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 4rem;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.05);
-            z-index: 1;
-            user-select: none;
-        }
-        .pricing-card .note-text {
-            color: #AAAAAA;
-            font-size: 0.95rem;
-            margin-top: 1rem;
-            font-style: italic;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 10px;
-            display: inline-block;
-        }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #444;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
 
-        /* Nuevos estilos para el carrusel de servicios individuales */
-        .individual-services-carousel {
-            display: none; /* Oculto por defecto */
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            margin-bottom: 4rem;
-            border-radius: 20px; /* Opcional: para coincidir con el pack */
-        }
-        .individual-carousel-track {
-            display: flex;
-            transition: transform var(--transition-slow);
-            width: 100%;
-        }
-        .individual-carousel-card {
-            min-width: 100%;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            transition: all var(--transition-fast);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .individual-carousel-card h3 {
-            color: var(--text-white);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        .individual-carousel-card .price-tag {
-            position: relative;
-            display: inline-block;
-            margin: 1rem auto; /* Centrado */
-        }
-        .individual-carousel-card .price-tag .price {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--accent-gold);
-            line-height: 1;
-            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
-            position: relative;
-            z-index: 2;
-        }
-        .individual-carousel-card .price-tag .price::after {
-            content: '€';
-            font-size: 1.5rem;
-            vertical-align: super;
-            margin-left: 2px;
-        }
-        .individual-carousel-card .price-tag .price-bg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 4rem;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.05);
-            z-index: 1;
-            user-select: none;
-        }
-        .individual-carousel-card .note-text {
-            color: #AAAAAA;
-            font-size: 0.95rem;
-            margin-top: 1rem;
-            font-style: italic;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 10px;
-            display: inline-block;
-        }
+    .btn-nav {
+      background: #111 !important;
+      color: #fff !important;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-weight: 600 !important;
+      font-size: 0.85rem !important;
+      transition: background .2s !important;
+    }
+    .btn-nav:hover { background: var(--accent) !important; }
 
-        /* Pack Personalizado Mejorado */
-        .custom-pack-container {
-            max-width: 800px;
-            margin: 4rem auto;
-        }
-        .custom-pack-card {
-            background: linear-gradient(135deg, rgba(13, 27, 42, 0.95) 0%, rgba(30, 58, 95, 0.85) 100%);
-            border-radius: 25px;
-            padding: 4rem 3rem;
-            text-align: center;
-            transition: all var(--transition-slow);
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-        .custom-pack-card .pack-badge {
-            position: absolute;
-            top: 20px;
-            right: -35px;
-            background: linear-gradient(135deg, var(--accent-gold), #FFA500);
-            color: #333;
-            padding: 0.5rem 2.5rem;
-            font-weight: 800;
-            font-size: 0.9rem;
-            transform: rotate(45deg);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            z-index: 10;
-        }
-        .custom-pack-card h3 {
-            color: var(--text-white);
-            font-size: 2.5rem;
-            margin-bottom: 2.5rem;
-            font-weight: 700;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-        .custom-pack-card h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--accent-blue);
-            border-radius: 2px;
-        }
-        .pack-features {
-            list-style: none;
-            margin-bottom: 3rem;
-            text-align: left;
-            padding-left: 2rem;
-        }
-        .pack-features li {
-            color: #CCCCCC;
-            margin-bottom: 1.2rem;
-            position: relative;
-            padding-left: 3rem;
-            font-size: 1.15rem;
-            line-height: 1.6;
-        }
-        .pack-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--accent-green);
-            font-weight: bold;
-            font-size: 1.2rem;
-            background: rgba(76, 175, 80, 0.1);
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .custom-pack-info {
-            background: rgba(74, 144, 226, 0.1);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-top: 2rem;
-            border: 1px solid rgba(74, 144, 226, 0.3);
-        }
-        .custom-pack-info h4 {
-            color: var(--accent-blue);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        .custom-pack-info p {
-            color: #CCCCCC;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-        .custom-pack-cta {
-            margin-top: 2.5rem;
-        }
-        .custom-pack-cta .btn {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
-            font-size: 1.2rem;
-            padding: 1.2rem 3rem;
-            box-shadow: 0 10px 30px rgba(74, 144, 226, 0.4);
-        }
-        .custom-pack-cta .btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(74, 144, 226, 0.6);
-        }
-        /* CTA después de precios */
-        .pricing-cta {
-            text-align: center;
-            margin-top: 4rem;
-            padding: 3rem;
-            background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(30, 58, 95, 0.2) 100%);
-            border-radius: 25px;
-            border: 1px solid rgba(74, 144, 226, 0.2);
-        }
-        .pricing-cta h3 {
-            color: var(--text-white);
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-        }
-        .pricing-cta p {
-            color: #CCCCCC;
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .pricing-cta .btn {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
-            font-size: 1.2rem;
-            padding: 1.2rem 3rem;
-            box-shadow: 0 10px 30px rgba(74, 144, 226, 0.4);
-        }
-        .pricing-cta .btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(74, 144, 226, 0.6);
-        }
-        /* Sección Proceso de Entrega */
-        .delivery-process-section {
-            background: linear-gradient(135deg, rgba(13, 27, 42, 0.9) 0%, rgba(30, 58, 95, 0.8) 100%);
-            padding: 5rem 1.5rem;
-            position: relative;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .section-subtitle {
-            text-align: center;
-            color: #CCCCCC;
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 3rem;
-            line-height: 1.6;
-        }
-        .process-steps {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .process-step {
-            display: flex;
-            align-items: flex-start;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all var(--transition-fast);
-        }
-        .process-step:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--accent-blue);
-            transform: translateX(10px);
-        }
-        .step-number {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            font-weight: 800;
-            flex-shrink: 0;
-            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
-        }
-        .step-content {
-            flex: 1;
-        }
-        .step-content h3 {
-            color: var(--text-white);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        .step-content p {
-            color: #CCCCCC;
-            line-height: 1.7;
-            font-size: 1.1rem;
-        }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #111; border-radius: 2px; }
 
-        /* Sección Nuestros Objetivos - LISTA COMPACTA */
-        .objectives-section {
-            background: linear-gradient(135deg, rgba(13, 27, 42, 0.9) 0%, rgba(30, 58, 95, 0.8) 100%);
-            padding: 3rem 1.5rem; /* Menos padding para que ocupe menos */
-            position: relative;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .objectives-list {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .objectives-list ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .objectives-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1.2rem 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all var(--transition-fast);
-            position: relative;
-        }
-        .objectives-list li:last-child {
-            border-bottom: none;
-        }
-        .objectives-list li:hover {
-            background: rgba(255, 255, 255, 0.05);
-            padding-left: 1.5rem;
-        }
-        .objectives-list li:hover::before {
-            background: var(--accent-blue);
-        }
-        .objectives-list li::before {
-            content: '';
-            display: block;
-            width: 12px;
-            height: 12px;
-            background: var(--accent-green);
-            border-radius: 3px;
-            margin-top: 0.5rem;
-            flex-shrink: 0;
-            transition: all var(--transition-fast);
-        }
-        .objective-content {
-            flex: 1;
-        }
-        .objective-content h3 {
-            color: var(--text-white);
-            font-size: 1.3rem;
-            margin-bottom: 0.3rem;
-            font-weight: 600;
-        }
-        .objective-content p {
-            color: #CCCCCC;
-            font-size: 1rem;
-            line-height: 1.5;
-        }
-        .objectives-intro {
-            text-align: center;
-            color: #CCCCCC;
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
+    /* ─── HERO ─── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      background: var(--bg);
+      padding-top: var(--nav-h);
+    }
 
-        /* Sección Contacto */
-        .contact-section {
-            background-color: rgba(13, 27, 42, 0.95);
-            padding: 5rem 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .contact-content {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-        .contact-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all var(--transition-fast);
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-        }
-        .contact-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--accent-blue);
-            transform: translateY(-5px);
-        }
-        .contact-icon {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-            flex-shrink: 0;
-        }
-        .contact-details h3 {
-            color: var(--text-white);
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        .contact-link {
-            color: var(--accent-blue);
-            font-size: 1.2rem;
-            text-decoration: none;
-            font-weight: 500;
-            display: block;
-            margin-bottom: 0.5rem;
-            transition: color var(--transition-fast);
-        }
-        .contact-link:hover {
-            color: var(--accent-green);
-            text-decoration: underline;
-        }
-        .contact-details p {
-            color: #CCCCCC;
-            font-size: 0.95rem;
-            margin: 0.2rem 0;
-        }
-        .contact-cta {
-            text-align: center;
-            padding: 3rem;
-            background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(30, 58, 95, 0.2) 100%);
-            border-radius: 20px;
-            border: 1px solid rgba(74, 144, 226, 0.2);
-        }
-        .contact-cta h3 {
-            color: var(--text-white);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        .contact-cta p {
-            color: #CCCCCC;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            line-height: 1.6;
-        }
-        .contact-cta .btn {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
-            font-size: 1.2rem;
-            padding: 1rem 2.5rem;
-        }
-        /* Footer */
-        footer {
-            background-color: rgba(0,0,0,0.3);
-            padding: 3rem 1.5rem;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background-color: var(--btn-blue);
-            border-radius: 50%;
-            color: var(--text-white);
-            font-size: 1.5rem;
-            text-decoration: none;
-            transition: all var(--transition-fast);
-        }
-        .social-link:hover {
-            background-color: var(--accent-blue);
-            transform: translateY(-5px);
-        }
-        .copyright {
-            color: #AAAAAA;
-            font-size: 0.9rem;
-        }
-        /* Animaciones de entrada */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .animate-left {
-            transform: translateX(-30px);
-        }
-        .animate-right {
-            transform: translateX(30px);
-        }
-        /* RESPONSIVE */
-        @media (max-width: 992px) {
-            .navbar-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: rgba(13, 27, 42, 0.98);
-                backdrop-filter: blur(10px);
-                flex-direction: column;
-                padding: 1.5rem;
-                border-radius: 20px;
-                margin-top: 1rem;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-                z-index: 999;
-            }
-            .navbar-links.active {
-                display: flex;
-            }
-            .hamburger {
-                display: flex;
-            }
-            .hamburger.active span:nth-child(1) {
-                transform: rotate(45deg) translate(6px, 6px);
-            }
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-            .hamburger.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(6px, -6px);
-            }
-            .cards-container {
-                display: none;
-            }
-            .carousel-container {
-                display: block;
-            }
-            .why-choose-content {
-                display: none; /* Oculta el grid en móviles */
-            }
-            .why-carousel-container {
-                display: block; /* Muestra el carrusel en móviles */
-            }
-            .btn-presupuesto {
-                margin-top: 1rem;
-                display: inline-block;
-                text-align: center;
-                width: 100%;
-            }
-            .about-content {
-                font-size: 1.1rem;
-                padding: 0 1rem;
-            }
-            .pricing-subtitle h3::before,
-            .pricing-subtitle h3::after {
-                width: 40px;
-            }
-            .pricing-subtitle h3::before {
-                left: -50px;
-            }
-            .pricing-subtitle h3::after {
-                right: -50px;
-            }
-            /* Mostrar carrusel de servicios individuales y ocultar grid */
-            .individual-services-container {
-                display: none;
-            }
-            .individual-services-carousel {
-                display: block;
-            }
-            .custom-pack-card {
-                padding: 3rem 2rem;
-            }
-            .custom-pack-card h3 {
-                font-size: 2rem;
-            }
-            .pack-features li {
-                font-size: 1.1rem;
-                padding-left: 2.5rem;
-            }
-            .pack-features li::before {
-                width: 24px;
-                height: 24px;
-            }
-            .pricing-cta h3 {
-                font-size: 1.8rem;
-            }
-            /* Responsive para nuevas secciones */
-            .process-step {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                padding: 1.5rem;
-            }
-            .step-number {
-                margin-bottom: 1rem;
-            }
-            /* Responsive para objetivos en lista */
-            .objectives-section {
-                padding: 2.5rem 1rem;
-            }
-            .objectives-list {
-                padding: 1.5rem;
-            }
-            .objectives-list li {
-                padding: 1rem 0.5rem;
-            }
-            .objective-content h3 {
-                font-size: 1.2rem;
-            }
-            .objective-content p {
-                font-size: 0.95rem;
-            }
-            .objectives-intro {
-                font-size: 1rem;
-                margin-bottom: 1.5rem;
-            }
-            .contact-item {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .contact-icon {
-                margin-bottom: 1rem;
-            }
-        }
-        @media (max-width: 768px) {
-            .hero {
-                padding-top: 10rem;
-                text-align: center;
-                align-items: center;
-            }
-            section {
-                padding: 3rem 1rem;
-            }
-            .features {
-                justify-content: center;
-            }
-            .trust-company {
-                font-size: 1.2rem;
-            }
-            .about-section {
-                padding: 3rem 1rem;
-            }
-            .pricing-section {
-                padding: 3rem 1rem;
-            }
-            .pricing-card {
-                padding: 2rem 1.5rem;
-            }
-            .price-tag .price {
-                font-size: 2.5rem;
-            }
-            .price-tag .price-bg {
-                font-size: 3.2rem;
-            }
-            .custom-pack-card {
-                padding: 2.5rem 1.5rem;
-            }
-            .custom-pack-card h3 {
-                font-size: 1.8rem;
-            }
-            .why-carousel-card {
-                padding: 2rem 1.5rem;
-            }
-            .why-carousel-card h3 {
-                font-size: 1.5rem;
-            }
-            .why-carousel-card p {
-                font-size: 1rem;
-            }
-            .pricing-badge {
-                font-size: 1rem;
-                padding: 0.4rem 1.5rem;
-            }
-            .pricing-subtitle h3 {
-                font-size: 1.6rem;
-                padding: 0 1rem;
-            }
-            .pricing-subtitle h3::before,
-            .pricing-subtitle h3::after {
-                width: 30px;
-            }
-            .pricing-subtitle h3::before {
-                left: -40px;
-            }
-            .pricing-subtitle h3::after {
-                right: -40px;
-            }
-            .pricing-cta h3 {
-                font-size: 1.6rem;
-            }
-            /* Responsive para nuevas secciones */
-            .process-step {
-                padding: 1.5rem 1rem;
-            }
-            .step-content h3 {
-                font-size: 1.3rem;
-            }
-            .step-content p {
-                font-size: 1rem;
-            }
-            /* Responsive para objetivos en lista */
-            .objectives-section {
-                padding: 2rem 1rem;
-            }
-            .objectives-list {
-                padding: 1rem;
-            }
-            .objectives-list li {
-                padding: 0.8rem 0;
-            }
-            .objectives-list li::before {
-                width: 10px;
-                height: 10px;
-                margin-top: 0.4rem;
-            }
-            .objective-content h3 {
-                font-size: 1.1rem;
-            }
-            .objective-content p {
-                font-size: 0.9rem;
-            }
-            .objectives-intro {
-                font-size: 0.95rem;
-                margin-bottom: 1rem;
-            }
-            .contact-item {
-                padding: 1.5rem;
-            }
-            .contact-cta {
-                padding: 2rem 1.5rem;
-            }
-            .contact-cta h3 {
-                font-size: 1.6rem;
-            }
-        }
-        @media (max-width: 480px) {
-            .pricing-subtitle h3::before,
-            .pricing-subtitle h3::after {
-                display: none;
-            }
-            .pricing-subtitle h3 {
-                padding: 0;
-            }
-            .individual-services-container {
-                grid-template-columns: 1fr;
-            }
-            .objectives-list li {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-            .objectives-list li::before {
-                margin-top: 0.3rem;
-            }
-        }
-    </style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ENTVP2R6JL"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    /* Grid – bigger cells, very faint */
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        linear-gradient(to right, rgba(9,22,82,0.028) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(9,22,82,0.028) 1px, transparent 1px);
+      background-size: 100px 100px;
+    }
 
-  gtag('config', 'G-ENTVP2R6JL');
-</script>
+    #wave-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      z-index: 1;
+      opacity: 0.45;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      padding: 0 24px;
+    }
+
+    /* hero entrance animations */
+    .hero-badge   { animation: fadeUp .7s .1s ease both; }
+    .hero-line1   { animation: fadeUp .7s .25s ease both; }
+    .hero-line2   { animation: fadeUp .7s .38s ease both; }
+    .hero-sub     { animation: fadeUp .7s .5s ease both; }
+    .hero-btns    { animation: fadeUp .7s .62s ease both; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #444;
+      border: 1.5px solid #ddd;
+      border-radius: 50px;
+      padding: 7px 18px;
+      margin-bottom: 28px;
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(8px);
+    }
+    .hero-badge::before {
+      content: '';
+      display: inline-block;
+      width: 7px; height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .hero-title { line-height: 1.05; margin-bottom: 10px; }
+
+    .hero-line1 {
+      display: block;
+      font-size: clamp(3rem, 7.5vw, 5.4rem);
+      font-weight: 800;
+      color: #111;
+    }
+    .hero-line2 {
+      display: block;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 500;
+      color: #aaa;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.9rem, 1.5vw, 1rem);
+      color: #777;
+      max-width: 500px;
+      margin: 20px auto 38px;
+      line-height: 1.75;
+      font-weight: 400;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #111;
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background .25s, transform .2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: #111;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border: 1.5px solid #ccc;
+      transition: border-color .2s, color .2s, transform .2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      animation: bounce 2.2s infinite;
+      color: #bbb;
+      font-size: 1.1rem;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(9px); }
+    }
+
+    /* ─── SHARED SECTION STYLES ─── */
+    section { padding: 100px 5%; }
+
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.9rem, 3.8vw, 2.9rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: #111;
+      margin-bottom: 20px;
+    }
+
+    .section-body {
+      font-size: 0.97rem;
+      color: #777;
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    /* ─── QUIÉNES SOMOS ─── */
+    #quienes {
+      text-align: center;
+    }
+    #quienes .section-label,
+    #quienes .section-title,
+    #quienes .section-body { margin-left: auto; margin-right: auto; }
+    #quienes .section-body { max-width: 580px; }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      max-width: 860px;
+      margin: 48px auto 0;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: var(--radius);
+      padding: 28px 20px;
+    }
+    .stat-card .num {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--accent-dark);
+    }
+    .stat-card .lbl { font-size: 0.78rem; color: #999; margin-top: 5px; font-weight: 500; }
+
+    /* ─── SERVICIOS ─── */
+    #servicios { text-align: center; }
+    #servicios .section-body { margin: 0 auto 56px; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: var(--radius);
+      padding: 32px 22px 28px;
+      text-align: left;
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 46px rgba(0,0,0,0.08);
+      border-color: rgba(37,99,235,0.18);
+    }
+
+    /* Icon square */
+    .service-icon-wrap {
+      width: 44px; height: 44px;
+      background: rgba(9,22,82,0.06);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .service-icon-wrap svg {
+      width: 22px; height: 22px;
+      stroke: var(--accent-dark);
+      fill: none;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .service-name {
+      font-weight: 600;
+      font-size: 0.97rem;
+      color: #111;
+      margin-bottom: 12px;
+    }
+
+    /* Fixed height desc – always visible */
+    .service-desc {
+      font-size: 0.81rem;
+      color: #888;
+      line-height: 1.65;
+      height: 52px;          /* fixed two-line slot */
+      overflow: hidden;
+      transition: color .3s;
+    }
+    .service-card:hover .service-desc { color: #555; }
+
+    /* ─── FILOSOFÍA ─── */
+    #filosofia {
+      background: var(--bg);
+      text-align: center;
+    }
+    #filosofia .section-title { margin: 0 auto 50px; max-width: 640px; }
+
+    .filosofia-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .filosofia-item {
+      padding: 36px 28px;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.7);
+      text-align: left;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .filosofia-item:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(0,0,0,0.06); }
+
+    .filosofia-num {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .filosofia-item h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; color: #111; }
+    .filosofia-item p  { font-size: 0.84rem; color: #888; line-height: 1.7; }
+
+    /* ─── RESEÑAS ─── */
+    #resenas { background: var(--bg); text-align: center; }
+    #resenas .section-title { margin: 0 auto 50px; }
+
+    .resenas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    .resena-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: var(--radius);
+      padding: 30px 28px;
+      text-align: left;
+      transition: transform .3s;
+    }
+    .resena-card:hover { transform: translateY(-4px); }
+
+    .resena-stars { color: #f59e0b; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 14px; }
+
+    .resena-text {
+      font-size: 0.88rem;
+      color: #666;
+      line-height: 1.75;
+      margin-bottom: 22px;
+      font-style: italic;
+    }
+
+    .resena-author { display: flex; align-items: center; gap: 12px; }
+    .resena-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-dark), #2563eb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+    }
+    .resena-name { font-weight: 700; font-size: 0.86rem; color: #111; }
+    .resena-role { font-size: 0.74rem; color: #bbb; }
+
+    /* ─── CÓMO TRABAJAMOS ─── */
+    #como-trabajamos { background: var(--bg); text-align: center; }
+    #como-trabajamos .section-title { margin: 0 auto 56px; max-width: 600px; }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1060px;
+      margin: 0 auto 64px;
+    }
+
+    .step-card {
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: var(--radius);
+      padding: 34px 22px 28px;
+      position: relative;
+      text-align: left;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .step-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.07); }
+
+    .step-num {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .step-card h3 { font-size: 0.97rem; font-weight: 700; margin-bottom: 10px; color: #111; }
+    .step-card p  { font-size: 0.82rem; color: #999; line-height: 1.65; }
+
+    /* Contact chips */
+    .contact-chips {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 0;
+    }
+
+    .contact-chip {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 16px;
+      padding: 20px 28px;
+      text-decoration: none;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+      min-width: 240px;
+    }
+    .contact-chip:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.09);
+      border-color: rgba(37,99,235,0.2);
+    }
+
+    .chip-icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .chip-icon.wa  { background: #e8faf0; }
+    .chip-icon.mail{ background: #eef2ff; }
+    .chip-icon svg { width: 22px; height: 22px; }
+
+    .chip-info .chip-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #bbb; margin-bottom: 3px; }
+    .chip-info .chip-val   { font-size: 0.92rem; font-weight: 600; color: #111; }
+
+    /* ─── CTA CONTACTO ─── */
+    #contacto-cta {
+      background: linear-gradient(135deg, var(--accent-dark) 0%, #1a3a9e 100%);
+      color: #fff;
+      text-align: center;
+      padding: 100px 5%;
+    }
+    #contacto-cta .section-title { color: #fff; margin: 0 auto 16px; }
+    #contacto-cta p { color: rgba(255,255,255,0.65); font-size: 1rem; margin-bottom: 40px; }
+
+    .btn-white {
+      background: #fff;
+      color: var(--accent-dark);
+      padding: 16px 38px;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(0,0,0,0.2); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #0d0d0d;
+      color: rgba(255,255,255,0.45);
+      padding: 54px 5% 30px;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+    .footer-logo { font-size: 1.4rem; font-weight: 800; color: #fff; text-decoration: none; }
+    .footer-logo span { color: #3b82f6; }
+    .footer-tagline { font-size: 0.78rem; color: rgba(255,255,255,0.3); margin-top: 6px; }
+
+    .footer-col h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.22); margin-bottom: 16px; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 8px; }
+    .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.84rem; transition: color .2s; }
+    .footer-links a:hover { color: #fff; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 24px;
+      font-size: 0.76rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* ─── SCROLL REVEAL ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeLeft {
+      from { opacity: 0; transform: translateX(-38px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeRight {
+      from { opacity: 0; transform: translateX(38px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Base state */
+    .anim-up, .anim-left, .anim-right {
+      opacity: 0;
+    }
+    /* Active state */
+    .anim-up.in    { animation: fadeUp    .75s cubic-bezier(.22,.68,0,1.1) both; }
+    .anim-left.in  { animation: fadeLeft  .75s cubic-bezier(.22,.68,0,1.1) both; }
+    .anim-right.in { animation: fadeRight .75s cubic-bezier(.22,.68,0,1.1) both; }
+
+    /* Stagger delays */
+    .d1 { animation-delay: .05s !important; }
+    .d2 { animation-delay: .15s !important; }
+    .d3 { animation-delay: .25s !important; }
+    .d4 { animation-delay: .35s !important; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2,1fr); }
+      .steps-grid    { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 768px) {
+      .filosofia-grid  { grid-template-columns: 1fr; }
+      .resenas-grid    { grid-template-columns: 1fr; }
+      .stat-grid       { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none; flex-direction: column;
+        position: fixed; top: var(--nav-h); left:0; right:0;
+        background: rgba(244,244,244,0.97);
+        backdrop-filter: blur(20px);
+        padding: 24px 5%; gap: 16px;
+        border-bottom: 1px solid #ddd;
+      }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .services-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .steps-grid    { grid-template-columns: 1fr; }
+      .footer-inner  { flex-direction: column; }
+      .contact-chips { flex-direction: column; align-items: center; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Efectos de luz -->
-    <div class="light-effect light-1"></div>
-    <div class="light-effect light-2"></div>
-    <div class="light-effect light-3"></div>
-    <!-- Sticky Navbar con TEXTO "Prounek" mejorado -->
-    <nav class="navbar">
-        <div class="navbar-logo">
-            <!-- Logo con texto y degradado mejorado -->
-            <div class="logo-text">Prounek</div>
-        </div>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="navbar-links">
-            <a href="#inicio" class="active">Inicio</a>
-            <a href="servicios.html">Servicios</a>
-            <a href="nosotros.html">Nosotros</a>
-            <a href="solicitud-de-presupuesto.html" class="btn-presupuesto">Solicitar Presupuesto</a>
-        </div>
-    </nav>
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="container">
-            <h1 class="animate-on-scroll">Tu negocio en <span>físico</span>, nosotros te lo ponemos en <span>digital</span></h1>
-            <p class="hero-subtitle animate-on-scroll">Creamos el logo del negocio, página web, agendamos citas, contenido publicitario y más que no te imaginas!</p>
-            <a href="#servicios" class="btn animate-on-scroll">Más información</a>
-            <a href="contacto.html" class="btn animate-on-scroll" style="margin-left: 1rem;">Contáctanos!</a>
-            <div class="features">
-                <div class="feature animate-on-scroll">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Entrega en 7 días</span>
-                </div>
-                <div class="feature animate-on-scroll">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Garantía de satisfacción</span>
-                </div>
-                <div class="feature animate-on-scroll">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Web 100% tuya</span>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Sección Confianza -->
-    <section id="confianza" class="trust-section">
-        <div class="container">
-            <h2 class="trust-title animate-on-scroll">Han confiado en nosotros:</h2>
-            <div class="trust-companies animate-on-scroll">
-                <a href="https://mipaginaonline.github.io/RestaurantLesGuatlles/" class="trust-company" target="_blank">Les Guatlles</a>
-            </div>
-        </div>
-    </section>
-    <!-- Sección Sobre Nosotros -->
-    <section id="nosotros" class="about-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="animate-on-scroll">Sobre Nosotros</h2>
-            </div>
-            <div class="about-content animate-on-scroll">
-                <p>Prounek es una empresa nueva, hemos abierto esta empresa el 2 de enero de 2026. Tenemos muchas ganas de comenzar este proyecto ya que llevamos mucho tiempo pensando en como llevar a cabo toda esta idea.</p>
-                <p>Queremos tener la máxima cercanía con el cliente, que el cliente se sienta cómodo. Somos profesionales en este sector, confiamos en este equipo y sabemos que lo vamos a lograr.</p>
-            </div>
-        </div>
-    </section>
-    <!-- Sección Servicios -->
-    <section id="servicios" class="services-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="animate-on-scroll">¿Qué ofrecemos?</h2>
-            </div>
-            <!-- Cards para desktop -->
-            <div class="cards-container">
-                <div class="card animate-on-scroll animate-left">
-                    <div class="card-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Diseño Página Web</h3>
-                    <p>Desarrollo de sitios web modernos, responsivos y optimizados para todos los dispositivos, con diseño personalizado para tu marca.</p>
-                </div>
-                <div class="card animate-on-scroll">
-                    <div class="card-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Mantenimiento Web</h3>
-                    <p>Novedades, anuncios, sorteos en la web y corregimos errores.</p>
-                </div>
-                <div class="card animate-on-scroll animate-right">
-                    <div class="card-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <h3>Agendar Citas Automatizadas</h3>
-                    <p>Sistema de reservas online que se integra con tu calendario, reduce llamadas y mejora la experiencia del cliente.</p>
-                </div>
-                <div class="card animate-on-scroll animate-left">
-                    <div class="card-icon">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <h3>Diseño de Logo</h3>
-                    <p>Creación de identidad visual profesional que representa los valores de tu empresa y destaca en el mercado.</p>
-                </div>
-                <div class="card animate-on-scroll">
-                    <div class="card-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3>Videos y Fotos Promocionales</h3>
-                    <p>Contenido visual para redes sociales que capta la atención y promociona tu negocio.</p>
-                </div>
-                <div class="card animate-on-scroll animate-right">
-                    <div class="card-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <h3>Página Web con Pagos</h3>
-                    <p>Tienda onlie con pagos seguros, carrito de compras y gestion de pedidos.</p>
-                </div>
-            </div>
-            <!-- Carrusel para móviles -->
-            <div class="carousel-container">
-                <div class="carousel-track">
-                    <div class="carousel-card">
-                        <div class="card-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <h3>Diseño Página Web</h3>
-                        <p>Desarrollo de sitios web modernos, responsivos y optimizados para todos los dispositivos, con diseño personalizado para tu marca.</p>
-                    </div>
-                    <div class="carousel-card">
-                        <div class="card-icon">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <h3>Mantenimiento Web</h3>
-                        <p>Actualizaciones regulares, seguridad, backups y soporte técnico para mantener tu sitio funcionando perfectamente.</p>
-                    </div>
-                    <div class="carousel-card">
-                        <div class="card-icon">
-                            <i class="fas fa-calendar-alt"></i>
-                        </div>
-                        <h3>Agendar Citas Automatizadas</h3>
-                        <p>Sistema de reservas online que se integra con tu calendario, reduce llamadas y mejora la experiencia del cliente.</p>
-                    </div>
-                    <div class="carousel-card">
-                        <div class="card-icon">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <h3>Diseño de Logo</h3>
-                        <p>Creación de identidad visual profesional que representa los valores de tu empresa y destaca en el mercado.</p>
-                    </div>
-                    <div class="carousel-card">
-                        <div class="card-icon">
-                            <i class="fas fa-video"></i>
-                        </div>
-                        <h3>Videos y Fotos Promocionales</h3>
-                        <p>Contenido visual de alta calidad para redes sociales que capta la atención y promueve tu negocio efectivamente.</p>
-                    </div>
-                    <div class="carousel-card">
-                        <div class="card-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <h3>Página Web con Pagos</h3>
-                        <p>E-commerce completo con pasarelas de pago seguras, carrito de compras y gestión de pedidos integrada.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="services-link">
-                <a href="servicios.html" class="btn-link animate-on-scroll">
-                    Más información sobre nuestros servicios
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-            <!-- Botón Contáctanos añadido -->
-            <div class="services-link" style="text-align: left; margin-top: 1rem;">
-                <a href="contacto.html" class="btn animate-on-scroll">Contáctanos!</a>
-            </div>
-        </div>
-    </section>
-    <!-- Sección ¿Por qué Elegirnos? -->
-    <section id="por-que-elegirnos" class="why-choose-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="animate-on-scroll">¿Por qué Elegirnos?</h2>
-            </div>
-            <!-- Carrusel para ¿Por qué Elegirnos? -->
-            <div class="why-carousel-container">
-                <div class="why-carousel-track">
-                    <div class="why-carousel-card">
-                        <div class="why-icon">
-                            <i class="fas fa-tag"></i>
-                        </div>
-                        <h3>Precios Inigualables</h3>
-                        <p>Acabamos de abrir la empresa y nuestros precios están realmente bajos para la calidad del trabajo que ofrecemos. Es una oportunidad única para obtener servicios profesionales a un coste excepcional.</p>
-                    </div>
-                    <div class="why-carousel-card">
-                        <div class="why-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3>Seguridad Garantizada</h3>
-                        <p>Entregamos <strong>TODO el trabajo antes de recibir el pago</strong>. Si no estás completamente satisfecho con el resultado, simplemente no nos pagas y borramos todo sin ningún compromiso.</p>
-                    </div>
-                    <div class="why-carousel-card">
-                        <div class="why-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <h3>Confianza Total</h3>
-                        <p>Tu satisfacción es nuestra prioridad. Trabajamos con transparencia absoluta y ponemos todo nuestro empeño en superar tus expectativas. No tienes nada que perder y todo que ganar.</p>
-                    </div>
-                    <div class="why-carousel-card">
-                        <div class="why-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <h3>Rapidez y Eficiencia</h3>
-                        <p>Entregamos proyectos completos en solo 7 días. Combina esto con nuestros precios especiales de lanzamiento y obtendrás la mejor relación calidad-precio-tiempo del mercado.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Grid para desktop (se mantiene igual) -->
-            <div class="why-choose-content">
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-tag"></i>
-                    </div>
-                    <h3>Precios Inigualables</h3>
-                    <p>Acabamos de abrir la empresa y nuestros precios están realmente bajos para la calidad del trabajo que ofrecemos. Es una oportunidad única para obtener servicios profesionales a un coste excepcional.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Seguridad Garantizada</h3>
-                    <p>Entregamos <strong>TODO el trabajo antes de recibir el pago</strong>. Si no estás completamente satisfecho con el resultado, simplemente no nos pagas y borramos todo sin ningún compromiso ni preguntas.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Confianza Total</h3>
-                    <p>Tu satisfacción es nuestra prioridad. Trabajamos con transparencia absoluta y ponemos todo nuestro empeño en superar tus expectativas. No tienes nada que perder y todo que ganar.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Rapidez y Eficiencia</h3>
-                    <p>Entregamos proyectos completos en solo 7 días. Combina esto con nuestros precios especiales de lanzamiento y obtendrás la mejor relación calidad-precio-tiempo del mercado.</p>
-                </div>
-            </div>
-            <!-- Botón con el mismo diseño que "¿Qué ofrecemos?" -->
-            <div class="services-link">
-                <a href="por-que-elegirnos.html" class="btn-link animate-on-scroll">
-                    Más información
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-    <!-- Sección Precios y Packs - VERSIÓN MEJORADA Y PROFESIONAL -->
-    <section id="precios-packs" class="pricing-section">
-        <div class="container">
-            <div class="pricing-header">
-                <h2 class="animate-on-scroll">Precios</h2>
-            </div>
-            <div class="pricing-subtitle animate-on-scroll">
-            </div>
-            <!-- Carrusel de servicios individuales para móviles -->
-            <div class="individual-services-carousel">
-                <div class="individual-carousel-track">
-                    <div class="individual-carousel-card">
-                        <h3>Diseño Página Web</h3>
-                        <div class="price-tag">
-                            <div class="price-bg">150</div>
-                            <div class="price">150</div>
-                        </div>
-                        <p class="note-text">Diseño personalizado y responsivo • Dominio NO incluido.</p>
-                    </div>
-                    <div class="individual-carousel-card">
-                        <h3>Mantenimiento Web</h3>
-                        <div class="price-tag">
-                            <div class="price-bg">15</div>
-                            <div class="price">15</div>
-                        </div>
-                        <p class="note-text">* por mes • Actualizaciones, novedades, errores, etc.</p>
-                    </div>
-                    <div class="individual-carousel-card">
-                        <h3>Agendar Citas Automatizadas</h3>
-                        <div class="price-tag">
-                            <div class="price-bg">50</div>
-                            <div class="price">50</div>
-                        </div>
-                        <p class="note-text">Sistema completo de reservas online • Integración con calendario</p>
-                    </div>
-                    <div class="individual-carousel-card">
-                        <h3>Diseño de Logo Profesional</h3>
-                        <div class="price-tag">
-                            <div class="price-bg">5</div>
-                            <div class="price">5</div>
-                        </div>
-                        <p class="note-text">Logo personalizado</p>
-                    </div>
-                    <div class="individual-carousel-card">
-                        <h3>Videos y Fotos Promocionales</h3>
-                        <div class="price-tag">
-                            <div class="price-bg">50</div>
-                            <div class="price">50</div>
-                        </div>
-                        <p class="note-text">Pack de 10 videos o fotos • Optimizado para redes</p>
-                    </div>
-                    <div class="individual-carousel-card">
-                        <h3>Tienda Online con Pagos</h3>
-                        <div class="price-tag">
-                            <div class="price-bg">300</div>
-                            <div class="price">300</div>
-                        </div>
-                        <p class="note-text">Tienda Online • Pagos seguros</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Contenedor Grid de servicios individuales para escritorio -->
-            <div class="individual-services-container">
-                <div class="pricing-card animate-on-scroll">
-                    <h3>Diseño Página Web</h3>
-                    <div class="price-tag">
-                        <div class="price-bg">150</div>
-                        <div class="price">150</div>
-                    </div>
-                    <p class="note-text">Diseño personalizado y responsivo • Dominio NO incluido.</p>
-                </div>
-                <div class="pricing-card animate-on-scroll">
-                    <h3>Mantenimiento Web</h3>
-                    <div class="price-tag">
-                        <div class="price-bg">15</div>
-                        <div class="price">15</div>
-                    </div>
-                    <p class="note-text">* por mes • Actualizaciones, novedades, errores, etc.</p>
-                </div>
-                <div class="pricing-card animate-on-scroll">
-                    <h3>Agendar Citas Automatizadas</h3>
-                    <div class="price-tag">
-                        <div class="price-bg">50</div>
-                        <div class="price">50</div>
-                    </div>
-                    <p class="note-text">Sistema completo de reservas online • Integración con calendario</p>
-                </div>
-                <div class="pricing-card animate-on-scroll">
-                    <h3>Diseño de Logo Profesional</h3>
-                    <div class="price-tag">
-                        <div class="price-bg">5</div>
-                        <div class="price">5</div>
-                    </div>
-                    <p class="note-text">Logo personalizado</p>
-                </div>
-                <div class="pricing-card animate-on-scroll">
-                    <h3>Videos y Fotos Promocionales</h3>
-                    <div class="price-tag">
-                        <div class="price-bg">50</div>
-                        <div class="price">50</div>
-                    </div>
-                    <p class="note-text">Pack de 10 videos o fotos • Optimizado para redes</p>
-                </div>
-                <div class="pricing-card animate-on-scroll">
-                    <h3>Tienda Online con Pagos</h3>
-                    <div class="price-tag">
-                        <div class="price-bg">300</div>
-                        <div class="price">300</div>
-                    </div>
-                    <p class="note-text">Tienda Online • Pagos seguros</p>
-                </div>
-            </div>
-            
-            <!-- BOTÓN NUEVO: Más información sobre los Precios -->
-            <div class="services-link" style="margin: 3rem 0;">
-                <a href="precios-detallados.html" class="btn-link animate-on-scroll">
-                    Más información sobre los Precios
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-            <!-- Botón Contáctanos añadido -->
-            <div class="services-link" style="text-align: left; margin-top: 1rem; margin-bottom: 3rem;">
-                <a href="contacto.html" class="btn animate-on-scroll">Contáctanos!</a>
-            </div>
-        </div>
-    </section>
 
-    <!-- Sección Proceso de Entrega -->
-    <section id="proceso" class="delivery-process-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="animate-on-scroll">Proceso de Entrega</h2>
-                <p class="section-subtitle animate-on-scroll">Trabajamos con total transparencia para tu completa tranquilidad</p>
-            </div>
-            <div class="process-steps animate-on-scroll">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Entrega para Revisión</h3>
-                        <p>Te enviamos el trabajo completo para que lo evalúes en un entorno de prueba.</p>
-                    </div>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Satisfacción Garantizada</h3>
-                        <p>Si el trabajo cumple con tus expectativas, realizas el pago y todo se activa definitivamente.</p>
-                    </div>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>No Aprobada</h3>
-                        <p>Si no estás satisfecho, no realizas ningún pago y eliminaremos el trabajo sin compromiso.</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Botón Contáctanos añadido -->
-            <div class="services-link" style="text-align: left; margin-top: 2rem;">
-                <a href="contacto.html" class="btn animate-on-scroll">Contáctanos!</a>
-            </div>
-        </div>
-    </section>
+<!-- ── NAVBAR ── -->
+<nav>
+  <a href="index.html" class="logo">Prounek<span>.</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#quienes">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#filosofia">Filosofía</a></li>
+    <li><a href="#resenas">Reseñas</a></li>
+    <li><a href="contacto.html" class="btn-nav">Contactar</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
 
-    <!-- Sección Nuestros Objetivos - LISTA COMPACTA -->
-    <section id="objetivos" class="objectives-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="animate-on-scroll">Nuestros Objetivos</h2>
-            </div>
-            <p class="objectives-intro animate-on-scroll">Los objetivos de Prounek son simples y claros:</p>
-            
-            <div class="objectives-list animate-on-scroll">
-                <ul>
-                    <li>
-                        <div class="objective-content">
-                            <h3>Digitalizar negocios físicos</h3>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="objective-content">
-                            <h3>Ayudar a nuestros clientes a llevar sus negocios a lo más alto</h3>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="objective-content">
-                            <h3>Posicionarnos como una opción confiable y accesible</h3>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="objective-content">
-                            <h3>Construir una marca sólida basada en transparencia, claridad y buenos resultados</h3>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="objective-content">
-                            <h3>Y CRECER</h3>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="grid-overlay"></div>
+  <canvas id="wave-canvas"></canvas>
 
-    <!-- Sección Contacto -->
-    <section id="contacto" class="contact-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="animate-on-scroll">Contacto</h2>
-            </div>
-            <div class="contact-content animate-on-scroll">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Correo Electrónico</h3>
-                            <a href="mailto:tecreamosweb@gmail.com" class="contact-link">tecreamosweb@gmail.com</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="hero-content">
+    <div class="hero-badge">Prounek Studios</div>
+    <h1 class="hero-title">
+      <span class="hero-line1">Diseñamos el futuro</span>
+      <span class="hero-line2">digital de tu negocio.</span>
+    </h1>
+    <p class="hero-sub">Expertos en diseño web, desarrollo y marketing digital para empresas que buscan destacar.</p>
+    <div class="hero-btns">
+      <a href="contacto.html" class="btn-primary">Solicitar presupuesto →</a>
+      <a href="#servicios" class="btn-secondary">Ver servicios</a>
+    </div>
+  </div>
+  <div class="scroll-hint">↓</div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="https://www.instagram.com/tecreamos.web/" class="social-link" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
-            <p class="copyright">© 2025 Prounek. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+<!-- ── QUIÉNES SOMOS ── -->
+<section id="quienes">
+  <p class="section-label anim-up d1">Quiénes somos</p>
+  <h2 class="section-title anim-up d2">Un equipo con visión<br>y pasión por el detalle.</h2>
+  <p class="section-body anim-up d3" style="margin:0 auto;">En Prounek combinamos estrategia, diseño y tecnología para crear presencias digitales que generan resultados reales. No hacemos webs, construimos herramientas de negocio.</p>
+  <div class="stat-grid">
+    <div class="stat-card anim-up d1"><div class="num">+80</div><div class="lbl">Proyectos entregados</div></div>
+    <div class="stat-card anim-up d2"><div class="num">98%</div><div class="lbl">Clientes satisfechos</div></div>
+    <div class="stat-card anim-up d3"><div class="num">4,9★</div><div class="lbl">Valoración media</div></div>
+    <div class="stat-card anim-up d4"><div class="num">3x</div><div class="lbl">Crecimiento digital promedio</div></div>
+  </div>
+</section>
 
-    <script>
-        // Efectos de entrada y animaciones
-        document.addEventListener('DOMContentLoaded', function() {
-            // Scroll suave para enlaces internos
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                        // Cerrar menú hamburguesa si está abierto
-                        if (window.innerWidth <= 992) {
-                            navbarLinks.classList.remove('active');
-                            hamburger.classList.remove('active');
-                        }
-                    }
-                });
-            });
-            // Elementos del DOM
-            const navbar = document.querySelector('.navbar');
-            const hamburger = document.querySelector('.hamburger');
-            const navbarLinks = document.querySelector('.navbar-links');
-            // Sticky navbar con efecto
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 100) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-                // Actualizar enlace activo según scroll
-                updateActiveLink();
-                // Animar elementos al hacer scroll
-                animateOnScroll();
-            });
-            // Menú hamburguesa
-            hamburger.addEventListener('click', function() {
-                this.classList.toggle('active');
-                navbarLinks.classList.toggle('active');
-            });
-            // Cerrar menú al hacer clic fuera
-            document.addEventListener('click', function(event) {
-                const isClickInsideNavbar = navbar.contains(event.target);
-                if (!isClickInsideNavbar && window.innerWidth <= 992) {
-                    hamburger.classList.remove('active');
-                    navbarLinks.classList.remove('active');
-                }
-            });
-            // Carrusel automático para móviles
-            const carouselTrack = document.querySelector('.carousel-track');
-            if (carouselTrack) {
-                let currentSlide = 0;
-                const cards = document.querySelectorAll('.carousel-card');
-                const totalSlides = cards.length;
-                let carouselInterval;
-                function nextSlide() {
-                    currentSlide = (currentSlide + 1) % totalSlides;
-                    carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
-                }
-                // Iniciar carrusel solo en móviles
-                function startCarousel() {
-                    if (window.innerWidth <= 992) {
-                        if (!carouselInterval) {
-                            carouselInterval = setInterval(nextSlide, 3000);
-                        }
-                    } else {
-                        if (carouselInterval) {
-                            clearInterval(carouselInterval);
-                            carouselInterval = null;
-                        }
-                    }
-                }
-                startCarousel();
-                // Recalcular en resize
-                window.addEventListener('resize', startCarousel);
-            }
-            // Carrusel automático para ¿Por qué Elegirnos? (solo en móviles)
-            const whyCarouselTrack = document.querySelector('.why-carousel-track');
-            if (whyCarouselTrack) {
-                let whyCurrentSlide = 0;
-                const whyCards = document.querySelectorAll('.why-carousel-card');
-                const totalWhySlides = whyCards.length;
-                let whyCarouselInterval;
-                function nextWhySlide() {
-                    whyCurrentSlide = (whyCurrentSlide + 1) % totalWhySlides;
-                    whyCarouselTrack.style.transform = `translateX(-${whyCurrentSlide * 100}%)`;
-                }
-                // Iniciar carrusel solo en móviles
-                function startWhyCarousel() {
-                    if (window.innerWidth <= 992) {
-                        if (!whyCarouselInterval) {
-                            whyCarouselInterval = setInterval(nextWhySlide, 3000);
-                        }
-                    } else {
-                        if (whyCarouselInterval) {
-                            clearInterval(whyCarouselInterval);
-                            whyCarouselInterval = null;
-                        }
-                    }
-                }
-                startWhyCarousel();
-                // Recalcular en resize
-                window.addEventListener('resize', startWhyCarousel);
-            }
+<!-- ── SERVICIOS ── -->
+<section id="servicios">
+  <div>
+    <p class="section-label anim-up d1">Servicios</p>
+    <h2 class="section-title anim-up d2">Todo lo que necesitas<br>en un solo lugar.</h2>
+    <p class="section-body anim-up d3" style="margin:0 auto 56px;">Ofrecemos soluciones digitales completas adaptadas a las necesidades reales de tu empresa.</p>
+  </div>
+  <div class="services-grid">
+    <!-- Web -->
+    <div class="service-card anim-left d1">
+      <div class="service-icon-wrap">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <div class="service-name">Creación de página web</div>
+      <div class="service-desc">Webs únicas, rápidas y optimizadas que representan tu marca al máximo nivel.</div>
+    </div>
+    <!-- Tienda -->
+    <div class="service-card anim-left d2">
+      <div class="service-icon-wrap">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </div>
+      <div class="service-name">Tienda online</div>
+      <div class="service-desc">E-commerce con diseño atractivo, pasarela de pago y gestión sencilla de productos.</div>
+    </div>
+    <!-- Marketing -->
+    <div class="service-card anim-right d3">
+      <div class="service-icon-wrap">
+        <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+      </div>
+      <div class="service-name">Marketing del negocio</div>
+      <div class="service-desc">SEO, redes sociales y campañas de pago orientadas a generar resultados medibles.</div>
+    </div>
+    <!-- Citas -->
+    <div class="service-card anim-right d4">
+      <div class="service-icon-wrap">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div class="service-name">Citas automatizadas</div>
+      <div class="service-desc">Sistema de reserva inteligente integrado para automatizar tu agenda 24/7.</div>
+    </div>
+  </div>
+</section>
 
-            // Carrusel automático para Servicios Individuales (solo en móviles)
-            const individualCarouselTrack = document.querySelector('.individual-carousel-track');
-            if (individualCarouselTrack) {
-                let individualCurrentSlide = 0;
-                const individualCards = document.querySelectorAll('.individual-carousel-card');
-                const totalIndividualSlides = individualCards.length;
-                let individualCarouselInterval;
-                function nextIndividualSlide() {
-                    individualCurrentSlide = (individualCurrentSlide + 1) % totalIndividualSlides;
-                    individualCarouselTrack.style.transform = `translateX(-${individualCurrentSlide * 100}%)`;
-                }
-                // Iniciar carrusel solo en móviles
-                function startIndividualServicesCarousel() {
-                    if (window.innerWidth <= 992) {
-                        if (!individualCarouselInterval) {
-                            individualCarouselInterval = setInterval(nextIndividualSlide, 3000);
-                        }
-                    } else {
-                        if (individualCarouselInterval) {
-                            clearInterval(individualCarouselInterval);
-                            individualCarouselInterval = null;
-                        }
-                    }
-                }
-                startIndividualServicesCarousel();
-                // Recalcular en resize
-                window.addEventListener('resize', startIndividualServicesCarousel);
-            }
+<!-- ── FILOSOFÍA ── -->
+<section id="filosofia">
+  <p class="section-label anim-up d1">Nuestra filosofía</p>
+  <h2 class="section-title anim-up d2">Creemos en el diseño con propósito.</h2>
+  <div class="filosofia-grid">
+    <div class="filosofia-item anim-left d1">
+      <div class="filosofia-num">01</div>
+      <h3>Escucha activa</h3>
+      <p>Antes de diseñar una sola línea, entendemos tu negocio, tu cliente y tus objetivos en profundidad.</p>
+    </div>
+    <div class="filosofia-item anim-up d2">
+      <div class="filosofia-num">02</div>
+      <h3>Diseño funcional</h3>
+      <p>La belleza al servicio de la conversión. Cada elemento visual tiene un motivo estratégico detrás.</p>
+    </div>
+    <div class="filosofia-item anim-right d3">
+      <div class="filosofia-num">03</div>
+      <h3>Resultados medibles</h3>
+      <p>No trabajamos por proyectos, sino por impacto. Definimos métricas claras y las perseguimos contigo.</p>
+    </div>
+  </div>
+</section>
 
-            // Actualizar enlace activo en navbar
-            function updateActiveLink() {
-                const sections = document.querySelectorAll('section');
-                const navLinks = document.querySelectorAll('.navbar-links a');
-                let currentSection = '';
-                const scrollPosition = window.scrollY + 150;
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                        currentSection = section.getAttribute('id');
-                    }
-                });
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${currentSection}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-            // Animar elementos al hacer scroll
-            function animateOnScroll() {
-                const elements = document.querySelectorAll('.animate-on-scroll');
-                const triggerBottom = window.innerHeight * 0.85;
-                elements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    if (elementTop < triggerBottom) {
-                        element.classList.add('visible');
-                    }
-                });
-            }
-            // Animar elementos inicialmente
-            setTimeout(animateOnScroll, 100);
-            // Efectos de microinteracciones
-            const buttons = document.querySelectorAll('.btn, .social-link, .btn-link, .btn-presupuesto, .btn-pack');
-            buttons.forEach(button => {
-                button.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-3px)';
-                });
-                button.addEventListener('mouseleave', function() {
-                    if (!this.classList.contains('active')) {
-                        this.style.transform = 'translateY(0)';
-                    }
-                });
-            });
-            // Animación inicial para hero
-            const heroElements = document.querySelectorAll('.hero .animate-on-scroll');
-            heroElements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.classList.add('visible');
-                }, 300 + (index * 200));
-            });
-            // Efecto especial para las tarjetas de precios
-            const pricingCards = document.querySelectorAll('.pricing-card, .custom-pack-card, .individual-carousel-card');
-            pricingCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.zIndex = '10';
-                });
-                card.addEventListener('mouseleave', function() {
-                    this.style.zIndex = '1';
-                });
-            });
-        });
-    </script>
+<!-- ── RESEÑAS ── -->
+<section id="resenas">
+  <p class="section-label anim-up d1">Reseñas</p>
+  <h2 class="section-title anim-up d2">Lo que dicen nuestros clientes.</h2>
+  <div class="resenas-grid">
+    <div class="resena-card anim-left d1">
+      <div class="resena-stars">★★★★★</div>
+      <p class="resena-text">"Prounek transformó completamente nuestra presencia online. En tres meses multiplicamos las solicitudes de presupuesto."</p>
+      <div class="resena-author">
+        <div class="resena-avatar">ML</div>
+        <div><div class="resena-name">María López</div><div class="resena-role">CEO, Reformas Élite</div></div>
+      </div>
+    </div>
+    <div class="resena-card anim-up d2">
+      <div class="resena-stars">★★★★★</div>
+      <p class="resena-text">"La tienda online que nos crearon es una máquina de ventas. El diseño es impecable y el soporte, inmejorable."</p>
+      <div class="resena-author">
+        <div class="resena-avatar">JC</div>
+        <div><div class="resena-name">Jordi Castellà</div><div class="resena-role">Fundador, Moda Bcn</div></div>
+      </div>
+    </div>
+    <div class="resena-card anim-right d3">
+      <div class="resena-stars">★★★★★</div>
+      <p class="resena-text">"El sistema de citas automatizadas nos ha ahorrado horas de gestión cada semana. Totalmente recomendado."</p>
+      <div class="resena-author">
+        <div class="resena-avatar">AS</div>
+        <div><div class="resena-name">Ana Sánchez</div><div class="resena-role">Directora, Clínica Serena</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CÓMO TRABAJAMOS ── -->
+<section id="como-trabajamos">
+  <p class="section-label anim-up d1">Proceso</p>
+  <h2 class="section-title anim-up d2">Cómo trabajamos contigo.</h2>
+  <div class="steps-grid">
+    <div class="step-card anim-left d1">
+      <div class="step-num">01</div>
+      <h3>Primera consulta</h3>
+      <p>Nos cuentas tu proyecto, tus objetivos y tu público. Sin compromiso y completamente gratuito.</p>
+    </div>
+    <div class="step-card anim-left d2">
+      <div class="step-num">02</div>
+      <h3>Propuesta personalizada</h3>
+      <p>Diseñamos una estrategia y presupuesto adaptados específicamente a las necesidades de tu negocio.</p>
+    </div>
+    <div class="step-card anim-right d3">
+      <div class="step-num">03</div>
+      <h3>Diseño & desarrollo</h3>
+      <p>Nuestro equipo trabaja con iteraciones rápidas. Tú siempre tienes visibilidad y control del proceso.</p>
+    </div>
+    <div class="step-card anim-right d4">
+      <div class="step-num">04</div>
+      <h3>Lanzamiento & soporte</h3>
+      <p>Publicamos tu proyecto y te acompañamos con soporte continuo para que siempre esté al máximo nivel.</p>
+    </div>
+  </div>
+
+  <!-- Contact chips -->
+  <div class="contact-chips">
+    <a href="https://wa.me/34600000000" target="_blank" class="contact-chip anim-left d2">
+      <div class="chip-icon wa">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.99L0 24l6.18-1.62A11.95 11.95 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.22-3.48-8.52zM12 22c-1.85 0-3.66-.5-5.24-1.44l-.37-.22-3.89 1.02 1.04-3.78-.24-.39A9.94 9.94 0 0 1 2 12C2 6.48 6.48 2 12 2c2.67 0 5.18 1.04 7.07 2.93A9.94 9.94 0 0 1 22 12c0 5.52-4.48 10-10 10zm5.44-7.3c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.79-1.68-2.09-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" fill="#25D366"/>
+        </svg>
+      </div>
+      <div class="chip-info">
+        <div class="chip-label">WhatsApp</div>
+        <div class="chip-val">+34 600 000 000</div>
+      </div>
+    </a>
+    <a href="mailto:hola@prounek.com" class="contact-chip anim-right d3">
+      <div class="chip-icon mail">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </div>
+      <div class="chip-info">
+        <div class="chip-label">Correo</div>
+        <div class="chip-val">hola@prounek.com</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ── CTA CONTACTO ── -->
+<section id="contacto-cta">
+  <h2 class="section-title">¿Listo para crecer<br>en digital?</h2>
+  <p>Cuéntanos tu proyecto y te damos respuesta en menos de 24 horas.</p>
+  <a href="contacto.html" class="btn-white">Empezar ahora →</a>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="index.html" class="footer-logo">Prounek<span>.</span></a>
+      <p class="footer-tagline">Diseño web & Marketing digital</p>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul class="footer-links">
+        <li><a href="#servicios">Página web</a></li>
+        <li><a href="#servicios">Tienda online</a></li>
+        <li><a href="#servicios">Marketing</a></li>
+        <li><a href="#servicios">Citas automatizadas</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul class="footer-links">
+        <li><a href="#quienes">Quiénes somos</a></li>
+        <li><a href="#filosofia">Filosofía</a></li>
+        <li><a href="#resenas">Reseñas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul class="footer-links">
+        <li><a href="mailto:hola@prounek.com">hola@prounek.com</a></li>
+        <li><a href="#">Barcelona, España</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Prounek. Todos los derechos reservados.</span>
+    <span>Diseño & Desarrollo — Prounek</span>
+  </div>
+</footer>
+
+<script>
+/* ── WAVE CANVAS ── */
+const canvas = document.getElementById('wave-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, t = 0;
+
+function resize() {
+  W = canvas.width  = canvas.offsetWidth;
+  H = canvas.height = canvas.offsetHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+function drawWave() {
+  ctx.clearRect(0, 0, W, H);
+  const waves = [
+    { amp: H * 0.10, freq: 0.0042, phase: t * 0.55,       y: H * 0.46, color: 'rgba(9,22,82,0.045)', lw: 170 },
+    { amp: H * 0.14, freq: 0.0034, phase: t * 0.40 + 1.2, y: H * 0.53, color: 'rgba(9,22,82,0.032)', lw: 210 },
+    { amp: H * 0.08, freq: 0.0058, phase: t * 0.65 + 2.5, y: H * 0.49, color: 'rgba(9,22,82,0.025)', lw: 130 },
+  ];
+
+  waves.forEach(w => {
+    ctx.beginPath();
+    ctx.lineWidth   = w.lw;
+    ctx.strokeStyle = w.color;
+    ctx.lineCap     = 'round';
+    for (let x = -w.lw; x <= W + w.lw; x += 4) {
+      const y = w.y
+        + Math.sin(x * w.freq + w.phase) * w.amp
+        + Math.sin(x * w.freq * 0.48 + w.phase * 0.72) * w.amp * 0.38;
+      x === -w.lw ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  });
+
+  t += 0.016;
+  requestAnimationFrame(drawWave);
+}
+drawWave();
+
+/* ── SCROLL REVEAL ── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.anim-up, .anim-left, .anim-right').forEach(el => {
+  observer.observe(el);
+});
+
+/* ── HAMBURGER ── */
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+</script>
 </body>
 </html>
