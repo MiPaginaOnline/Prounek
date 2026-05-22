@@ -630,6 +630,160 @@
       .steps-grid    { grid-template-columns: 1fr; }
       .footer-inner  { flex-direction: column; }
       .contact-chips { flex-direction: column; align-items: center; }
+      .contact-form-grid { grid-template-columns: 1fr !important; }
+    }
+
+    /* ─── SECCIÓN FORMULARIO ─── */
+    #formulario {
+      background: var(--bg);
+      padding: 100px 5%;
+    }
+
+    .form-section-inner {
+      max-width: 1060px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .form-info .section-label { margin-bottom: 12px; }
+    .form-info .section-title { margin-bottom: 16px; }
+    .form-info .section-body  { margin-bottom: 40px; }
+
+    .form-detail {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .form-detail-icon {
+      width: 42px; height: 42px;
+      border-radius: 11px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(0,0,0,0.08);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .form-detail-icon svg {
+      width: 18px; height: 18px;
+      stroke: var(--accent-dark);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .form-detail-text .fdlabel { font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #bbb; margin-bottom: 2px; }
+    .form-detail-text .fdval   { font-size: 0.9rem; font-weight: 600; color: #111; }
+
+    /* The actual form card */
+    .form-card {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 22px;
+      padding: 44px 40px;
+    }
+
+    .contact-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .cf-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .cf-field label {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: #555;
+      letter-spacing: 0.2px;
+    }
+    .cf-field input,
+    .cf-field textarea,
+    .cf-field select {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.88rem;
+      color: #111;
+      background: rgba(244,244,244,0.7);
+      border: 1.5px solid #e8e8e8;
+      border-radius: 11px;
+      padding: 12px 15px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s, background .2s;
+      width: 100%;
+    }
+    .cf-field input:focus,
+    .cf-field textarea:focus,
+    .cf-field select:focus {
+      border-color: var(--accent);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(37,99,235,0.08);
+    }
+    .cf-field textarea { resize: vertical; min-height: 110px; }
+    .cf-field select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23aaa' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 38px;
+    }
+
+    .cf-submit {
+      width: 100%;
+      background: #111;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 15px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .25s, transform .15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .cf-submit:hover { background: var(--accent); transform: translateY(-1px); }
+    .cf-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    .cf-note {
+      font-size: 0.73rem;
+      color: #bbb;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* Success message */
+    .cf-success {
+      display: none;
+      text-align: center;
+      padding: 32px 0 16px;
+      animation: fadeUp .5s ease both;
+    }
+    .cf-success-icon {
+      width: 58px; height: 58px;
+      background: rgba(37,99,235,0.08);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 18px;
+      font-size: 1.5rem;
+    }
+    .cf-success h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 8px; }
+    .cf-success p  { font-size: 0.88rem; color: #888; }
+
+    @media (max-width: 860px) {
+      .form-section-inner { grid-template-columns: 1fr; gap: 40px; }
+      .form-card { padding: 32px 24px; }
     }
   </style>
 </head>
@@ -836,6 +990,110 @@
   </div>
 </section>
 
+<!-- ── FORMULARIO DE CONTACTO ── -->
+<section id="formulario">
+  <div class="form-section-inner">
+
+    <!-- Left: info -->
+    <div class="form-info">
+      <p class="section-label anim-up d1">Contacto</p>
+      <h2 class="section-title anim-up d2">Hablemos de<br>tu proyecto.</h2>
+      <p class="section-body anim-up d3">Cuéntanos qué necesitas y te respondemos en menos de 24 horas con una propuesta personalizada y sin compromiso.</p>
+
+      <div class="form-detail anim-left d2">
+        <div class="form-detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="form-detail-text">
+          <div class="fdlabel">Email</div>
+          <div class="fdval">prounek.info@gmail.com</div>
+        </div>
+      </div>
+
+      <div class="form-detail anim-left d3">
+        <div class="form-detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="form-detail-text">
+          <div class="fdlabel">Ubicación</div>
+          <div class="fdval">Barcelona, España</div>
+        </div>
+      </div>
+
+      <div class="form-detail anim-left d4">
+        <div class="form-detail-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="form-detail-text">
+          <div class="fdlabel">Respuesta</div>
+          <div class="fdval">En menos de 24 horas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: form card -->
+    <div class="form-card anim-right d2">
+      <div id="cfForm">
+        <form id="contactForm" action="https://formspree.io/f/mqejbded" method="POST">
+          <input type="hidden" name="_replyto" value="prounek.info@gmail.com" />
+          <input type="hidden" name="_subject" value="Nuevo mensaje desde la web de Prounek" />
+
+          <div class="contact-form-grid">
+            <div class="cf-field">
+              <label for="cf-nombre">Nombre *</label>
+              <input type="text" id="cf-nombre" name="nombre" placeholder="Tu nombre" required />
+            </div>
+            <div class="cf-field">
+              <label for="cf-empresa">Empresa</label>
+              <input type="text" id="cf-empresa" name="empresa" placeholder="Tu empresa (opcional)" />
+            </div>
+          </div>
+
+          <div class="contact-form-grid">
+            <div class="cf-field">
+              <label for="cf-email">Email *</label>
+              <input type="email" id="cf-email" name="email" placeholder="tu@email.com" required />
+            </div>
+            <div class="cf-field">
+              <label for="cf-tel">Teléfono</label>
+              <input type="tel" id="cf-tel" name="telefono" placeholder="+34 600 000 000" />
+            </div>
+          </div>
+
+          <div class="cf-field">
+            <label for="cf-servicio">Servicio de interés</label>
+            <select id="cf-servicio" name="servicio">
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option>Creación de página web</option>
+              <option>Creación de tienda online</option>
+              <option>Marketing del negocio</option>
+              <option>Citas automatizadas</option>
+              <option>Varios servicios</option>
+            </select>
+          </div>
+
+          <div class="cf-field">
+            <label for="cf-mensaje">Cuéntanos tu proyecto *</label>
+            <textarea id="cf-mensaje" name="mensaje" placeholder="Describe brevemente qué necesitas, tu sector, referencias o cualquier detalle relevante…" required></textarea>
+          </div>
+
+          <button type="submit" class="cf-submit" id="cfBtn">
+            <span id="cfBtnText">Enviar mensaje →</span>
+          </button>
+          <p class="cf-note">Tus datos están seguros. Nunca los compartiremos.</p>
+        </form>
+      </div>
+
+      <div class="cf-success" id="cfSuccess">
+        <div class="cf-success-icon">✓</div>
+        <h3>¡Mensaje enviado!</h3>
+        <p>Gracias por escribirnos.<br>Te responderemos en menos de 24 horas.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ── CTA CONTACTO ── -->
 <section id="contacto-cta">
   <h2 class="section-title">¿Listo para crecer<br>en digital?</h2>
@@ -935,6 +1193,39 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.anim-up, .anim-left, .anim-right').forEach(el => {
   observer.observe(el);
 });
+
+/* ── FORMSPREE SUBMIT ── */
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('cfBtn');
+    const btnText = document.getElementById('cfBtnText');
+    btn.disabled = true;
+    btnText.textContent = 'Enviando…';
+
+    try {
+      const data = new FormData(contactForm);
+      const res = await fetch(contactForm.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        document.getElementById('cfForm').style.display = 'none';
+        const s = document.getElementById('cfSuccess');
+        s.style.display = 'block';
+      } else {
+        btnText.textContent = 'Error al enviar. Inténtalo de nuevo.';
+        btn.disabled = false;
+      }
+    } catch {
+      btnText.textContent = 'Error de red. Inténtalo de nuevo.';
+      btn.disabled = false;
+    }
+  });
+}
 
 /* ── HAMBURGER ── */
 function toggleMenu() {
