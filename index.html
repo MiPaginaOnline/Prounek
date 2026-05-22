@@ -1116,22 +1116,27 @@
       mensaje:  document.getElementById('cf-mensaje').value.trim(),
     };
 
-    try {
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CONFIRM_ID, {
-        nombre:   templateParams.nombre,
-        email:    templateParams.email,
-        servicio: templateParams.servicio,
-      });
-      document.getElementById('cfForm').style.display = 'none';
-      document.getElementById('cfSuccess').style.display = 'block';
-    } catch (error) {
-      console.error('EmailJS error:', error);
-      errMsg.style.display = 'block';
-      btn.disabled = false;
-      btn.classList.remove('loading');
-    }
+try {
+  // 1️⃣ Email a Prounek (notificación interna)
+  await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+
+  // 2️⃣ Email al cliente (confirmación automática)
+  await emailjs.send(EMAILJS_SERVICE_ID, 'template_81cmmxy', {
+    nombre:   templateParams.nombre,
+    email:    templateParams.email,   // EmailJS usará esto como destinatario si en tu template tienes {{email}} en el campo "To"
+    servicio: templateParams.servicio,
   });
+
+  // Éxito: oculta el form y muestra confirmación
+  document.getElementById('cfForm').style.display = 'none';
+  document.getElementById('cfSuccess').style.display = 'block';
+
+} catch (error) {
+  console.error('EmailJS error:', error);
+  errMsg.style.display = 'block';
+  btn.disabled = false;
+  btn.classList.remove('loading');
+}
 
   /* ── WAVE CANVAS ── */
   const canvas = document.getElementById('wave-canvas');
