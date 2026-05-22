@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prounek — Diseño Web & Marketing Digital</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -94,7 +96,6 @@
       padding-top: var(--nav-h);
     }
 
-    /* Grid – bigger cells, very faint */
     .grid-overlay {
       position: absolute;
       inset: 0;
@@ -121,7 +122,6 @@
       padding: 0 24px;
     }
 
-    /* hero entrance animations */
     .hero-badge   { animation: fadeUp .7s .1s ease both; }
     .hero-line1   { animation: fadeUp .7s .25s ease both; }
     .hero-line2   { animation: fadeUp .7s .38s ease both; }
@@ -264,9 +264,7 @@
     }
 
     /* ─── QUIÉNES SOMOS ─── */
-    #quienes {
-      text-align: center;
-    }
+    #quienes { text-align: center; }
     #quienes .section-label,
     #quienes .section-title,
     #quienes .section-body { margin-left: auto; margin-right: auto; }
@@ -322,7 +320,6 @@
       border-color: rgba(37,99,235,0.18);
     }
 
-    /* Icon square */
     .service-icon-wrap {
       width: 44px; height: 44px;
       background: rgba(9,22,82,0.06);
@@ -357,10 +354,7 @@
     .service-card:hover .service-desc { color: #444; }
 
     /* ─── FILOSOFÍA ─── */
-    #filosofia {
-      background: var(--bg);
-      text-align: center;
-    }
+    #filosofia { background: var(--bg); text-align: center; }
     #filosofia .section-title { margin: 0 auto 50px; max-width: 640px; }
 
     .filosofia-grid {
@@ -510,9 +504,9 @@
       justify-content: center;
       flex-shrink: 0;
     }
-    .chip-icon.wa  { background: #e8faf0; }
-    .chip-icon.mail{ background: #eef2ff; }
-    .chip-icon svg { width: 22px; height: 22px; }
+    .chip-icon.wa   { background: #e8faf0; }
+    .chip-icon.mail { background: #eef2ff; }
+    .chip-icon svg  { width: 22px; height: 22px; }
 
     .chip-info .chip-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #bbb; margin-bottom: 3px; }
     .chip-info .chip-val   { font-size: 0.92rem; font-weight: 600; color: #111; }
@@ -590,16 +584,12 @@
       to   { opacity: 1; transform: translateX(0); }
     }
 
-    /* Base state */
-    .anim-up, .anim-left, .anim-right {
-      opacity: 0;
-    }
-    /* Active state */
+    .anim-up, .anim-left, .anim-right { opacity: 0; }
+
     .anim-up.in    { animation: fadeUp    .75s cubic-bezier(.22,.68,0,1.1) both; }
     .anim-left.in  { animation: fadeLeft  .75s cubic-bezier(.22,.68,0,1.1) both; }
     .anim-right.in { animation: fadeRight .75s cubic-bezier(.22,.68,0,1.1) both; }
 
-    /* Stagger delays */
     .d1 { animation-delay: .05s !important; }
     .d2 { animation-delay: .15s !important; }
     .d3 { animation-delay: .25s !important; }
@@ -611,17 +601,20 @@
       .steps-grid    { grid-template-columns: repeat(2,1fr); }
     }
     @media (max-width: 768px) {
-      .filosofia-grid  { grid-template-columns: 1fr; }
-      .resenas-grid    { grid-template-columns: 1fr; }
-      .stat-grid       { grid-template-columns: repeat(2,1fr); }
+      .filosofia-grid { grid-template-columns: 1fr; }
+      .resenas-grid   { grid-template-columns: 1fr; }
+      .stat-grid      { grid-template-columns: repeat(2,1fr); }
     }
     @media (max-width: 640px) {
       .nav-links {
-        display: none; flex-direction: column;
-        position: fixed; top: var(--nav-h); left:0; right:0;
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: var(--nav-h); left: 0; right: 0;
         background: rgba(244,244,244,0.97);
         backdrop-filter: blur(20px);
-        padding: 24px 5%; gap: 16px;
+        padding: 24px 5%;
+        gap: 16px;
         border-bottom: 1px solid #ddd;
       }
       .nav-links.open { display: flex; }
@@ -633,11 +626,8 @@
       .contact-form-grid { grid-template-columns: 1fr !important; }
     }
 
-    /* ─── SECCIÓN FORMULARIO ─── */
-    #formulario {
-      background: var(--bg);
-      padding: 100px 5%;
-    }
+    /* ─── FORMULARIO ─── */
+    #formulario { background: var(--bg); padding: 100px 5%; }
 
     .form-section-inner {
       max-width: 1060px;
@@ -676,7 +666,6 @@
     .form-detail-text .fdlabel { font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #bbb; margin-bottom: 2px; }
     .form-detail-text .fdval   { font-size: 0.9rem; font-weight: 600; color: #111; }
 
-    /* The actual form card */
     .form-card {
       background: rgba(255,255,255,0.75);
       backdrop-filter: blur(18px);
@@ -763,7 +752,17 @@
       margin-top: 12px;
     }
 
-    /* Success message */
+    .cf-error {
+      display: none;
+      font-size: 0.8rem;
+      color: #dc2626;
+      text-align: center;
+      margin-top: 10px;
+      padding: 10px;
+      background: rgba(220,38,38,0.06);
+      border-radius: 8px;
+    }
+
     .cf-success {
       display: none;
       text-align: center;
@@ -797,7 +796,7 @@
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#filosofia">Filosofía</a></li>
     <li><a href="#resenas">Reseñas</a></li>
-    <li><a href="contacto.html" class="btn-nav">Contactar</a></li>
+    <li><a href="#formulario" class="btn-nav">Contactar</a></li>
   </ul>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
@@ -808,7 +807,6 @@
 <section id="hero">
   <div class="grid-overlay"></div>
   <canvas id="wave-canvas"></canvas>
-
   <div class="hero-content">
     <div class="hero-badge">Prounek Studios</div>
     <h1 class="hero-title">
@@ -817,7 +815,7 @@
     </h1>
     <p class="hero-sub">Expertos en diseño web, desarrollo y marketing digital para empresas que buscan destacar.</p>
     <div class="hero-btns">
-      <a href="contacto.html" class="btn-primary">Solicitar presupuesto →</a>
+      <a href="#formulario" class="btn-primary">Solicitar presupuesto →</a>
       <a href="#servicios" class="btn-secondary">Ver servicios</a>
     </div>
   </div>
@@ -839,13 +837,10 @@
 
 <!-- ── SERVICIOS ── -->
 <section id="servicios">
-  <div>
-    <p class="section-label anim-up d1">Servicios</p>
-    <h2 class="section-title anim-up d2">Todo lo que necesitas<br>en un solo lugar.</h2>
-    <p class="section-body anim-up d3" style="margin:0 auto 56px;">Ofrecemos soluciones digitales completas adaptadas a las necesidades reales de tu empresa.</p>
-  </div>
+  <p class="section-label anim-up d1">Servicios</p>
+  <h2 class="section-title anim-up d2">Todo lo que necesitas<br>en un solo lugar.</h2>
+  <p class="section-body anim-up d3" style="margin:0 auto 56px;">Ofrecemos soluciones digitales completas adaptadas a las necesidades reales de tu empresa.</p>
   <div class="services-grid">
-    <!-- Web -->
     <div class="service-card anim-left d1">
       <div class="service-icon-wrap">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -853,7 +848,6 @@
       <div class="service-name">Creación de página web</div>
       <div class="service-desc">Webs únicas, rápidas y optimizadas que representan tu marca al máximo nivel.</div>
     </div>
-    <!-- Tienda -->
     <div class="service-card anim-left d2">
       <div class="service-icon-wrap">
         <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
@@ -861,7 +855,6 @@
       <div class="service-name">Tienda online</div>
       <div class="service-desc">E-commerce con diseño atractivo, pasarela de pago y gestión sencilla de productos.</div>
     </div>
-    <!-- Marketing -->
     <div class="service-card anim-right d3">
       <div class="service-icon-wrap">
         <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
@@ -869,7 +862,6 @@
       <div class="service-name">Marketing del negocio</div>
       <div class="service-desc">SEO, redes sociales y campañas de pago orientadas a generar resultados medibles.</div>
     </div>
-    <!-- Citas -->
     <div class="service-card anim-right d4">
       <div class="service-icon-wrap">
         <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -962,9 +954,8 @@
     </div>
   </div>
 
-  <!-- Contact chips -->
   <div class="contact-chips">
-    <a href="https://wa.me/34600000000" target="_blank" class="contact-chip anim-left d2">
+    <a href="https://wa.me/34651592897" target="_blank" class="contact-chip anim-left d2">
       <div class="chip-icon wa">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.99L0 24l6.18-1.62A11.95 11.95 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.22-3.48-8.52zM12 22c-1.85 0-3.66-.5-5.24-1.44l-.37-.22-3.89 1.02 1.04-3.78-.24-.39A9.94 9.94 0 0 1 2 12C2 6.48 6.48 2 12 2c2.67 0 5.18 1.04 7.07 2.93A9.94 9.94 0 0 1 22 12c0 5.52-4.48 10-10 10zm5.44-7.3c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.79-1.68-2.09-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" fill="#25D366"/>
@@ -972,10 +963,10 @@
       </div>
       <div class="chip-info">
         <div class="chip-label">WhatsApp</div>
-        <div class="chip-val">+34 600 000 000</div>
+        <div class="chip-val">+34 651 592 897</div>
       </div>
     </a>
-    <a href="mailto:hola@prounek.com" class="contact-chip anim-right d3">
+    <a href="mailto:prounek.info@gmail.com" class="contact-chip anim-right d3">
       <div class="chip-icon mail">
         <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -984,7 +975,7 @@
       </div>
       <div class="chip-info">
         <div class="chip-label">Correo</div>
-        <div class="chip-val">hola@prounek.com</div>
+        <div class="chip-val">prounek.info@gmail.com</div>
       </div>
     </a>
   </div>
@@ -994,7 +985,6 @@
 <section id="formulario">
   <div class="form-section-inner">
 
-    <!-- Left: info -->
     <div class="form-info">
       <p class="section-label anim-up d1">Contacto</p>
       <h2 class="section-title anim-up d2">Hablemos de<br>tu proyecto.</h2>
@@ -1031,57 +1021,48 @@
       </div>
     </div>
 
-    <!-- Right: form card -->
     <div class="form-card anim-right d2">
       <div id="cfForm">
-        <form id="contactForm" action="https://formspree.io/f/XXXXXXXX" method="POST">
-          <input type="hidden" name="_replyto" value="prounek.info@gmail.com" />
-          <input type="hidden" name="_subject" value="Nuevo mensaje desde la web de Prounek" />
-
-          <div class="contact-form-grid">
-            <div class="cf-field">
-              <label for="cf-nombre">Nombre *</label>
-              <input type="text" id="cf-nombre" name="nombre" placeholder="Tu nombre" required />
-            </div>
-            <div class="cf-field">
-              <label for="cf-empresa">Empresa</label>
-              <input type="text" id="cf-empresa" name="empresa" placeholder="Tu empresa (opcional)" />
-            </div>
-          </div>
-
-          <div class="contact-form-grid">
-            <div class="cf-field">
-              <label for="cf-email">Email *</label>
-              <input type="email" id="cf-email" name="email" placeholder="tu@email.com" required />
-            </div>
-            <div class="cf-field">
-              <label for="cf-tel">Teléfono</label>
-              <input type="tel" id="cf-tel" name="telefono" placeholder="+34 600 000 000" />
-            </div>
-          </div>
-
+        <div class="contact-form-grid">
           <div class="cf-field">
-            <label for="cf-servicio">Servicio de interés</label>
-            <select id="cf-servicio" name="servicio">
-              <option value="" disabled selected>Selecciona una opción</option>
-              <option>Creación de página web</option>
-              <option>Creación de tienda online</option>
-              <option>Marketing del negocio</option>
-              <option>Citas automatizadas</option>
-              <option>Varios servicios</option>
-            </select>
+            <label for="cf-nombre">Nombre *</label>
+            <input type="text" id="cf-nombre" placeholder="Tu nombre" />
           </div>
-
           <div class="cf-field">
-            <label for="cf-mensaje">Cuéntanos tu proyecto *</label>
-            <textarea id="cf-mensaje" name="mensaje" placeholder="Describe brevemente qué necesitas, tu sector, referencias o cualquier detalle relevante…" required></textarea>
+            <label for="cf-empresa">Empresa</label>
+            <input type="text" id="cf-empresa" placeholder="Tu empresa (opcional)" />
           </div>
-
-          <button type="submit" class="cf-submit" id="cfBtn">
-            <span id="cfBtnText">Enviar mensaje →</span>
-          </button>
-          <p class="cf-note">🔒 Tus datos están seguros. Nunca los compartiremos.</p>
-        </form>
+        </div>
+        <div class="contact-form-grid">
+          <div class="cf-field">
+            <label for="cf-email">Email *</label>
+            <input type="email" id="cf-email" placeholder="tu@email.com" />
+          </div>
+          <div class="cf-field">
+            <label for="cf-tel">Teléfono</label>
+            <input type="tel" id="cf-tel" placeholder="+34 600 000 000" />
+          </div>
+        </div>
+        <div class="cf-field">
+          <label for="cf-servicio">Servicio de interés</label>
+          <select id="cf-servicio">
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option>Creación de página web</option>
+            <option>Creación de tienda online</option>
+            <option>Marketing del negocio</option>
+            <option>Citas automatizadas</option>
+            <option>Varios servicios</option>
+          </select>
+        </div>
+        <div class="cf-field">
+          <label for="cf-mensaje">Cuéntanos tu proyecto *</label>
+          <textarea id="cf-mensaje" placeholder="Describe brevemente qué necesitas, tu sector, referencias o cualquier detalle relevante…"></textarea>
+        </div>
+        <button class="cf-submit" id="cfBtn" onclick="submitForm()">
+          <span id="cfBtnText">Enviar mensaje →</span>
+        </button>
+        <div class="cf-error" id="cfError">Hubo un error al enviar. Por favor, inténtalo de nuevo.</div>
+        <p class="cf-note">Tus datos están seguros. Nunca los compartiremos.</p>
       </div>
 
       <div class="cf-success" id="cfSuccess">
@@ -1098,7 +1079,7 @@
 <section id="contacto-cta">
   <h2 class="section-title">¿Listo para crecer<br>en digital?</h2>
   <p>Cuéntanos tu proyecto y te damos respuesta en menos de 24 horas.</p>
-  <a href="contacto.html" class="btn-white">Empezar ahora →</a>
+  <a href="#formulario" class="btn-white">Empezar ahora →</a>
 </section>
 
 <!-- ── FOOTER ── -->
@@ -1123,13 +1104,13 @@
         <li><a href="#quienes">Quiénes somos</a></li>
         <li><a href="#filosofia">Filosofía</a></li>
         <li><a href="#resenas">Reseñas</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="#formulario">Contacto</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul class="footer-links">
-        <li><a href="mailto:hola@prounek.com">hola@prounek.com</a></li>
+        <li><a href="mailto:prounek.info@gmail.com">prounek.info@gmail.com</a></li>
         <li><a href="#">Barcelona, España</a></li>
       </ul>
     </div>
@@ -1141,114 +1122,144 @@
 </footer>
 
 <script>
-/* ── WAVE CANVAS ── */
-const canvas = document.getElementById('wave-canvas');
-const ctx = canvas.getContext('2d');
-let W, H, t = 0;
-
-function resize() {
-  W = canvas.width  = canvas.offsetWidth;
-  H = canvas.height = canvas.offsetHeight;
-}
-resize();
-window.addEventListener('resize', resize);
-
-function drawWave() {
-  ctx.clearRect(0, 0, W, H);
-  const waves = [
-    { amp: H * 0.10, freq: 0.0042, phase: t * 0.55,       y: H * 0.46, color: 'rgba(9,22,82,0.045)', lw: 170 },
-    { amp: H * 0.14, freq: 0.0034, phase: t * 0.40 + 1.2, y: H * 0.53, color: 'rgba(9,22,82,0.032)', lw: 210 },
-    { amp: H * 0.08, freq: 0.0058, phase: t * 0.65 + 2.5, y: H * 0.49, color: 'rgba(9,22,82,0.025)', lw: 130 },
-  ];
-
-  waves.forEach(w => {
-    ctx.beginPath();
-    ctx.lineWidth   = w.lw;
-    ctx.strokeStyle = w.color;
-    ctx.lineCap     = 'round';
-    for (let x = -w.lw; x <= W + w.lw; x += 4) {
-      const y = w.y
-        + Math.sin(x * w.freq + w.phase) * w.amp
-        + Math.sin(x * w.freq * 0.48 + w.phase * 0.72) * w.amp * 0.38;
-      x === -w.lw ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-    }
-    ctx.stroke();
-  });
-
-  t += 0.016;
-  requestAnimationFrame(drawWave);
-}
-drawWave();
-
-/* ── SCROLL REVEAL ── */
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('in');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.anim-up, .anim-left, .anim-right').forEach(el => {
-  observer.observe(el);
-});
-
-  /* ── EMAILJS ── */
-  const EMAILJS_PUBLIC_KEY  = 'lvJEIJwcBZJkQxy7l';
-  const EMAILJS_SERVICE_ID  = 'service_q89i77c';
-  const EMAILJS_TEMPLATE_ID = 'template_899ggai';
-  const EMAILJS_CONFIRM_ID  = 'template_81cmmxy';
-
-  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-
-  document.getElementById('contactForm').addEventListener('submit', async function (e) {
-    e.preventDefault();
-
-    const form   = e.target;
-    const btn    = document.getElementById('cfBtn');
-    const errMsg = document.getElementById('cfError');
-
-    if (!form.checkValidity()) { form.reportValidity(); return; }
-
-    btn.disabled = true;
-    btn.classList.add('loading');
-    errMsg.style.display = 'none';
-
-    const templateParams = {
-      nombre:   document.getElementById('cf-nombre').value.trim(),
-      empresa:  document.getElementById('cf-empresa').value.trim() || '—',
-      email:    document.getElementById('cf-email').value.trim(),
-      telefono: document.getElementById('cf-tel').value.trim()     || '—',
-      servicio: document.getElementById('cf-servicio').value       || 'No especificado',
-      mensaje:  document.getElementById('cf-mensaje').value.trim(),
-    };
-
-try {
-  // 1️⃣ Email a Prounek (notificación interna)
-  await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
-
-  // 2️⃣ Email al cliente (confirmación automática)
-  await emailjs.send(EMAILJS_SERVICE_ID, 'template_81cmmxy', {
-    nombre:   templateParams.nombre,
-    email:    templateParams.email,   // EmailJS usará esto como destinatario si en tu template tienes {{email}} en el campo "To"
-    servicio: templateParams.servicio,
-  });
-
-  // Éxito: oculta el form y muestra confirmación
-  document.getElementById('cfForm').style.display = 'none';
-  document.getElementById('cfSuccess').style.display = 'block';
-
-} catch (error) {
-  console.error('EmailJS error:', error);
-  errMsg.style.display = 'block';
-  btn.disabled = false;
-  btn.classList.remove('loading');
-}
-
 /* ── HAMBURGER ── */
 function toggleMenu() {
   document.getElementById('navLinks').classList.toggle('open');
+}
+
+/* ── WAVE CANVAS ── */
+(function () {
+  const canvas = document.getElementById('wave-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, t = 0;
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function drawWave() {
+    ctx.clearRect(0, 0, W, H);
+    const waves = [
+      { amp: H * 0.10, freq: 0.0042, phase: t * 0.55,       y: H * 0.46, color: 'rgba(9,22,82,0.045)', lw: 170 },
+      { amp: H * 0.14, freq: 0.0034, phase: t * 0.40 + 1.2, y: H * 0.53, color: 'rgba(9,22,82,0.032)', lw: 210 },
+      { amp: H * 0.08, freq: 0.0058, phase: t * 0.65 + 2.5, y: H * 0.49, color: 'rgba(9,22,82,0.025)', lw: 130 },
+    ];
+    waves.forEach(function (w) {
+      ctx.beginPath();
+      ctx.lineWidth   = w.lw;
+      ctx.strokeStyle = w.color;
+      ctx.lineCap     = 'round';
+      for (var x = -w.lw; x <= W + w.lw; x += 4) {
+        var y = w.y
+          + Math.sin(x * w.freq + w.phase) * w.amp
+          + Math.sin(x * w.freq * 0.48 + w.phase * 0.72) * w.amp * 0.38;
+        x === -w.lw ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    });
+    t += 0.016;
+    requestAnimationFrame(drawWave);
+  }
+  drawWave();
+})();
+
+/* ── SCROLL REVEAL ── */
+(function () {
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.anim-up, .anim-left, .anim-right').forEach(function (el) {
+    observer.observe(el);
+  });
+})();
+
+/* ── EMAILJS ── */
+var EMAILJS_PUBLIC_KEY  = 'lvJEIJwcBZJkQxy7l';
+var EMAILJS_SERVICE_ID  = 'service_q89i77c';
+var EMAILJS_TEMPLATE_ID = 'template_899ggai';
+var EMAILJS_CONFIRM_ID  = 'template_81cmmxy';
+
+// Inicializar EmailJS cuando el SDK esté listo
+document.addEventListener('DOMContentLoaded', function () {
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+  }
+});
+
+async function submitForm() {
+  var nombre   = document.getElementById('cf-nombre').value.trim();
+  var email    = document.getElementById('cf-email').value.trim();
+  var mensaje  = document.getElementById('cf-mensaje').value.trim();
+  var empresa  = document.getElementById('cf-empresa').value.trim() || '—';
+  var telefono = document.getElementById('cf-tel').value.trim() || '—';
+  var servicio = document.getElementById('cf-servicio').value || 'No especificado';
+
+  var errMsg = document.getElementById('cfError');
+  errMsg.style.display = 'none';
+
+  // Validación básica
+  if (!nombre || !email || !mensaje) {
+    errMsg.textContent = 'Por favor, completa los campos obligatorios (Nombre, Email y Mensaje).';
+    errMsg.style.display = 'block';
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errMsg.textContent = 'Por favor, introduce un email válido.';
+    errMsg.style.display = 'block';
+    return;
+  }
+
+  var btn = document.getElementById('cfBtn');
+  var btnText = document.getElementById('cfBtnText');
+  btn.disabled = true;
+  btnText.textContent = 'Enviando…';
+
+  if (typeof emailjs === 'undefined') {
+    console.error('EmailJS no está cargado.');
+    errMsg.textContent = 'Error de configuración. Por favor, contáctanos directamente por email.';
+    errMsg.style.display = 'block';
+    btn.disabled = false;
+    btnText.textContent = 'Enviar mensaje →';
+    return;
+  }
+
+  var templateParams = {
+    nombre:   nombre,
+    empresa:  empresa,
+    email:    email,
+    telefono: telefono,
+    servicio: servicio,
+    mensaje:  mensaje,
+  };
+
+  try {
+    // 1. Email a Prounek
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+    // 2. Confirmación al cliente
+    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CONFIRM_ID, {
+      nombre:   nombre,
+      email:    email,
+      servicio: servicio,
+    });
+    // Mostrar éxito
+    document.getElementById('cfForm').style.display    = 'none';
+    document.getElementById('cfSuccess').style.display = 'block';
+  } catch (error) {
+    console.error('EmailJS error:', error);
+    errMsg.textContent  = 'Hubo un error al enviar. Por favor, inténtalo de nuevo o escríbenos directamente.';
+    errMsg.style.display = 'block';
+    btn.disabled = false;
+    btnText.textContent = 'Enviar mensaje →';
+  }
 }
 </script>
 </body>
