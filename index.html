@@ -1142,6 +1142,43 @@
 </footer>
 
 <script>
+/* ── EMAILJS INIT ── */
+emailjs.init("lvJEIJwcBZJkQxy7l");
+
+/* ── FORMULARIO CONTACTO ── */
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const btn = document.getElementById('cfBtn');
+    const btnText = document.getElementById('cfBtnText');
+
+    btn.disabled = true;
+    btnText.textContent = 'Enviando…';
+
+    try {
+
+      await emailjs.sendForm(
+        "service_q89i77c",
+        "template_899ggai",
+        contactForm
+      );
+
+      // éxito
+      document.getElementById('cfForm').style.display = 'none';
+      document.getElementById('cfSuccess').style.display = 'block';
+
+    } catch (error) {
+      console.log("Error EmailJS:", error);
+
+      btnText.textContent = 'Error al enviar. Inténtalo de nuevo';
+      btn.disabled = false;
+    }
+  });
+}
+
 /* ── WAVE CANVAS ── */
 const canvas = document.getElementById('wave-canvas');
 const ctx = canvas.getContext('2d');
@@ -1156,6 +1193,7 @@ window.addEventListener('resize', resize);
 
 function drawWave() {
   ctx.clearRect(0, 0, W, H);
+
   const waves = [
     { amp: H * 0.10, freq: 0.0042, phase: t * 0.55,       y: H * 0.46, color: 'rgba(9,22,82,0.045)', lw: 170 },
     { amp: H * 0.14, freq: 0.0034, phase: t * 0.40 + 1.2, y: H * 0.53, color: 'rgba(9,22,82,0.032)', lw: 210 },
@@ -1164,15 +1202,18 @@ function drawWave() {
 
   waves.forEach(w => {
     ctx.beginPath();
-    ctx.lineWidth   = w.lw;
+    ctx.lineWidth = w.lw;
     ctx.strokeStyle = w.color;
-    ctx.lineCap     = 'round';
+    ctx.lineCap = 'round';
+
     for (let x = -w.lw; x <= W + w.lw; x += 4) {
       const y = w.y
         + Math.sin(x * w.freq + w.phase) * w.amp
         + Math.sin(x * w.freq * 0.48 + w.phase * 0.72) * w.amp * 0.38;
+
       x === -w.lw ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
     }
+
     ctx.stroke();
   });
 
@@ -1195,44 +1236,10 @@ document.querySelectorAll('.anim-up, .anim-left, .anim-right').forEach(el => {
   observer.observe(el);
 });
 
-emailjs.init("lvJEIJwcBZJkQxy7l");
-
-const contactForm = document.getElementById('contactForm');
-
-if (contactForm) {
-  contactForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    const btn = document.getElementById('cfBtn');
-    const btnText = document.getElementById('cfBtnText');
-
-    btn.disabled = true;
-    btnText.textContent = 'Enviando…';
-
-    try {
-
-      await emailjs.sendForm(
-        "service_q89i77c",
-        "template_81cmmxy",
-        contactForm
-      );
-
-      document.getElementById('cfForm').style.display = 'none';
-      document.getElementById('cfSuccess').style.display = 'block';
-
-    } catch (error) {
-      btnText.textContent = 'Error al enviar. Inténtalo de nuevo';
-      btn.disabled = false;
-      console.log(error);
-    }
-  });
-}
-
 /* ── HAMBURGER ── */
 function toggleMenu() {
   document.getElementById('navLinks').classList.toggle('open');
 }
-src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
 </script>
 </body>
 </html>
