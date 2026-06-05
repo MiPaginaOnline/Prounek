@@ -486,7 +486,6 @@ src="https://www.facebook.com/tr?id=2237093060420411&ev=PageView&noscript=1"
     .step-card h3 { font-size: 0.97rem; font-weight: 700; margin-bottom: 10px; color: #111; }
     .step-card p  { font-size: 0.82rem; color: #999; line-height: 1.65; }
 
-    /* Contact chips */
     .contact-chips {
       display: flex;
       gap: 18px;
@@ -553,6 +552,179 @@ src="https://www.facebook.com/tr?id=2237093060420411&ev=PageView&noscript=1"
     }
     .btn-white:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(0,0,0,0.2); }
 
+    /* ─── BANNER VITAE ─── */
+    #vitae-banner {
+      background: var(--bg);
+      padding: 0 5% 80px;
+    }
+
+    .vitae-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .vitae-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      margin-bottom: 12px;
+      padding-left: 4px;
+      opacity: 0.6;
+    }
+
+    .vitae-card {
+      background-color: var(--accent-dark);
+      border-radius: 16px;
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.25s ease;
+    }
+
+    .vitae-card::after {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 220px;
+      height: 220px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .vitae-card:hover {
+      box-shadow: 0 12px 40px rgba(9,22,82,0.25);
+    }
+
+    .vitae-left {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .vitae-logo-wrap {
+      flex-shrink: 0;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: rgba(255,255,255,0.10);
+      border: 1.5px solid rgba(255,255,255,0.20);
+    }
+
+    .vitae-logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .vitae-text {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .vitae-headline {
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.35;
+    }
+
+    .vitae-body {
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.70);
+      line-height: 1.65;
+      max-width: 420px;
+    }
+
+    .vitae-topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .vitae-tag {
+      font-size: 10px;
+      font-weight: 600;
+      color: #ffffff;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 20px;
+      padding: 3px 10px;
+      white-space: nowrap;
+    }
+
+    .vitae-right {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .vitae-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #ffffff;
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 14px 26px;
+      border-radius: 10px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.20);
+    }
+
+    .vitae-cta:hover {
+      background-color: #f0f0f0;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.28);
+      color: var(--accent-dark);
+      text-decoration: none;
+    }
+
+    .vitae-cta svg { transition: transform 0.2s ease; }
+    .vitae-cta:hover svg { transform: translateX(3px); }
+
+    .vitae-cta-sub {
+      font-size: 10px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .vitae-card { flex-direction: column; align-items: flex-start; padding: 28px 24px; gap: 24px; }
+      .vitae-right { width: 100%; align-items: stretch; }
+      .vitae-cta { justify-content: center; width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+      #vitae-banner { padding: 0 16px 60px; }
+      .vitae-card { padding: 24px 20px; }
+      .vitae-left { gap: 16px; }
+      .vitae-logo-wrap { width: 56px; height: 56px; }
+      .vitae-headline { font-size: 15px; }
+      .vitae-body { font-size: 12px; }
+    }
+
     /* ─── FOOTER ─── */
     footer {
       background: #0d0d0d;
@@ -588,7 +760,7 @@ src="https://www.facebook.com/tr?id=2237093060420411&ev=PageView&noscript=1"
       gap: 10px;
     }
 
-    /* ─── SCROLL REVEAL ANIMATIONS ─── */
+    /* ─── SCROLL REVEAL ─── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(32px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -603,7 +775,6 @@ src="https://www.facebook.com/tr?id=2237093060420411&ev=PageView&noscript=1"
     }
 
     .anim-up, .anim-left, .anim-right { opacity: 0; }
-
     .anim-up.in    { animation: fadeUp    .75s cubic-bezier(.22,.68,0,1.1) both; }
     .anim-left.in  { animation: fadeLeft  .75s cubic-bezier(.22,.68,0,1.1) both; }
     .anim-right.in { animation: fadeRight .75s cubic-bezier(.22,.68,0,1.1) both; }
@@ -1002,12 +1173,10 @@ src="https://www.facebook.com/tr?id=2237093060420411&ev=PageView&noscript=1"
 <!-- ── FORMULARIO DE CONTACTO ── -->
 <section id="formulario">
   <div class="form-section-inner">
-
     <div class="form-info">
       <p class="section-label anim-up d1">Contacto</p>
       <h2 class="section-title anim-up d2">Hablemos de<br>tu proyecto.</h2>
       <p class="section-body anim-up d3">Cuéntanos qué necesitas y te respondemos en menos de 24 horas con una propuesta personalizada y sin compromiso.</p>
-
       <div class="form-detail anim-left d2">
         <div class="form-detail-icon">
           <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -1017,7 +1186,6 @@ src="https://www.facebook.com/tr?id=2237093060420411&ev=PageView&noscript=1"
           <div class="fdval">prounek.info@gmail.com</div>
         </div>
       </div>
-
       <div class="form-detail anim-left d3">
         <div class="form-detail-icon">
           <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -1027,7 +1195,6 @@ src="https://www.facebook.com/tr?id=2237093060420411&ev=PageView&noscript=1"
           <div class="fdval">Barcelona, España</div>
         </div>
       </div>
-
       <div class="form-detail anim-left d4">
         <div class="form-detail-icon">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -1082,14 +1249,12 @@ src="https://www.facebook.com/tr?id=2237093060420411&ev=PageView&noscript=1"
         <div class="cf-error" id="cfError">Hubo un error al enviar. Por favor, inténtalo de nuevo.</div>
         <p class="cf-note">Tus datos están seguros. Nunca los compartiremos.</p>
       </div>
-
       <div class="cf-success" id="cfSuccess">
         <div class="cf-success-icon">✓</div>
         <h3>¡Mensaje enviado!</h3>
         <p>Gracias por escribirnos.<br>Te responderemos en menos de 24 horas.</p>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -1098,6 +1263,45 @@ src="https://www.facebook.com/tr?id=2237093060420411&ev=PageView&noscript=1"
   <h2 class="section-title">¿Listo para crecer<br>en digital?</h2>
   <p>Cuéntanos tu proyecto y te damos respuesta en menos de 24 horas.</p>
   <a href="contacto.html" class="btn-white">Empezar ahora →</a>
+</section>
+
+<!-- ── BANNER VITAE INTELIGENTE ── -->
+<section id="vitae-banner" class="anim-up">
+  <div class="vitae-wrapper">
+    <div class="vitae-label">Del mismo equipo que creó Prounek</div>
+    <div class="vitae-card">
+      <div class="vitae-left">
+        <div class="vitae-logo-wrap">
+          <img
+            src="FOTO DE PERFIL Vitae Inteligente.png"
+            alt="Vitae Inteligente"
+            loading="lazy"
+            width="72"
+            height="72"
+          >
+        </div>
+        <div class="vitae-text">
+          <p class="vitae-headline">¿Quieres mejorar tu vida mientras haces crecer tu negocio?</p>
+          <p class="vitae-body">En Vitae Inteligente encontrarás ebooks prácticos sobre finanzas personales, desarrollo personal y estrategias para emprendedores. Conocimiento directo, sin rodeos.</p>
+          <div class="vitae-topics">
+            <span class="vitae-tag">Ahorro inteligente</span>
+            <span class="vitae-tag">Desarrollo personal</span>
+            <span class="vitae-tag">Estrategia para negocios</span>
+            <span class="vitae-tag">Ebooks prácticos</span>
+          </div>
+        </div>
+      </div>
+      <div class="vitae-right">
+        <a href="https://vitaeinteligente.com" target="_blank" rel="noopener noreferrer" class="vitae-cta">
+          Ver ebooks
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="17" height="17">
+            <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/>
+          </svg>
+        </a>
+        <p class="vitae-cta-sub">Descarga inmediata · Desde 9€</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ── FOOTER ── -->
@@ -1206,7 +1410,6 @@ var EMAILJS_SERVICE_ID  = 'service_q89i77c';
 var EMAILJS_TEMPLATE_ID = 'template_899ggai';
 var EMAILJS_CONFIRM_ID  = 'template_81cmmxy';
 
-// Inicializar EmailJS cuando el SDK esté listo
 document.addEventListener('DOMContentLoaded', function () {
   if (typeof emailjs !== 'undefined') {
     emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
@@ -1224,7 +1427,6 @@ async function submitForm() {
   var errMsg = document.getElementById('cfError');
   errMsg.style.display = 'none';
 
-  // Validación básica
   if (!nombre || !email || !mensaje) {
     errMsg.textContent = 'Por favor, completa los campos obligatorios (Nombre, Email y Mensaje).';
     errMsg.style.display = 'block';
@@ -1242,7 +1444,6 @@ async function submitForm() {
   btnText.textContent = 'Enviando…';
 
   if (typeof emailjs === 'undefined') {
-    console.error('EmailJS no está cargado.');
     errMsg.textContent = 'Error de configuración. Por favor, contáctanos directamente por email.';
     errMsg.style.display = 'block';
     btn.disabled = false;
@@ -1260,15 +1461,12 @@ async function submitForm() {
   };
 
   try {
-    // 1. Email a Prounek
     await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
-    // 2. Confirmación al cliente
     await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CONFIRM_ID, {
       nombre:   nombre,
       email:    email,
       servicio: servicio,
     });
-    // Mostrar éxito
     document.getElementById('cfForm').style.display    = 'none';
     document.getElementById('cfSuccess').style.display = 'block';
   } catch (error) {
