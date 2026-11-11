@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prounek | Diseño web, tiendas online y marketing digital</title>
+  <meta name="description" content="Prounek: diseño web, tiendas online, marketing digital y citas automatizadas para negocios que quieren destacar. Presupuesto sin compromiso en menos de 24 horas." />
+  <meta name="theme-color" content="#f4f4f4" />
+  <link rel="canonical" href="https://prounek.com/" />
+  <link rel="icon" type="image/png" href="img/logo.png" />
+  <link rel="apple-touch-icon" href="img/logo.png" />
+
+  <!-- Open Graph (vista previa al compartir en WhatsApp, redes, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://prounek.com/" />
+  <meta property="og:title" content="Prounek | Diseñamos el futuro digital de tu negocio" />
+  <meta property="og:description" content="Diseño web, tiendas online, marketing y citas automatizadas. Respuesta en menos de 24 h." />
+  <meta property="og:image" content="https://prounek.com/img/logo.png" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2237093060420411');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" alt=""
+  src="https://www.facebook.com/tr?id=2237093060420411&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <!-- EmailJS SDK -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
+
+  <noscript><style>.page-curtain{display:none}.reveal{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
+
+  <style>
+    /* ─── HERO ─── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding: calc(var(--nav-h) + 40px) 5% 120px;
+      --hx: 50%;
+      --hy: 40%;
+    }
+
+    .grid-overlay,
+    .grid-glow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-size: 100px 100px;
+    }
+    .grid-overlay {
+      background-image:
+        linear-gradient(to right, rgba(9,22,82,0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(9,22,82,0.03) 1px, transparent 1px);
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 40%, transparent 100%);
+              mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 40%, transparent 100%);
+    }
+    .grid-glow {
+      background-image:
+        linear-gradient(to right, rgba(37,99,235,0.22) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(37,99,235,0.22) 1px, transparent 1px);
+      -webkit-mask-image: radial-gradient(260px circle at var(--hx) var(--hy), #000, transparent 75%);
+              mask-image: radial-gradient(260px circle at var(--hx) var(--hy), #000, transparent 75%);
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: .55;
+    }
+    .orb-1 { width: 420px; height: 420px; background: rgba(37,99,235,.22); top: 8%; left: -6%; animation: float1 16s ease-in-out infinite; }
+    .orb-2 { width: 360px; height: 360px; background: rgba(9,22,82,.16); bottom: 0; right: -4%; animation: float2 19s ease-in-out infinite; }
+    .orb-3 { width: 220px; height: 220px; background: rgba(96,165,250,.28); top: 18%; right: 18%; animation: float1 13s ease-in-out infinite reverse; }
+    @keyframes float1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(60px,40px) scale(1.12); } }
+    @keyframes float2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-70px,-50px) scale(.9); } }
+
+    .wave-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      z-index: 1;
+      opacity: .6;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 940px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #444;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 50px;
+      padding: 8px 18px 8px 14px;
+      margin-bottom: 30px;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 6px 20px rgba(9,22,82,.05);
+    }
+    .hero-badge .pulse {
+      position: relative;
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .hero-badge .pulse::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulseRing 2s ease-out infinite;
+    }
+
+    .hero-title { line-height: 1.04; margin-bottom: 12px; letter-spacing: -2px; }
+    .hero-line1 {
+      display: block;
+      font-size: clamp(2.3rem, 6.4vw, 5.6rem);
+      font-weight: 800;
+      color: #111;
+    }
+    .hero-line2 {
+      display: block;
+      font-size: clamp(1.7rem, 4.6vw, 4rem);
+      font-weight: 500;
+      color: #aaa;
+      letter-spacing: -1.5px;
+      margin-top: 4px;
+    }
+    .hero-line2 .text-gradient { font-weight: 700; }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 1.5vw, 1.08rem);
+      color: #6f6f6f;
+      max-width: 540px;
+      margin: 24px auto 40px;
+      line-height: 1.75;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 44px;
+      font-size: .82rem;
+      color: #777;
+    }
+    .hero-trust .avatars { display: flex; }
+    .hero-trust .avatars span {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 2.5px solid var(--bg);
+      margin-left: -10px;
+      display: grid;
+      place-items: center;
+      font-size: .66rem;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+    }
+    .hero-trust .avatars span:first-child { margin-left: 0; }
+    .hero-trust .avatars span:nth-child(2) { background: linear-gradient(135deg, #1e3a8a, #60a5fa); }
+    .hero-trust .avatars span:nth-child(3) { background: linear-gradient(135deg, #111, #2563eb); }
+    .hero-trust .stars { color: #f59e0b; letter-spacing: 1px; }
+    .hero-trust strong { color: #111; font-weight: 700; }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 30px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      font-size: .62rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #aaa;
+      text-decoration: none;
+    }
+    .scroll-hint .mouse {
+      width: 22px; height: 34px;
+      border: 1.8px solid #bbb;
+      border-radius: 12px;
+      position: relative;
+    }
+    .scroll-hint .mouse::after {
+      content: '';
+      position: absolute;
+      left: 50%; top: 7px;
+      width: 3px; height: 7px;
+      margin-left: -1.5px;
+      background: var(--accent);
+      border-radius: 2px;
+      animation: wheel 1.8s var(--ease) infinite;
+    }
+    @keyframes wheel {
+      0%   { opacity: 0; transform: translateY(-3px); }
+      30%  { opacity: 1; }
+      100% { opacity: 0; transform: translateY(10px); }
+    }
+
+    /* ─── CINTA DE SERVICIOS (marquee) ─── */
+    .marquee {
+      position: relative;
+      overflow: hidden;
+      padding: 26px 0;
+      background: #111;
+      color: #fff;
+      transform: rotate(-1.5deg) scale(1.03);
+      margin: -20px 0 0;
+      z-index: 3;
+      box-shadow: 0 20px 50px rgba(9,22,82,.15);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 32s linear infinite;
+    }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      padding-right: 34px;
+      font-size: clamp(1.1rem, 2.4vw, 1.7rem);
+      font-weight: 700;
+      letter-spacing: -.5px;
+      white-space: nowrap;
+    }
+    .marquee-item .star { color: var(--accent-2); font-size: .8em; }
+    .marquee-item .outline { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.55); }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* ─── QUIÉNES SOMOS ─── */
+    #quienes { text-align: center; padding-top: 150px; }
+    #quienes .section-body { margin: 0 auto; max-width: 600px; }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      max-width: 940px;
+      margin: 60px auto 0;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 34px 20px 30px;
+      overflow: hidden;
+      transition: transform .5s var(--ease), box-shadow .5s;
+    }
+    .stat-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(9,22,82,.08); }
+    .stat-card .num {
+      font-size: clamp(2rem, 3.6vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--accent-dark);
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-card .lbl { font-size: 0.8rem; color: #999; margin-top: 6px; font-weight: 500; }
+    .stat-card .bar {
+      height: 3px;
+      margin: 16px auto 0;
+      width: 36px;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--accent), #60a5fa);
+      transform: scaleX(.3);
+      transition: transform .8s var(--ease);
+    }
+    .stat-card:hover .bar { transform: scaleX(1.6); }
+
+    /* ─── SERVICIOS ─── */
+    #servicios { text-align: center; }
+    #servicios .section-body { margin: 0 auto 60px; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+    .service-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: var(--radius);
+      padding: 34px 24px 28px;
+      text-align: left;
+      text-decoration: none;
+      color: inherit;
+      transform-style: preserve-3d;
+      transition: transform .6s var(--ease), box-shadow .4s, border-color .4s, background .4s;
+    }
+    .service-card:hover {
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 26px 60px rgba(9,22,82,0.10);
+      border-color: rgba(37,99,235,0.15);
+    }
+    .service-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 22px; }
+    .service-icon-wrap {
+      width: 52px; height: 52px;
+      background: rgba(9,22,82,0.06);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .4s, transform .6s var(--ease-spring);
+    }
+    .service-icon-wrap svg {
+      width: 24px; height: 24px;
+      stroke: var(--accent-dark);
+      fill: none;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke .4s;
+    }
+    .service-card:hover .service-icon-wrap { background: var(--accent); transform: rotate(-8deg) scale(1.08); }
+    .service-card:hover .service-icon-wrap svg { stroke: #fff; }
+    .service-idx { font-size: .7rem; font-weight: 700; color: #ccc; letter-spacing: 1px; }
+
+    .service-name { font-weight: 700; font-size: 1.04rem; color: #111; margin-bottom: 12px; letter-spacing: -.2px; }
+    .service-desc { font-size: 0.84rem; color: #777; line-height: 1.7; transition: color .3s; flex: 1; }
+    .service-card:hover .service-desc { color: #444; }
+    .service-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 22px;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--accent);
+      opacity: .7;
+      transition: opacity .3s, gap .4s var(--ease);
+    }
+    .service-card:hover .service-more { opacity: 1; gap: 12px; }
+
+    /* ─── FILOSOFÍA ─── */
+    #filosofia { text-align: center; }
+    #filosofia .section-title { margin: 0 auto 56px; max-width: 680px; }
+
+    .filosofia-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .filosofia-item {
+      position: relative;
+      overflow: hidden;
+      padding: 40px 30px 36px;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.72);
+      text-align: left;
+      transition: transform .6s var(--ease), box-shadow .5s;
+    }
+    .filosofia-item:hover { transform: translateY(-6px); box-shadow: 0 22px 50px rgba(9,22,82,0.08); }
+    .filosofia-bignum {
+      position: absolute;
+      top: -18px; right: 10px;
+      font-size: 7.5rem;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -6px;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(9,22,82,.07);
+      transition: -webkit-text-stroke-color .5s, transform .8s var(--ease);
+      pointer-events: none;
+    }
+    .filosofia-item:hover .filosofia-bignum { -webkit-text-stroke-color: rgba(37,99,235,.22); transform: translateY(10px) scale(1.06); }
+    .filosofia-num { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; color: var(--accent); margin-bottom: 16px; }
+    .filosofia-item h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: #111; }
+    .filosofia-item p  { font-size: 0.86rem; color: #888; line-height: 1.75; }
+    .filosofia-item .line {
+      position: absolute;
+      left: 0; bottom: 0;
+      height: 3px; width: 100%;
+      background: linear-gradient(90deg, var(--accent-dark), var(--accent), #60a5fa);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .7s var(--ease);
+    }
+    .filosofia-item:hover .line { transform: scaleX(1); }
+
+    /* ─── RESEÑAS ─── */
+    #resenas { text-align: center; overflow: hidden; }
+    #resenas .section-title { margin: 0 auto 20px; }
+    .rating-summary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .86rem;
+      color: #777;
+      margin-bottom: 54px;
+    }
+    .rating-summary .stars { color: #f59e0b; letter-spacing: 2px; }
+    .rating-summary strong { color: #111; }
+
+    .resenas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .resena-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 34px 30px 30px;
+      text-align: left;
+      transition: transform .6s var(--ease), box-shadow .5s, background .4s;
+    }
+    .resena-card:hover { background: rgba(255,255,255,.92); box-shadow: 0 24px 54px rgba(9,22,82,0.09); }
+    .resena-card .quote {
+      position: absolute;
+      top: 22px; right: 26px;
+      width: 34px; height: 34px;
+      fill: rgba(37,99,235,.1);
+      transition: fill .4s, transform .6s var(--ease-spring);
+    }
+    .resena-card:hover .quote { fill: rgba(37,99,235,.3); transform: rotate(-10deg) scale(1.15); }
+    .resena-stars { color: #f59e0b; font-size: 0.95rem; letter-spacing: 2px; margin-bottom: 16px; }
+    .resena-text {
+      font-size: 0.92rem;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 26px;
+      flex: 1;
+    }
+    .resena-author { display: flex; align-items: center; gap: 12px; padding-top: 20px; border-top: 1px solid var(--line); }
+    .resena-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+    }
+    .resena-name { font-weight: 700; font-size: 0.88rem; color: #111; }
+    .resena-role { font-size: 0.76rem; color: #aaa; }
+
+    /* ─── CÓMO TRABAJAMOS ─── */
+    #como-trabajamos { text-align: center; }
+    #como-trabajamos .section-title { margin: 0 auto 64px; max-width: 600px; }
+
+    .steps-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto 70px;
+      --progress: 0;
+    }
+    .steps-line {
+      position: absolute;
+      top: 0;
+      left: 12.5%; right: 12.5%;
+      height: 2px;
+      background: rgba(0,0,0,.07);
+      border-radius: 2px;
+    }
+    .steps-line::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--accent-dark), var(--accent), #60a5fa);
+      transform-origin: left;
+      transform: scaleX(var(--progress));
+      border-radius: 2px;
+    }
+    .step-card {
+      position: relative;
+      margin-top: 34px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 40px 24px 30px;
+      text-align: left;
+      transition: transform .6s var(--ease), box-shadow .5s, border-color .5s;
+    }
+    .step-card:hover { transform: translateY(-6px); box-shadow: 0 22px 48px rgba(9,22,82,0.08); }
+    .step-dot {
+      position: absolute;
+      top: -34px; left: 50%;
+      width: 16px; height: 16px;
+      margin: -7px 0 0 -8px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid #d4d4d4;
+      transition: border-color .5s, background .5s, box-shadow .5s, transform .5s var(--ease-spring);
+    }
+    .step-card.lit .step-dot {
+      border-color: var(--accent);
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(37,99,235,.15);
+      transform: scale(1.1);
+    }
+    .step-card.lit { border-color: rgba(37,99,235,.15); }
+    .step-num {
+      display: inline-grid;
+      place-items: center;
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      background: rgba(9,22,82,.05);
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 18px;
+      transition: background .5s, color .5s;
+    }
+    .step-card.lit .step-num { background: var(--accent); color: #fff; }
+    .step-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; color: #111; }
+    .step-card p  { font-size: 0.84rem; color: #8d8d8d; line-height: 1.7; }
+
+    .contact-chips {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .contact-chip {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 18px;
+      padding: 20px 26px;
+      text-decoration: none;
+      min-width: 260px;
+      text-align: left;
+      transition: transform .5s var(--ease), box-shadow .4s, border-color .4s;
+    }
+    .contact-chip:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(9,22,82,0.1);
+      border-color: rgba(37,99,235,0.2);
+    }
+    .chip-icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform .6s var(--ease-spring);
+    }
+    .contact-chip:hover .chip-icon { transform: rotate(-10deg) scale(1.1); }
+    .chip-icon.wa   { background: #e8faf0; }
+    .chip-icon.mail { background: #eef2ff; }
+    .chip-icon svg  { width: 22px; height: 22px; }
+    .chip-info { flex: 1; }
+    .chip-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #aaa; margin-bottom: 3px; }
+    .chip-val   { font-size: 0.94rem; font-weight: 600; color: #111; }
+    .chip-arrow { color: #ccc; transition: color .3s, transform .4s var(--ease); }
+    .contact-chip:hover .chip-arrow { color: var(--accent); transform: translate(3px,-3px); }
+
+    /* ─── FORMULARIO ─── */
+    .form-section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.45fr;
+      gap: 70px;
+      align-items: start;
+    }
+    .form-info { position: sticky; top: 110px; }
+    .form-info .section-body { margin-bottom: 40px; }
+
+    .form-detail {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+      text-decoration: none;
+    }
+    .form-detail-icon {
+      width: 46px; height: 46px;
+      border-radius: 13px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(0,0,0,0.08);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background .4s, transform .5s var(--ease-spring);
+    }
+    .form-detail-icon svg {
+      width: 19px; height: 19px;
+      stroke: var(--accent-dark);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round; stroke-linejoin: round;
+      transition: stroke .4s;
+    }
+    .form-detail:hover .form-detail-icon { background: var(--accent); transform: scale(1.08); }
+    .form-detail:hover .form-detail-icon svg { stroke: #fff; }
+    .fdlabel { font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #aaa; margin-bottom: 2px; }
+    .fdval   { font-size: 0.92rem; font-weight: 600; color: #111; }
+
+    .form-card {
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 26px;
+      padding: 46px 42px;
+      box-shadow: 0 30px 80px rgba(9,22,82,.07);
+    }
+    .form-card-head { margin-bottom: 28px; }
+    .form-card-head h3 { font-size: 1.35rem; font-weight: 800; letter-spacing: -.4px; margin-bottom: 4px; }
+    .form-card-head p { font-size: .84rem; color: #999; }
+
+    /* ─── CTA ─── */
+    #contacto-cta {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--accent-dark) 0%, #1a3a9e 60%, #2563eb 130%);
+      color: #fff;
+      text-align: center;
+      padding: 140px 5%;
+      isolation: isolate;
+    }
+    #contacto-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 75%);
+              mask-image: radial-gradient(ellipse at center, #000 20%, transparent 75%);
+    }
+    .cta-orb {
+      position: absolute;
+      z-index: -1;
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none;
+    }
+    .cta-orb.a { width: 380px; height: 380px; background: rgba(96,165,250,.35); top: -120px; left: 10%; animation: float1 14s ease-in-out infinite; }
+    .cta-orb.b { width: 320px; height: 320px; background: rgba(37,99,235,.45); bottom: -140px; right: 8%; animation: float2 17s ease-in-out infinite; }
+    .cta-ring {
+      position: absolute;
+      z-index: -1;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 50%;
+      top: 50%; left: 50%;
+      pointer-events: none;
+    }
+    .cta-ring.r1 { width: 500px; height: 500px; margin: -250px 0 0 -250px; animation: spinSlow 40s linear infinite; border-style: dashed; }
+    .cta-ring.r2 { width: 800px; height: 800px; margin: -400px 0 0 -400px; }
+    @keyframes spinSlow { to { transform: rotate(360deg); } }
+
+    #contacto-cta .section-title { color: #fff; margin: 0 auto 18px; font-size: clamp(2.2rem, 5vw, 3.8rem); }
+    #contacto-cta p { color: rgba(255,255,255,0.7); font-size: 1.04rem; margin-bottom: 44px; }
+
+    .btn-white {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      color: var(--accent-dark);
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.98rem;
+      text-decoration: none;
+      box-shadow: 0 14px 40px rgba(0,0,0,.2);
+      transition: transform .35s var(--ease), box-shadow .35s, color .35s;
+    }
+    .btn-white::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: #111;
+      border-radius: inherit;
+      transform: scale(0);
+      transition: transform .5s var(--ease);
+    }
+    .btn-white:hover { color: #fff; box-shadow: 0 20px 50px rgba(0,0,0,.3); }
+    .btn-white:hover::before { transform: scale(1.5); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2,1fr); }
+      .steps-grid    { grid-template-columns: repeat(2,1fr); }
+      .steps-line    { display: none; }
+      .step-card     { margin-top: 0; }
+      .step-dot      { display: none; }
+    }
+    @media (max-width: 860px) {
+      .form-section-inner { grid-template-columns: 1fr; gap: 44px; }
+      .form-info { position: static; }
+      .form-card { padding: 34px 24px; }
+    }
+    @media (max-width: 768px) {
+      .filosofia-grid { grid-template-columns: 1fr; }
+      .resenas-grid   { grid-template-columns: 1fr; }
+      .stat-grid      { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 760px) {
+      .nav-links {
+        position: fixed;
+        inset: 0;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        background: rgba(244,244,244,0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        opacity: 0;
+        visibility: hidden;
+        clip-path: circle(0 at calc(100% - 40px) 36px);
+        transition: clip-path .7s var(--ease), opacity .4s, visibility 0s .7s;
+      }
+      .nav-links.open {
+        opacity: 1;
+        visibility: visible;
+        clip-path: circle(150% at calc(100% - 40px) 36px);
+        transition: clip-path .8s var(--ease), opacity .3s, visibility 0s;
+      }
+      .nav-links li {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity .5s, transform .6s var(--ease);
+      }
+      .nav-links.open li { opacity: 1; transform: none; }
+      .nav-links.open li:nth-child(1) { transition-delay: .15s; }
+      .nav-links.open li:nth-child(2) { transition-delay: .21s; }
+      .nav-links.open li:nth-child(3) { transition-delay: .27s; }
+      .nav-links.open li:nth-child(4) { transition-delay: .33s; }
+      .nav-links.open li:nth-child(5) { transition-delay: .39s; }
+      .nav-links a:not(.btn-nav) { font-size: 1.9rem; font-weight: 700; color: #111; letter-spacing: -1px; }
+      .nav-links .btn-nav { margin-top: 18px; font-size: 1rem; padding: 14px 32px; }
+      .hamburger { display: block; }
+      body.menu-open { overflow: hidden; }
+    }
+    @media (max-width: 640px) {
+      .services-grid { grid-template-columns: 1fr; gap: 14px; }
+      .steps-grid    { grid-template-columns: 1fr; }
+      .contact-chips { flex-direction: column; align-items: stretch; }
+      .contact-chip  { min-width: 0; }
+      .hero-line1, .hero-line2 { letter-spacing: -1px; }
+      .hero-btns a { width: 100%; justify-content: center; }
+      .hero-trust { flex-direction: column; gap: 8px; }
+      .scroll-hint { display: none; }
+      .orb-1 { width: 260px; height: 260px; }
+      .orb-2 { width: 240px; height: 240px; }
+      .stat-card { padding: 26px 14px 22px; }
+      #contacto-cta { padding: 110px 6%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Transición entre páginas -->
+<div class="page-curtain" aria-hidden="true"><div class="curtain-logo">Prounek<span>.</span></div></div>
+<div class="scroll-progress" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+
+<!-- ── NAVBAR ── -->
+<nav class="site-nav" aria-label="Principal">
+  <a href="index.html" class="logo" aria-label="Prounek, inicio">Prounek<span>.</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#quienes">Nosotros</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#filosofia">Filosofía</a></li>
+    <li><a href="#resenas">Reseñas</a></li>
+    <li><a href="contacto.html" class="btn-nav">Contactar <span class="btn-arrow">→</span></a></li>
+  </ul>
+  <button class="hamburger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<main>
+<!-- ── HERO ── -->
+<section id="hero" data-hero-glow>
+  <div class="orb orb-1" aria-hidden="true"></div>
+  <div class="orb orb-2" aria-hidden="true"></div>
+  <div class="orb orb-3" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="grid-glow" aria-hidden="true"></div>
+  <canvas class="wave-canvas" aria-hidden="true"></canvas>
+
+  <div class="hero-content">
+    <div class="hero-badge reveal" style="--d:.35s"><span class="pulse"></span>Prounek Studios</div>
+    <h1 class="hero-title">
+      <span class="hero-line1 split-words" style="--d:.45s">Diseñamos el futuro</span>
+      <span class="hero-line2 split-words" style="--d:.7s">digital de <span class="text-gradient">tu negocio.</span></span>
+    </h1>
+    <p class="hero-sub reveal" style="--d:1s">Expertos en diseño web, desarrollo y marketing digital para empresas que buscan destacar.</p>
+    <div class="hero-btns reveal" style="--d:1.15s">
+      <a href="contacto.html" class="btn-primary magnetic">Solicitar presupuesto <span class="btn-arrow">→</span></a>
+      <a href="#servicios" class="btn-secondary magnetic">Ver servicios</a>
+    </div>
+    <div class="hero-trust reveal" style="--d:1.3s">
+      <div class="avatars" aria-hidden="true"><span>ML</span><span>JC</span><span>AS</span></div>
+      <div><span class="stars" aria-hidden="true">★★★★★</span> <strong>4,9/5</strong> · +80 proyectos entregados</div>
+    </div>
+  </div>
+
+  <a href="#quienes" class="scroll-hint" aria-label="Bajar a la siguiente sección">
+    <span class="mouse"></span>Scroll
+  </a>
+</section>
+
+<!-- ── CINTA ── -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-item">
+      <span>Diseño web</span><span class="star">✦</span>
+      <span class="outline">Tiendas online</span><span class="star">✦</span>
+      <span>Marketing digital</span><span class="star">✦</span>
+      <span class="outline">Citas automatizadas</span><span class="star">✦</span>
+      <span>SEO</span><span class="star">✦</span>
+      <span class="outline">Redes sociales</span><span class="star">✦</span>
+    </div>
+    <div class="marquee-item">
+      <span>Diseño web</span><span class="star">✦</span>
+      <span class="outline">Tiendas online</span><span class="star">✦</span>
+      <span>Marketing digital</span><span class="star">✦</span>
+      <span class="outline">Citas automatizadas</span><span class="star">✦</span>
+      <span>SEO</span><span class="star">✦</span>
+      <span class="outline">Redes sociales</span><span class="star">✦</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── QUIÉNES SOMOS ── -->
+<section id="quienes">
+  <p class="section-label reveal">Quiénes somos</p>
+  <h2 class="section-title split-words">Un equipo con visión<br><span class="soft">y pasión por el detalle.</span></h2>
+  <p class="section-body reveal" style="--d:.2s">En Prounek combinamos estrategia, diseño y tecnología para crear presencias digitales que generan resultados reales. No hacemos webs, construimos herramientas de negocio.</p>
+  <div class="stat-grid">
+    <div class="stat-card reveal zoom" style="--d:.05s"><div class="num" data-count="80" data-prefix="+">+80</div><div class="lbl">Proyectos entregados</div><div class="bar"></div></div>
+    <div class="stat-card reveal zoom" style="--d:.15s"><div class="num" data-count="98" data-suffix="%">98%</div><div class="lbl">Clientes satisfechos</div><div class="bar"></div></div>
+    <div class="stat-card reveal zoom" style="--d:.25s"><div class="num" data-count="4.9" data-decimals="1" data-suffix="★">4,9★</div><div class="lbl">Valoración media</div><div class="bar"></div></div>
+    <div class="stat-card reveal zoom" style="--d:.35s"><div class="num" data-count="3" data-suffix="x">3x</div><div class="lbl">Crecimiento digital promedio</div><div class="bar"></div></div>
+  </div>
+</section>
+
+<!-- ── SERVICIOS ── -->
+<section id="servicios">
+  <p class="section-label reveal">Servicios</p>
+  <h2 class="section-title split-words">Todo lo que necesitas<br><span class="soft">en un solo lugar.</span></h2>
+  <p class="section-body reveal" style="--d:.2s">Ofrecemos soluciones digitales completas adaptadas a las necesidades reales de tu empresa.</p>
+  <div class="services-grid">
+    <a href="contacto.html" class="service-card spotlight tilt reveal" style="--d:.05s">
+      <div class="service-top">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <span class="service-idx">01</span>
+      </div>
+      <div class="service-name">Creación de página web</div>
+      <div class="service-desc">Webs únicas, rápidas y optimizadas que representan tu marca al máximo nivel.</div>
+      <span class="service-more">Pedir presupuesto <span>→</span></span>
+    </a>
+    <a href="contacto.html" class="service-card spotlight tilt reveal" style="--d:.15s">
+      <div class="service-top">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+        <span class="service-idx">02</span>
+      </div>
+      <div class="service-name">Tienda online</div>
+      <div class="service-desc">E-commerce con diseño atractivo, pasarela de pago y gestión sencilla de productos.</div>
+      <span class="service-more">Pedir presupuesto <span>→</span></span>
+    </a>
+    <a href="contacto.html" class="service-card spotlight tilt reveal" style="--d:.25s">
+      <div class="service-top">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+        </div>
+        <span class="service-idx">03</span>
+      </div>
+      <div class="service-name">Marketing del negocio</div>
+      <div class="service-desc">SEO, redes sociales y campañas de pago orientadas a generar resultados medibles.</div>
+      <span class="service-more">Pedir presupuesto <span>→</span></span>
+    </a>
+    <a href="contacto.html" class="service-card spotlight tilt reveal" style="--d:.35s">
+      <div class="service-top">
+        <div class="service-icon-wrap">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <span class="service-idx">04</span>
+      </div>
+      <div class="service-name">Citas automatizadas</div>
+      <div class="service-desc">Sistema de reserva inteligente integrado para automatizar tu agenda 24/7.</div>
+      <span class="service-more">Pedir presupuesto <span>→</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- ── FILOSOFÍA ── -->
+<section id="filosofia">
+  <p class="section-label reveal">Nuestra filosofía</p>
+  <h2 class="section-title split-words">Creemos en el diseño <span class="soft">con propósito.</span></h2>
+  <div class="filosofia-grid">
+    <div class="filosofia-item spotlight reveal from-left" style="--d:.05s">
+      <span class="filosofia-bignum" aria-hidden="true">01</span>
+      <div class="filosofia-num">01</div>
+      <h3>Escucha activa</h3>
+      <p>Antes de diseñar una sola línea, entendemos tu negocio, tu cliente y tus objetivos en profundidad.</p>
+      <span class="line"></span>
+    </div>
+    <div class="filosofia-item spotlight reveal" style="--d:.15s">
+      <span class="filosofia-bignum" aria-hidden="true">02</span>
+      <div class="filosofia-num">02</div>
+      <h3>Diseño funcional</h3>
+      <p>La belleza al servicio de la conversión. Cada elemento visual tiene un motivo estratégico detrás.</p>
+      <span class="line"></span>
+    </div>
+    <div class="filosofia-item spotlight reveal from-right" style="--d:.25s">
+      <span class="filosofia-bignum" aria-hidden="true">03</span>
+      <div class="filosofia-num">03</div>
+      <h3>Resultados medibles</h3>
+      <p>No trabajamos por proyectos, sino por impacto. Definimos métricas claras y las perseguimos contigo.</p>
+      <span class="line"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ── RESEÑAS ── -->
+<section id="resenas">
+  <p class="section-label reveal">Reseñas</p>
+  <h2 class="section-title split-words">Lo que dicen nuestros clientes.</h2>
+  <div class="rating-summary reveal" style="--d:.2s"><span class="stars" aria-hidden="true">★★★★★</span><span><strong>4,9 de 5</strong> de valoración media</span></div>
+  <div class="resenas-grid">
+    <figure class="resena-card spotlight tilt reveal from-left" data-tilt="4" style="--d:.05s">
+      <svg class="quote" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.98 5.5C6.1 6.6 3.5 9.7 3.5 13.9v4.6h6.2v-6.2H6.8c.1-2.5 1.6-4.3 3.9-5.1l-.7-1.7zm10.5 0c-3.9 1.1-6.5 4.2-6.5 8.4v4.6h6.2v-6.2h-2.9c.1-2.5 1.6-4.3 3.9-5.1l-.7-1.7z"/></svg>
+      <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
+      <blockquote class="resena-text">"Prounek transformó completamente nuestra presencia online. En tres meses multiplicamos las solicitudes de presupuesto."</blockquote>
+      <figcaption class="resena-author">
+        <div class="resena-avatar" aria-hidden="true">ML</div>
+        <div><div class="resena-name">María López</div><div class="resena-role">CEO, Reformas Élite</div></div>
+      </figcaption>
+    </figure>
+    <figure class="resena-card spotlight tilt reveal" data-tilt="4" style="--d:.15s">
+      <svg class="quote" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.98 5.5C6.1 6.6 3.5 9.7 3.5 13.9v4.6h6.2v-6.2H6.8c.1-2.5 1.6-4.3 3.9-5.1l-.7-1.7zm10.5 0c-3.9 1.1-6.5 4.2-6.5 8.4v4.6h6.2v-6.2h-2.9c.1-2.5 1.6-4.3 3.9-5.1l-.7-1.7z"/></svg>
+      <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
+      <blockquote class="resena-text">"La tienda online que nos crearon es una máquina de ventas. El diseño es impecable y el soporte, inmejorable."</blockquote>
+      <figcaption class="resena-author">
+        <div class="resena-avatar" aria-hidden="true">JC</div>
+        <div><div class="resena-name">Jordi Castellà</div><div class="resena-role">Fundador, Moda Bcn</div></div>
+      </figcaption>
+    </figure>
+    <figure class="resena-card spotlight tilt reveal from-right" data-tilt="4" style="--d:.25s">
+      <svg class="quote" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.98 5.5C6.1 6.6 3.5 9.7 3.5 13.9v4.6h6.2v-6.2H6.8c.1-2.5 1.6-4.3 3.9-5.1l-.7-1.7zm10.5 0c-3.9 1.1-6.5 4.2-6.5 8.4v4.6h6.2v-6.2h-2.9c.1-2.5 1.6-4.3 3.9-5.1l-.7-1.7z"/></svg>
+      <div class="resena-stars" aria-label="5 estrellas">★★★★★</div>
+      <blockquote class="resena-text">"El sistema de citas automatizadas nos ha ahorrado horas de gestión cada semana. Totalmente recomendado."</blockquote>
+      <figcaption class="resena-author">
+        <div class="resena-avatar" aria-hidden="true">AS</div>
+        <div><div class="resena-name">Ana Sánchez</div><div class="resena-role">Directora, Clínica Serena</div></div>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ── CÓMO TRABAJAMOS ── -->
+<section id="como-trabajamos">
+  <p class="section-label reveal">Proceso</p>
+  <h2 class="section-title split-words">Cómo trabajamos contigo.</h2>
+  <div class="steps-grid" data-timeline>
+    <div class="steps-line" aria-hidden="true"></div>
+    <div class="step-card reveal" style="--d:.05s">
+      <span class="step-dot" aria-hidden="true"></span>
+      <div class="step-num">01</div>
+      <h3>Primera consulta</h3>
+      <p>Nos cuentas tu proyecto, tus objetivos y tu público. Sin compromiso y completamente gratuito.</p>
+    </div>
+    <div class="step-card reveal" style="--d:.15s">
+      <span class="step-dot" aria-hidden="true"></span>
+      <div class="step-num">02</div>
+      <h3>Propuesta personalizada</h3>
+      <p>Diseñamos una estrategia y presupuesto adaptados específicamente a las necesidades de tu negocio.</p>
+    </div>
+    <div class="step-card reveal" style="--d:.25s">
+      <span class="step-dot" aria-hidden="true"></span>
+      <div class="step-num">03</div>
+      <h3>Diseño &amp; desarrollo</h3>
+      <p>Nuestro equipo trabaja con iteraciones rápidas. Tú siempre tienes visibilidad y control del proceso.</p>
+    </div>
+    <div class="step-card reveal" style="--d:.35s">
+      <span class="step-dot" aria-hidden="true"></span>
+      <div class="step-num">04</div>
+      <h3>Lanzamiento &amp; soporte</h3>
+      <p>Publicamos tu proyecto y te acompañamos con soporte continuo para que siempre esté al máximo nivel.</p>
+    </div>
+  </div>
+
+  <div class="contact-chips">
+    <a href="https://wa.me/34651592897" target="_blank" rel="noopener" class="contact-chip reveal from-left" style="--d:.1s">
+      <div class="chip-icon wa">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.99L0 24l6.18-1.62A11.95 11.95 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.22-3.48-8.52zM12 22c-1.85 0-3.66-.5-5.24-1.44l-.37-.22-3.89 1.02 1.04-3.78-.24-.39A9.94 9.94 0 0 1 2 12C2 6.48 6.48 2 12 2c2.67 0 5.18 1.04 7.07 2.93A9.94 9.94 0 0 1 22 12c0 5.52-4.48 10-10 10zm5.44-7.3c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.79-1.68-2.09-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" fill="#25D366"/></svg>
+      </div>
+      <div class="chip-info">
+        <div class="chip-label">WhatsApp</div>
+        <div class="chip-val">+34 651 592 897</div>
+      </div>
+      <span class="chip-arrow" aria-hidden="true">↗</span>
+    </a>
+    <a href="mailto:prounek.info@gmail.com" class="contact-chip reveal from-right" style="--d:.2s">
+      <div class="chip-icon mail">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div class="chip-info">
+        <div class="chip-label">Correo</div>
+        <div class="chip-val">prounek.info@gmail.com</div>
+      </div>
+      <span class="chip-arrow" aria-hidden="true">↗</span>
+    </a>
+  </div>
+</section>
+
+<!-- ── FORMULARIO DE CONTACTO ── -->
+<section id="formulario">
+  <div class="form-section-inner">
+
+    <div class="form-info">
+      <p class="section-label reveal">Contacto</p>
+      <h2 class="section-title split-words">Hablemos de<br><span class="soft">tu proyecto.</span></h2>
+      <p class="section-body reveal" style="--d:.2s">Cuéntanos qué necesitas y te respondemos en menos de 24 horas con una propuesta personalizada y sin compromiso.</p>
+
+      <a href="mailto:prounek.info@gmail.com" class="form-detail reveal from-left" style="--d:.1s">
+        <div class="form-detail-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><div class="fdlabel">Email</div><div class="fdval">prounek.info@gmail.com</div></div>
+      </a>
+      <div class="form-detail reveal from-left" style="--d:.2s">
+        <div class="form-detail-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="fdlabel">Ubicación</div><div class="fdval">Barcelona, España</div></div>
+      </div>
+      <div class="form-detail reveal from-left" style="--d:.3s">
+        <div class="form-detail-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div><div class="fdlabel">Respuesta</div><div class="fdval">En menos de 24 horas</div></div>
+      </div>
+    </div>
+
+    <div class="form-card reveal from-right" style="--d:.15s">
+      <form id="homeForm" data-contact-form data-success="homeSuccess" novalidate>
+        <div class="form-card-head">
+          <h3>Cuéntanos tu idea</h3>
+          <p>Sin compromiso · Respuesta en 24 h</p>
+        </div>
+        <div class="f-grid">
+          <div class="f-field">
+            <label for="cf-nombre">Nombre *</label>
+            <input type="text" id="cf-nombre" name="nombre" placeholder="Tu nombre" autocomplete="name" required />
+            <span class="f-hint">Dinos cómo te llamas.</span>
+          </div>
+          <div class="f-field">
+            <label for="cf-empresa">Empresa</label>
+            <input type="text" id="cf-empresa" name="empresa" placeholder="Tu empresa (opcional)" autocomplete="organization" />
+          </div>
+        </div>
+        <div class="f-grid">
+          <div class="f-field">
+            <label for="cf-email">Email *</label>
+            <input type="email" id="cf-email" name="email" placeholder="tu@email.com" autocomplete="email" required />
+            <span class="f-hint">Introduce un email válido.</span>
+          </div>
+          <div class="f-field">
+            <label for="cf-tel">Teléfono</label>
+            <input type="tel" id="cf-tel" name="telefono" placeholder="+34 600 000 000" autocomplete="tel" />
+          </div>
+        </div>
+        <div class="f-field">
+          <label for="cf-servicio">Servicio de interés</label>
+          <select id="cf-servicio" name="servicio">
+            <option value="" selected>Selecciona una opción</option>
+            <option>Creación de página web</option>
+            <option>Creación de tienda online</option>
+            <option>Marketing del negocio</option>
+            <option>Citas automatizadas</option>
+            <option>Varios servicios</option>
+          </select>
+        </div>
+        <div class="f-field">
+          <label for="cf-mensaje">Cuéntanos tu proyecto *</label>
+          <textarea id="cf-mensaje" name="mensaje" maxlength="1500" placeholder="Describe brevemente qué necesitas, tu sector, referencias o cualquier detalle relevante…" required></textarea>
+          <span class="f-counter" aria-hidden="true"></span>
+          <span class="f-hint">Cuéntanos un poco sobre tu proyecto.</span>
+        </div>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
+
+        <button type="submit" class="submit-btn">
+          <span class="sb-spinner" aria-hidden="true"></span>
+          <span class="sb-label">Enviar mensaje</span> <span class="btn-arrow" aria-hidden="true">→</span>
+        </button>
+        <p class="form-error" role="alert"></p>
+        <p class="form-note"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Tus datos están seguros. Nunca los compartiremos.</p>
+      </form>
+
+      <div class="success-block" id="homeSuccess" role="status">
+        <svg class="success-check" viewBox="0 0 86 86" aria-hidden="true"><circle cx="43" cy="43" r="40"/><path d="M27 44l11 11 21-23"/></svg>
+        <h3>¡Mensaje enviado!</h3>
+        <p>Gracias por escribirnos.<br>Te responderemos en menos de 24 horas.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section id="contacto-cta">
+  <span class="cta-orb a" aria-hidden="true"></span>
+  <span class="cta-orb b" aria-hidden="true"></span>
+  <span class="cta-ring r1" aria-hidden="true"></span>
+  <span class="cta-ring r2" aria-hidden="true"></span>
+  <h2 class="section-title split-words">¿Listo para crecer<br>en digital?</h2>
+  <p class="reveal" style="--d:.25s">Cuéntanos tu proyecto y te damos respuesta en menos de 24 horas.</p>
+  <div class="reveal" style="--d:.4s">
+    <a href="contacto.html" class="btn-white magnetic" data-strength="0.4">Empezar ahora <span class="btn-arrow">→</span></a>
+  </div>
+</section>
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="index.html" class="footer-logo">Prounek<span>.</span></a>
+      <p class="footer-tagline">Diseño web &amp; Marketing digital para negocios que quieren destacar.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul class="footer-links">
+        <li><a href="#servicios">Página web</a></li>
+        <li><a href="#servicios">Tienda online</a></li>
+        <li><a href="#servicios">Marketing</a></li>
+        <li><a href="#servicios">Citas automatizadas</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul class="footer-links">
+        <li><a href="#quienes">Quiénes somos</a></li>
+        <li><a href="#filosofia">Filosofía</a></li>
+        <li><a href="#resenas">Reseñas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul class="footer-links">
+        <li><a href="mailto:prounek.info@gmail.com">prounek.info@gmail.com</a></li>
+        <li><a href="https://wa.me/34651592897" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="tel:+34651592897">+34 651 592 897</a></li>
+        <li><span style="font-size:.86rem;color:rgba(255,255,255,.5)">Barcelona, España</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-big" aria-hidden="true">Prounek<span>.</span></div>
+  <div class="footer-bottom">
+    <span>© <span data-year>2026</span> Prounek. Todos los derechos reservados.</span>
+    <span>Diseño &amp; Desarrollo — Prounek</span>
+  </div>
+</footer>
+
+<!-- Flotantes -->
+<button class="to-top" type="button" aria-label="Volver arriba">
+  <svg class="ring" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="21"/></svg>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+<a class="wa-float" href="https://wa.me/34651592897" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <span class="wa-tip">¿Hablamos por WhatsApp?</span>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.99L0 24l6.18-1.62A11.95 11.95 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.22-3.48-8.52zM12 22c-1.85 0-3.66-.5-5.24-1.44l-.37-.22-3.89 1.02 1.04-3.78-.24-.39A9.94 9.94 0 0 1 2 12C2 6.48 6.48 2 12 2c2.67 0 5.18 1.04 7.07 2.93A9.94 9.94 0 0 1 22 12c0 5.52-4.48 10-10 10zm5.44-7.3c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.79-1.68-2.09-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg>
+</a>
+
+<script src="js/main.js"></script>
+</body>
+</html>
